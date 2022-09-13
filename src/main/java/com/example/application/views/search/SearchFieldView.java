@@ -1,24 +1,39 @@
 package com.example.application.views.search;
 
-import com.vaadin.flow.component.Tag;
-import com.vaadin.flow.component.dependency.JsModule;
-import com.vaadin.flow.component.littemplate.LitTemplate;
+import com.example.application.views.MainLayout;
+import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.router.PageTitle;
+import com.vaadin.flow.router.Route;
+import com.vaadin.flow.router.RouteAlias;
+import com.vaadin.flow.component.html.*;
 
-/**
- * A Designer generated component for the search-field-view template.
- *
- * Designer will add and remove fields with @Id mappings but
- * does not overwrite or otherwise change this file.
- */
-@Tag("search-field-view")
-@JsModule("./search-field-view.ts")
-public class SearchFieldView extends LitTemplate {
+@PageTitle("Hello World")
+@Route(value = "hello", layout = MainLayout.class)
+@RouteAlias(value = "", layout = MainLayout.class)
+public class SearchFieldView extends HorizontalLayout {
 
-    /**
-     * Creates a new SearchFieldView.
-     */
-    public SearchFieldView() {
-        // You can initialise any data required for the connected UI components here.
+    public SearchFieldView(){
+        setSizeFull();
+        setDefaultVerticalComponentAlignment(Alignment.CENTER);
+
+        VerticalLayout mainLayout = new VerticalLayout();
+        mainLayout.setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        mainLayout.addClassNames("searchLayout");
+
+        Image logoText = new Image("images/intercra_text.png", "Intercra");
+        logoText.setHeight("80px");
+        mainLayout.add(logoText);
+
+        TextField searchField = new TextField();
+        searchField.setPlaceholder("Search Here");
+        searchField.setWidth("500px");
+        mainLayout.add(searchField);
+
+        add(mainLayout);
+
     }
 
 }

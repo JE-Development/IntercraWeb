@@ -5,6 +5,7 @@ import com.vaadin.flow.component.HasSize;
 import com.vaadin.flow.component.HasStyle;
 import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.dependency.JsModule;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.dom.Element;
 import java.util.Optional;
 
@@ -46,6 +47,12 @@ public class AppNav extends Component implements HasSize, HasStyle {
         for (AppNavItem appNavItem : appNavItems) {
             getElement().appendChild(appNavItem.getElement());
         }
+
+        return this;
+    }
+
+    public AppNav addItem(Element el) {
+        getElement().appendChild(el);
 
         return this;
     }

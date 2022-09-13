@@ -4,15 +4,17 @@ package com.example.application.views;
 import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.views.about.AboutView;
-import com.example.application.views.helloworld.HelloWorldView;
 import com.example.application.views.search.SearchFieldView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
+import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.html.Footer;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.Header;
 import com.vaadin.flow.component.orderedlayout.Scroller;
+import com.vaadin.flow.component.select.Select;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.theme.lumo.LumoUtility;
 
@@ -54,8 +56,17 @@ public class MainLayout extends AppLayout {
         // For documentation, visit https://github.com/vaadin/vcf-nav#readme
         AppNav nav = new AppNav();
 
-        nav.addItem(new AppNavItem("Hello World", HelloWorldView.class, "la la-globe"));
-        nav.addItem(new AppNavItem("About", AboutView.class, "la la-file"));
+        String[] items = {"custom preset", "item 1", "item 2", "item 3", "item 4", "item 5"};
+        Select<String> presetSelect = new Select<>();
+        presetSelect.setLabel("Select a preset");
+        presetSelect.setItems(items);
+        nav.addItem(presetSelect.getElement());
+
+        for(int i = 0; i < 20; i++) {
+            Checkbox pluginBox = new Checkbox();
+            pluginBox.setLabel("this is a plugin");
+            nav.addItem(pluginBox.getElement());
+        }
 
         return nav;
     }
