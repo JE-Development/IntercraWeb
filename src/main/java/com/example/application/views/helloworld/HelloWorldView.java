@@ -1,6 +1,7 @@
 package com.example.application.views.helloworld;
 
 import com.example.application.views.MainLayout;
+import com.example.application.views.search.SearchFieldView;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
@@ -29,7 +30,8 @@ public class HelloWorldView extends HorizontalLayout {
         setMargin(true);
         setVerticalComponentAlignment(Alignment.END, name, sayHello);
 
-        add(name, sayHello);
+        //add(name, sayHello);
+        add(new SearchFieldView());
     }
 
 }

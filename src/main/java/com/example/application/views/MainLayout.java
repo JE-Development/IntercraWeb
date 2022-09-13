@@ -5,6 +5,7 @@ import com.example.application.components.appnav.AppNav;
 import com.example.application.components.appnav.AppNavItem;
 import com.example.application.views.about.AboutView;
 import com.example.application.views.helloworld.HelloWorldView;
+import com.example.application.views.search.SearchFieldView;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.Footer;
