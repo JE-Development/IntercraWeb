@@ -2,13 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5; url=html/testpage.html">
     <link rel="stylesheet" href="css/style.css">
-    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#mainsection').click(function(){
+                $('#menulists').slideToggle(500);
+            });
+        });
+    </script>
+    <title>Intercra</title>
 </head>
-<body>
-<div class="center">
-    <img src="https://intercra.com/res/gifs/loading.gif">
+<body id="body">
+<div class="open-page" id="open-screen">
+    <label class="switch">
+        <input type="checkbox">
+        <span class="slider-yellow round"></span>
+    </label>
+</div>
+<div class="main-parent">
+    <button id="button" class="plugin-menu"><img src="res/icons/three-line.png" class="plugin-menu-image"> <div id="plugin-menu-text">show plugins</div></button>
+    <div class="center">
+        <div class="search-box">
+            <div class="center-horizontal">
+                <img src="res/images/intercra_text.png" class="logo-text center-horizontal" id="search-image">
+            </div>
+            <div class="center-horizontal">
+                <p>
+                    <input type="text" class="search-input" placeholder="Search Here">
+                </p>
+            </div>
+            <div class="center-horizontal">
+                <p>
+                    <script type="text/javascript" src="../javascript/navigation.js"></script>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
