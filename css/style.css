@@ -7,6 +7,13 @@ html, body {
 body{
     display: flex;
 }
+
+input, select:focus, textarea {
+
+    font-size: 16px !important;
+
+}
+
 .center{
     display: flex;
     justify-content: center;
@@ -186,5 +193,7 @@ input:checked + .slider-yellow:before {
 .slider-yellow.round:before {
     border-radius: 50%;
 }
+
+
 
 

@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=0.8, user-scalable=0" />
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style_phone.css">
     <title>Intercra</title>
+    <link rel="icon" type="image/x-icon" href="/res/icons/intercra_logo.ico">
 </head>
 <body id="body">
 <div class="open-page" id="open-screen">
@@ -12,9 +15,10 @@
     </div>
 </div>
 <div class="main-parent">
-    <button id="button" class="plugin-menu"><img src="https://intercra.com/res/icons/three-line.png" class="plugin-menu-image"> <div id="plugin-menu-text">show plugins</div></button>
+    <button id="button" onclick="pluginButtonOnClick()" class="plugin-menu"><img src="https://intercra.com/res/icons/three-line.png" class="plugin-menu-image"> <div id="plugin-menu-text">show plugins</div></button>
+    <script type="text/javascript" src="javascript/navigation.js"></script>
     <div class="center">
-        <div class="search-box" id="sb">
+        <div class="search-box">
             <div class="center-horizontal">
                 <img src="https://intercra.com/res/images/intercra_text.png" class="logo-text center-horizontal" id="search-image">
             </div>
@@ -23,9 +27,9 @@
                     <input type="text" class="search-input" placeholder="Search Here">
                 </p>
             </div>
-            <a href="html/views.html" id="view-link">go to views</a>
+            <p style="font-size: 30px">this website is under construction</p>
+            <!--<a href="html/views.html" id="view-link">go to views</a></!-->
         </div>
-        <script type="text/javascript" src="javascript/navigation.js"></script>
     </div>
 </div>
 </body>

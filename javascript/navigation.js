@@ -1,12 +1,21 @@
 var button = document.getElementById("button");
 var pluginButton = document.getElementById("open-screen");
 var pluginButtonText = document.getElementById("plugin-menu-text");
-var pluginList = document.getElementById("sb");
 
-var sw = pluginButton.firstChild;
 var first = true;
-button.onclick = function () {
+var pluginCounter = 0;
+
+function pluginButtonOnClick(){
     if (pluginButton.style.display === "none" || first) {
+        pluginCounter++;
+        document.getElementById("plugin-list").innerHTML +=
+            "<div>\n" +
+            "  <input\n" +
+            "          type=\"checkbox\"\n" +
+            "          id=\"plugin-checkbox" + pluginCounter + "\" />\n" +
+            "  <label for=\"plugin-checkbox" + pluginCounter + "\">hello there</label>\n" +
+            "</div>";
+
         pluginButton.style.display = "block";
         pluginButtonText.innerText = "hide plugins"
         first = false;
@@ -18,13 +27,11 @@ button.onclick = function () {
             "  <label for=\"plugin-checkbox\">hello there</label>\n" +
             "</div>");
 
-        var e = document.createElement("div");
-
-        pluginList.appendChild(e);
     } else {
         pluginButton.style.display = "none";
         pluginButtonText.innerText = "show plugin"
     }
-}
 
-pluginButton.appendChild(sw);
+    //document.getElementById("add_to_me").innerHTML +=
+    //    "<h3>This is the text which has been inserted by JS lol</h3>";
+}
