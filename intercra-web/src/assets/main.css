@@ -1,0 +1,74 @@
+@import "./base.css";
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+body {
+  display: flex;
+  place-items: center;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+.center-horizontal{
+  display: flex;
+  justify-content: center;
+}
+
+.logo-text{
+  height: 80px;
+}
+
+.search-input{
+  width: 400px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #eaeaea;
+  border: solid;
+  border-radius: 12px;
+  border-color: transparent;
+}
+
+.center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.search-box{
+  display: block;
+  margin-bottom: 200px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (max-width: 1000px) {
+
+  .search-box{
+    height: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+
+  #app{
+    width: 100%;
+  }
+
+}
