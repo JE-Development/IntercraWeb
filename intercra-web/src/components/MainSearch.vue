@@ -16,9 +16,10 @@
 </template>
 
 <script>
+import PluginPopup from "./PluginPopup.vue";
 export default {
   //npm run dev | npm run build
-  name: "MainSearch"
+  name: "MainSearch",
 }
 </script>
 
