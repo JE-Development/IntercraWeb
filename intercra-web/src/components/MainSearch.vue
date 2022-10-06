@@ -17,7 +17,7 @@
 
 <script>
 import PluginPopup from "./PluginPopup.vue";
-import router from "../router";
+//import router from "../router";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
