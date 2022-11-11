@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/intercra-web/env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginCheckBox.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginPopup.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/tsconfig.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/plugin-controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/plugins/nona-web.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/vite.config.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EnKLdRDuM7JmPgf3E2JtTnHXKN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/intercra-web",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\components" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\assets" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\images" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\icons" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="" />
+      <created>1663225855801</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663225855801</updated>
+      <workItem from="1663225858367" duration="12655000" />
+      <workItem from="1663241044048" duration="191000" />
+      <workItem from="1663914372108" duration="175000" />
+      <workItem from="1663915101049" duration="6648000" />
+      <workItem from="1664267596376" duration="12796000" />
+      <workItem from="1664283872864" duration="1206000" />
+      <workItem from="1664352875752" duration="9477000" />
+      <workItem from="1664445271136" duration="5540000" />
+      <workItem from="1664519448022" duration="3272000" />
+      <workItem from="1664532576649" duration="4318000" />
+      <workItem from="1664869705605" duration="7830000" />
+      <workItem from="1664957428725" duration="8985000" />
+      <workItem from="1665040207525" duration="7472000" />
+      <workItem from="1665055477218" duration="318000" />
+      <workItem from="1665142993020" duration="15000" />
+      <workItem from="1667547339248" duration="110000" />
+      <workItem from="1667902983163" duration="1613000" />
+      <workItem from="1667989149053" duration="590000" />
+      <workItem from="1667993534397" duration="5000" />
+      <workItem from="1668073798971" duration="16000" />
+      <workItem from="1668081361811" duration="1561000" />
+      <workItem from="1668166665545" duration="896000" />
+      <workItem from="1668167807553" duration="909000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
