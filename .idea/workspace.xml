@@ -2,34 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/intercra-web/env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginCheckBox.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginPopup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/tsconfig.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/plugin-controller.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/plugins/nona-web.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/router.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/vite.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +49,7 @@
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\intercra-web\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -121,7 +95,7 @@
       <workItem from="1668073798971" duration="16000" />
       <workItem from="1668081361811" duration="1561000" />
       <workItem from="1668166665545" duration="896000" />
-      <workItem from="1668167807553" duration="909000" />
+      <workItem from="1668167807553" duration="1273000" />
     </task>
     <servers />
   </component>
