@@ -10,6 +10,8 @@
           :value="text"
           class="search-input center-horizontal"
           @input="event => text = event.target.value">
+
+      <p>this page is in development</p>
     </div>
   </div>
 
