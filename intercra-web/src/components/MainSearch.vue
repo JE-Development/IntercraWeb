@@ -17,6 +17,7 @@
 
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import PluginPopup from "./PluginPopup.vue";
 import router from "../router";
 export default {
@@ -29,6 +30,11 @@ export default {
       window.open(route.href, '_blank');
     }
   }
+=======
+export default {
+  //npm run dev | npm run build
+  name: "MainSearch"
+>>>>>>> parent of ae88b34 (working on popup)
 =======
 export default {
   //npm run dev | npm run build
