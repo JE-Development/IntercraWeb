@@ -1,3 +1,4 @@
+@@ -1,28 +1,29 @@
 <template>
 
   <div class="center">
@@ -10,14 +11,14 @@
           :value="text"
           class="search-input center-horizontal"
           @input="event => text = event.target.value">
-
-      <p>this page is in development</p>
+      <p>This page is in development./p>
     </div>
   </div>
 
 </template>
 
 <script>
+import PluginPopup from "./PluginPopup.vue";
 export default {
   //npm run dev | npm run build
   name: "MainSearch"

@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/IntercraWeb.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/assets/cross_smaller.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/raw/cross.ai" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/raw/cross.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginPopup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +42,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2EnKLdRDuM7JmPgf3E2JtTnHXKN" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -36,9 +52,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "true",
     "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
     "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
@@ -95,7 +113,10 @@
       <workItem from="1668073798971" duration="16000" />
       <workItem from="1668081361811" duration="1561000" />
       <workItem from="1668166665545" duration="896000" />
-      <workItem from="1668167807553" duration="1273000" />
+      <workItem from="1668167807553" duration="1678000" />
+      <workItem from="1668499008545" duration="10000" />
+      <workItem from="1668499427684" duration="5021000" />
+      <workItem from="1668518066305" duration="1604000" />
     </task>
     <servers />
   </component>
