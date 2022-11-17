@@ -12,6 +12,9 @@
           class="search-input center-horizontal"
           @input="event => text = event.target.value">
       <p>This page is in development.</p>
+
+      <p id="timer1">0</p>
+      <p id="timer2">0</p>
     </div>
   </div>
 

@@ -1,12 +1,10 @@
-import { parentPort, workerData } from 'worker_threads';
+import type {PluginInterface} from "@/src/interfaces/PluginInterface";
 
-function factorial(n: number): number {
-    if(n === 1 || n === 0){
-        return 1;
+class TestPlugin implements PluginInterface{
+    findContent(searchText: string, countryUrl: string): void {
     }
-    return factorial(n - 1) * n;
-}
 
-parentPort.postMessage(
-    factorial(workerData.value)
-);
+    findMoreContent(searchText: string, countryUrl: string): void {
+    }
+
+}

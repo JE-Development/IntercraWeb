@@ -4,6 +4,7 @@
   "moduleResolution": "node",
   "compilerOptions": {
     "allowJs": true,
+    "checkJs": false,
     "paths": {
       "@/*": [
         "./*"
