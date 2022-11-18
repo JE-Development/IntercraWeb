@@ -2,20 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/intercra-web/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginLanguageController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PresetController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/ViewController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/customViews/InformationView.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/customViews/ShoppingView.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/PluginInterface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/ShoppingViewInterface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/ViewInterface.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/controllers/workerOne.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/controllers/workerOne.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/decs.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/decs.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/interfaces/PluginInterface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/interfaces/PluginInterface.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/controllers/workerOne.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/controllers/workerTwo.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/intercra-web/src/interfaces/PluginInterface.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +32,9 @@
         <option value="CSS File" />
         <option value="HTML File" />
         <option value="Vue Single File Component" />
-        <option value="TypeScript File" />
         <option value="JavaScript File" />
+        <option value="HTTP Request" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -76,11 +81,11 @@
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\components\intercraSystemCode" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\components" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\assets" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\images" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -120,6 +125,8 @@
       <workItem from="1668591406205" duration="4573000" />
       <workItem from="1668599976577" duration="1347000" />
       <workItem from="1668682557377" duration="5438000" />
+      <workItem from="1668756367661" duration="9734000" />
+      <workItem from="1668772705745" duration="613000" />
     </task>
     <servers />
   </component>
