@@ -12,7 +12,7 @@ export class NonaWeb implements PluginInterface{
     }
 
     findContent(searchText: string, countryUrl: string): void {
-        let html = fetch("https://www.nona.de/?q=electronic");
+        let html = fetch("https://intercra-backend.jason-apps.workers.dev/html/ltlegjk0a0sd5k0g5lcif1b7t3awg6qyzl7t7le7g777jk0a0sd5k0g5lcif1b7t3awg6qy/nona_web/electronic");
         console.log("html: " + html);
     }
 
