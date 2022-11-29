@@ -1,9 +1,9 @@
 
 <template>
-  <div>
+  <div class="button-layout">
       <button class="plugin-menu" @click="onClickPluginButton">
         <img width="25%" src="../assets/three-line.png" class="plugin-menu-image"/>
-        <p id="plugin-menu-text">Show Plugins</p>
+        <p id="plugin-menu-text">Open Plugin List</p>
       </button>
   </div>
   <PluginPopup :show="show" @show-popup="showFromPopup"/>

@@ -9,9 +9,19 @@ export class PluginController{
         this.plugins.push(new NonaWeb());
     }
 
-    async findContent() {
+    async findContent(searchText: string) {
         for(let i = 0; i < this.plugins.length; i++){
-            await this.plugins[i].findContent("electronic", "");
+            await this.plugins[i].findContent(searchText, "");
         }
+    }
+
+    isFinished(): boolean{
+        for(let i = 0; i < this.plugins.length; i++){
+            let finished: boolean = this.plugins[i].isFinish();
+            if(!finished){
+                return false;
+            }
+        }
+        return true;
     }
 }

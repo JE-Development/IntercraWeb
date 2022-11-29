@@ -1,14 +1,12 @@
-<script setup>
-import MainSearch from "./components/MainSearch.vue";
-import PluginButton from "./components/PluginButton.vue";
-import PluginPopup from "./components/PluginPopup.vue";
+<script>
 </script>
 
 <template>
 
-
+<MainPage/>
   <main>
-    <PluginButton/>
-    <MainSearch/>
+    <div class="container my-3">
+      <router-view />
+    </div>
   </main>
 </template>
