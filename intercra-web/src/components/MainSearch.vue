@@ -33,9 +33,9 @@ export default {
       let ic = new IntercraController();
       ic.startSearch(searchText);
 
-
       let route = this.$router.resolve({path: '/search/' + searchText});
       window.open(route.href, '_self');
+
     }
   }
 }

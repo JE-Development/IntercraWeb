@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/MainPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/intercra-web/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/assets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/IntercraController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/plugins/NonaWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/decs.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/intercra-web/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,29 +37,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.3&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/intercra-web/src/Pages&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\intercra-web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "javascript.nodejs.core.library.configured.version": "16.15.1",
+    "javascript.nodejs.core.library.typings.version": "16.18.3",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/intercra-web/src/Pages",
+    "list.type.of.created.stylesheet": "CSS",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraWeb\\intercra-web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\Pages" />
@@ -132,6 +120,7 @@
       <workItem from="1669720577617" duration="2140000" />
       <workItem from="1669722774553" duration="2092000" />
       <workItem from="1669725740890" duration="3589000" />
+      <workItem from="1669744657497" duration="2411000" />
     </task>
     <servers />
   </component>
