@@ -1,15 +1,23 @@
-import {InformationView} from "@/src/components/intercraSystemCode/customViews/InformationView";
-import {ShoppingView} from "@/src/components/intercraSystemCode/customViews/ShoppingView";
+import type {InformationViewInterface} from "@/src/components/intercraSystemCode/interfaces/InformationViewInterface";
+import type {ShoppingViewInterface} from "@/src/components/intercraSystemCode/interfaces/ShoppingViewInterface";
 
 export class ViewController{
-    informationView = new InformationView();
-    shoppingView = new ShoppingView();
+    informationView: InformationViewInterface = {} as InformationViewInterface;
+    shoppingView: ShoppingViewInterface = {} as ShoppingViewInterface;
 
-    getInformationView(): InformationView{
+    getInformationView(): InformationViewInterface{
         return this.informationView;
     }
 
-    getShoppingView(): ShoppingView{
+    getShoppingView(): ShoppingViewInterface{
         return this.shoppingView;
+    }
+
+    setInformationView(iv: InformationViewInterface){
+        this.informationView = iv;
+    }
+
+    setShoppingView(sv: ShoppingViewInterface){
+        this.shoppingView = sv;
     }
 }

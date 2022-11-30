@@ -1,13 +1,18 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
-import type {ViewController} from "../controllers/ViewController";
+import {ViewController} from "../controllers/ViewController";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 
 import https from 'https';
 import * as Cheerio from "cheerio";
+import type {InformationViewInterface} from "@/src/components/intercraSystemCode/interfaces/InformationViewInterface";
 
 export class NonaWeb implements PluginInterface{
     finish = false;
+    contentList: Map<string, string>[] = [];
+
+    displayName = "Nona Web";
+    id = "nona_web";
 
     addToPreset(): PresetController {
         return new PresetController();
@@ -43,10 +48,7 @@ export class NonaWeb implements PluginInterface{
                 const teaser = elem.getElementsByClassName("teaser__text")[0];
                 map.set("teaser", teaser.innerHTML)
 
-                console.log(url);
-                console.log(headline.innerHTML);
-                console.log(teaser.innerHTML);
-                console.log("-----------------------------------");
+                this.contentList.push(map);
             }
         }
     }
@@ -64,11 +66,11 @@ export class NonaWeb implements PluginInterface{
     }
 
     getId(): string {
-        return "";
+        return this.id;
     }
 
     getPluginDisplayName(): string {
-        return "";
+        return this.displayName;
     }
 
     getPluginLanguage(): PluginLanguageController {
@@ -76,7 +78,16 @@ export class NonaWeb implements PluginInterface{
     }
 
     getView(): ViewController[] {
-        return [];
+        let vcArray = []
+
+        for(let i = 0; i < this.contentList.length; i++){
+            let vc = new ViewController();
+            vc.setInformationView(new ViewContent(this.contentList[i], this.displayName));
+
+            vcArray.push(vc);
+        }
+
+        return vcArray;
     }
 
     hasSettings(): boolean {
@@ -88,6 +99,43 @@ export class NonaWeb implements PluginInterface{
     }
 
     setFinishFalse(): void {
+        this.finish = false;
+    }
+
+}
+
+class ViewContent implements InformationViewInterface{
+
+    map: Map<string, string> = {} as Map<string, string>;
+    pluginName: string = "";
+
+    constructor(cl: Map<string, string>, pn: string) {
+        this.map = cl;
+        this.pluginName = pn;
+    }
+
+    setHeadline(): string {
+        return String(this.map.get("headline"));
+    }
+
+    setHiddenUrl(): string {
+        return String(this.map.get("url"));
+    }
+
+    setImage(): string {
+        return "null";
+    }
+
+    setPluginName(): string {
+        return this.pluginName;
+    }
+
+    setSub(): string {
+        return String(this.map.get("teaser"));;
+    }
+
+    setVisibleUrl(): string {
+        return String(this.map.get("url"));
     }
 
 }
