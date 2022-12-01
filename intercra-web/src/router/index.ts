@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type {RouteRecordRaw} from 'vue-router';
 import Main from '../components/MainPage.vue'
-import Test from '../components/SearchResultPage.vue'
+import SearchResultPage from '../components/SearchResultPage.vue'
+import ViewTemplatesPage from '../components/ViewTemplatesPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -12,7 +13,12 @@ const routes: Array<RouteRecordRaw> = [
     {
         path: '/search/:search',
         name: 'SearchResultPage',
-        component: Test
+        component: SearchResultPage
+    },
+    {
+        path: '/view-templates',
+        name: 'ViewTemplatesPage',
+        component: ViewTemplatesPage
     },
 ]
 

@@ -7,7 +7,7 @@ export interface PluginInterface{
     findMoreContent(searchText: string, countryUrl: string): void;
     getView(): ViewController[];
     isFinish(): boolean;
-    getContentList(): Map<string, string>;
+    getContentList(): Map<string, string>[];
     getPluginDisplayName(): string;
     getId(): string;
     getError(): boolean;

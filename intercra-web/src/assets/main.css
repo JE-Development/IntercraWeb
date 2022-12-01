@@ -87,6 +87,12 @@ a,
   align-items: center;
 }
 
+.view-border{
+  background-color: #f1f1f1;
+  border: solid;
+  border-radius: 12px;
+  border-color: transparent;
+}
 
 .check-box{
   width: 30px;

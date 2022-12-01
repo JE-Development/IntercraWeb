@@ -15,8 +15,7 @@ export default {
 </script>
 
 <template>
-  <h1>this is the test page</h1>
-  <p>{{searchData}}</p>
+  <div id="searchRoot"></div>
 </template>
 
 <style scoped>

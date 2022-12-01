@@ -13,6 +13,10 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/vue-fontawesome": "^3.0.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "vue": "^3.2.41",

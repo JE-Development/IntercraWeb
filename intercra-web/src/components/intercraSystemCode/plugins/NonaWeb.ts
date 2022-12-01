@@ -3,9 +3,8 @@ import {ViewController} from "../controllers/ViewController";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 
-import https from 'https';
-import * as Cheerio from "cheerio";
 import type {InformationViewInterface} from "@/src/components/intercraSystemCode/interfaces/InformationViewInterface";
+import {PluginController} from "../controllers/PluginController";
 
 export class NonaWeb implements PluginInterface{
     finish = false;
@@ -25,6 +24,9 @@ export class NonaWeb implements PluginInterface{
         const document = parser.parseFromString(text, "text/html");
         this.startSearch(document);
         this.finish = true;
+
+        let pc = new PluginController();
+        pc.isFinished(this.contentList);
     }
 
     findMoreContent(searchText: string, countryUrl: string): void {
@@ -43,7 +45,7 @@ export class NonaWeb implements PluginInterface{
                 map.set("url", url);
 
                 const headline = link.firstElementChild;
-                map.set("headline", headline.innerHTML);
+                map.set("headline", headline.textContent);
 
                 const teaser = elem.getElementsByClassName("teaser__text")[0];
                 map.set("teaser", teaser.innerHTML)
@@ -53,8 +55,8 @@ export class NonaWeb implements PluginInterface{
         }
     }
 
-    getContentList(): Map<string, string> {
-        return new Map<string, string>();
+    getContentList(): Map<string, string>[] {
+        return this.contentList;
     }
 
     getError(): boolean {

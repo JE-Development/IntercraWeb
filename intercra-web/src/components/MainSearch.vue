@@ -14,6 +14,7 @@
           class="search-input center-horizontal"
           @input="event => text = event.target.value">
       <p>This page is in development.</p>
+      <h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>
     </div>
   </div>
 
