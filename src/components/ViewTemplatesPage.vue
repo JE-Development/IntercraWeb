@@ -1,9 +1,9 @@
 <template>
   <div class="center-horizontal">
-    <div class="view-border">
-      <a href=";;;href;;;">;;;url;;;</a>
-      <h2><a href=";;;href;;;">;;;headline;;;</a></h2>
-      <p class="testClass">;;;teaser;;;</p>
+    <div class="view-border content-layout-color">
+      <a href=";;;href;;;" class="visible-link-color">;;;url;;;</a>
+      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>
+      <p class="teaser-color">;;;teaser;;;</p>
     </div>
   </div>
 </template>

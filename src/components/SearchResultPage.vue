@@ -1,14 +1,18 @@
 <script>
+import {IntercraController} from "../components/intercraSystemCode/controllers/IntercraController"
+
 export default {
   name: "Test",
   data(){
     return {
       search: this.$route.params.search,
-      searchData: "",
+      plugin: this.$route.params.plugin,
     };
   },
   created() {
-    this.searchData = this.search
+
+    let ic = new IntercraController();
+    ic.startSearch(this.search, this.plugin);
 
   }
 }

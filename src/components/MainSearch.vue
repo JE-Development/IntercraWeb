@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import {IntercraController} from "../components/intercraSystemCode/controllers/IntercraController"
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
@@ -31,10 +30,7 @@ export default {
 
       let searchText = document.getElementById("main-input-search").value;
 
-      let ic = new IntercraController();
-      ic.startSearch(searchText);
-
-      let route = this.$router.resolve({path: '/search/' + searchText});
+      let route = this.$router.resolve({path: '/search/' + "nona_web" + "/" + searchText});
       window.open(route.href, '_self');
 
     }

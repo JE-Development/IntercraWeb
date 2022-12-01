@@ -9,7 +9,7 @@ export class PluginController{
         this.plugins.push(new NonaWeb());
     }
 
-    async findContent(searchText: string) {
+    async findContent(searchText: string, plugin: string) {
         for(let i = 0; i < this.plugins.length; i++){
             await this.plugins[i].findContent(searchText, "");
         }
@@ -25,11 +25,14 @@ export class PluginController{
             text.innerHTML = "<p>" + String(contentMap.get("teaser")) + "</p>"
             let doc =  document.getElementById("searchRoot");
             let view = document.createElement("div");
-            let template: string = '<div>\n' +
-                '  <a href=";;;href;;;" target="_blank">;;;url;;;</a>\n' +
-                '  <h2><a href=";;;hrefHead;;;" target="_blank">;;;headline;;;</a></h2>\n' +
-                '  <p class="testClass">;;;teaser;;;</p>\n' +
-                '</div>';
+            let template: string = '<div class="center-horizontal">\n' +
+                '    <div class="space"></div>\n' +
+                '    <div class="view-border content-layout-color">\n' +
+                '      <a href=";;;href;;;" class="visible-link-color">;;;url;;;</a>\n' +
+                '      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>\n' +
+                '      <p class="teaser-color">;;;teaser;;;</p>\n' +
+                '    </div>\n' +
+                '  </div>';
             template = template.replace(";;;href;;;", String(contentMap.get("url")))
                 .replace(";;;hrefHead;;;", String(contentMap.get("url")))
                 .replace(";;;url;;;", String(contentMap.get("url")))
