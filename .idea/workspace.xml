@@ -2,464 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/cross_smaller.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/intercra-logo.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/intercra-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/intercra-text.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/three-line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MainPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PluginButton.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PluginCheckBox.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PluginPopup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Results.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/IconCommunity.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/IconDocumentation.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/IconEcosystem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/IconSupport.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/icons/IconTooling.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginLanguageController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PresetController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/ViewController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/interfaces/InformationViewInterface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/interfaces/PluginInterface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/interfaces/ShoppingViewInterface.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/cross.ai" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/.vscode/extensions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/env.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/cross_smaller.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/intercra-logo.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/intercra-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/intercra-text.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/loading.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/assets/three-line.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/MainSearch.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginCheckBox.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/PluginPopup.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/Results.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/SearchResultPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/ViewTemplatesPage.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/icons/IconCommunity.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/icons/IconDocumentation.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/icons/IconEcosystem.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/icons/IconSupport.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/icons/IconTooling.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/IntercraController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PluginLanguageController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/PresetController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/controllers/ViewController.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/InformationViewInterface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/PluginInterface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/interfaces/ShoppingViewInterface.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/components/intercraSystemCode/plugins/NonaWeb.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/raw/cross.ai" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/raw/cross.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/src/router/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/tsconfig.config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/intercra-web/vite.config.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/boolbase/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/boolbase/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/boolbase/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/boolbase/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/boolbase/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/boolbase/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/helpers.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/helpers.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/positionals.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/positionals.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/positionals.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/esm/positionals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/helpers.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/helpers.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/positionals.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/positionals.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/lib/positionals.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/lib/positionals.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio-select/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio-select/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/attributes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/attributes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/attributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/attributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/css.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/css.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/css.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/forms.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/forms.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/manipulation.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/manipulation.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/manipulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/manipulation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/traversing.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/traversing.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/api/traversing.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/api/traversing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/cheerio.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/cheerio.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/cheerio.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/cheerio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/attributes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/attributes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/attributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/attributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/css.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/css.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/css.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/forms.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/forms.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/forms.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/forms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/manipulation.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/manipulation.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/manipulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/manipulation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/traversing.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/traversing.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/traversing.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/api/traversing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/cheerio.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/cheerio.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/cheerio.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/cheerio.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/load.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/load.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/load.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/load.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/options.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/options.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parsers/parse5-adapter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parsers/parse5-adapter.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parsers/parse5-adapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/parsers/parse5-adapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/slim.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/slim.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/slim.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/slim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/static.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/static.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/static.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/static.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/utils.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/utils.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/esm/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/load.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/load.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/load.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/load.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/options.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/options.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/options.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/parsers/parse5-adapter.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/parsers/parse5-adapter.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/parsers/parse5-adapter.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/parsers/parse5-adapter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/slim.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/slim.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/slim.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/slim.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/static.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/static.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/static.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/static.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/utils.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/utils.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/lib/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/cheerio/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/cheerio/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/attributes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/attributes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/attributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/attributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/compile.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/compile.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/attributes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/attributes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/attributes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/attributes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/compile.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/compile.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/general.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/general.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/general.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/aliases.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/aliases.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/aliases.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/aliases.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/filters.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/filters.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/pseudos.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/pseudos.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/pseudos.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/pseudos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/subselects.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/subselects.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/subselects.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/pseudo-selectors/subselects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/sort.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/sort.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/esm/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/esm/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/general.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/general.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/general.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/general.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/aliases.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/aliases.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/aliases.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/aliases.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/filters.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/filters.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/filters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/pseudos.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/pseudos.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/pseudos.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/pseudos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/subselects.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/subselects.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/subselects.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/pseudo-selectors/subselects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/sort.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/sort.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/sort.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/sort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/lib/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/lib/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-select/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-select/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/stringify.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/stringify.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/commonjs/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/stringify.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/stringify.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/lib/es/types.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/lib/es/types.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/css-what/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/css-what/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/foreignNames.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/foreignNames.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/foreignNames.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/foreignNames.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/foreignNames.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/foreignNames.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/foreignNames.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/foreignNames.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/dom-serializer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/dom-serializer/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domelementtype/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domelementtype/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/node.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/node.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/node.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/node.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/node.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/lib/node.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/lib/node.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domhandler/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domhandler/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/feeds.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/feeds.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/feeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/feeds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/helpers.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/helpers.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/legacy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/legacy.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/legacy.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/legacy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/manipulation.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/manipulation.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/manipulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/manipulation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/querying.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/querying.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/querying.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/querying.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/stringify.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/stringify.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/traversal.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/traversal.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/esm/traversal.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/esm/traversal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/feeds.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/feeds.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/feeds.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/feeds.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/helpers.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/helpers.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/legacy.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/legacy.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/legacy.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/legacy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/manipulation.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/manipulation.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/manipulation.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/manipulation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/querying.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/querying.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/querying.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/querying.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/stringify.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/stringify.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/stringify.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/stringify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/traversal.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/traversal.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/lib/traversal.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/lib/traversal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/domutils/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/domutils/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/decode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/decode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/decode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/decode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/decode_codepoint.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/decode_codepoint.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/decode_codepoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/decode_codepoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/encode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/encode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/encode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/encode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/escape.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/escape.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/escape.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/escape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode_codepoint.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode_codepoint.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode_codepoint.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/decode_codepoint.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/encode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/encode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/encode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/encode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/escape.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/escape.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/escape.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/escape.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-xml.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-xml.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/decode-data-xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/encode-html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/encode-html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/encode-html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/generated/encode-html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-xml.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-xml.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-xml.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/decode-data-xml.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/encode-html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/encode-html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/generated/encode-html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/generated/encode-html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/entities/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/entities/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Parser.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Parser.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Tokenizer.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Tokenizer.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Tokenizer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/Tokenizer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/WritableStream.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/WritableStream.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/WritableStream.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/WritableStream.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Parser.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Parser.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Parser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Parser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Tokenizer.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Tokenizer.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Tokenizer.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/Tokenizer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/WritableStream.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/WritableStream.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/WritableStream.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/WritableStream.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/htmlparser2/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/htmlparser2/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/compile.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/compile.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/compile.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/compile.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/compile.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/compile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/esm/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/parse.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/parse.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/lib/parse.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/lib/parse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/nth-check/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/nth-check/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/cjs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5-htmlparser2-tree-adapter/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/doctype.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/doctype.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/doctype.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/doctype.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/error-codes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/error-codes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/error-codes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/error-codes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/foreign-content.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/foreign-content.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/foreign-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/foreign-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/token.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/token.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/token.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/unicode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/unicode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/unicode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/common/unicode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/formatting-element-list.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/formatting-element-list.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/formatting-element-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/formatting-element-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/open-element-stack.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/open-element-stack.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/open-element-stack.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/parser/open-element-stack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/serializer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/serializer/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/serializer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/serializer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/preprocessor.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/preprocessor.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/preprocessor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tokenizer/preprocessor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/default.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/default.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/interface.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/interface.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/interface.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/cjs/tree-adapters/interface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/doctype.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/doctype.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/doctype.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/doctype.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/error-codes.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/error-codes.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/error-codes.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/error-codes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/foreign-content.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/foreign-content.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/foreign-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/foreign-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/html.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/html.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/html.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/html.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/token.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/token.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/token.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/token.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/unicode.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/unicode.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/common/unicode.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/common/unicode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/formatting-element-list.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/formatting-element-list.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/formatting-element-list.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/formatting-element-list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/open-element-stack.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/open-element-stack.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/parser/open-element-stack.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/parser/open-element-stack.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/serializer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/serializer/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/serializer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/serializer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/index.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/preprocessor.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/preprocessor.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/preprocessor.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tokenizer/preprocessor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/default.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/default.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/default.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/default.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/interface.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/interface.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/interface.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/dist/tree-adapters/interface.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/parse5/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/parse5/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -469,12 +19,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="HTTP Request" />
         <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -507,7 +57,7 @@
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.3",
-    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/intercra-web/src/Pages",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraBackEnd",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
@@ -517,6 +67,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web\src\Pages" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\intercra-web" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\res\images" />
@@ -580,6 +131,7 @@
       <workItem from="1669882002845" duration="12783000" />
       <workItem from="1669922396810" duration="78000" />
       <workItem from="1669922557491" duration="3690000" />
+      <workItem from="1669968008818" duration="2495000" />
     </task>
     <servers />
   </component>

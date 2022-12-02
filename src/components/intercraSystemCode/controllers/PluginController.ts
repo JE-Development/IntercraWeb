@@ -11,7 +11,9 @@ export class PluginController{
 
     async findContent(searchText: string, plugin: string) {
         for(let i = 0; i < this.plugins.length; i++){
-            await this.plugins[i].findContent(searchText, "");
+            if(this.plugins[i].getId() === plugin) {
+                await this.plugins[i].findContent(searchText, "");
+            }
         }
     }
 

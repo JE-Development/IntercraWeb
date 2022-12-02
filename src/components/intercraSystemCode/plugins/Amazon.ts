@@ -6,19 +6,19 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {InformationViewInterface} from "@/src/components/intercraSystemCode/interfaces/InformationViewInterface";
 import {PluginController} from "../controllers/PluginController";
 
-export class NonaWeb implements PluginInterface{
+export class Amazon implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Nona Web";
-    id = "nona_web";
+    displayName = "Amazon";
+    id = "amazon";
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/nona_web/" + searchText);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/amazon/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");
@@ -33,22 +33,21 @@ export class NonaWeb implements PluginInterface{
     }
 
     startSearch(document: any): void{
-        const content = document.getElementsByTagName("article");
-
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            if(elem.hasAttribute("id")){
+        const article = document.getElementsByTagName("div");
+        for(let i = 0; i < article.length; i++){
+            const e = article[i];
+            if(e.getAttribute("data-component-type") === "s-search-result"){
                 let map = new Map<string, string>;
 
-                const link = elem.getElementsByClassName("teaser__link")[0];
-                const url = link.getAttribute("href");
-                map.set("url", url);
+                const productLink = e.getElementsByClassName("s-no-outline")[0];
+                map.set("url", productLink.getAttribute("href"));
 
-                const headline = link.firstElementChild;
-                map.set("headline", headline.textContent);
+                const imageLink = e.getElementsByClassName("s-image")[0];
+                map.set("imageUrl", imageLink.getAttribute("src"));
+                map.set("headline", imageLink.getAttribute("alt"));
 
-                const teaser = elem.getElementsByClassName("teaser__text")[0];
-                map.set("teaser", teaser.innerHTML)
+                const price = e.getElementsByClassName("a-offscreen")[0];
+                map.set("price", price.textContent);
 
                 this.contentList.push(map);
             }
