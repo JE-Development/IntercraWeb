@@ -30,7 +30,7 @@ export default {
 
       let searchText = document.getElementById("main-input-search").value;
 
-      let route = this.$router.resolve({path: '/search/' + "nona_web" + "/" + searchText});
+      let route = this.$router.resolve({path: '/search/' + "nona_web---amazon" + "/" + searchText});
       window.open(route.href, '_self');
 
     }

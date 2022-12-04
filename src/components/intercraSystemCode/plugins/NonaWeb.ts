@@ -1,5 +1,4 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
-import {ViewController} from "../controllers/ViewController";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";

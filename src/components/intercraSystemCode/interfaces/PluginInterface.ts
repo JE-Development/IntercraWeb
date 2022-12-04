@@ -1,4 +1,3 @@
-import type {ViewController} from "@/src/components/intercraSystemCode/controllers/ViewController";
 import type {PresetController} from "@/src/components/intercraSystemCode/controllers/PresetController";
 import type {PluginLanguageController} from "@/src/components/intercraSystemCode/controllers/PluginLanguageController";
 import type {PluginController} from "@/src/components/intercraSystemCode/controllers/PluginController";

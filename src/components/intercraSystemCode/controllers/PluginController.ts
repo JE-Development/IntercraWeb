@@ -8,6 +8,7 @@ export class PluginController{
     finishedPlugins: string[] = [];
     templates = new Map<string, string>;
     contentMap = new Map<string, Map<string, string>[]>;
+    activePlugins: string[] = [];
 
 
     constructor() {
@@ -15,11 +16,11 @@ export class PluginController{
         this.plugins.push(new Amazon());
 
         this.templates.set("information", '<div class="center-horizontal">\n' +
-            '    <div class="space"></div>\n' +
             '    <div class="view-border content-layout-color">\n' +
             '      <a href=";;;href;;;" class="visible-link-color">;;;url;;;</a>\n' +
             '      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>\n' +
             '      <p class="teaser-color">;;;teaser;;;</p>\n' +
+            '      <p class="plugin-name-color view-plugin-name">Plugin: ;;;plugin-name;;;</p>\n' +
             '    </div>\n' +
             '  </div>')
 
@@ -27,21 +28,23 @@ export class PluginController{
             '    <div class="view-border content-layout-color">\n' +
             '\n' +
             '      <div class="view-border content-layout-color center-horizontal">\n' +
-            '        <img src=";;;image-url;;;" class="center-horizontal view-image"/>\n' +
+            '        <img src="../assets/sample-product-image.png" class="center-horizontal view-image"/>\n' +
             '      </div>\n' +
             '      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>\n' +
+            '      <p class="plugin-name-color  view-plugin-name">Plugin: ;;;plugin-name;;;</p>\n' +
             '    </div>\n' +
-            '\n' +
             '  </div>')
 
 
     }
 
     async findContent(searchText: string, plugin: string) {
+        this.activePlugins = plugin.split("---");
+
         for(let i = 0; i < this.plugins.length; i++){
-            //if(this.plugins[i].getId() === plugin) {
+            if(this.activePlugins.includes(this.plugins[i].getId())){
                 await this.plugins[i].findContent(searchText, "", this);
-            //}
+            }
         }
     }
 
@@ -54,9 +57,6 @@ export class PluginController{
             for(let i = 0; i < this.finishedPlugins.length; i++){
                 let contentList: Map<string, string>[] = this.contentMap.get(this.finishedPlugins[i]) as Map<string, string>[];
 
-                //only amazon will be displayed
-
-                let l = fooo;
 
                 for(let j = 0; j < contentList.length; j++){
                     let contentMap = contentList[j];
@@ -68,19 +68,9 @@ export class PluginController{
                     let doc =  document.getElementById("searchRoot");
                     let view = document.createElement("div");
 
-                    let temp = "";
-
-                    if(id == "nona_web"){
-                        temp = this.setNonaWeb(contentMap);
-                    }
-                    if(id == "amazon"){
-                        temp = this.setAmazon(contentMap);
-                    }
-
-
-                    view.innerHTML = temp;
 
                     if(doc != null && append != null){
+                        view.innerHTML = this.setContent(contentMap, this.finishedPlugins[i]);
                         doc.appendChild(view);
                     }
                 }
@@ -89,11 +79,11 @@ export class PluginController{
     }
 
     checkAllFinished(): boolean{
-        if(this.plugins.length != this.finishedPlugins.length){
+        if(this.activePlugins.length != this.finishedPlugins.length){
             return false;
         }else{
-            for(let i = 0; i < this.plugins.length; i++){
-                if(!this.finishedPlugins.includes(this.plugins[i].getId())){
+            for(let i = 0; i < this.activePlugins.length; i++){
+                if(!this.finishedPlugins.includes(this.activePlugins[i])){
                     return false;
                 }
             }
@@ -101,21 +91,33 @@ export class PluginController{
         return true;
     }
 
-    setNonaWeb(contentMap: Map<string, string>): string{
-        let nona_web_template = this.templates.get("information");
-        nona_web_template = String(nona_web_template).replace(";;;href;;;", String(contentMap.get("url")))
-            .replace(";;;hrefHead;;;", String(contentMap.get("url")))
-            .replace(";;;url;;;", String(contentMap.get("url")))
-            .replace(";;;headline;;;", String(contentMap.get("headline")))
-            .replace(";;;teaser;;;", String(contentMap.get("teaser")))
-        return nona_web_template;
+    setContent(contentMap: Map<string, string>, id: string): string{
+        if(id == "nona_web"){
+            let nona_web_template = this.templates.get("information");
+            nona_web_template = String(nona_web_template).replace(";;;href;;;", String(contentMap.get("url")))
+                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
+                .replace(";;;url;;;", String(contentMap.get("url")))
+                .replace(";;;headline;;;", String(contentMap.get("headline")))
+                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
+                .replace(";;;plugin-name;;;", this.getNameFromId(id))
+            return nona_web_template;
+        }else if(id == "amazon"){
+            let nona_web_template = this.templates.get("shopping");
+            nona_web_template = String(nona_web_template).replace(";;;hrefHead;;;", String(contentMap.get("url")))
+                .replace(";;;headline;;;", String(contentMap.get("headline")))
+                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
+                .replace(";;;plugin-name;;;", this.getNameFromId(id))
+            return nona_web_template;
+        }
+        return "";
     }
 
-    setAmazon(contentMap: Map<string, string>): string{
-        let nona_web_template = this.templates.get("shopping");
-        nona_web_template = String(nona_web_template).replace(";;;hrefHead;;;", String(contentMap.get("url")))
-            .replace(";;;headline;;;", String(contentMap.get("headline")))
-            .replace(";;;image-url;;;", String(contentMap.get("imageUrl")))
-        return nona_web_template;
+    getNameFromId(id: string): string{
+        for(let i = 0; i < this.plugins.length; i++){
+            if(this.plugins[i].getId() === id){
+                return this.plugins[i].getPluginDisplayName();
+            }
+        }
+        return id;
     }
 }
