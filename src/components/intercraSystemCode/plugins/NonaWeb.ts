@@ -2,6 +2,7 @@ import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
+import {ViewCollection} from "../classes/ViewCollection";
 
 export class NonaWeb implements PluginInterface{
     finish = false;
@@ -86,6 +87,29 @@ export class NonaWeb implements PluginInterface{
 
     setFinishFalse(): void {
         this.finish = false;
+    }
+
+    getView(): string[] {
+        let vc = new ViewCollection();
+
+        let content: string[] = [];
+
+        for(let i = 0; i < this.contentList.length; i++){
+            let view = vc.getInformationView();
+
+            let contentMap = this.contentList[i];
+
+            view = String(view).replace(";;;href;;;", String(contentMap.get("url")))
+                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
+                .replace(";;;url;;;", String(contentMap.get("url")))
+                .replace(";;;headline;;;", String(contentMap.get("headline")))
+                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
+                .replace(";;;plugin-name;;;", this.displayName)
+
+            content.push(view);
+        }
+
+        return content;
     }
 
 }

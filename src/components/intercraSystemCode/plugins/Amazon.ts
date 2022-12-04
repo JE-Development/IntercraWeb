@@ -1,6 +1,7 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
+import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 
 export class Amazon implements PluginInterface{
@@ -87,6 +88,28 @@ export class Amazon implements PluginInterface{
 
     setFinishFalse(): void {
         this.finish = false;
+    }
+
+    getView(): string[] {
+
+        let vc = new ViewCollection();
+
+        let content: string[] = [];
+
+        for(let i = 0; i < this.contentList.length; i++){
+            let view = vc.getShoppingView();
+
+            let contentMap = this.contentList[i];
+
+            view = String(view).replace(";;;hrefHead;;;", String(contentMap.get("url")))
+                .replace(";;;headline;;;", String(contentMap.get("headline")))
+                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
+                .replace(";;;plugin-name;;;", this.displayName)
+
+            content.push(view);
+        }
+
+        return content;
     }
 
 }

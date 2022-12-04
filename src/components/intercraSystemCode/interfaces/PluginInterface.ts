@@ -15,4 +15,5 @@ export interface PluginInterface{
     getPluginLanguage(): PluginLanguageController
     hasSettings(): boolean;
     setFinishFalse(): void;
+    getView(): string[];
 }

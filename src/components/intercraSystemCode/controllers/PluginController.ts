@@ -7,35 +7,12 @@ export class PluginController{
     plugins: PluginInterface[] = [];
     finishedPlugins: string[] = [];
     templates = new Map<string, string>;
-    contentMap = new Map<string, Map<string, string>[]>;
     activePlugins: string[] = [];
 
 
     constructor() {
         this.plugins.push(new NonaWeb());
         this.plugins.push(new Amazon());
-
-        this.templates.set("information", '<div class="center-horizontal">\n' +
-            '    <div class="view-border content-layout-color">\n' +
-            '      <a href=";;;href;;;" class="visible-link-color">;;;url;;;</a>\n' +
-            '      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>\n' +
-            '      <p class="teaser-color">;;;teaser;;;</p>\n' +
-            '      <p class="plugin-name-color view-plugin-name">Plugin: ;;;plugin-name;;;</p>\n' +
-            '    </div>\n' +
-            '  </div>')
-
-        this.templates.set("shopping", '<div class="center-horizontal">\n' +
-            '    <div class="view-border content-layout-color">\n' +
-            '\n' +
-            '      <div class="view-border content-layout-color center-horizontal">\n' +
-            '        <img src="../assets/sample-product-image.png" class="center-horizontal view-image"/>\n' +
-            '      </div>\n' +
-            '      <h2><a href=";;;hrefHead;;;" class="headline-color">;;;headline;;;</a></h2>\n' +
-            '      <p class="plugin-name-color  view-plugin-name">Plugin: ;;;plugin-name;;;</p>\n' +
-            '    </div>\n' +
-            '  </div>')
-
-
     }
 
     async findContent(searchText: string, plugin: string) {
@@ -50,31 +27,55 @@ export class PluginController{
 
     isFinished(contentList: Map<string, string>[], id: string){
         this.finishedPlugins.push(id);
-        this.contentMap.set(id, contentList);
         let check = this.checkAllFinished();
 
         if(check){
-            for(let i = 0; i < this.finishedPlugins.length; i++){
-                let contentList: Map<string, string>[] = this.contentMap.get(this.finishedPlugins[i]) as Map<string, string>[];
 
+            let box: string[][] = [];
+            let all: string[] = [];
 
-                for(let j = 0; j < contentList.length; j++){
-                    let contentMap = contentList[j];
-
-                    let append = document.createElement("div");
-                    append.innerHTML = "<div id=\"append\"><h1>" + String(contentMap.get("headline")) + "</h1></div>";
-                    let text = document.createElement("div");
-                    text.innerHTML = "<p>" + String(contentMap.get("teaser")) + "</p>"
-                    let doc =  document.getElementById("searchRoot");
-                    let view = document.createElement("div");
-
-
-                    if(doc != null && append != null){
-                        view.innerHTML = this.setContent(contentMap, this.finishedPlugins[i]);
-                        doc.appendChild(view);
-                    }
+            for(let i = 0; i < this.plugins.length; i++){
+                if(this.finishedPlugins.includes(this.plugins[i].getId())){
+                    let view = this.plugins[i].getView();
+                    box.push(view);
                 }
             }
+
+            let maxSize: Number[] = [];
+
+            for(let i = 0; i < this.plugins.length; i++){
+                if(this.finishedPlugins.includes(this.plugins[i].getId())){
+                    maxSize.push(this.plugins[i].getView().length);
+                }
+            }
+
+            maxSize = maxSize.sort((n1: any,n2: any) => n1 - n2);
+
+            try{
+                let max = maxSize[maxSize.length - 1];
+                for(let i = 0; i < max; i++){
+                    for(let j = 0; j < box.length; j++){
+                        if(box[j].length > i){
+                            all.push(box[j][i]);
+                        }
+                    }
+                }
+            }catch (e){
+
+            }
+
+            for(let i = 0; i < all.length; i++){
+                let doc =  document.getElementById("searchRoot");
+                let view = document.createElement("div");
+
+
+                if(doc != null){
+                    view.innerHTML = all[i];
+                    doc.appendChild(view);
+                }
+            }
+
+
         }
     }
 
