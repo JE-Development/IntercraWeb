@@ -11,7 +11,7 @@
           id="main-input-search"
           placeholder="Search here"
           :value="text"
-          class="search-input center-horizontal"
+          class="search-input center-horizontal search-input-color search-input-border-color"
           @input="event => text = event.target.value">
       <p>This page is in development.</p>
       <h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>
@@ -30,7 +30,7 @@ export default {
 
       let searchText = document.getElementById("main-input-search").value;
 
-      let route = this.$router.resolve({path: '/search/' + "nona_web---amazon" + "/" + searchText});
+      let route = this.$router.resolve({path: '/search/' + "nona_web---amazon---bandcamp_album" + "/" + searchText});
       window.open(route.href, '_self');
 
     }

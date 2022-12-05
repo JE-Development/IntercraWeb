@@ -25,16 +25,15 @@ a,
 }
 
 .logo-text{
-  height: 80px;
+  height: 120px;
 }
 
 .search-input{
-  width: 400px;
-  height: 30px;
-  font-size: 16px;
-  background-color: #eaeaea;
+  width: 600px;
+  height: 40px;
+  font-size: 20px;
   border: solid;
-  border-radius: 12px;
+  border-radius: 50px;
   border-color: transparent;
 }
 
@@ -107,18 +106,31 @@ a,
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 610px) {
 
   .search-box{
     height: 100%;
+    width: 100vw;
     margin-top: 20%;
+  }
+
+  .search-input{
+    width: 100vw;
+  }
+
+  .logo-text{
+    height: 20vw;
+  }
+
+  html{
+    width: 100vw;
   }
 }
 
 @media (max-width: 420px) {
 
   #app{
-    width: 100%;
+    width: 100vw;
   }
   .search-box{
     margin-top: 30%;

@@ -7,11 +7,33 @@
 }
 
 .view-image{
-    height: 300px;
-    width: 600px;
+    max-height: 300px;
+    max-width: 600px;
 }
 
 .view-plugin-name{
     font-size: 12px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+
+    .view-border{
+        width: 90vw;
+    }
+
+    .view-image{
+        max-height: 200px;
+        max-width: 80vw;
+    }
+}
+
+@media (max-width: 420px) {
+
+
+
 }
 

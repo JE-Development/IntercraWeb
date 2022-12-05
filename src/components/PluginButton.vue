@@ -12,13 +12,14 @@
 <script>
 
 import PluginPopup from "./PluginPopup.vue";
+import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 
 export default {
   //npm run dev | npm run build
   name: "PluginButton",
   data() {
     return {
-      show: false
+      show: false,
     }
   },
   components: {
@@ -27,6 +28,8 @@ export default {
   methods: {
     onClickPluginButton: function (){
       this.show=true;
+
+
     },
     showFromPopup: function (message){
       this.show = message;

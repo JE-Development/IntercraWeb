@@ -1,6 +1,7 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {NonaWeb} from "../plugins/NonaWeb";
 import {Amazon} from "../plugins/Amazon";
+import {BandcampAlbum} from "../plugins/BandcampAlbum";
 
 export class PluginController{
 
@@ -13,6 +14,11 @@ export class PluginController{
     constructor() {
         this.plugins.push(new NonaWeb());
         this.plugins.push(new Amazon());
+        this.plugins.push(new BandcampAlbum());
+    }
+
+    getPlugins(): PluginInterface[]{
+        return this.plugins;
     }
 
     async findContent(searchText: string, plugin: string) {
@@ -90,35 +96,5 @@ export class PluginController{
             }
         }
         return true;
-    }
-
-    setContent(contentMap: Map<string, string>, id: string): string{
-        if(id == "nona_web"){
-            let nona_web_template = this.templates.get("information");
-            nona_web_template = String(nona_web_template).replace(";;;href;;;", String(contentMap.get("url")))
-                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
-                .replace(";;;url;;;", String(contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
-                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
-                .replace(";;;plugin-name;;;", this.getNameFromId(id))
-            return nona_web_template;
-        }else if(id == "amazon"){
-            let nona_web_template = this.templates.get("shopping");
-            nona_web_template = String(nona_web_template).replace(";;;hrefHead;;;", String(contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
-                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
-                .replace(";;;plugin-name;;;", this.getNameFromId(id))
-            return nona_web_template;
-        }
-        return "";
-    }
-
-    getNameFromId(id: string): string{
-        for(let i = 0; i < this.plugins.length; i++){
-            if(this.plugins[i].getId() === id){
-                return this.plugins[i].getPluginDisplayName();
-            }
-        }
-        return id;
     }
 }

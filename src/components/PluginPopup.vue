@@ -1,23 +1,54 @@
 <script>
 import PluginCheckBox from "./PluginCheckBox.vue";
+import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
+import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
 export default {
   name: "PluginPopup",
   components: {PluginCheckBox},
   props: {
-    show: Boolean
+    show: Boolean,
+    content: function () {
+
+    }
   },
   data(){
+    let checkBox;
     return{
-      showButton: false
+      showButton: false,
+      checkBox
     }
   },
   methods: {
     onClickPopupButton: function (){
       this.$emit("show-popup", this.showButton);
+    },
+    onClickButton: function (){
+      console.log("click")
+      for(let i = 0; i < 5; i++){
+        let doc =  document.getElementById("check-box-list");
+
+        let view = document.createElement("div");
+
+        let vc = new ViewCollection();
+        let cb = vc.getCheckBoxView();
+
+        cb = String(cb).replace(";;;plugin-name;;;", "name " + i);
+
+        if (doc != null) {
+          view.innerHTML = cb;
+          doc.appendChild(view);
+        }
+      }
     }
   },
   mounted() {
     this.onClickPopupButton();
+    this.onClickButton();
+  },
+
+
+  created() {
+
   }
 }
 </script>
@@ -34,10 +65,10 @@ export default {
                 <p id="plugin-menu-text">Close Plugin List</p>
               </button>
             </div>
-            <PluginCheckBox/>
-            <PluginCheckBox/>
-            <PluginCheckBox/>
-            <PluginCheckBox/>
+            <button class="plugin-menu plugin-close center-horizontal" @click="onClickButton"/>
+            <div id="check-box-list">
+              {{onClickButton()}}
+            </div>
           </div>
         </div>
       </div>
