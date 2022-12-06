@@ -12,10 +12,8 @@ export default {
     }
   },
   data(){
-    let checkBox;
     return{
       showButton: false,
-      checkBox
     }
   },
   methods: {
@@ -24,6 +22,7 @@ export default {
     },
     onClickButton: function (){
       console.log("click")
+
       for(let i = 0; i < 5; i++){
         let doc =  document.getElementById("check-box-list");
 
@@ -37,13 +36,17 @@ export default {
         if (doc != null) {
           view.innerHTML = cb;
           doc.appendChild(view);
+          console.log("html");
+          //return "html"
+        }else{
+          console.log("doc null");
         }
       }
     }
   },
   mounted() {
     this.onClickPopupButton();
-    this.onClickButton();
+    //this.onClickButton();
   },
 
 
@@ -67,7 +70,10 @@ export default {
             </div>
             <button class="plugin-menu plugin-close center-horizontal" @click="onClickButton"/>
             <div id="check-box-list">
-              {{onClickButton()}}
+              <div class="plugin-view">
+                <input type="checkbox" class="check-box" id="plug1" name="p1" value="PluginName">
+                <label for="plug1" class="check-box-label">This is a long website name</label><br>
+              </div>
             </div>
           </div>
         </div>

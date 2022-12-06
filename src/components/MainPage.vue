@@ -6,7 +6,6 @@ import PluginPopup from "../components/PluginPopup.vue";
 </script>
 
 <template>
-  <!--    <PluginButton/>    /!-->
   <MainSearch/>
 </template>
 

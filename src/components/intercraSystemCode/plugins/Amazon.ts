@@ -101,7 +101,7 @@ export class Amazon implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;hrefHead;;;", String(contentMap.get("url")))
+            view = String(view).replace(";;;hrefHead;;;", String("https://www.amazon.com/" + contentMap.get("url")))
                 .replace(";;;headline;;;", String(contentMap.get("headline")))
                 .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
                 .replace(";;;plugin-name;;;", this.displayName)
