@@ -70,6 +70,11 @@ export class PluginController{
 
             }
 
+            let loading = document.getElementById("loading-result")
+            if(loading != null){
+                loading.innerHTML = "";
+            }
+
             for(let i = 0; i < all.length; i++){
                 let doc =  document.getElementById("searchRoot");
                 let view = document.createElement("div");

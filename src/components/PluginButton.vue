@@ -9,7 +9,7 @@
   <div id="parent-popup-lol">
 
   </div>
-  <!--<PluginPopup :show="show" @show-popup="showFromPopup"/>/!-->
+  <PluginPopup :show="show" @show-popup="showFromPopup"/>
 </template>
 
 <script>
@@ -32,6 +32,7 @@ export default {
   methods: {
     onClickPluginButton: function (){
       this.show=true;
+
 
       let parent = document.getElementById("parent-popup");
       parent.appendChild(e);

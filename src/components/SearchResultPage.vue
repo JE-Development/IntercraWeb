@@ -19,7 +19,11 @@ export default {
 </script>
 
 <template>
-  <div id="searchRoot"></div>
+  <div id="searchRoot">
+    <div id="loading-result" class="center-horizontal">
+      <img src="../assets/loading.gif" class="loading-image"/>
+    </div>
+  </div>
 </template>
 
 <style scoped>

@@ -43,6 +43,10 @@ a,
   justify-content: center;
 }
 
+.loading-image{
+  max-width: 200px;
+}
+
 .search-box{
   display: block;
   margin-bottom: 200px;

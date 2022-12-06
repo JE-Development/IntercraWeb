@@ -12,8 +12,10 @@ export default {
     }
   },
   data(){
+    let content = document.createElement("a").setAttribute("href", "www.google.com")
     return{
       showButton: false,
+      content
     }
   },
   methods: {
@@ -71,8 +73,7 @@ export default {
             <button class="plugin-menu plugin-close center-horizontal" @click="onClickButton"/>
             <div id="check-box-list">
               <div class="plugin-view">
-                <input type="checkbox" class="check-box" id="plug1" name="p1" value="PluginName">
-                <label for="plug1" class="check-box-label">This is a long website name</label><br>
+                {{content}}
               </div>
             </div>
           </div>
