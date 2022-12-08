@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/arrow_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/arrow down.ai" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/loading.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/loading.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PluginButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PluginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PluginPopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/classes/ViewCollection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/classes/ViewCollection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampAlbum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampAlbum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +142,7 @@
       <workItem from="1670243598085" duration="13885000" />
       <workItem from="1670313921854" duration="8504000" />
       <workItem from="1670332387861" duration="4977000" />
+      <workItem from="1670490359827" duration="14378000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
 <template>
 
   <div class="plugin-view">
-    <input type="checkbox" class="check-box" id="plug1" name="p1" value="PluginName">
+    <input type="checkbox" class="check-box" id="plug1" name="p1" value="PluginName" checked="true" ref=";;;ref;;;" @click="onCheckBoxClicked($event)">
     <label for="plug1" class="check-box-label">;;;plugin-name;;;</label><br>
   </div>
 

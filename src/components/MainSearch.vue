@@ -1,26 +1,35 @@
 
 <template>
-  <div class="center">
-    <div class="search-box">
+  <PluginPopup :show="show" @show-popup="showFromPopup"/>
+  <div class="fullscreen">
+    <div class="scroll-down">
+      <p class="center-horizontal">Scroll down for the plugin list</p>
       <div class="center-horizontal">
-        <img src="../assets/intercra-text.png" class="logo-text center-horizontal">
+        <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
       </div>
-      <input
-          @keyup.enter="enterClicked()"
-          id="main-input-search"
-          placeholder="Search here"
-          :value="text"
-          class="search-input center-horizontal search-input-color search-input-border-color"
-          @input="event => text = event.target.value">
-      <p>This page is in development.</p>
-      <!--<h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>/!-->
+    </div>
+    <div class="center">
+      <div class="search-box">
+        <div class="center-horizontal">
+          <img src="../assets/intercra-text.png" class="logo-text center-horizontal">
+        </div>
+        <input
+            @keyup.enter="enterClicked()"
+            id="main-input-search"
+            placeholder="Search here"
+            :value="text"
+            class="search-input center-horizontal search-input-color search-input-border-color"
+            @input="event => text = event.target.value">
+        <p>This page is in development.</p>
+        <!--<h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>/!-->
+      </div>
     </div>
   </div>
+  <div class="center-horizontal">
+    <div id="plugin-list" class="block-display">
 
-
-
-
-
+    </div>
+  </div>
 
 </template>
 
@@ -28,45 +37,72 @@
 import PluginPopup from "./PluginPopup.vue";
 import PluginButton from "./PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
+import {PluginController} from "./intercraSystemCode/controllers/PluginController";
+import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
   components: {PluginButton, PluginPopup},
+  mounted() {
+    let ic = new IntercraController();
+    //ic.setCookie("jason", " he is a developer");
+    if(ic.getCookie("cookiesAllowed") == "null"){
+      this.show = true;
+    }
+    console.log("cookies: " + ic.getCookie("cookiesAllowed"));
+
+
+    let pc = new PluginController();
+    let plugins = pc.getPlugins();
+    for(let i = 0; i < plugins.length; i++){
+      let root =  document.getElementById("plugin-list");
+      let view = document.createElement("div");
+
+      let vc = new ViewCollection();
+      let cb = vc.getCheckBoxView();
+
+      cb = String(cb).replace(";;;plugin-name;;;", plugins[i].getPluginDisplayName());
+      cb = cb.replace(";;;ref;;;", plugins[i].getId);
+
+      if(root != null){
+        view.innerHTML = cb;
+        root.appendChild(view);
+      }else{
+        console.log("root is null")
+      }
+    }
+  },
+  data() {
+    return {
+      show: false,
+    }
+  },
   methods: {
+    showFromPopup: function (message){
+      this.show = message;
+    },
+
+    onCheckBoxClicked: function (event){
+      console.log(event.target);
+    },
+
     enterClicked(){
+
+      let ic = new IntercraController();
+      let activePlugins = ic.getCheckedPlugins(this);
+      console.log(activePlugins);
 
       let searchText = document.getElementById("main-input-search").value;
 
-      let route = this.$router.resolve({path: '/search/' + "nona_web---amazon---bandcamp_album" + "/" + searchText});
-      window.open(route.href, '_self');
+      let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
+      //window.open(route.href, '_self');
 
     },
     onClickPopupButton: function (){
       this.$emit("show-popup", this.showButton);
     },
-    onClickButton: function (){
-      console.log("click")
 
-      for(let i = 0; i < 5; i++){
-        let doc =  document.getElementById("check-box-list");
 
-        let view = document.createElement("div");
-
-        let vc = new ViewCollection();
-        let cb = vc.getCheckBoxView();
-
-        cb = String(cb).replace(";;;plugin-name;;;", "name " + i);
-
-        if (doc != null) {
-          view.innerHTML = cb;
-          doc.appendChild(view);
-          console.log("html");
-          //return "html"
-        }else{
-          console.log("doc null");
-        }
-      }
-    }
   }
 }
 </script>

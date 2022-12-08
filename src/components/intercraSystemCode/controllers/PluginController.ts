@@ -102,4 +102,26 @@ export class PluginController{
         }
         return true;
     }
+
+    getPluginList(): PluginInterface[]{
+        return this.plugins;
+    }
+
+    getIdFromName(name: string): string{
+        for(let i = 0; i < this.plugins.length; i++){
+            if(this.plugins[i].getPluginDisplayName() == name){
+                return this.plugins[i].getId();
+            }
+        }
+        return "";
+    }
+
+    getNameFromId(name: string): string{
+        for(let i = 0; i < this.plugins.length; i++){
+            if(this.plugins[i].getId() == name){
+                return this.plugins[i].getPluginDisplayName();
+            }
+        }
+        return "";
+    }
 }

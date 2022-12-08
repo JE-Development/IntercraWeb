@@ -67,7 +67,7 @@ export class Amazon implements PluginInterface{
     }
 
     getId(): string {
-        return this.id;
+        return "amazon";
     }
 
     getPluginDisplayName(): string {

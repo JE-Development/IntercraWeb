@@ -19,36 +19,23 @@ export default {
     }
   },
   methods: {
-    onClickPopupButton: function (){
+    onAccept: function (){
       this.$emit("show-popup", this.showButton);
+      let ic = new IntercraController();
+      ic.setCookie("cookiesAllowed",  "true");
     },
-    onClickButton: function (){
-      console.log("click")
+    onDecline: function (){
+      this.$emit("show-popup", this.showButton);
+      let ic = new IntercraController();
+      ic.setCookie("cookiesAllowed",  "false");
+    },
 
-      for(let i = 0; i < 5; i++){
-        let doc =  document.getElementById("check-box-list");
+    onCheckBoxClick(event){
 
-        let view = document.createElement("div");
-
-        let vc = new ViewCollection();
-        let cb = vc.getCheckBoxView();
-
-        cb = String(cb).replace(";;;plugin-name;;;", "name " + i);
-
-        if (doc != null) {
-          view.innerHTML = cb;
-          doc.appendChild(view);
-          console.log("html");
-          //return "html"
-        }else{
-          console.log("doc null");
-        }
-      }
     }
+
   },
   mounted() {
-    this.onClickPopupButton();
-    //this.onClickButton();
   },
 
 
@@ -64,17 +51,23 @@ export default {
       <div class="modal-wrapper">
         <div class="modal-container search-box">
           <div style="justify-content: center">
-            <div class="plugin-view">
-              <button class="plugin-menu plugin-close center-horizontal" @click="onClickPopupButton">
-                <img width="25%" src="../assets/cross_smaller.png" class="plugin-menu-image"/>
-                <p id="plugin-menu-text">Close Plugin List</p>
-              </button>
+            <div class="center-horizontal" style="margin-top: 20px">
+              <p>Intercra needs cookies to work personalized.</p>
             </div>
-            <button class="plugin-menu plugin-close center-horizontal" @click="onClickButton"/>
-            <div id="check-box-list">
-              <div class="plugin-view">
-                {{content}}
-              </div>
+
+            <div class="plugin-view center-horizontal">
+
+            </div>
+            <div class="center-horizontal" style="margin-top: 20px">
+              <button class="plugin-menu plugin-close center-horizontal" @click="onAccept">
+                <p id="plugin-menu-text">Accept</p>
+              </button>
+
+              <div style="width: 50px"></div>
+
+              <button class="plugin-menu plugin-close center-horizontal" @click="onDecline">
+                <p id="plugin-menu-text">Decline</p>
+              </button>
             </div>
           </div>
         </div>

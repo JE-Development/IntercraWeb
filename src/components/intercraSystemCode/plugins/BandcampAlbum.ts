@@ -100,7 +100,7 @@ export class BandcampAlbum implements PluginInterface{
     }
 
     getId(): string {
-        return this.id;
+        return "bandcamp_album";
     }
 
     getPluginDisplayName(): string {
