@@ -31,9 +31,11 @@
     </div>
   </div>
 
+
 </template>
 
 <script>
+
 import PluginPopup from "./PluginPopup.vue";
 import PluginButton from "./PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
@@ -60,9 +62,11 @@ export default {
 
       let vc = new ViewCollection();
       let cb = vc.getCheckBoxView();
+      //let cb = document.getElementsByClassName("plugin-view")[0];
+      //cb.setAttribute("id", "plugin-box-" + plugins[i].getId());
 
       cb = String(cb).replace(";;;plugin-name;;;", plugins[i].getPluginDisplayName());
-      cb = cb.replace(";;;ref;;;", plugins[i].getId);
+      cb = cb.replace(";;;id;;;", plugins[i].getId);
 
       if(root != null){
         view.innerHTML = cb;
@@ -83,18 +87,18 @@ export default {
     },
 
     onCheckBoxClicked: function (event){
-      console.log(event.target);
+      console.log("target: " + event.target);
     },
 
     enterClicked(){
 
       let ic = new IntercraController();
-      let activePlugins = ic.getCheckedPlugins(this);
-      console.log(activePlugins);
+      //let activePlugins = ic.getCheckedPlugins(this);
+      //console.log(activePlugins);
 
       let searchText = document.getElementById("main-input-search").value;
 
-      let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
+      let route = this.$router.resolve({path: '/search/' + "" + "/" + searchText});
       //window.open(route.href, '_self');
 
     },

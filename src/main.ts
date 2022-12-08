@@ -17,3 +17,7 @@ app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.mount("#app")
 
+
+function onCheckBoxClicked(id: any){
+    console.log("in main");
+}

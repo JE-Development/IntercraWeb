@@ -46,9 +46,9 @@ export class ViewCollection{
 
     getCheckBoxView(): string{
         let view = '<div class="plugin-view">\n' +
-            '    <input type="checkbox" class="check-box" id="plug1" name="p1" value="PluginName" checked="true" ref=";;;ref;;;" @click="onCheckBoxClicked($event)">\n' +
-            '    <label for="plug1" class="check-box-label">;;;plugin-name;;;</label><br>\n' +
-            '  </div>'
+            '        <input type="checkbox" class="check-box" id="plugin-id-;;;id;;;" name="p1" value="PluginName" checked="true" onclick="onCheckBoxClicked(\';;;id;;;\')">\n' +
+            '        <label for="plug1" class="check-box-label">;;;plugin-name;;;</label><br>\n' +
+            '      </div>'
         return view;
     }
 }
