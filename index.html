@@ -2,29 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="./src/assets/intercra_transparent.ico">
+    <link rel='icon' href="./src/assets/intercra_transparent.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intercra</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
-    <script>
-        function onCheckBoxClicked(id){
-            import fsLibrary from "fs";
-            //let c = getCookie(id);
-            let c = "null";
-            if(c == "null" || c == "true"){
-                fsLibrary.writeFile('/src/assets/active-plugins.txt', "test", (error) => {
-
-                    // In case of an error throw err exception.
-                    //if (error) throw err;
-                })
-            }else{
-                setCookie(id, "false");
-            }
-            console.log("cookie: " + getCookie("amazon"));
-        }
-    </script>
   </body>
 </html>

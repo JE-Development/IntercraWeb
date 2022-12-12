@@ -1,4 +1,3 @@
-
 <template>
   <PluginPopup :show="show" @show-popup="showFromPopup"/>
   <div class="fullscreen">
@@ -27,7 +26,16 @@
   </div>
   <div class="center-horizontal">
     <div id="plugin-list" class="block-display">
+      <p v-if="cookiesAllowed()"></p>
+      <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
+      <PluginCheckBox
+          v-for="(pl, index) in pluginList"
+          :key="pl.id"
+          :title="pl.title"
+          :check="pl.enable"
+          @click="onCheckBoxClicked(index)">
 
+      </PluginCheckBox>
     </div>
   </div>
 
@@ -41,53 +49,81 @@ import PluginButton from "./PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
+import PluginCheckBox from "./PluginCheckBox.vue";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {PluginButton, PluginPopup},
-  mounted() {
-    let ic = new IntercraController();
-    //ic.setCookie("jason", " he is a developer");
-    if(ic.getCookie("cookiesAllowed") == "null"){
-      this.show = true;
-    }
-    console.log("cookies: " + ic.getCookie("cookiesAllowed"));
+  components: {PluginCheckBox, PluginButton, PluginPopup},
 
+  created() {
+    function getEnabledFromCookie(id) {
+      let ic = new IntercraController();
+      let status = ic.getCookie(id);
+      console.log(status);
+
+      return status;
+    }
 
     let pc = new PluginController();
-    let plugins = pc.getPlugins();
-    for(let i = 0; i < plugins.length; i++){
-      let root =  document.getElementById("plugin-list");
-      let view = document.createElement("div");
+    let allPlugins = pc.getPluginList();
 
-      let vc = new ViewCollection();
-      let cb = vc.getCheckBoxView();
-      //let cb = document.getElementsByClassName("plugin-view")[0];
-      //cb.setAttribute("id", "plugin-box-" + plugins[i].getId());
+    this.pluginList = [];
 
-      cb = String(cb).replace(";;;plugin-name;;;", plugins[i].getPluginDisplayName());
-      cb = cb.replace(";;;id;;;", plugins[i].getId);
-
-      if(root != null){
-        view.innerHTML = cb;
-        root.appendChild(view);
+    for(let i = 0; i < allPlugins.length; i++){
+      let active = "";
+      if(getEnabledFromCookie(allPlugins[i].getId()) === "null"){
+        active = "true";
       }else{
-        console.log("root is null")
+        active = getEnabledFromCookie(allPlugins[i].getId());
       }
+      this.pluginList.push({
+        id: i,
+        title: allPlugins[i].getPluginDisplayName(),
+        pluginId: allPlugins[i].getId(),
+        enable: active,
+      });
+      console.log("in main: " + active);
+    }
+  },
+
+  mounted() {
+    let ic = new IntercraController();
+    if(ic.getCookie("cookiesAllowed") == "null"){
+      this.show = true;
     }
   },
   data() {
     return {
       show: false,
+      pluginList: [],
     }
   },
   methods: {
+
+    cookiesAllowed: function (){
+      let ic = new IntercraController();
+      let allow = ic.getCookie("cookiesAllowed");
+      if(allow === "true"){
+        return true;
+      }else{
+        return false;
+      }
+    },
+
     showFromPopup: function (message){
       this.show = message;
     },
 
-    onCheckBoxClicked: function (event){
-      console.log("target: " + event.target);
+    onCheckBoxClicked: function (index){
+      let ic = new IntercraController();
+
+      if(this.pluginList[index].enable === "true"){
+        this.pluginList[index].enable = "false";
+        ic.setCookie(this.pluginList[index].pluginId, "false");
+      }else{
+        this.pluginList[index].enable  = "true";
+        ic.setCookie(this.pluginList[index].pluginId, "true");
+      }
     },
 
     enterClicked(){
@@ -97,9 +133,21 @@ export default {
       //console.log(activePlugins);
 
       let searchText = document.getElementById("main-input-search").value;
+      
+      let activePlugins = "null";
+      
+      for(let i = 0; i < this.pluginList.length; i++){
+        if(this.pluginList[i].enable === "true"){
+          if(activePlugins == "null"){
+            activePlugins = this.pluginList[i].pluginId;
+          }else{
+            activePlugins = activePlugins + "---" + this.pluginList[i].pluginId;
+          }
+        }
+      }
 
-      let route = this.$router.resolve({path: '/search/' + "" + "/" + searchText});
-      //window.open(route.href, '_self');
+      let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
+      window.open(route.href, '_self');
 
     },
     onClickPopupButton: function (){
