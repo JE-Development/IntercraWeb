@@ -4,19 +4,19 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 
-export class Amazon implements PluginInterface{
+export class Ebay implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Amazon";
-    id = "amazon";
+    displayName = "Ebay (not working yet)";
+    id = "ebay";
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/amazon/" + searchText);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/ebay/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");
@@ -33,26 +33,34 @@ export class Amazon implements PluginInterface{
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByTagName("div");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            if(e.getAttribute("data-component-type") === "s-search-result"){
-                let map = new Map<string, string>;
+        const list = document.getElementsByTagName("s-item s-item__pl-on-bottom");
+        for(let loop = 0; loop < list.length; loop++){
+            const product = list[loop];
+            let map = new Map<string, string>;
+            let skip = false;
 
-                const productLink = e.getElementsByClassName("s-no-outline")[0];
-                map.set("url", productLink.getAttribute("href"));
-
-                const imageLink = e.getElementsByClassName("s-image")[0];
-                map.set("imageUrl", imageLink.getAttribute("src"));
-                map.set("headline", imageLink.getAttribute("alt"));
-
-                const price = e.getElementsByClassName("a-offscreen")[0];
-                if(price == null){
-                    map.set("price", "");
-                }else{
-                    map.set("price", price.textContent);
+            const productLink = product.getElementsByTagName("a")
+            for(let i = 0; i < productLink.length; i++){
+                if(productLink[i].hasAttribute("tabindex")){
+                    let url:string = productLink[i].getAttribute("href");
+                    map.set("url", url);
                 }
+            }
+            const img = product.getElementsByClassName("s-item__image-img");
+            for(let i = 0; i < img.length; i++){
+                let image = img[i];
+                let imgUrl = image.getAttribute("src");
+                let headline = image.getAttribute("alt");
+                map.set("imageUrl", imgUrl);
+                map.set("headline", headline);
+                if(headline === "Shop on eBay"){
+                    skip = true;
+                }
+            }
 
+            const price = product.getElementsByClassName("s-item__price")[0];
+            map.set("price", price.textContent);
+            if(!skip){
                 this.contentList.push(map);
             }
         }
@@ -105,11 +113,12 @@ export class Amazon implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;hrefHead;;;", String("https://www.amazon.com/" + contentMap.get("url")))
+            view = String(view).replace(";;;hrefHead;;;", String(contentMap.get("url")))
                 .replace(";;;headline;;;", String(contentMap.get("headline")))
                 .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
                 .replace(";;;price;;;", String(contentMap.get("price")))
                 .replace(";;;plugin-name;;;", this.displayName)
+
 
             content.push(view);
         }

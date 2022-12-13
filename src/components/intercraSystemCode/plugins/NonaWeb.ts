@@ -66,7 +66,7 @@ export class NonaWeb implements PluginInterface{
     }
 
     getId(): string {
-        return "nona_web";
+        return this.id;
     }
 
     getPluginDisplayName(): string {

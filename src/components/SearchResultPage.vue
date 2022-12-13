@@ -1,19 +1,30 @@
 <script>
 import {IntercraController} from "../components/intercraSystemCode/controllers/IntercraController"
+import MoreContentButton from "../components/MoreContentButton.vue";
 
 export default {
-  name: "Test",
+  name: "SearchResultPage",
+  components: {MoreContentButton},
   data(){
     return {
       search: this.$route.params.search,
       plugin: this.$route.params.plugin,
+      show: false
     };
   },
-  created() {
+  mounted() {
 
     let ic = new IntercraController();
     ic.startSearch(this.search, this.plugin);
 
+    ic.changeShow();
+
+  },
+  methods: {
+    updateSearch: function (){
+      this.show = true;
+      console.log("hello in update: " + this.show);
+    }
   }
 }
 </script>
@@ -24,10 +35,7 @@ export default {
       <img src="../assets/loading.gif" class="loading-image"/>
     </div>
   </div>
+  <div id="more-content-button-root" class="center-horizontal">
+    <MoreContentButton :show="show"/>
+  </div>
 </template>
-
-<style scoped>
-.clickable {
-  cursor: pointer;
-}
-</style>

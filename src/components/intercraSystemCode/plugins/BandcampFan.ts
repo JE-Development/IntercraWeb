@@ -4,19 +4,19 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 
-export class BandcampAlbum implements PluginInterface{
+export class BandcampFan implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Bandcamp Album";
-    id = "bandcamp_album";
+    displayName = "Bandcamp Fans";
+    id = "bandcamp_fan";
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/bandcamp_album/" + searchText);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/bandcamp_fan/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");
@@ -40,7 +40,11 @@ export class BandcampAlbum implements PluginInterface{
             map.set("url", link.getAttribute("href"));
 
             const img = e.getElementsByTagName("img")[0];
-            map.set("imageUrl", img.getAttribute("src"));
+            if(img == null){
+                map.set("imageUrl", "");
+            }else {
+                map.set("imageUrl", img.getAttribute("src"));
+            }
 
             const type = e.getElementsByClassName("itemtype")[0];
             map.set("type", type.textContent);

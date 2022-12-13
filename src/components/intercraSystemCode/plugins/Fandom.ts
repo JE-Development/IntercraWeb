@@ -1,29 +1,27 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
-import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
+import {ViewCollection} from "../classes/ViewCollection";
 
-export class Amazon implements PluginInterface{
+export class Fandom implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Amazon";
-    id = "amazon";
+    displayName = "Fandom (not working yet)";
+    id = "fandom";
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/amazon/" + searchText);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/fandom/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");
         this.startSearch(document);
         this.finish = true;
-
-        console.log("test text");
 
         //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
@@ -33,25 +31,29 @@ export class Amazon implements PluginInterface{
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByTagName("div");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            if(e.getAttribute("data-component-type") === "s-search-result"){
+        const rawList = document.getElementsByTagName("article");
+
+        for(let loop = 0; loop < rawList.length; loop++){
+            const fullList = rawList[loop].children;
+            for(let lo = 0; lo < fullList.length; lo++){
+                const list = fullList[lo];
                 let map = new Map<string, string>;
 
-                const productLink = e.getElementsByClassName("s-no-outline")[0];
-                map.set("url", productLink.getAttribute("href"));
+                const url = list.getElementsByClassName("clickable-anchor")[0];
+                let linkString = url.getAttribute("href");
+                let headline = url.textContent;
+                map.set("url", linkString);
+                map.set("headline", headline);
 
-                const imageLink = e.getElementsByClassName("s-image")[0];
-                map.set("imageUrl", imageLink.getAttribute("src"));
-                map.set("headline", imageLink.getAttribute("alt"));
+                const image = list.getElementsByClassName("wp-post-image")[0];
+                map.set("imageUrl", image.getAttribute("src"));
 
-                const price = e.getElementsByClassName("a-offscreen")[0];
-                if(price == null){
-                    map.set("price", "");
-                }else{
-                    map.set("price", price.textContent);
-                }
+                const time = list.getElementsByTagName("time")[0];
+                map.set("time", time.textContent);
+
+                const teaser = list.getElementsByClassName("excerpt");
+                map.set("teaser", teaser.textContent);
+
 
                 this.contentList.push(map);
             }
@@ -95,20 +97,20 @@ export class Amazon implements PluginInterface{
     }
 
     getView(): string[] {
-
         let vc = new ViewCollection();
 
         let content: string[] = [];
 
         for(let i = 0; i < this.contentList.length; i++){
-            let view = vc.getShoppingView();
+            let view = vc.getArticleView();
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;hrefHead;;;", String("https://www.amazon.com/" + contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
+            view = String(view).replace(";;;href;;;", String(contentMap.get("url")))
+                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
                 .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
-                .replace(";;;price;;;", String(contentMap.get("price")))
+                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
+                .replace(";;;date;;;", String(contentMap.get("time")))
                 .replace(";;;plugin-name;;;", this.displayName)
 
             content.push(view);

@@ -4,19 +4,19 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 
-export class BandcampAlbum implements PluginInterface{
+export class BandcampArtistLabel implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Bandcamp Album";
-    id = "bandcamp_album";
+    displayName = "Bandcamp Artist & Label";
+    id = "bandcamp_artist_label";
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/bandcamp_album/" + searchText);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/bandcamp_artist_label/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");

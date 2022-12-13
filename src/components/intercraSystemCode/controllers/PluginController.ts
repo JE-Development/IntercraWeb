@@ -2,6 +2,12 @@ import type {PluginInterface} from "../interfaces/PluginInterface";
 import {NonaWeb} from "../plugins/NonaWeb";
 import {Amazon} from "../plugins/Amazon";
 import {BandcampAlbum} from "../plugins/BandcampAlbum";
+import {BandcampArtistLabel} from "../plugins/BandcampArtistLabel";
+import {ViewCollection} from "../classes/ViewCollection";
+import {BandcampFan} from "../plugins/BandcampFan";
+import {BandcampTracks} from "../plugins/BandcampTracks";
+import {Ebay} from "../plugins/Ebay";
+import {Fandom} from "../plugins/Fandom";
 
 export class PluginController{
 
@@ -14,11 +20,12 @@ export class PluginController{
     constructor() {
         this.plugins.push(new NonaWeb());
         this.plugins.push(new Amazon());
+        this.plugins.push(new Ebay());
         this.plugins.push(new BandcampAlbum());
-    }
-
-    getPlugins(): PluginInterface[]{
-        return this.plugins;
+        this.plugins.push(new BandcampArtistLabel());
+        this.plugins.push(new BandcampFan());
+        this.plugins.push(new BandcampTracks());
+        this.plugins.push(new Fandom());
     }
 
     async findContent(searchText: string, plugin: string) {
@@ -34,6 +41,7 @@ export class PluginController{
     isFinished(contentList: Map<string, string>[], id: string){
         this.finishedPlugins.push(id);
         let check = this.checkAllFinished();
+        let vc = new ViewCollection();
 
         if(check){
 
@@ -70,7 +78,7 @@ export class PluginController{
 
             }
 
-            let loading = document.getElementById("loading-result")
+            let loading = document.getElementById("loading-result");
             if(loading != null){
                 loading.innerHTML = "";
             }

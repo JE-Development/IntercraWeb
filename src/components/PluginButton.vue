@@ -33,9 +33,6 @@ export default {
     onClickPluginButton: function (){
       this.show=true;
 
-
-      let parent = document.getElementById("parent-popup");
-      parent.appendChild(e);
     },
     showFromPopup: function (message){
       this.show = message;

@@ -52,7 +52,9 @@ export default {
         <div class="modal-container search-box">
           <div style="justify-content: center">
             <div class="center-horizontal" style="margin-top: 20px">
-              <p>Intercra needs cookies to work personalized and to save changes.<br>Do you allow Intercra to collect cookies?</p>
+              <p>Intercra needs cookies to work personalized and to save changes.<br>
+                Do you allow Intercra to collect cookies?<br><br>
+              If this popup shows up even when you accept or decline the cookies, then please wait a couple of times. We will fix this issue.</p>
 
             </div>
 
