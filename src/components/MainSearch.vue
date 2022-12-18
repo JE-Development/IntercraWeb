@@ -36,7 +36,6 @@
           @click="onCheckBoxClicked(index)">
 
       </PluginCheckBox>
-      <ViewsPage :choose/>
     </div>
   </div>
 
@@ -55,7 +54,7 @@ import ViewTemplatesPage from "./ViewTemplatesPage.vue";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {ViewsPage, PluginCheckBox, PluginButton, PluginPopup},
+  components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage},
 
   created() {
     function getEnabledFromCookie(id) {
