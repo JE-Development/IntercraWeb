@@ -36,6 +36,7 @@
           @click="onCheckBoxClicked(index)">
 
       </PluginCheckBox>
+      <ViewsPage :choose/>
     </div>
   </div>
 
@@ -50,10 +51,11 @@ import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
 import PluginCheckBox from "./PluginCheckBox.vue";
+import ViewTemplatesPage from "./ViewTemplatesPage.vue";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {PluginCheckBox, PluginButton, PluginPopup},
+  components: {ViewsPage, PluginCheckBox, PluginButton, PluginPopup},
 
   created() {
     function getEnabledFromCookie(id) {
