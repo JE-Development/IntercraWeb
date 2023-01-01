@@ -8,6 +8,8 @@ import {BandcampFan} from "../plugins/BandcampFan";
 import {BandcampTracks} from "../plugins/BandcampTracks";
 import {Ebay} from "../plugins/Ebay";
 import {Fandom} from "../plugins/Fandom";
+import mitt from 'mitt'
+import EventBus from "../classes/EventBusEvent";
 
 export class PluginController{
 
@@ -15,6 +17,7 @@ export class PluginController{
     finishedPlugins: string[] = [];
     templates = new Map<string, string>;
     activePlugins: string[] = [];
+
 
 
     constructor() {
@@ -90,9 +93,14 @@ export class PluginController{
 
                 if(doc != null){
                     view.innerHTML = all[i];
-                    doc.appendChild(view);
+                    //doc.appendChild(view);
+
+
+
                 }
             }
+            EventBus.emit('data-sender', { content: "shoppingView" })
+            console.log("changed");
 
 
         }

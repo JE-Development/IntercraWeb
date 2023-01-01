@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import mitt from 'mitt'
 
 import './assets/main.css'
 import './assets/colors.css'
@@ -12,9 +13,12 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHatWizard)
 
+const emitter = mitt()
+
 const app = createApp(App)
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
+app.config.globalProperties.emitter = emitter
 app.mount("#app")
 
 

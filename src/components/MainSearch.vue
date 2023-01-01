@@ -36,6 +36,7 @@
           @click="onCheckBoxClicked(index)">
 
       </PluginCheckBox>
+
     </div>
   </div>
 
@@ -57,6 +58,8 @@ export default {
   components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage},
 
   created() {
+    this.testString = "inner update";
+
     function getEnabledFromCookie(id) {
       let ic = new IntercraController();
       let status = ic.getCookie(id);

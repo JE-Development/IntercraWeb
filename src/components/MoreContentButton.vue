@@ -9,9 +9,6 @@
 
 <script>
 
-import PluginPopup from "./PluginPopup.vue";
-import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
-import PluginCheckBox from "./PluginCheckBox.vue";
 
 export default {
   name: "MoreContentButton",

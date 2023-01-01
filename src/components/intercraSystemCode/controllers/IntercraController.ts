@@ -3,7 +3,10 @@ import {ViewCollection} from "../classes/ViewCollection";
 import SearchResultPage from "../../SearchResultPage.vue";
 
 export class IntercraController{
-    pc = new PluginController();
+    pc: PluginController;
+    constructor() {
+        this.pc = new PluginController();
+    }
 
     startSearch(searchText: string, plugin: string){
         this.pc.findContent(searchText, plugin);
