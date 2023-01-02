@@ -34,6 +34,8 @@ export class IntercraController{
     }
 
     changeShow(){
-        SearchResultPage.methods.updateSearch();
+        if(SearchResultPage.methods != null) {
+            SearchResultPage.methods.updateSearch();
+        }
     }
 }
