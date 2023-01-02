@@ -2,12 +2,13 @@
 
 
   <ViewTemplatesPage
-      :choosen-view="'shoppingView'"
+      :choosen-view="'playStoreView'"
       :url="'test url'"
       :headline="'headline'"
       :plugin-name="'test plugin'"
-      :price="'9€'"
+      :publisher="'LeCraftJay'"
       :image="'https://intercra.com/assets/intercra-text.ee327ec2.png'"
+      :appIcon="'https://intercra.com/assets/intercra-logo.png'"
   />
 
 

@@ -46,6 +46,14 @@ a,
   justify-content: center;
 }
 
+.app-content-width{
+  width: 500%;
+}
+
+.display-flex{
+  display: flex;
+}
+
 .logo-text{
   height: 120px;
 }

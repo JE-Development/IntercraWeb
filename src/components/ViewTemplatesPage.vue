@@ -32,6 +32,14 @@
                 :genre="genre"
                 :type="type"
   />
+  <PlayStoreView v-else-if="choosenView === 'playStoreView'"
+                :url="url"
+                :headline="headline"
+                :pluginName="pluginName"
+                :publisher="publisher"
+                :image="image"
+                :appIcon="appIcon"
+  />
 
 
 
@@ -42,9 +50,10 @@ import InformationView from "./layouts/InformationView.vue";
 import ArticleView from "./layouts/ArticleView.vue";
 import ShoppingView from "./layouts/ShoppingView.vue";
 import BandcampView from "./layouts/BandcampView.vue";
+import PlayStoreView from "./layouts/PlayStoreView.vue";
 export default {
   name: "ViewTemplatesPage",
-  components: {BandcampView, ShoppingView, ArticleView, InformationView},
+  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView},
 
   props: {
     choosenView: String,
@@ -69,6 +78,10 @@ export default {
     tags: String,
     genre: String,
     type: String,
+
+    //play store
+    publisher: String,
+    appIcon: String,
   },
 }
 </script>

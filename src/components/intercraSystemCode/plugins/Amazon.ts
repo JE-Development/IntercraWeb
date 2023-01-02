@@ -19,11 +19,10 @@ export class Amazon implements PluginInterface{
         let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/amazon/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
+        const document: any = parser.parseFromString(text, "text/html");
+
         this.startSearch(document);
         this.finish = true;
-
-        console.log("test text");
 
         //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);

@@ -6,6 +6,7 @@ import {BandcampArtistLabel} from "../plugins/BandcampArtistLabel";
 import {ViewCollection} from "../classes/ViewCollection";
 import {BandcampFan} from "../plugins/BandcampFan";
 import {BandcampTracks} from "../plugins/BandcampTracks";
+import {GooglePlayApps} from "../plugins/GooglePlayApps";
 import {Ebay} from "../plugins/Ebay";
 import {Fandom} from "../plugins/Fandom";
 import mitt from 'mitt'
@@ -23,12 +24,13 @@ export class PluginController{
     constructor() {
         this.plugins.push(new NonaWeb());
         this.plugins.push(new Amazon());
-        this.plugins.push(new Ebay());
+        //this.plugins.push(new Ebay());
         this.plugins.push(new BandcampAlbum());
         this.plugins.push(new BandcampArtistLabel());
         this.plugins.push(new BandcampFan());
         this.plugins.push(new BandcampTracks());
-        this.plugins.push(new Fandom());
+        this.plugins.push(new GooglePlayApps());
+        //this.plugins.push(new Fandom());
     }
 
     async findContent(searchText: string, plugin: string) {

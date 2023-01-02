@@ -11,6 +11,21 @@
     max-width: 600px;
 }
 
+.play-store-icon-image{
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+    border: solid;
+    border-radius: 20px;
+    border-color: transparent;
+}
+
+.icon-view{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+}
+
 .view-plugin-name{
     font-size: 12px;
 }
@@ -29,11 +44,18 @@
         max-height: 200px;
         max-width: 80vw;
     }
+
+    .play-store-icon-image{
+        max-width: 20vw;
+        max-height: 20vw;
+    }
 }
 
 @media (max-width: 420px) {
 
-
+    .play-store-icon-image{
+        border-radius: 5vw;
+    }
 
 }
 

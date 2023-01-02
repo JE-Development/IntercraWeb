@@ -19,7 +19,10 @@ export class Fandom implements PluginInterface{
         let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/fandom/" + searchText);
         let text = await html.text();
         const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
+        const document: any = parser.parseFromString(text, "text/html");
+
+        console.log(text);
+
         this.startSearch(document);
         this.finish = true;
 
