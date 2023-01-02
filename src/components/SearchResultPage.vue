@@ -9,7 +9,21 @@
   <div id="more-content-button-root" class="center-horizontal">
     <MoreContentButton :show="show"/>
   </div>
-  <ViewTemplatesPage :choosen-view="type" :plugin-name="pn" ref="vtp"/>
+  <ViewTemplatesPage v-for="(dat) in content"
+                     :choosenView="dat.choosenView"
+                     :url="dat.url"
+                     :headline="dat.headline"
+                     :pluginName="dat.pluginName"
+                     :teaser="dat.teaser"
+                     :image="dat.image"
+                     :date="dat.date"
+                     :price="dat.price"
+                     :artist="dat.artist"
+                     :release="dat.release"
+                     :tags="dat.tags"
+                     :genre="dat.genre"
+                     :type="dat.type"
+  />
 </template>
 
 
@@ -29,16 +43,13 @@ export default {
       search: this.$route.params.search,
       plugin: this.$route.params.plugin,
       show: false,
-      type: 'informationView',
-      pn: 'internal plugin'
+      content: {}
     };
   },
 
   created() {
     EventBus.addEventListener('data-sender', (event) => {
-      console.log(event.data.content)
-      this.type = event.data.content;
-      this.pn = event.data.content;
+      this.content = event.data;
     })
   },
   mounted() {

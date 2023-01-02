@@ -96,24 +96,23 @@ export class Fandom implements PluginInterface{
         this.finish = false;
     }
 
-    getView(): string[] {
-        let vc = new ViewCollection();
+    getView(): any[] {
 
-        let content: string[] = [];
+        let content: any[] = [];
 
         for(let i = 0; i < this.contentList.length; i++){
-            let view = vc.getArticleView();
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;href;;;", String(contentMap.get("url")))
-                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
-                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
-                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
-                .replace(";;;date;;;", String(contentMap.get("time")))
-                .replace(";;;plugin-name;;;", this.displayName)
-
-            content.push(view);
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.id,
+                image: contentMap.get("imageUrl"),
+                teaser: contentMap.get("teaser"),
+                data: contentMap.get("time"),
+            })
         }
 
         return content;

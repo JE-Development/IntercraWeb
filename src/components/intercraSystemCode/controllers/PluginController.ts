@@ -99,8 +99,7 @@ export class PluginController{
 
                 }
             }
-            EventBus.emit('data-sender', { content: "shoppingView" })
-            console.log("changed");
+            EventBus.emit('data-sender', all)
 
 
         }

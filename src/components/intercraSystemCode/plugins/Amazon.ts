@@ -94,24 +94,22 @@ export class Amazon implements PluginInterface{
         this.finish = false;
     }
 
-    getView(): string[] {
+    getView(): any[] {
 
-        let vc = new ViewCollection();
-
-        let content: string[] = [];
+        let content: any[] = [];
 
         for(let i = 0; i < this.contentList.length; i++){
-            let view = vc.getShoppingView();
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;hrefHead;;;", String("https://www.amazon.com/" + contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
-                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
-                .replace(";;;price;;;", String(contentMap.get("price")))
-                .replace(";;;plugin-name;;;", this.displayName)
-
-            content.push(view);
+            content.push({
+                choosenView: "shoppingView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.id,
+                price: contentMap.get("price"),
+                image: contentMap.get("imageUrl")
+            })
         }
 
         return content;

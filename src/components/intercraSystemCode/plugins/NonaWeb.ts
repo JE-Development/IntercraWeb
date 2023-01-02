@@ -89,24 +89,21 @@ export class NonaWeb implements PluginInterface{
         this.finish = false;
     }
 
-    getView(): string[] {
-        let vc = new ViewCollection();
+    getView(): any[] {
 
-        let content: string[] = [];
+        let content: any[] = [];
 
         for(let i = 0; i < this.contentList.length; i++){
-            let view = vc.getInformationView();
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;href;;;", String(contentMap.get("url")))
-                .replace(";;;hrefHead;;;", String(contentMap.get("url")))
-                .replace(";;;url;;;", String(contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
-                .replace(";;;teaser;;;", String(contentMap.get("teaser")))
-                .replace(";;;plugin-name;;;", this.displayName)
-
-            content.push(view);
+            content.push({
+                choosenView: "informationView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.id,
+                teaser: contentMap.get("teaser"),
+            })
         }
 
         return content;

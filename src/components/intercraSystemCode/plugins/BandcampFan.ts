@@ -127,27 +127,26 @@ export class BandcampFan implements PluginInterface{
         this.finish = false;
     }
 
-    getView(): string[] {
-        let vc = new ViewCollection();
+    getView(): any[] {
 
-        let content: string[] = [];
+        let content: any[] = [];
 
         for(let i = 0; i < this.contentList.length; i++){
-            let view = vc.getAudioView();
 
             let contentMap = this.contentList[i];
 
-            view = String(view).replace(";;;hrefHead;;;", String(contentMap.get("url")))
-                .replace(";;;headline;;;", String(contentMap.get("headline")))
-                .replace("../assets/sample-product-image.png", String(contentMap.get("imageUrl")))
-                .replace(";;;type;;;", String(contentMap.get("type")))
-                .replace(";;;artist;;;", String(contentMap.get("artist")))
-                .replace(";;;release;;;", String(contentMap.get("release")))
-                .replace(";;;tags;;;", String(contentMap.get("tags")))
-                .replace(";;;genre;;;", String(contentMap.get("genre")))
-                .replace(";;;plugin-name;;;", this.displayName)
-
-            content.push(view);
+            content.push({
+                choosenView: "bandcampView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.id,
+                image: contentMap.get("imageUrl"),
+                artist: contentMap.get("artist"),
+                release: contentMap.get("release"),
+                tags: contentMap.get("tags"),
+                genre: contentMap.get("genre"),
+                type: contentMap.get("type"),
+            })
         }
 
         return content;
