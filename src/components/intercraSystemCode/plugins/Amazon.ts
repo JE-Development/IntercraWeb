@@ -39,7 +39,7 @@ export class Amazon implements PluginInterface{
                 let map = new Map<string, string>;
 
                 const productLink = e.getElementsByClassName("s-no-outline")[0];
-                map.set("url", productLink.getAttribute("href"));
+                map.set("url", "https://www.amazon.com" + productLink.getAttribute("href"));
 
                 const imageLink = e.getElementsByClassName("s-image")[0];
                 map.set("imageUrl", imageLink.getAttribute("src"));

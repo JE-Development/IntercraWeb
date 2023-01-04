@@ -7,6 +7,7 @@ import {ViewCollection} from "../classes/ViewCollection";
 import {BandcampFan} from "../plugins/BandcampFan";
 import {BandcampTracks} from "../plugins/BandcampTracks";
 import {GooglePlayApps} from "../plugins/GooglePlayApps";
+import {GooglePlayBooks} from "../plugins/GooglePlayBooks";
 import {Ebay} from "../plugins/Ebay";
 import {Fandom} from "../plugins/Fandom";
 import mitt from 'mitt'
@@ -30,6 +31,7 @@ export class PluginController{
         this.plugins.push(new BandcampFan());
         this.plugins.push(new BandcampTracks());
         this.plugins.push(new GooglePlayApps());
+        this.plugins.push(new GooglePlayBooks());
         this.plugins.push(new Fandom());
     }
 

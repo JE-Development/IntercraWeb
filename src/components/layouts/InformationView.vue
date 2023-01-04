@@ -1,8 +1,8 @@
 <template>
   <div class="center-horizontal">
     <div class="view-border content-layout-color">
-      <a href="{{url}}" class="visible-link-color">{{url}}</a>
-      <h2><a href="{{url}}" class="headline-color">{{headline}}</a></h2>
+      <a :href="url" class="visible-link-color">{{url}}</a>
+      <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <p class="teaser-color">{{teaser}}</p>
       <p class="plugin-name-color view-plugin-name">Plugin: {{pluginName}}</p>
     </div>
