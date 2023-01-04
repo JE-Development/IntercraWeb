@@ -20,7 +20,6 @@ export class GooglePlayApps implements PluginInterface{
         let text = await html.text();
         const parser = new DOMParser();
         const document: any = parser.parseFromString(text, "text/html");
-        console.log("playstore: " + document.getElementsByTagName("body")[0].innerHTML)
         this.startSearch(document);
         this.finish = true;
 
@@ -36,7 +35,7 @@ export class GooglePlayApps implements PluginInterface{
         for(let i = 0; i < article.length; i++){
             if(article[i].getAttribute("role") === "listitem") {
                 const e = article[i];
-                if (e.getAttribute("data-component-type") === "s-search-result") {
+                //if (e.getAttribute("data-component-type") === "s-search-result") {
                     let map = new Map<string, string>;
 
                     let appLink = e.getElementsByTagName("a")[0];
@@ -50,13 +49,9 @@ export class GooglePlayApps implements PluginInterface{
                         }
                     }
 
-                    let icon = e.getElementsByTagName("img");
-                    for(let j = 0; j < icon.length; j++){
-                        let img = icon[0];
-                        if(img.getAttribute("alt") === "Thumbnail image"){
-                            map.set("appIconUrl", img.getAttribute("src"));
-                        }
-                    }
+                    let parent = e.getElementsByTagName("a")[0];
+                    let icon = parent.children[1].children[0];
+                    map.set("appIconUrl", icon.getAttribute("src"));
 
                     let names = e.getElementsByTagName("span");
                     if(names.length >= 3){
@@ -87,10 +82,11 @@ export class GooglePlayApps implements PluginInterface{
                             bool = false;
                         }
                     }
-                    if(bool){
+                    let checkUrl = String(map.get("url"));
+                    if(bool && !checkUrl.includes("https://play.google.com/store/search?q=")){
                         this.contentList.push(map);
                     }
-                }
+                //}
             }
         }
     }
@@ -143,11 +139,13 @@ export class GooglePlayApps implements PluginInterface{
                 choosenView: "playStoreView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 publisher: contentMap.get("publisher"),
                 image: contentMap.get("imageUrl"),
                 appIcon: contentMap.get("appIconUrl")
             })
+
+
         }
 
         return content;

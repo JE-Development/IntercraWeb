@@ -8,7 +8,7 @@ export class Fandom implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Fandom (not working yet)";
+    displayName = "Fandom";
     id = "fandom";
 
     addToPreset(): PresetController {
@@ -20,9 +20,6 @@ export class Fandom implements PluginInterface{
         let text = await html.text();
         const parser = new DOMParser();
         const document: any = parser.parseFromString(text, "text/html");
-
-        console.log(text);
-
         this.startSearch(document);
         this.finish = true;
 
@@ -34,12 +31,12 @@ export class Fandom implements PluginInterface{
     }
 
     startSearch(document: any): void{
-        const rawList = document.getElementsByTagName("article");
+        const rawList = document.getElementsByTagName("div");
 
-        for(let loop = 0; loop < rawList.length; loop++){
-            const fullList = rawList[loop].children;
-            for(let lo = 0; lo < fullList.length; lo++){
-                const list = fullList[lo];
+        for(let j = 0; j < rawList.length; j++){
+            if(rawList[j].getAttribute("data-tracking-type") === "fandomstories"){
+
+                const list = rawList[j];
                 let map = new Map<string, string>;
 
                 const url = list.getElementsByClassName("clickable-anchor")[0];
@@ -54,13 +51,15 @@ export class Fandom implements PluginInterface{
                 const time = list.getElementsByTagName("time")[0];
                 map.set("time", time.textContent);
 
-                const teaser = list.getElementsByClassName("excerpt");
+                const teaser = list.getElementsByClassName("excerpt")[0].getElementsByTagName("a")[0];
                 map.set("teaser", teaser.textContent);
 
 
                 this.contentList.push(map);
             }
         }
+
+
     }
 
     getContentList(): Map<string, string>[] {
@@ -111,10 +110,10 @@ export class Fandom implements PluginInterface{
                 choosenView: "articleView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 image: contentMap.get("imageUrl"),
                 teaser: contentMap.get("teaser"),
-                data: contentMap.get("time"),
+                date: contentMap.get("time"),
             })
         }
 

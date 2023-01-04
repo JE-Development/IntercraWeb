@@ -105,7 +105,7 @@ export class Amazon implements PluginInterface{
                 choosenView: "shoppingView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 price: contentMap.get("price"),
                 image: contentMap.get("imageUrl")
             })

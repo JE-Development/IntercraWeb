@@ -135,7 +135,7 @@ export class BandcampTracks implements PluginInterface{
                 choosenView: "bandcampView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 image: contentMap.get("imageUrl"),
                 artist: contentMap.get("artist"),
                 release: contentMap.get("release"),

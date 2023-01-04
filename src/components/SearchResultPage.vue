@@ -23,6 +23,8 @@
                      :tags="dat.tags"
                      :genre="dat.genre"
                      :type="dat.type"
+                     :publisher="dat.publisher"
+                     :appIcon="dat.appIcon"
   />
 </template>
 

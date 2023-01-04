@@ -101,7 +101,7 @@ export class NonaWeb implements PluginInterface{
                 choosenView: "informationView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 teaser: contentMap.get("teaser"),
             })
         }

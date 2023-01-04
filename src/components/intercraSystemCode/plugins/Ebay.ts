@@ -8,7 +8,7 @@ export class Ebay implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Ebay (not working yet)";
+    displayName = "Ebay";
     id = "ebay";
 
     addToPreset(): PresetController {
@@ -18,11 +18,8 @@ export class Ebay implements PluginInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/ebay/" + searchText);
         let text = await html.text();
-        text = text + "</body></html>";
         const parser = new DOMParser();
         const document: any = parser.parseFromString(text, "text/html");
-
-        console.log("document: " + text)
 
         this.startSearch(document);
         this.finish = true;
@@ -35,8 +32,7 @@ export class Ebay implements PluginInterface{
     }
 
     startSearch(document: any): void{
-        console.log("innerhtml: " + document.innerHTML);
-        const list = document.getElementsByTagName("s-item s-item__pl-on-bottom");
+        const list = document.getElementsByClassName("s-item s-item__pl-on-bottom");
         for(let loop = 0; loop < list.length; loop++){
             const product = list[loop];
             let map = new Map<string, string>;
@@ -117,7 +113,7 @@ export class Ebay implements PluginInterface{
                 choosenView: "shoppingView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.id,
+                pluginName: this.displayName,
                 image: contentMap.get("imageUrl"),
                 price: contentMap.get("price"),
             })
