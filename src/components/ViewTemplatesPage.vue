@@ -13,6 +13,7 @@
                :teaser="teaser"
                :image="image"
                :date="date"
+               :platform="platform"
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
                 :url="url"
@@ -40,6 +41,11 @@
                 :image="image"
                 :appIcon="appIcon"
   />
+  <ImageView v-else-if="choosenView === 'imageView'"
+                 :url="url"
+                 :pluginName="pluginName"
+                 :image="image"
+  />
 
 
 
@@ -51,9 +57,10 @@ import ArticleView from "./layouts/ArticleView.vue";
 import ShoppingView from "./layouts/ShoppingView.vue";
 import BandcampView from "./layouts/BandcampView.vue";
 import PlayStoreView from "./layouts/PlayStoreView.vue";
+import ImageView from "./layouts/ImageView.vue";
 export default {
   name: "ViewTemplatesPage",
-  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView},
+  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, ImageView},
 
   props: {
     choosenView: String,
@@ -68,6 +75,7 @@ export default {
 
     //article
     date: String,
+    platform: String,
 
     //shopping
     price: String,

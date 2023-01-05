@@ -6,6 +6,7 @@
         <img :src="image" class="center-horizontal view-image"/>
       </div>
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
+      <h3 class="complementary-color bold">{{platform}}</h3>
       <h3 class="text-black">{{teaser}}</h3>
       <h4 class="teaser-color">{{date}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
@@ -23,6 +24,7 @@ export default {
     teaser: String,
     image: String,
     date: String,
+    platform: String,
   },
 
 }

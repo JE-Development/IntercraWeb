@@ -30,7 +30,6 @@
       <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
       <PluginCheckBox
           v-for="(pl, index) in pluginList"
-          :key="pl.id"
           :title="pl.title"
           :check="pl.enable"
           @click="onCheckBoxClicked(index)">
@@ -63,7 +62,6 @@ export default {
     function getEnabledFromCookie(id) {
       let ic = new IntercraController();
       let status = ic.getCookie(id);
-      console.log(status);
 
       return status;
     }

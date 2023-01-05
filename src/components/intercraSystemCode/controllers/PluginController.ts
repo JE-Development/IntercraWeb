@@ -1,5 +1,8 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {NonaWeb} from "../plugins/NonaWeb";
+import {NonaNews} from "../plugins/NonaNews";
+import {NonaPodcast} from "../plugins/NonaPodcast";
+import {NonaVideo} from "../plugins/NonaVideo";
 import {Amazon} from "../plugins/Amazon";
 import {BandcampAlbum} from "../plugins/BandcampAlbum";
 import {BandcampArtistLabel} from "../plugins/BandcampArtistLabel";
@@ -8,8 +11,10 @@ import {BandcampFan} from "../plugins/BandcampFan";
 import {BandcampTracks} from "../plugins/BandcampTracks";
 import {GooglePlayApps} from "../plugins/GooglePlayApps";
 import {GooglePlayBooks} from "../plugins/GooglePlayBooks";
+import {GooglePlayMovies} from "../plugins/GooglePlayMovies";
 import {Ebay} from "../plugins/Ebay";
 import {Fandom} from "../plugins/Fandom";
+import {OscoboImage} from "../plugins/OscoboImage";
 import mitt from 'mitt'
 import EventBus from "../classes/EventBusEvent";
 
@@ -24,6 +29,9 @@ export class PluginController{
 
     constructor() {
         this.plugins.push(new NonaWeb());
+        this.plugins.push(new NonaNews());
+        this.plugins.push(new NonaPodcast());
+        this.plugins.push(new NonaVideo());
         this.plugins.push(new Amazon());
         this.plugins.push(new Ebay());
         this.plugins.push(new BandcampAlbum());
@@ -32,7 +40,9 @@ export class PluginController{
         this.plugins.push(new BandcampTracks());
         this.plugins.push(new GooglePlayApps());
         this.plugins.push(new GooglePlayBooks());
+        this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
+        this.plugins.push(new OscoboImage());
     }
 
     async findContent(searchText: string, plugin: string) {

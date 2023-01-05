@@ -25,6 +25,7 @@
                      :type="dat.type"
                      :publisher="dat.publisher"
                      :appIcon="dat.appIcon"
+                     :platform="dat.platform"
   />
 </template>
 
