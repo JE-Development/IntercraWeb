@@ -1,6 +1,21 @@
 
 
 <template ref="srp">
+  <div class="center-horizontal result-search">
+    <a href="https://intercra.com">
+      <img src="../assets/intercra-text.png" class="result-image center-horizontal"/>
+    </a>
+  </div>
+  <div class="center-horizontal">
+    <input
+        @keyup.enter="enterClicked()"
+        id="result-input-search"
+        placeholder="Search here"
+        :value="search"
+        class="search-input center-horizontal search-input-color search-input-border-color">
+  </div>
+
+
   <div id="searchRoot">
     <div id="loading-result" class="center-horizontal">
       <img src="../assets/loading.gif" class="loading-image"/>
@@ -9,6 +24,9 @@
   <div id="more-content-button-root" class="center-horizontal">
     <MoreContentButton :show="show"/>
   </div>
+
+
+
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
                      :url="dat.url"
@@ -46,7 +64,8 @@ export default {
       search: this.$route.params.search,
       plugin: this.$route.params.plugin,
       show: false,
-      content: {}
+      content: {},
+      relKey: 0
     };
   },
 
@@ -68,7 +87,16 @@ export default {
     updateSearch: function (){
       this.show = true;
       console.log("hello in update: " + this.show);
-    }
+    },
+
+    enterClicked(){
+
+      let searchText = document.getElementById("result-input-search").value;
+
+      let route = this.$router.resolve({path: '/search/' + this.plugin + "/" + searchText});
+      window.open(route.href, '_self');
+      this.$router.go();
+    },
   }
 }
 </script>

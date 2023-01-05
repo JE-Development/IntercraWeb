@@ -16,9 +16,7 @@
             @keyup.enter="enterClicked()"
             id="main-input-search"
             placeholder="Search here"
-            :value="text"
-            class="search-input center-horizontal search-input-color search-input-border-color"
-            @input="event => text = event.target.value">
+            class="search-input center-horizontal search-input-color search-input-border-color">
         <p>This page is in development.</p>
         <!--<h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>/!-->
       </div>
@@ -151,9 +149,6 @@ export default {
       let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
       window.open(route.href, '_self');
 
-    },
-    onClickPopupButton: function (){
-      this.$emit("show-popup", this.showButton);
     },
 
 

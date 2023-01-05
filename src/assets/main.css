@@ -87,6 +87,14 @@ a,
   max-width: 200px;
 }
 
+.result-search{
+  margin-top: 10px;
+}
+
+.result-image{
+  max-height: 80px;
+}
+
 .search-box{
   display: block;
   margin-top: 10%;
