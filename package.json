@@ -20,8 +20,10 @@
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
     "fs": "^0.0.1-security",
+    "js-cookie": "^3.0.1",
     "mitt": "^3.0.0",
     "vue": "^3.2.41",
+    "vue-cookies": "^1.8.2",
     "vue-fullpage-modal": "^0.5.3",
     "vue-router": "^4.1.6",
     "worker-thread": "^1.1.0"
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/cheerio": "^0.22.31",
+    "@types/js-cookie": "^3.0.2",
     "@types/node": "^16.11.68",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vue/tsconfig": "^0.1.3",

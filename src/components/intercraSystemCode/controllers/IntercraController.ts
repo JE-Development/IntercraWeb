@@ -1,6 +1,7 @@
 import {PluginController} from "./PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import SearchResultPage from "../../SearchResultPage.vue";
+import Vue from 'vue'
 
 export class IntercraController{
     pc: PluginController;
