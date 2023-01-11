@@ -49,6 +49,7 @@ import {PluginController} from "./intercraSystemCode/controllers/PluginControlle
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
 import PluginCheckBox from "./PluginCheckBox.vue";
 import ViewTemplatesPage from "./ViewTemplatesPage.vue";
+
 export default {
   //npm run dev | npm run build
   name: "MainSearch",

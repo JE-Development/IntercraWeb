@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/intercra_transparent.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/WaitingPlugins.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/loading.gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
@@ -62,7 +65,7 @@
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -152,6 +155,7 @@
       <workItem from="1672840611405" duration="2585000" />
       <workItem from="1672873588797" duration="4600000" />
       <workItem from="1672953032657" duration="3330000" />
+      <workItem from="1673428797946" duration="6922000" />
     </task>
     <servers />
   </component>

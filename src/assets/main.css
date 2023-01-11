@@ -84,7 +84,7 @@ a,
 }
 
 .loading-image{
-  max-width: 200px;
+  max-width: 50px;
 }
 
 .result-search{
@@ -190,6 +190,10 @@ a,
   }
   .search-box{
     margin-top: 30%;
+  }
+
+  .scroll-down{
+    top: 85vh;
   }
 
 }

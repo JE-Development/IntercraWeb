@@ -13,14 +13,20 @@
         placeholder="Search here"
         :value="search"
         class="search-input center-horizontal search-input-color search-input-border-color">
+
   </div>
-
-
-  <div id="searchRoot">
+  <div id="searchRoot" v-if="waitingPlugins">
     <div id="loading-result" class="center-horizontal">
-      <img src="../assets/loading.gif" class="loading-image"/>
+      <img src="../assets/loading-circle.gif" class="loading-image"/>
     </div>
   </div>
+
+  <div class="center-horizontal waiting-margin headline-color" v-if="waitingPlugins">
+    <h2>Waiting for:</h2>
+  </div>
+
+  <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
+
   <div id="more-content-button-root" class="center-horizontal">
     <MoreContentButton :show="show"/>
   </div>
@@ -53,10 +59,11 @@ import {IntercraController} from "../components/intercraSystemCode/controllers/I
 import MoreContentButton from "../components/MoreContentButton.vue";
 import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
+import WaitingPlugins from "./WaitingPlugins.vue";
 
 export default {
   name: "SearchResultPage",
-  components: {ViewTemplatesPage, MoreContentButton},
+  components: {ViewTemplatesPage, MoreContentButton, WaitingPlugins},
 
 
   data(){
@@ -65,13 +72,20 @@ export default {
       plugin: this.$route.params.plugin,
       show: false,
       content: {},
-      relKey: 0
+      relKey: 0,
+      waitingPlugins: null,
+      searchVisibility: true,
     };
   },
 
   created() {
     EventBus.addEventListener('data-sender', (event) => {
       this.content = event.data;
+      this.waitingPlugins = false;
+    })
+
+    EventBus.addEventListener('not-finished', (event) => {
+      this.waitingPlugins = event.data;
     })
   },
   mounted() {

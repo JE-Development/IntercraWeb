@@ -59,6 +59,9 @@ export class PluginController {
         let check = this.checkAllFinished();
         let vc = new ViewCollection();
 
+        EventBus.emit("not-finished", this.getNotFinished())
+        console.log("not: " + this.getNotFinished())
+
         if (check) {
 
             let box: string[][] = [];
@@ -94,23 +97,6 @@ export class PluginController {
 
             }
 
-            let loading = document.getElementById("loading-result");
-            if (loading != null) {
-                loading.innerHTML = "";
-            }
-
-            for (let i = 0; i < all.length; i++) {
-                let doc = document.getElementById("searchRoot");
-                let view = document.createElement("div");
-
-
-                if (doc != null) {
-                    view.innerHTML = all[i];
-                    //doc.appendChild(view);
-
-
-                }
-            }
             EventBus.emit('data-sender', all)
 
 
@@ -128,6 +114,16 @@ export class PluginController {
             }
         }
         return true;
+    }
+
+    getNotFinished(): String[]{
+        let list = []
+        for(let i = 0; i < this.activePlugins.length; i++){
+            if(!this.finishedPlugins.includes(this.activePlugins[i])){
+                list.push(this.getNameFromId(this.activePlugins[i]));
+            }
+        }
+        return list;
     }
 
     getPluginList(): PluginInterface[] {

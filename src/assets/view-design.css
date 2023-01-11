@@ -6,6 +6,18 @@
     margin-top: 20px;
 }
 
+.waiting-border{
+    width: 400px;
+    border: solid;
+    border-radius: 12px;
+    border-color: transparent;
+    margin-top: 5px;
+}
+
+.waiting-margin{
+    margin-top: 10px;
+}
+
 .view-image{
     max-height: 300px;
     max-width: 600px;
@@ -38,6 +50,10 @@
 
     .view-border{
         width: 90vw;
+    }
+
+    .waiting-border{
+        width: 60vw;
     }
 
     .view-image{
