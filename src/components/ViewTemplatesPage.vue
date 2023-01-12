@@ -41,6 +41,13 @@
                 :image="image"
                 :appIcon="appIcon"
   />
+  <PlayStoreNoIconView v-else-if="choosenView === 'playStoreNoIconView'"
+                 :url="url"
+                 :headline="headline"
+                 :pluginName="pluginName"
+                 :publisher="publisher"
+                 :image="image"
+  />
   <ImageView v-else-if="choosenView === 'imageView'"
                  :url="url"
                  :pluginName="pluginName"
@@ -57,10 +64,11 @@ import ArticleView from "./layouts/ArticleView.vue";
 import ShoppingView from "./layouts/ShoppingView.vue";
 import BandcampView from "./layouts/BandcampView.vue";
 import PlayStoreView from "./layouts/PlayStoreView.vue";
+import PlayStoreNoIconView from "./layouts/PlayStoreNoIconView.vue";
 import ImageView from "./layouts/ImageView.vue";
 export default {
   name: "ViewTemplatesPage",
-  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, ImageView},
+  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView, ImageView},
 
   props: {
     choosenView: String,

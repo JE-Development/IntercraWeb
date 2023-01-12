@@ -133,13 +133,12 @@ export class GooglePlayBooks implements PluginInterface{
             let contentMap = this.contentList[i];
 
             content.push({
-                choosenView: "playStoreView",
+                choosenView: "playStoreNoIconView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
                 publisher: contentMap.get("publisher"),
                 image: contentMap.get("imageUrl"),
-                appIcon: contentMap.get("appIconUrl")
             })
 
 

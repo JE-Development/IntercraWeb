@@ -2,7 +2,7 @@
   <div class="center-horizontal">
     <div class="view-border content-layout-color">
 
-      <div class="view-border content-layout-color center-horizontal">
+      <div class="content-layout-color center-horizontal">
         <a :href="url">
           <img :src="image" class="center-horizontal view-image"/>
         </a>

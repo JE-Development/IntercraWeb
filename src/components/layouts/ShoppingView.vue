@@ -2,8 +2,8 @@
   <div class="center-horizontal">
     <div class="view-border content-layout-color">
 
-      <div class="view-border content-layout-color center-horizontal">
-        <img :src="image" class="center-horizontal view-image"/>
+      <div class="content-layout-color center-horizontal">
+        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <h3>{{price}}</h3>

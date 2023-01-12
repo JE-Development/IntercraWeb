@@ -5,28 +5,29 @@
       <div class="content-layout-color center-horizontal">
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
-      <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
-      <h3 class="complementary-color bold">{{platform}}</h3>
-      <h3 class="text-black">{{teaser}}</h3>
-      <h4 class="teaser-color">{{date}}</h4>
-      <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
+      <div class="display-flex">
+        <div class="app-content-width">
+          <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
+          <h3>{{publisher}}</h3>
+          <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
+        </div>
+      </div>
     </div>
+
   </div>
 </template>
 
 <script>
 export default {
-  name: "ArticleView",
+  name: "PlayStoreNoIconView",
+
   props: {
     url: String,
     headline: String,
     pluginName: String,
-    teaser: String,
     image: String,
-    date: String,
-    platform: String,
+    publisher: String,
   },
-
 }
 </script>
 

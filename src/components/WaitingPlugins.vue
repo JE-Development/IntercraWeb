@@ -2,7 +2,7 @@
 
   <div class="center-horizontal">
     <div class="center-horizontal">
-      <div class="waiting-border waiting-background-color center-horizontal">
+      <div class="waiting-border waiting-background-color center-horizontal text-black">
         {{data}}
       </div>
     </div>
