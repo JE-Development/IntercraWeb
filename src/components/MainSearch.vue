@@ -47,6 +47,7 @@ import PluginButton from "./PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
+import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
 import PluginCheckBox from "./PluginCheckBox.vue";
 import ViewTemplatesPage from "./ViewTemplatesPage.vue";
 
@@ -81,7 +82,8 @@ export default {
   },
 
   mounted() {
-    let ic = new IntercraController();
+    let sc = new SpotifyController();
+    sc.login();
     if(this.$cookies.get("cookiesAllowed") == null){
       this.show = true;
     }
