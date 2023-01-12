@@ -58,13 +58,6 @@ export default {
   created() {
     this.testString = "inner update";
 
-    function getEnabledFromCookie(id) {
-      let ic = new IntercraController();
-      let status = ic.getCookie(id);
-
-      return status;
-    }
-
     let pc = new PluginController();
     let allPlugins = pc.getPluginList();
 
@@ -72,10 +65,10 @@ export default {
 
     for(let i = 0; i < allPlugins.length; i++){
       let active = "";
-      if(getEnabledFromCookie(allPlugins[i].getId()) === "null"){
+      if(this.getEnabledFromCookie(allPlugins[i].getId()) == null){
         active = "true";
       }else{
-        active = getEnabledFromCookie(allPlugins[i].getId());
+        active = this.getEnabledFromCookie(allPlugins[i].getId());
       }
       this.pluginList.push({
         id: i,
@@ -89,7 +82,7 @@ export default {
 
   mounted() {
     let ic = new IntercraController();
-    if(ic.getCookie("cookiesAllowed") == "null"){
+    if(this.$cookies.get("cookiesAllowed") == null){
       this.show = true;
     }
   },
@@ -103,7 +96,7 @@ export default {
 
     cookiesAllowed: function (){
       let ic = new IntercraController();
-      let allow = ic.getCookie("cookiesAllowed");
+      let allow = this.$cookies.get("cookiesAllowed")
       if(allow === "true"){
         return true;
       }else{
@@ -115,16 +108,31 @@ export default {
       this.show = message;
     },
 
-    onCheckBoxClicked: function (index){
-      let ic = new IntercraController();
+    onCheckBoxClicked: function (index) {
+      //let ic = new IntercraController();
 
-      if(this.pluginList[index].enable === "true"){
-        this.pluginList[index].enable = "false";
-        ic.setCookie(this.pluginList[index].pluginId, "false");
-      }else{
-        this.pluginList[index].enable  = "true";
-        ic.setCookie(this.pluginList[index].pluginId, "true");
+      if (this.$cookies.get("cookiesAllowed") == "true") {
+        if (this.pluginList[index].enable === "true") {
+          this.pluginList[index].enable = "false";
+          this.$cookies.set(this.pluginList[index].pluginId, "false")
+
+        } else {
+          this.pluginList[index].enable = "true";
+          this.$cookies.set(this.pluginList[index].pluginId, "true")
+        }
       }
+    },
+
+    getEnabledFromCookie(id) {
+      //let ic = new IntercraController();
+      let status = "";
+      if(this.$cookies.get(id) != null){
+        status = this.$cookies.get(id);
+      }else{
+        status = null;
+      }
+
+      return status;
     },
 
     enterClicked(){

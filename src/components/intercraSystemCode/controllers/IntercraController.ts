@@ -1,7 +1,6 @@
 import {PluginController} from "./PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import SearchResultPage from "../../SearchResultPage.vue";
-import Vue from 'vue'
 
 export class IntercraController{
     pc: PluginController;
@@ -13,8 +12,8 @@ export class IntercraController{
         this.pc.findContent(searchText, plugin);
     }
 
-    setCookie(name: string, val: string) {
-        if(this.getCookie("cookiesAllowed") != "false") {
+    /*setCookie(name: string, val: string) {
+        if(this.getCookie(cookies, "cookiesAllowed") != "false") {
             const value = val;
 
             // Set it
@@ -24,7 +23,7 @@ export class IntercraController{
         }
     }
 
-    getCookie(name: string): string {
+    getCookie(cookies: any, name: string): string {
         const value = "; " + document.cookie;
         const parts = value.split("; " + name + "=");
 
@@ -32,7 +31,7 @@ export class IntercraController{
             return String(String(parts.pop()).split(";").shift());
         }
         return "null";
-    }
+    }*/
 
     changeShow(){
         if(SearchResultPage.methods != null) {

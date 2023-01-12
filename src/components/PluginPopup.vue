@@ -22,12 +22,12 @@ export default {
     onAccept: function (){
       this.$emit("show-popup", this.showButton);
       let ic = new IntercraController();
-      ic.setCookie("cookiesAllowed",  "true");
+      this.$cookies.set("cookiesAllowed",  "true");
     },
     onDecline: function (){
       this.$emit("show-popup", this.showButton);
       let ic = new IntercraController();
-      ic.setCookie("cookiesAllowed",  "false");
+      this.$cookies.set("cookiesAllowed",  "false");
     },
 
     onCheckBoxClick(event){
