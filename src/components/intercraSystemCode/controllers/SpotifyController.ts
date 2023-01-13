@@ -1,34 +1,64 @@
-import express from 'express';
 import * as qs from 'querystring';
+import axios from 'axios'
+import type decodeFuncType from "querystring/decode";
 
 export class SpotifyController{
 
-    app = express();
 
     login(){
-        let state: string = this.generateRandomString(16);
-        this.app.get('/login', function(req, res) {
+        let CLIENT_ID = '15d6a40e579740e8b8eab83339e01744';
+        let REDIRECT_URI = document.baseURI + 'redirect/callback/';
+        console.log("redirect: " + REDIRECT_URI)
 
-            let scope = 'user-read-private user-read-email';
+        let scope = ['user-read-private'];
 
-            res.redirect('https://accounts.spotify.com/authorize?' +
-                qs.stringify({
-                    response_type: 'code',
-                    client_id: '15d6a40e579740e8b8eab83339e01744',
-                    scope: scope,
-                    redirect_uri: 'http://localhost:8888/callback/',
-                    state: state
-                }));
-        });
+        let url = this.getLoginURL(scope, CLIENT_ID, REDIRECT_URI);
+
+        let width = 450,
+            height = 730,
+            left = (screen.width / 2) - (width / 2),
+            top = (screen.height / 2) - (height / 2);
+
+        let w = window.open(url, '_self');
+
+        /*let w = window.open(url,
+            'Spotify',
+            'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
+        );*/
+    }
+    getLoginURL(scopes: string[], client_id: string, redirect_uri: string): string {
+        let request = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
+            '&redirect_uri=' + encodeURIComponent(redirect_uri) +
+            '&scope=' + encodeURIComponent(scopes.join(' ')) +
+            '&response_type=token';
+        console.log("request: " + request);
+        return request;
     }
 
-    generateRandomString (length: Number): string{
-        let text = '';
-        let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    httpLibraryRequest(token: string, q: string, type: string, limit: Number, offset: Number, callback: () => void){
+        const data = {
+            q: q,
+            type: type,
+            limit: limit,
+            offset: offset
+        };
 
-        for (let i = 0; i < length; i++) {
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        }
-        return text;
-    };
+
+
+        console.log("stringify: " + token)
+
+        axios.get('https://api.spotify.com/v1/search?' + qs.stringify(data), {headers: {
+            'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+        }})
+            .then(response => {
+                callback();
+                // response.data should contain your access token
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    }
 }

@@ -1,6 +1,6 @@
-import type {PresetController} from "@/src/components/intercraSystemCode/controllers/PresetController";
-import type {PluginLanguageController} from "@/src/components/intercraSystemCode/controllers/PluginLanguageController";
-import type {PluginController} from "@/src/components/intercraSystemCode/controllers/PluginController";
+import type {PresetController} from "../controllers/PresetController";
+import type {PluginLanguageController} from "../controllers/PluginLanguageController";
+import type {PluginController} from "../controllers/PluginController";
 
 export interface PluginInterface{
     findContent(searchText: string, countryUrl: string, pc: PluginController): void;

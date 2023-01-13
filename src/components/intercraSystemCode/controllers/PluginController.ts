@@ -15,12 +15,13 @@ import {GooglePlayMovies} from "../plugins/GooglePlayMovies";
 import {Ebay} from "../plugins/Ebay";
 import {Fandom} from "../plugins/Fandom";
 import {OscoboImage} from "../plugins/OscoboImage";
-import mitt from 'mitt'
+import {SpotifyTracks} from "../plugins/SpotifyTracks";
 import EventBus from "../classes/EventBusEvent";
 
 export class PluginController {
 
     plugins: PluginInterface[] = [];
+    special: string[] = [];
     finishedPlugins: string[] = [];
     templates = new Map<string, string>;
     activePlugins: string[] = [];
@@ -42,14 +43,22 @@ export class PluginController {
         this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
         this.plugins.push(new OscoboImage());
+        this.plugins.push(new SpotifyTracks());
+
+        this.special.push(new SpotifyTracks().id);
     }
 
-    async findContent(searchText: string, plugin: string) {
+    async findContent(searchText: string, plugin: string, token: string) {
         this.activePlugins = plugin.split("---");
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
-                await this.plugins[i].findContent(searchText, "", this);
+                if(this.special.includes(this.plugins[i].getId())) {
+                    let st = searchText + ";;;" + token;
+                    await this.plugins[i].findContent(st, "", this);
+                }else{
+                    await this.plugins[i].findContent(searchText, "", this);
+                }
             }
         }
     }

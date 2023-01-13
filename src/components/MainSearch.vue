@@ -56,7 +56,12 @@ export default {
   name: "MainSearch",
   components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage},
 
+
+
   created() {
+
+
+
     this.testString = "inner update";
 
     let pc = new PluginController();
@@ -82,8 +87,18 @@ export default {
   },
 
   mounted() {
-    let sc = new SpotifyController();
-    sc.login();
+    console.log("uri: " + document.documentURI);
+
+    if(this.$cookies.get("loginCircle") == null || this.$cookies.get("loginCircle") == "false") {
+      console.log("enable: " + this.pluginIsEnabled("spotify_tracks") === "true")
+      if(this.pluginIsEnabled("spotify") === "true" || true) {
+        this.$cookies.set("loginCircle", "true")
+        let sc = new SpotifyController();
+        sc.login();
+      }
+    }else{
+      this.$cookies.set("loginCircle", "false")
+    }
     if(this.$cookies.get("cookiesAllowed") == null){
       this.show = true;
     }
@@ -92,6 +107,7 @@ export default {
     return {
       show: false,
       pluginList: [],
+      callback: "",
     }
   },
   methods: {
@@ -135,6 +151,14 @@ export default {
       }
 
       return status;
+    },
+
+    pluginIsEnabled(id){
+      for(let i = 0; i < this.pluginList.length; i++){
+        if(this.pluginList[i].id === id){
+          return this.pluginList[i].enable;
+        }
+      }
     },
 
     enterClicked(){
