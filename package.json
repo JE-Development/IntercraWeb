@@ -27,6 +27,7 @@
     "querystring": "^0.2.1",
     "spotify-web-api-js": "^1.5.2",
     "vue": "^3.2.41",
+    "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.2",
     "vue-fullpage-modal": "^0.5.3",
     "vue-router": "^4.1.6",
