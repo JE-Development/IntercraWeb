@@ -2,13 +2,14 @@
 
 
   <ViewTemplatesPage
-      :choosen-view="'playStoreView'"
+      :choosen-view="'spotifyView'"
       :url="'test url'"
       :headline="'headline'"
       :plugin-name="'test plugin'"
-      :publisher="'LeCraftJay'"
+      :artist="'LeCraftJay'"
+      :duration="'00:00'"
+      :album="'The best album'"
       :image="'https://intercra.com/assets/intercra-text.ee327ec2.png'"
-      :appIcon="'https://intercra.com/assets/intercra-logo.png'"
   />
 
 

@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +24,8 @@
         <option value="HTTP Request" />
         <option value="CSS File" />
         <option value="HTML File" />
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -57,18 +61,18 @@
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.3",
-    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/intercraSystemCode/plugins",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/layouts",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components" />
@@ -158,6 +162,7 @@
       <workItem from="1673604412849" duration="6000" />
       <workItem from="1673604620021" duration="12885000" />
       <workItem from="1673716020129" duration="1589000" />
+      <workItem from="1673861768932" duration="8136000" />
     </task>
     <servers />
   </component>

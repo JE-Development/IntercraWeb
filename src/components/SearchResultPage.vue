@@ -50,6 +50,8 @@
                      :publisher="dat.publisher"
                      :appIcon="dat.appIcon"
                      :platform="dat.platform"
+                     :album="dat.album"
+                     :duration="dat.duration"
   />
 </template>
 
@@ -60,6 +62,7 @@ import MoreContentButton from "../components/MoreContentButton.vue";
 import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
 import WaitingPlugins from "./WaitingPlugins.vue";
+import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
 
 export default {
   name: "SearchResultPage",
@@ -86,6 +89,15 @@ export default {
 
     EventBus.addEventListener('not-finished', (event) => {
       this.waitingPlugins = event.data;
+    })
+
+    EventBus.addEventListener('login-circle', (event) => {
+      let date = new Date();
+      let time = "2023-01-01T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+      this.$cookies.set("loginDate", time)
+
+      let sc = new SpotifyController();
+      sc.login();
     })
   },
   mounted() {

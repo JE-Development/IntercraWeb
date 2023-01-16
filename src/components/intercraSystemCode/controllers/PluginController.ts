@@ -28,6 +28,7 @@ export class PluginController {
 
 
     constructor() {
+        this.plugins.push(new SpotifyTracks());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());
@@ -43,7 +44,6 @@ export class PluginController {
         this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
         this.plugins.push(new OscoboImage());
-        this.plugins.push(new SpotifyTracks());
 
         this.special.push(new SpotifyTracks().id);
     }
@@ -69,7 +69,6 @@ export class PluginController {
         let vc = new ViewCollection();
 
         EventBus.emit("not-finished", this.getNotFinished())
-        console.log("not: " + this.getNotFinished())
 
         if (check) {
 

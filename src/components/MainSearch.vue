@@ -87,39 +87,7 @@ export default {
   },
 
   mounted() {
-    console.log("uri: " + document.documentURI);
-    let currentDate = new Date();
-    
-    let savedDateString = this.$cookies.get("loginDate")
 
-    if(savedDateString == null) {
-      console.log("enable: " + this.pluginIsEnabled("spotify_tracks") === "true")
-      if(this.pluginIsEnabled("spotify") === "true" || true) {
-        let date = new Date();
-        let time = "2023-01-01T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-        this.$cookies.set("loginDate", time)
-
-        let sc = new SpotifyController();
-        sc.login();
-      }
-    }else{
-      let savedDate = new Date(savedDateString);
-      let diffInMinutes = currentDate.getMinutes() - savedDate.getMinutes();
-      if(parseInt(diffInMinutes.toString()) >= 30){
-        if(this.pluginIsEnabled("spotify") === "true" || true) {
-          let date = new Date();
-          let time = "2023-01-01T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-          this.$cookies.set("loginDate", time)
-
-          let sc = new SpotifyController();
-          sc.login();
-        }
-      }else{
-        //nothing
-      }
-
-
-    }
     if(this.$cookies.get("cookiesAllowed") == null){
       this.show = true;
     }

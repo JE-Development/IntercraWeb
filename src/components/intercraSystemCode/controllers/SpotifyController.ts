@@ -1,13 +1,14 @@
 import * as qs from 'querystring';
 import axios from 'axios'
 import type decodeFuncType from "querystring/decode";
+import EventBus from "../classes/EventBusEvent";
 
 export class SpotifyController{
 
 
     login(){
         let CLIENT_ID = '15d6a40e579740e8b8eab83339e01744';
-        let REDIRECT_URI = document.baseURI + 'redirect/callback/';
+        let REDIRECT_URI = document.baseURI.toString().split("search")[0] + 'redirect/callback/';
         console.log("redirect: " + REDIRECT_URI)
 
         let scope = ['user-read-private'];
@@ -35,7 +36,7 @@ export class SpotifyController{
         return request;
     }
 
-    httpLibraryRequest(token: string, q: string, type: string, limit: Number, offset: Number, callback: () => void){
+    async httpLibraryRequest(token: string, q: string, type: string, limit: Number, offset: Number): Promise<any>{
         const data = {
             q: q,
             type: type,
@@ -43,22 +44,26 @@ export class SpotifyController{
             offset: offset
         };
 
+        let json;
+
 
 
         console.log("stringify: " + token)
 
-        axios.get('https://api.spotify.com/v1/search?' + qs.stringify(data), {headers: {
+        await axios.get('https://api.spotify.com/v1/search?' + qs.stringify(data), {headers: {
             'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
         }})
             .then(response => {
-                callback();
+                json = response.data;
                 // response.data should contain your access token
             })
             .catch(error => {
                 console.error(error);
+                EventBus.emit("login-circle")
             });
+        return json;
 
     }
 }
