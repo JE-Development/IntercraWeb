@@ -25,7 +25,7 @@ export class SpotifyTracks implements PluginInterface{
         pc.isFinished(this.contentList, this.id);
     }
 
-    findMoreContent(searchText: string, countryUrl: string): void {
+    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
     }
 
     async startSearch(searchText: String): Promise<void>{

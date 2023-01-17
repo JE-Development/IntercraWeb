@@ -24,7 +24,7 @@
   </div>
   <div class="center-horizontal">
     <div id="plugin-list" class="block-display">
-      <p v-if="cookiesAllowed()"></p>
+      <p v-if="isCookiesAllowed()"></p>
       <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
       <PluginCheckBox
           v-for="(pl, index) in pluginList"
@@ -88,7 +88,7 @@ export default {
 
   mounted() {
 
-    if(this.$cookies.get("cookiesAllowed") == null){
+    if(this.getCookies("cookiesAllowed") == null){
       this.show = true;
     }
   },
@@ -101,16 +101,6 @@ export default {
   },
   methods: {
 
-    cookiesAllowed: function (){
-      let ic = new IntercraController();
-      let allow = this.$cookies.get("cookiesAllowed")
-      if(allow === "true"){
-        return true;
-      }else{
-        return false;
-      }
-    },
-
     showFromPopup: function (message){
       this.show = message;
     },
@@ -118,7 +108,7 @@ export default {
     onCheckBoxClicked: function (index) {
       //let ic = new IntercraController();
 
-      if (this.$cookies.get("cookiesAllowed") == "true") {
+      if (this.getCookies("cookiesAllowed") == "true") {
         if (this.pluginList[index].enable === "true") {
           this.pluginList[index].enable = "false";
           this.$cookies.set(this.pluginList[index].pluginId, "false")
@@ -133,8 +123,8 @@ export default {
     getEnabledFromCookie(id) {
       //let ic = new IntercraController();
       let status = "";
-      if(this.$cookies.get(id) != null){
-        status = this.$cookies.get(id);
+      if(this.getCookies(id) != null){
+        status = this.getCookies(id);
       }else{
         status = null;
       }
@@ -174,6 +164,25 @@ export default {
       window.open(route.href, '_self');
 
     },
+
+    getCookies(key){
+      return this.$cookies.get(key);
+    },
+    setCookies(key, value){
+      if(this.isCookiesAllowed()){
+        return this.$cookies.set(key, value);
+      }
+    },
+    isCookiesAllowed(){
+      let allow = this.getCookies("cookiesAllowed");
+      if(allow == "false"){
+        return false;
+      }else if (allow == "true"){
+        return true;
+      }else{
+        return null;
+      }
+    }
 
 
   }

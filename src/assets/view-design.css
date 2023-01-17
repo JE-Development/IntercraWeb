@@ -6,6 +6,10 @@
     margin-top: 20px;
 }
 
+.border-width{
+    width: 700px;
+}
+
 .waiting-border{
     width: 400px;
     border: solid;
@@ -50,6 +54,10 @@
 
     .view-border{
         width: 90vw;
+    }
+
+    .border-width{
+        width: 50vw;
     }
 
     .waiting-border{

@@ -28,7 +28,7 @@ export class Amazon implements PluginInterface{
         pc.isFinished(this.contentList, this.id);
     }
 
-    findMoreContent(searchText: string, countryUrl: string): void {
+    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
     }
 
     startSearch(document: any): void{
@@ -104,7 +104,7 @@ export class Amazon implements PluginInterface{
             content.push({
                 choosenView: "shoppingView",
                 url: contentMap.get("url"),
-                headline: contentMap.get("headline"),
+                headline: this.cutString(String(contentMap.get("headline"))),
                 pluginName: this.displayName,
                 price: contentMap.get("price"),
                 image: contentMap.get("imageUrl")
@@ -112,6 +112,16 @@ export class Amazon implements PluginInterface{
         }
 
         return content;
+    }
+
+    cutString(str: string): string{
+        let index = 80;
+        if(str.length > index) {
+            let cut = str.substring(0, index) + "...";
+            return cut;
+        }else{
+            return str;
+        }
     }
 
 }

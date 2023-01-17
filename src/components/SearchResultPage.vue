@@ -94,7 +94,7 @@ export default {
     EventBus.addEventListener('login-circle', (event) => {
       let date = new Date();
       let time = "2023-01-01T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-      this.$cookies.set("loginDate", time)
+      this.setCookies("loginDate", time)
 
       let sc = new SpotifyController();
       sc.login();
@@ -103,7 +103,7 @@ export default {
   mounted() {
 
     let ic = new IntercraController();
-    ic.startSearch(this.search, this.plugin, this.$cookies.get("token"));
+    ic.startSearch(this.search, this.plugin, this.getCookies("token"));
 
     ic.changeShow();
 
@@ -123,6 +123,24 @@ export default {
       window.open(route.href, '_self');
       this.$router.go();
     },
+    getCookies(key){
+      return this.$cookies.get(key);
+    },
+    setCookies(key, value){
+      if(this.isCookiesAllowed()){
+        return this.$cookies.set(key, value);
+      }
+    },
+    isCookiesAllowed(){
+      let allow = this.getCookies("cookiesAllowed");
+      if(allow == "false"){
+        return false;
+      }else if (allow == "true"){
+        return true;
+      }else{
+        return null;
+      }
+    }
   }
 }
 </script>

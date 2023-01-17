@@ -4,7 +4,7 @@ import type {PluginController} from "../controllers/PluginController";
 
 export interface PluginInterface{
     findContent(searchText: string, countryUrl: string, pc: PluginController): void;
-    findMoreContent(searchText: string, countryUrl: string): void;
+    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void;
     isFinish(): boolean;
     getContentList(): Map<string, string>[];
     getPluginDisplayName(): string;

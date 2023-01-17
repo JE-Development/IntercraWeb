@@ -27,7 +27,7 @@ export class GooglePlayMovies implements PluginInterface{
         pc.isFinished(this.contentList, this.id);
     }
 
-    findMoreContent(searchText: string, countryUrl: string): void {
+    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
     }
 
     startSearch(document: any): void{

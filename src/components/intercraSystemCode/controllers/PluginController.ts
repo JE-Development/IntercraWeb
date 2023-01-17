@@ -55,9 +55,24 @@ export class PluginController {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
                 if(this.special.includes(this.plugins[i].getId())) {
                     let st = searchText + ";;;" + token;
-                    await this.plugins[i].findContent(st, "", this);
+                    this.plugins[i].findContent(st, "", this);
                 }else{
-                    await this.plugins[i].findContent(searchText, "", this);
+                    this.plugins[i].findContent(searchText, "", this);
+                }
+            }
+        }
+    }
+
+    async findMoreContent(searchText: string, plugin: string, token: string) {
+        this.activePlugins = plugin.split("---");
+
+        for (let i = 0; i < this.plugins.length; i++) {
+            if (this.activePlugins.includes(this.plugins[i].getId())) {
+                if(this.special.includes(this.plugins[i].getId())) {
+                    let st = searchText + ";;;" + token;
+                    this.plugins[i].findMoreContent(st, "", this);
+                }else{
+                    this.plugins[i].findMoreContent(searchText, "", this);
                 }
             }
         }
