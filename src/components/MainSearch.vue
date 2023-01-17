@@ -10,7 +10,7 @@
     <div class="center">
       <div class="search-box">
         <div class="center-horizontal">
-          <img src="../assets/intercra-text.png" class="logo-text center-horizontal">
+          <img src="../assets/intercra-text-connected.png" class="logo-text center-horizontal">
         </div>
         <input
             @keyup.enter="enterClicked()"

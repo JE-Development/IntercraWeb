@@ -36,7 +36,7 @@ export class SpotifyController{
         return request;
     }
 
-    async httpLibraryRequest(token: string, q: string, type: string, limit: Number, offset: Number): Promise<any>{
+    async httpLibraryRequest(token: string, q: string, type: string, limit: number, offset: number): Promise<any>{
         const data = {
             q: q,
             type: type,

@@ -3,7 +3,7 @@
 <template ref="srp">
   <div class="center-horizontal result-search">
     <a href="https://intercra.com">
-      <img src="../assets/intercra-text.png" class="result-image center-horizontal"/>
+      <img src="../assets/intercra-text-connected.png" class="result-image center-horizontal"/>
     </a>
   </div>
   <div class="center-horizontal">
