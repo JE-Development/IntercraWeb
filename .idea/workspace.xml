@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/line-bottom.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/line-top.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines-2023-01-17_17-43-06.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines-2023-01-17_18-03-22.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines-2023-01-17_18-07-58.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines-2023-01-17_18-13-39.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines-2023-01-17_18-29-45.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Lines.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Intercra Lines.aep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/Intercra Lines.prproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/lines bottom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/lines top.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/raw/lines/lines.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +166,7 @@
       <workItem from="1673940492649" duration="3292000" />
       <workItem from="1673961617042" duration="1216000" />
       <workItem from="1673962864574" duration="253000" />
-      <workItem from="1673971973290" duration="3418000" />
+      <workItem from="1673971973290" duration="4063000" />
     </task>
     <servers />
   </component>
