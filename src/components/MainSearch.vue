@@ -11,8 +11,8 @@
       <div class="search-box">
         <div class="center-horizontal">
           <img src="../assets/intercra-text.png" class="logo-text center-horizontal">
-          <img src="../assets/line-bottom.gif" class="logo-text center-horizontal line-bottom absolute hovering-top">
-          <img src="../assets/line-top.gif" class="logo-text center-horizontal line-top absolute hovering-bottom">
+          <img src="../assets/line-top.gif" class="logo-text center-horizontal line-bottom absolute hovering-top">
+          <img src="../assets/line-bottom.gif" class="logo-text center-horizontal line-top absolute hovering-bottom">
         </div>
         <input
             @keyup.enter="enterClicked()"
