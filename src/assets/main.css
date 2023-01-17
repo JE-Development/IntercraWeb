@@ -136,6 +136,20 @@ a,
   width: 20px;
 }
 
+.absolute{
+  position: absolute;
+}
+
+.line-bottom{
+  margin-top: 10px;
+  height: 45px;
+}
+
+.line-top{
+  margin-top: 85px;
+  height: 45px;
+}
+
 
 .plugin-close{
   width: 200px;
@@ -176,6 +190,16 @@ a,
 
   .logo-text{
     height: 20vw;
+  }
+
+  .line-bottom{
+    height: 7vw;
+    margin-top: 1vw;
+  }
+
+  .line-top{
+    height: 7vw;
+    margin-top: 12vw;
   }
 
   html{

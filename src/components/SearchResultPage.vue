@@ -15,7 +15,6 @@
         class="search-input center-horizontal search-input-color search-input-border-color">
 
   </div>
-
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
                      :url="dat.url"
