@@ -17,15 +17,20 @@ export class SpotifyTracks implements PluginInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        await this.startSearch(searchText);
-        console.log("pos2")
-        this.finish = true;
+        try {
+            await this.startSearch(searchText);
+            this.finish = true;
 
-        //let pc = new PluginController();
-        pc.isFinished(this.contentList, this.id);
+            //let pc = new PluginController();
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
+    async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        this.contentList = [];
+        pc.isFinished(this.contentList, this.id);
     }
 
     async startSearch(searchText: String): Promise<void>{
@@ -63,7 +68,6 @@ export class SpotifyTracks implements PluginInterface{
             map.set("prevLink", prevLink);
 
             this.contentList.push(map);
-            console.log("pos1")
         }
     }
 

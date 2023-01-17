@@ -16,18 +16,24 @@ export class GooglePlayApps implements PluginInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/google_play_apps/" + searchText);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
-        this.finish = true;
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/google_play_apps/" + searchText);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startSearch(document);
+            this.finish = true;
 
-        //let pc = new PluginController();
-        pc.isFinished(this.contentList, this.id);
+            //let pc = new PluginController();
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
+    async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        this.contentList = [];
+        pc.isFinished(this.contentList, this.id);
     }
 
     startSearch(document: any): void{

@@ -10,13 +10,32 @@ export class NonaWeb implements PluginInterface{
 
     displayName = "Nona Web";
     id = "nona_web";
+    page = 1;
 
     addToPreset(): PresetController {
         return new PresetController();
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/nona_web/" + searchText);
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/nona_web/" + searchText);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
+    }
+
+    async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        this.page = this.page + 1;
+        this.contentList = [];
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/nona_web/" + searchText + "/" + this.page);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");
@@ -25,9 +44,6 @@ export class NonaWeb implements PluginInterface{
 
         //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
-    }
-
-    findMoreContent(searchText: string, countryUrl: string, pc: PluginController): void {
     }
 
     startSearch(document: any): void{

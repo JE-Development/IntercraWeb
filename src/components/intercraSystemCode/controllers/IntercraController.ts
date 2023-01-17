@@ -11,6 +11,9 @@ export class IntercraController{
     startSearch(searchText: string, plugin: string, token: string){
         this.pc.findContent(searchText, plugin, token);
     }
+    startMoreSearch(searchText: string, plugin: string, token: string){
+        this.pc.findMoreContent(searchText, plugin, token);
+    }
 
     /*setCookie(name: string, val: string) {
         if(this.getCookie(cookies, "cookiesAllowed") != "false") {

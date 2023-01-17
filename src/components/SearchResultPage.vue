@@ -15,23 +15,6 @@
         class="search-input center-horizontal search-input-color search-input-border-color">
 
   </div>
-  <div id="searchRoot" v-if="waitingPlugins">
-    <div id="loading-result" class="center-horizontal">
-      <img src="../assets/loading-circle.gif" class="loading-image"/>
-    </div>
-  </div>
-
-  <div class="center-horizontal waiting-margin headline-color" v-if="waitingPlugins">
-    <h2>Waiting for:</h2>
-  </div>
-
-  <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
-
-  <div id="more-content-button-root" class="center-horizontal">
-    <MoreContentButton :show="show"/>
-  </div>
-
-
 
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
@@ -53,6 +36,30 @@
                      :album="dat.album"
                      :duration="dat.duration"
   />
+
+  <div v-if="errors.length > 0">
+    <h3 class="center-horizontal error-color">Error in:</h3>
+    <div v-for="(err) in errors" class="center-horizontal">
+      <h4 class="error-color">{{err}}</h4>
+    </div>
+  </div>
+
+  <div id="searchRoot" v-if="showLoading">
+    <div id="loading-result" class="center-horizontal">
+      <img src="../assets/loading-circle.gif" class="loading-image"/>
+    </div>
+  </div>
+
+  <div class="center-horizontal waiting-margin headline-color" v-if="waitingPlugins">
+    <h2>Waiting for:</h2>
+  </div>
+
+  <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
+
+  <div id="more-content-button-root" class="center-horizontal">
+    <MoreContentButton :show="show" :search="search" :plugin="plugin"/>
+  </div>
+
 </template>
 
 
@@ -63,6 +70,7 @@ import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
 import WaitingPlugins from "./WaitingPlugins.vue";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
+import {contains} from "cheerio";
 
 export default {
   name: "SearchResultPage",
@@ -71,24 +79,46 @@ export default {
 
   data(){
     return {
-      search: this.$route.params.search,
-      plugin: this.$route.params.plugin,
+      search: String(this.$route.params.search),
+      plugin: String(this.$route.params.plugin),
       show: false,
-      content: {},
+      content: [],
       relKey: 0,
       waitingPlugins: null,
       searchVisibility: true,
+      showLoading: true,
+      errors: [],
     };
   },
 
   created() {
     EventBus.addEventListener('data-sender', (event) => {
-      this.content = event.data;
+      if(this.content.length <= 0){
+        this.content = event.data;
+      }else{
+        this.content = this.content.concat(event.data);
+      }
       this.waitingPlugins = false;
+      this.show = true;
+      this.showLoading = false;
+    })
+
+    EventBus.addEventListener('error-sender', (event) => {
+      this.errors = event.data;
+      this.waitingPlugins = false;
+      this.showLoading = false;
+      if(this.content.length > 0){
+        this.show = true;
+      }
     })
 
     EventBus.addEventListener('not-finished', (event) => {
       this.waitingPlugins = event.data;
+    })
+
+    EventBus.addEventListener('show-loading', (event) => {
+      this.showLoading = true;
+      this.show = false;
     })
 
     EventBus.addEventListener('login-circle', (event) => {
@@ -140,7 +170,7 @@ export default {
       }else{
         return null;
       }
-    }
+    },
   }
 }
 </script>

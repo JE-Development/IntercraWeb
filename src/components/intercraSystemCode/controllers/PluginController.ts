@@ -126,6 +126,28 @@ export class PluginController {
         }
     }
 
+    gotError(id: string) {
+        this.finishedPlugins.push(id);
+        let check = this.checkAllFinished();
+
+        EventBus.emit("not-finished", this.getNotFinished())
+
+        if (check) {
+
+            let errorNames = [];
+
+            for (let i = 0; i < this.plugins.length; i++) {
+                if (this.finishedPlugins.includes(this.plugins[i].getId())) {
+                    errorNames.push(this.plugins[i].getPluginDisplayName());
+                }
+            }
+
+            EventBus.emit('error-sender', errorNames)
+
+
+        }
+    }
+
     checkAllFinished(): boolean {
         if (this.activePlugins.length != this.finishedPlugins.length) {
             return false;
