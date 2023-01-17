@@ -196,6 +196,10 @@ a,
     top: 85vh;
   }
 
+  .result-image{
+    max-width: 90vw;
+  }
+
 }
 
 @media (max-height: 550px) {
