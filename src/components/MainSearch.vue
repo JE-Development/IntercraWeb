@@ -74,7 +74,11 @@ export default {
     for(let i = 0; i < allPlugins.length; i++){
       let active = "";
       if(this.getEnabledFromCookie(allPlugins[i].getId()) == null){
-        active = "true";
+        if(allPlugins[i].getId() === "spotify_tracks") {
+          active = "false";
+        }else{
+          active = "true";
+        }
       }else{
         active = this.getEnabledFromCookie(allPlugins[i].getId());
       }
