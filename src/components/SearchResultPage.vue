@@ -3,7 +3,7 @@
 <template ref="srp">
   <div class="center-horizontal result-search">
     <a href="https://intercra.com">
-      <img src="../assets/intercra-text-connected.png" class="result-image center-horizontal"/>
+      <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
     </a>
   </div>
   <div class="center-horizontal">
@@ -12,7 +12,7 @@
         id="result-input-search"
         placeholder="Search here"
         :value="search"
-        class="search-input center-horizontal search-input-color search-input-border-color">
+        class="search-input center-horizontal search-input-color search-input-border-color sticky">
 
   </div>
   <ViewTemplatesPage v-for="(dat) in content"
@@ -45,7 +45,7 @@
 
   <div id="searchRoot" v-if="showLoading">
     <div id="loading-result" class="center-horizontal">
-      <img src="../assets/loading-circle.gif" class="loading-image"/>
+      <img src="../assets/loading.gif" class="loading-image"/>
     </div>
   </div>
 

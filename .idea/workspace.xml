@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/easter-eggs" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/easter-eggs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/intercra-text-connected.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/line-bottom.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/line-bottom.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/line-top.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/line-top.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raw/intercra-connected-text.ai" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/intercra-connected-text.ai" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +176,7 @@
       <workItem from="1673962864574" duration="253000" />
       <workItem from="1673971973290" duration="4063000" />
       <workItem from="1673980167696" duration="184000" />
-      <workItem from="1674033742691" duration="390000" />
+      <workItem from="1674033742691" duration="3796000" />
     </task>
     <servers />
   </component>

@@ -140,14 +140,20 @@ a,
   position: absolute;
 }
 
-.line-bottom{
+.line-top{
   margin-top: 10px;
   height: 45px;
 }
 
-.line-top{
-  margin-top: 85px;
+.line-bottom{
+  margin-top: 90px;
   height: 45px;
+}
+
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 
