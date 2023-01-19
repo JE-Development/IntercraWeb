@@ -132,7 +132,7 @@ export default {
   mounted() {
 
     let ic = new IntercraController();
-    ic.startSearch(this.search, this.plugin, this.getCookies("token"));
+    ic.startSearch(this.search, this.plugin, this.$cookies.get("token"));
 
     ic.changeShow();
 

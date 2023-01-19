@@ -36,7 +36,7 @@ export class SpotifyController{
         return request;
     }
 
-    async httpLibraryRequest(token: string, q: string, type: string, limit: number, offset: number): Promise<any>{
+    async httpLibraryRequest(token: string, q: string, type: string, limit: number, offset: number, doSearchEmit: boolean): Promise<any>{
         const data = {
             q: q,
             type: type,
@@ -50,6 +50,8 @@ export class SpotifyController{
 
         console.log("stringify: " + token)
 
+        let ok = true;
+
         await axios.get('https://api.spotify.com/v1/search?' + qs.stringify(data), {headers: {
             'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -60,10 +62,18 @@ export class SpotifyController{
                 // response.data should contain your access token
             })
             .catch(error => {
-                console.error(error);
-                EventBus.emit("login-circle")
+                if(doSearchEmit) {
+                    EventBus.emit("login-circle")
+                }else{
+                    console.log("in error: sc")
+                    ok = false;
+                }
             });
-        return json;
+        if(ok) {
+            return json;
+        }else{
+            return "error";
+        }
 
     }
 }

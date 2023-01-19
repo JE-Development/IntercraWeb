@@ -30,7 +30,7 @@ export default {
     onClickButton: function (){
       EventBus.emit("show-loading")
       let ic = new IntercraController();
-      ic.startMoreSearch(this.search, this.plugin, this.getCookies("token"));
+      ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"));
 
       ic.changeShow();
     },

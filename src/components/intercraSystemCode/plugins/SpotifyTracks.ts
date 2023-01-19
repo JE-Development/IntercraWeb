@@ -37,7 +37,7 @@ export class SpotifyTracks implements PluginInterface{
         let sc = new SpotifyController();
         let split = searchText.split(";;;");
 
-        await sc.httpLibraryRequest(split[1], split[0], "track", 30, 0).then(r =>
+        await sc.httpLibraryRequest(split[1], split[0], "track", 30, 0, true).then(r =>
             this.analyse(r)
         );
     }

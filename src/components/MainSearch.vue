@@ -1,5 +1,6 @@
 <template>
   <PluginPopup :show="show" @show-popup="showFromPopup"/>
+  <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
   <div class="fullscreen">
     <div class="scroll-down">
       <p class="center-horizontal">Scroll down for the plugin list</p>
@@ -53,13 +54,12 @@ import {IntercraController} from "./intercraSystemCode/controllers/IntercraContr
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
 import PluginCheckBox from "./PluginCheckBox.vue";
 import ViewTemplatesPage from "./ViewTemplatesPage.vue";
+import SpotifyLoginPopup from "./SpotifyLoginPopup.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage},
-
-
+  components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
 
@@ -104,12 +104,24 @@ export default {
       show: false,
       pluginList: [],
       callback: "",
+      slShow: false,
     }
   },
   methods: {
 
     showFromPopup: function (message){
       this.show = message;
+    },
+
+    slMessage: function (message){
+      this.slShow = false;
+      if(message === "yes"){
+
+      }else if(message === "no"){
+
+      }else if(message === "always"){
+
+      }
     },
 
     onCheckBoxClicked: function (index) {
@@ -149,10 +161,12 @@ export default {
 
     enterClicked(){
 
-      let ic = new IntercraController();
-      //let activePlugins = ic.getCheckedPlugins(this);
-      //console.log(activePlugins);
+      let sc = new SpotifyController();
+      sc.httpLibraryRequest(this.$cookies.get("token"), "test", "track", 10, 0, false).then(
+          r => this.checkSearch()
+      );
 
+/*
       let searchText = document.getElementById("main-input-search").value;
       
       let activePlugins = "null";
@@ -169,7 +183,15 @@ export default {
 
       let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
       window.open(route.href, '_self');
+*/
+    },
 
+    checkSearch(response){
+      if(response == null) {
+        this.slShow = true;
+      }else{
+
+      }
     },
 
     getCookies(key){
