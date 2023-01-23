@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/intercra_text_anim.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/Adobe Premiere Pro Auto-Save/intercra_animated_text-2023-01-23_15-33-33.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/Adobe Premiere Pro Auto-Save/intercra_animated_text-2023-01-23_15-44-29.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/Adobe Premiere Pro Auto-Save/intercra_animated_text.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_anim.aep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_anim.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_animated_text.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Trailer-2023-01-19_18-46-34.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/lines/Adobe Premiere Pro Auto-Save/Intercra Trailer.prproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/lines/Intercra Trailer.prproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +182,7 @@
       <workItem from="1674044714028" duration="72000" />
       <workItem from="1674115682507" duration="4694000" />
       <workItem from="1674465191509" duration="4880000" />
+      <workItem from="1674485597999" duration="194000" />
     </task>
     <servers />
   </component>
