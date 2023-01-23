@@ -63,6 +63,7 @@ export class SpotifyController{
             })
             .catch(error => {
                 if(doSearchEmit) {
+                    console.log("login circle")
                     EventBus.emit("login-circle")
                 }else{
                     console.log("in error: sc")

@@ -10,6 +10,14 @@
     color: #000000;
 }
 
+.text-button{
+    color: #000000;
+}
+
+.popup-background{
+    background-color: #ffffff;
+}
+
 .teaser-color{
     color: #A3A3A3;
 }
@@ -46,4 +54,34 @@
 
 .error-color{
     color: #ff0000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .search-input-color{
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+    .search-input-border-color:focus{
+        background: linear-gradient(#000000, #000000) padding-box,
+        linear-gradient(to right, #c3ff15, #00e598) border-box;
+    }
+
+    .waiting-background-color{
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+    .content-layout-color{
+        background-color: #212121;
+    }
+
+    .text-black{
+        color: #ffffff;
+    }
+
+    .popup-background{
+        background-color: #000000;
+        color: #00e598;
+    }
 }

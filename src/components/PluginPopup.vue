@@ -42,7 +42,7 @@ export default {
   <Transition name="modal">
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container search-box">
+        <div class="modal-container search-box popup-background">
           <div style="justify-content: center">
             <div class="center-horizontal text-black" style="margin-top: 20px">
               <p>Intercra needs cookies to work personalized and to save changes.<br>
@@ -94,7 +94,6 @@ export default {
   width: 600px;
   margin: 0px auto;
   padding: 5px 5px;
-  background-color: #ffffff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;

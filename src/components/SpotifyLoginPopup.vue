@@ -44,7 +44,7 @@ export default {
   <Transition name="modal">
     <div v-if="show" class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container search-box">
+        <div class="modal-container search-box popup-background">
           <div style="justify-content: center">
             <div class="center-horizontal text-black" style="margin-top: 20px">
               <p>

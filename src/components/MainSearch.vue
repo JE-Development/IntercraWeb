@@ -21,8 +21,6 @@
             id="main-input-search"
             placeholder="Search here"
             class="search-input center-horizontal search-input-color search-input-border-color">
-        <p>This page is in development.</p>
-        <!--<h1><font-awesome-icon icon="fa-sharp fa-solid fa-check" /></h1>/!-->
       </div>
     </div>
   </div>
@@ -89,7 +87,6 @@ export default {
         pluginId: allPlugins[i].getId(),
         enable: active,
       });
-      console.log("in main: " + active);
     }
   },
 
@@ -116,10 +113,10 @@ export default {
     slMessage: function (message){
       this.slShow = false;
       if(message === "yes"){
+        this.startSearch();
+      }else if(message === "always"){
 
       }else if(message === "no"){
-
-      }else if(message === "always"){
 
       }
     },
@@ -160,17 +157,23 @@ export default {
     },
 
     enterClicked(){
+      /*if(this.pluginIsEnabled("spotify_tracks")) {
 
-      let sc = new SpotifyController();
-      sc.httpLibraryRequest(this.$cookies.get("token"), "test", "track", 10, 0, false).then(
-          r => this.checkSearch()
-      );
+        let sc = new SpotifyController();
+        sc.httpLibraryRequest(this.$cookies.get("token"), "test", "track", 10, 0, false).then(
+            r => this.checkSearch(r)
+        );
+      }else{
+        this.startSearch();
+      }*/
+      this.startSearch();
+    },
 
-/*
+    startSearch(){
       let searchText = document.getElementById("main-input-search").value;
-      
+
       let activePlugins = "null";
-      
+
       for(let i = 0; i < this.pluginList.length; i++){
         if(this.pluginList[i].enable === "true"){
           if(activePlugins == "null"){
@@ -183,14 +186,14 @@ export default {
 
       let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
       window.open(route.href, '_self');
-*/
     },
 
     checkSearch(response){
-      if(response == null) {
+      console.log("check this: " + response)
+      if(response == null || response === "error") {
         this.slShow = true;
       }else{
-
+        this.startSearch()
       }
     },
 

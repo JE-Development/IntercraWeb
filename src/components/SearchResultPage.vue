@@ -121,10 +121,6 @@ export default {
     })
 
     EventBus.addEventListener('login-circle', (event) => {
-      let date = new Date();
-      let time = "2023-01-01T" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-      this.setCookies("loginDate", time)
-
       let sc = new SpotifyController();
       sc.login();
     })
@@ -141,7 +137,6 @@ export default {
 
     updateSearch: function (){
       this.show = true;
-      console.log("hello in update: " + this.show);
     },
 
     enterClicked(){
