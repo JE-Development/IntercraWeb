@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MoreContentButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MoreContentButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PluginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PluginPopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SpotifyLoginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SpotifyLoginPopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +171,7 @@
       <workItem from="1674033742691" duration="3796000" />
       <workItem from="1674044714028" duration="72000" />
       <workItem from="1674115682507" duration="4694000" />
-      <workItem from="1674465191509" duration="4244000" />
+      <workItem from="1674465191509" duration="4880000" />
     </task>
     <servers />
   </component>
