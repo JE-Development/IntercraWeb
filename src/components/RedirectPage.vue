@@ -7,6 +7,7 @@ export default {
   name: "RedirectPage",
 
   mounted() {
+    this.$notify("successfully logged into spotify");
     if(document.documentURI.includes("access_token=")){
       let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
       let token = parser.split(";;;")[1];

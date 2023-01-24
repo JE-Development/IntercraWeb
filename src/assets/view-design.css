@@ -10,6 +10,19 @@
     width: 700px;
 }
 
+.preset-border{
+    font-size: 25px;
+    width: 400px;
+    border: solid;
+    border-radius: 50px;
+    border-color: transparent;
+    margin-top: 20px;
+}
+
+.preset{
+    margin-top: 20px;
+}
+
 .waiting-border{
     width: 400px;
     border: solid;

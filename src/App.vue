@@ -11,6 +11,7 @@ export default {
   <main>
     <div class="container my-3">
       <router-view />
+      <notifications/>
     </div>
   </main>
 </template>

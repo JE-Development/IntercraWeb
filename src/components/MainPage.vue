@@ -1,7 +1,7 @@
 <script setup>
 import MainSearch from "../components/MainSearch.vue";
-import PluginButton from "../components/PluginButton.vue";
-import PluginPopup from "../components/PluginPopup.vue";
+import PluginButton from "./views/PluginButton.vue";
+import PluginPopup from "./views/PluginPopup.vue";
 
 </script>
 

@@ -10,8 +10,8 @@
 <script>
 
 
-import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
-import EventBus from "./intercraSystemCode/classes/EventBusEvent";
+import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
+import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 
 export default {
   name: "MoreContentButton",

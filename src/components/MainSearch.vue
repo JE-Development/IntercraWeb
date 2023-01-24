@@ -21,6 +21,9 @@
       </div>
     </div>
   </div>
+  <div class="center-horizontal preset">
+    <PresetView/>
+  </div>
   <div class="center-horizontal">
     <div id="plugin-list" class="block-display">
       <p v-if="isCookiesAllowed()"></p>
@@ -41,26 +44,24 @@
 
 <script>
 
-import PluginPopup from "./PluginPopup.vue";
-import PluginButton from "./PluginButton.vue";
+import PluginPopup from "./views/PluginPopup.vue";
+import PluginButton from "./views/PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
-import PluginCheckBox from "./PluginCheckBox.vue";
+import PluginCheckBox from "./views/PluginCheckBox.vue";
 import ViewTemplatesPage from "./ViewTemplatesPage.vue";
-import SpotifyLoginPopup from "./SpotifyLoginPopup.vue";
+import SpotifyLoginPopup from "./views/SpotifyLoginPopup.vue";
+import PresetView from "./views/PresetView.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
+  components: {PresetView, PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
 
-
-
-    this.testString = "inner update";
 
     let pc = new PluginController();
     let allPlugins = pc.getPluginList();
@@ -88,7 +89,6 @@ export default {
   },
 
   mounted() {
-
     if(this.getCookies("cookiesAllowed") == null){
       this.show = true;
     }

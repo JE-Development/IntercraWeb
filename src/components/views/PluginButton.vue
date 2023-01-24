@@ -2,7 +2,7 @@
 <template id="parent-popup">
   <div class="button-layout">
       <button class="plugin-menu" @click="onClickPluginButton">
-        <img width="25%" src="../assets/three-line.png" class="plugin-menu-image"/>
+        <img width="25%" src="../../assets/three-line.png" class="plugin-menu-image"/>
         <p id="plugin-menu-text">Open Plugin List</p>
       </button>
   </div>
@@ -15,7 +15,7 @@
 <script>
 
 import PluginPopup from "./PluginPopup.vue";
-import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
+import {ViewCollection} from "../intercraSystemCode/classes/ViewCollection";
 import PluginCheckBox from "./PluginCheckBox.vue";
 
 export default {

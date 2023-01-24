@@ -64,10 +64,10 @@
 
 <script>
 import {IntercraController} from "../components/intercraSystemCode/controllers/IntercraController"
-import MoreContentButton from "../components/MoreContentButton.vue";
+import MoreContentButton from "./views/MoreContentButton.vue";
 import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
-import WaitingPlugins from "./WaitingPlugins.vue";
+import WaitingPlugins from "./views/WaitingPlugins.vue";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
 import {contains} from "cheerio";
 

@@ -17,6 +17,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.2.1",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^3.0.2",
+    "@kyvg/vue3-notification": "^2.8.0",
     "axios": "^1.2.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
@@ -29,8 +30,11 @@
     "vue": "^3.2.41",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.2",
+    "vue-dropdowns": "^1.1.2",
     "vue-fullpage-modal": "^0.5.3",
     "vue-router": "^4.1.6",
+    "vue-simple-search-dropdown": "^1.0.1",
+    "vue-toasted": "^1.1.28",
     "worker-thread": "^1.1.0"
   },
   "devDependencies": {

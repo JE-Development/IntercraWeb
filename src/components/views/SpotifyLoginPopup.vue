@@ -1,9 +1,9 @@
 <script>
 import PluginCheckBox from "./PluginCheckBox.vue";
-import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
-import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
+import {ViewCollection} from "../intercraSystemCode/classes/ViewCollection";
+import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 export default {
-  name: "PluginPopup",
+  name: "SpotifyLoginPopup",
   components: {PluginCheckBox},
   props: {
     show: Boolean,
@@ -15,12 +15,14 @@ export default {
   },
   methods: {
     onAccept: function (){
-      this.$emit("show-popup", this.showButton);
-      this.$cookies.set("cookiesAllowed",  "true");
+      this.$emit("sl-message", "yes");
+    },
+    onAlways: function (){
+      this.$emit("sl-message", "always");
+      this.$cookies.set("always-login",  "true");
     },
     onDecline: function (){
-      this.$emit("show-popup", this.showButton);
-      this.$cookies.set("cookiesAllowed",  "false");
+      this.$emit("sl-message", "no");
     },
 
     onCheckBoxClick(event){
@@ -45,10 +47,9 @@ export default {
         <div class="modal-container search-box popup-background">
           <div style="justify-content: center">
             <div class="center-horizontal text-black" style="margin-top: 20px">
-              <p>Intercra needs cookies to work personalized and to save changes.<br>
-                Do you allow Intercra to collect cookies?<br><br>
-              If this popup shows up even when you accept or decline the cookies, then please wait a couple of times. We will fix this issue.</p>
-
+              <p>
+                You are not logged in to Spotify. Would you like to log in?
+              </p>
             </div>
 
             <div class="plugin-view center-horizontal">
@@ -56,13 +57,19 @@ export default {
             </div>
             <div class="center-horizontal" style="margin-top: 20px">
               <button class="plugin-menu plugin-close center-horizontal" @click="onAccept">
-                <p id="plugin-menu-text">Accept</p>
+                <p id="plugin-menu-text">Yes</p>
+              </button>
+
+              <div style="width: 50px"></div>
+
+              <button class="plugin-menu plugin-close center-horizontal" @click="onAlways">
+                <p id="plugin-menu-text">Always Yes</p>
               </button>
 
               <div style="width: 50px"></div>
 
               <button class="plugin-menu plugin-close center-horizontal" @click="onDecline">
-                <p id="plugin-menu-text">Decline</p>
+                <p id="plugin-menu-text">No</p>
               </button>
             </div>
           </div>
@@ -94,6 +101,7 @@ export default {
   width: 600px;
   margin: 0px auto;
   padding: 5px 5px;
+  background-color: #ffffff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
