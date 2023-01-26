@@ -28,6 +28,8 @@
     "querystring": "^0.2.1",
     "spotify-web-api-js": "^1.5.2",
     "vue": "^3.2.41",
+    "vue-click-outside": "^1.1.0",
+    "vue-click-outside-element": "^3.1.2",
     "vue-cookie": "^1.1.4",
     "vue-cookies": "^1.8.2",
     "vue-dropdowns": "^1.1.2",

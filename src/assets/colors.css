@@ -34,16 +34,6 @@
     background-color: #f1f1f1;
 }
 
-.search-input-border-color:focus{
-    outline: none !important;
-
-    background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
-    linear-gradient(to right, #c3ff15, #00e598) border-box;
-    border-radius: 50px;
-    border: 3px solid transparent;
-    padding: 2px;
-}
-
 .complementary-color{
     color: #FF9900;
 }

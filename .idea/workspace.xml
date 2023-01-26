@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/views/PresetView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MoreContentButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MoreContentButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PluginButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PluginButton.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PluginCheckBox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PluginCheckBox.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/PluginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PluginPopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RedirectPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RedirectPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SpotifyLoginPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/SpotifyLoginPopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WaitingPlugins.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/WaitingPlugins.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/PresetView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PresetView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -191,7 +182,9 @@
       <workItem from="1674465191509" duration="4880000" />
       <workItem from="1674485597999" duration="194000" />
       <workItem from="1674552741821" duration="2011000" />
-      <workItem from="1674565717195" duration="1974000" />
+      <workItem from="1674565717195" duration="2265000" />
+      <workItem from="1674720658351" duration="6042000" />
+      <workItem from="1674738573315" duration="1976000" />
     </task>
     <servers />
   </component>
