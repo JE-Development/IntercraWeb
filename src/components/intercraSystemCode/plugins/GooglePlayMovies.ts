@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
+import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
 
 export class GooglePlayMovies implements PluginInterface{
     finish = false;
@@ -12,7 +13,10 @@ export class GooglePlayMovies implements PluginInterface{
     id = "google_play_movies";
 
     addToPreset(): PresetController {
-        return new PresetController();
+        let pc = new PresetController();
+        pc.addPreset(PresetEnum.VIDEOS);
+        pc.addPreset(PresetEnum.MOVIES);
+        return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {

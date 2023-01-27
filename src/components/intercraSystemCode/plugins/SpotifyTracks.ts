@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {SpotifyController} from "../controllers/SpotifyController";
+import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
 
 export class SpotifyTracks implements PluginInterface{
     finish = false;
@@ -13,7 +14,9 @@ export class SpotifyTracks implements PluginInterface{
     id = "spotify_tracks";
 
     addToPreset(): PresetController {
-        return new PresetController();
+        let pc = new PresetController();
+        pc.addPreset(PresetEnum.AUDIO);
+        return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {

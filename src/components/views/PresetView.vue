@@ -2,7 +2,7 @@
   <div class="button-layout">
     <div class="dropdown center-horizontal">
       <button class="preset-border preset-border-color" @click="onClickButton">custom preset</button>
-      <div class="dropdown-content" v-if="showList" >
+      <div class="dropdown-content" v-if="showList">
         <a @click="onClickPresetItem(1)">Link 1</a>
         <a @click="onClickPresetItem(2)">Link 2</a>
         <a @click="onClickPresetItem(3)">Link 3</a>
@@ -27,8 +27,18 @@ export default {
     }
   },
 
+  mounted() {
+    document.addEventListener('click', this.handleClickOutside);
+  },
+
 
   methods: {
+
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.showList = false;
+      }
+    },
 
     onClickButton(){
       if(this.showList){
@@ -43,6 +53,22 @@ export default {
       console.log("click: " + item)
     }
   },
+
+  directives: {
+    "click-outside": {
+      bind(el, binding, vnode) {
+        el.event = function(event) {
+          if (!(el == event.target || el.contains(event.target))) {
+            vnode.context[binding.expression](event);
+          }
+        };
+        document.body.addEventListener("click", el.event);
+      },
+      unbind(el) {
+        document.body.removeEventListener("click", el.event);
+      }
+    }
+  }
 }
 </script>
 

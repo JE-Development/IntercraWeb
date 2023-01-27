@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
+import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
 
 export class Fandom implements PluginInterface{
     finish = false;
@@ -13,7 +14,11 @@ export class Fandom implements PluginInterface{
     page = 1;
 
     addToPreset(): PresetController {
-        return new PresetController();
+        let pc = new PresetController();
+        pc.addPreset(PresetEnum.NEWS);
+        pc.addPreset(PresetEnum.GAMES);
+        pc.addPreset(PresetEnum.INFORMATION);
+        return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {

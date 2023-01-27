@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
+import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
 
 export class Ebay implements PluginInterface{
     finish = false;
@@ -13,7 +14,11 @@ export class Ebay implements PluginInterface{
     page = 1;
 
     addToPreset(): PresetController {
-        return new PresetController();
+        let pc = new PresetController();
+        pc.addPreset(PresetEnum.GAMES);
+        pc.addPreset(PresetEnum.BOOKS);
+        pc.addPreset(PresetEnum.SHOPPING);
+        return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
