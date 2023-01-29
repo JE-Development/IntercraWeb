@@ -17,7 +17,6 @@ import {Fandom} from "../plugins/Fandom";
 import {OscoboImage} from "../plugins/OscoboImage";
 import {SpotifyTracks} from "../plugins/SpotifyTracks";
 import EventBus from "../classes/EventBusEvent";
-import {PresetController} from "@/src/components/intercraSystemCode/controllers/PresetController";
 import type {PresetEnum} from "../enums/PresetEnum";
 
 export class PluginController {

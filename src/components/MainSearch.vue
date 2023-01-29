@@ -54,6 +54,7 @@ import PluginCheckBox from "./views/PluginCheckBox.vue";
 import ViewTemplatesPage from "./ViewTemplatesPage.vue";
 import SpotifyLoginPopup from "./views/SpotifyLoginPopup.vue";
 import PresetView from "./views/PresetView.vue";
+import {PresetController} from "./intercraSystemCode/controllers/PresetController";
 
 export default {
   //npm run dev | npm run build
@@ -92,6 +93,7 @@ export default {
     if(this.getCookies("cookiesAllowed") == null){
       this.show = true;
     }
+
   },
   data() {
     return {

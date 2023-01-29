@@ -4,7 +4,6 @@ import router from './router'
 import mitt from 'mitt'
 import VueCookies from 'vue-cookies'
 import Notifications from '@kyvg/vue3-notification'
-import vueClickOutsideElement from 'vue-click-outside-element'
 
 import './assets/main.css'
 import './assets/colors.css'
@@ -17,7 +16,6 @@ const app = createApp(App)
 app.use(router)
 app.use(VueCookies)
 app.use(Notifications)
-app.use(vueClickOutsideElement)
 //app.component('font-awesome-icon', FontAwesomeIcon)
 app.config.globalProperties.emitter = emitter
 app.mount("#app")

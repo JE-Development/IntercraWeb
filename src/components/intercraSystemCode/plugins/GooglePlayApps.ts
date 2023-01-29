@@ -3,7 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
-import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
+import {PresetEnum} from "../enums/PresetEnum";
 
 export class GooglePlayApps implements PluginInterface{
     finish = false;

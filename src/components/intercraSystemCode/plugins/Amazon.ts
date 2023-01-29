@@ -2,7 +2,7 @@ import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
-import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
+import {PresetEnum} from "../enums/PresetEnum";
 
 export class Amazon implements PluginInterface{
     finish = false;

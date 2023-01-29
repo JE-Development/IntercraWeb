@@ -4,7 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {SpotifyController} from "../controllers/SpotifyController";
-import {PresetEnum} from "@/src/components/intercraSystemCode/enums/PresetEnum";
+import {PresetEnum} from "../enums/PresetEnum";
 
 export class SpotifyTracks implements PluginInterface{
     finish = false;
