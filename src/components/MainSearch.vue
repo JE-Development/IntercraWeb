@@ -94,6 +94,9 @@ export default {
       this.show = true;
     }
 
+    let pc = new PluginController();
+    pc.getPresetSettings("amazon");
+
   },
   data() {
     return {

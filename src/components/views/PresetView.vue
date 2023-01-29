@@ -3,17 +3,16 @@
     <div class="dropdown center-horizontal">
       <button class="preset-border preset-border-color" @click="onClickButton">custom preset</button>
       <div class="dropdown-content" v-if="showList">
-        <a @click="onClickPresetItem(1)">Link 1</a>
-        <a @click="onClickPresetItem(2)">Link 2</a>
-        <a @click="onClickPresetItem(3)">Link 3</a>
-        <a @click="onClickPresetItem(4)">Link 4</a>
-        <a @click="onClickPresetItem(5)">Link 5</a>
+        <a @click="onClickPresetItem(pk)" v-for="(pk) in presetKeys">{{keyToValue(pk)}}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import {PresetController} from "../intercraSystemCode/controllers/PresetController";
+import {PresetEnum} from "../intercraSystemCode/enums/PresetEnum";
+
 export default {
   name: "PresetView",
 
@@ -24,7 +23,13 @@ export default {
         name: 'Object Name',
       },
       showList: false,
+      presetKeys: [],
     }
+  },
+
+  created() {
+    let presetController = new PresetController();
+    this.presetKeys = presetController.getAllPresetKeys()
   },
 
   mounted() {
@@ -40,6 +45,11 @@ export default {
       }
     },
 
+    keyToValue(key){
+      let value = PresetEnum[key]
+      return value;
+    },
+
     onClickButton(){
       if(this.showList){
         this.showList = false;
@@ -48,9 +58,9 @@ export default {
       }
     },
 
-    onClickPresetItem(item){
+    onClickPresetItem(itemKey){
       this.showList = false;
-      console.log("click: " + item)
+      console.log("click: " + itemKey)
     }
   },
 

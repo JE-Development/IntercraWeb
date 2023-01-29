@@ -18,6 +18,7 @@ export class Amazon implements PluginInterface{
         pc.addPreset(PresetEnum.BOOKS);
         pc.addPreset(PresetEnum.SHOPPING);
         pc.addPreset(PresetEnum.VIDEOS);
+        pc.addPreset(PresetEnum.SECOND_HAND);
         return pc;
     }
 

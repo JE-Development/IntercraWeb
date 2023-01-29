@@ -17,7 +17,7 @@ import {Fandom} from "../plugins/Fandom";
 import {OscoboImage} from "../plugins/OscoboImage";
 import {SpotifyTracks} from "../plugins/SpotifyTracks";
 import EventBus from "../classes/EventBusEvent";
-import type {PresetEnum} from "../enums/PresetEnum";
+import {PresetEnum} from "../enums/PresetEnum";
 
 export class PluginController {
 
@@ -194,7 +194,7 @@ export class PluginController {
         return "";
     }
 
-    getPresetSettings(pluginId: string): PresetEnum[]{
+    getPresetSettings(pluginId: string): string[]{
         for(let i = 0; i < this.plugins.length; i++){
             if(this.plugins[i].getId() === pluginId){
                 return this.plugins[i].addToPreset().getPresetList();
