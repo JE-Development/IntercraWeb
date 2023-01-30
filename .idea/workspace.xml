@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/intercra_text_anim.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PresetController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PresetController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/enums/PresetEnum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/enums/PresetEnum.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/views/PresetView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PresetView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/intercra_anim/Adobe Premiere Pro Auto-Save/intercra_animated_text.prproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/intercra_anim/Adobe Premiere Pro Auto-Save/intercra_animated_text.prproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_anim.aep" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_anim.aep" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_anim.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_animated_text.prproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/intercra_anim/intercra_animated_text.prproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +185,7 @@
       <workItem from="1675003145784" duration="78000" />
       <workItem from="1675003233233" duration="1549000" />
       <workItem from="1675013626010" duration="2233000" />
-      <workItem from="1675069177812" duration="4240000" />
+      <workItem from="1675069177812" duration="6009000" />
     </task>
     <servers />
   </component>

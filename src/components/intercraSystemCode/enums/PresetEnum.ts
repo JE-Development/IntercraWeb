@@ -1,4 +1,6 @@
 export enum PresetEnum{
+    ENABLE_ALL = "Enable All",
+    DISABLE_ALL = "Disable All",
     SHOPPING = "Shopping",
     INFORMATION = "Information",
     GAMES = "Games",

@@ -72,6 +72,9 @@ export default {
       this.showList = false;
       let pc = new PluginController();
       let list = pc.getPluginsByPresetValue(item);
+      if(item === "Enable All"){
+        list = pc.getAllPluginsAsId();
+      }
       EventBus.emit("change-plugins", list)
     },
     getCookies(key){

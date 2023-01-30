@@ -217,4 +217,12 @@ export class PluginController {
         }
         return matched;
     }
+
+    getAllPluginsAsId(): string[]{
+        let ids: string[] = [];
+        for(let i = 0; i < this.plugins.length; i++){
+            ids.push(this.plugins[i].getId());
+        }
+        return ids;
+    }
 }
