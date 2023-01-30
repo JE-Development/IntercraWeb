@@ -18,11 +18,10 @@ export class PresetController{
 
     getAllPresetKeys(): string[]{
         let key = Object.keys(PresetEnum);
-        console.log("enum: " + key)
         return key;
     }
 
-    getEnumValueByString(str: string): PresetEnum{
+    getEnumValueByKey(str: string): PresetEnum{
         // @ts-ignore
         return PresetEnum[str];
     }

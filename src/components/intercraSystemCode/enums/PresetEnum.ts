@@ -7,7 +7,7 @@ export enum PresetEnum{
     VIDEOS = "Videos",
     PODCAST =  "Podcast",
     NEWS = "News",
-    SECOND_HAND = "Second Hand",
+    //SECOND_HAND = "Second Hand",
     AUDIO = "Audio",
     MOVIES = "Movies",
 }

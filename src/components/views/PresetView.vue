@@ -1,9 +1,9 @@
 <template>
   <div class="button-layout">
     <div class="dropdown center-horizontal">
-      <button class="preset-border preset-border-color" @click="onClickButton">custom preset</button>
+      <button class="preset-border preset-border-color" @click="onClickButton">{{buttonName}}</button>
       <div class="dropdown-content" v-if="showList">
-        <a @click="onClickPresetItem(pk)" v-for="(pk) in presetKeys">{{keyToValue(pk)}}</a>
+        <a @click="onClickPresetItem(pk)" v-for="(pk) in presetKeys">{{pk}}</a>
       </div>
     </div>
   </div>
@@ -11,7 +11,8 @@
 
 <script>
 import {PresetController} from "../intercraSystemCode/controllers/PresetController";
-import {PresetEnum} from "../intercraSystemCode/enums/PresetEnum";
+import {PluginController} from "../intercraSystemCode/controllers/PluginController";
+import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 
 export default {
   name: "PresetView",
@@ -22,6 +23,7 @@ export default {
       object: {
         name: 'Object Name',
       },
+      buttonName: "custom preset",
       showList: false,
       presetKeys: [],
     }
@@ -29,7 +31,17 @@ export default {
 
   created() {
     let presetController = new PresetController();
-    this.presetKeys = presetController.getAllPresetKeys()
+    this.presetKeys = presetController.getAllPresetValues()
+
+    EventBus.addEventListener('change-preset-button-name', (event) => {
+      this.buttonName = "custom preset"
+      this.setCookies("preset-name", this.buttonName);
+    })
+
+    if(this.getCookies("preset-name") != null && this.getCookies("preset-name") !== this.buttonName){
+      this.onClickPresetItem(this.getCookies("preset-name"));
+      console.log("is custom")
+    }
   },
 
   mounted() {
@@ -45,11 +57,6 @@ export default {
       }
     },
 
-    keyToValue(key){
-      let value = PresetEnum[key]
-      return value;
-    },
-
     onClickButton(){
       if(this.showList){
         this.showList = false;
@@ -58,9 +65,32 @@ export default {
       }
     },
 
-    onClickPresetItem(itemKey){
+    onClickPresetItem(item){
+      this.setCookies("preset-name", item);
+
+      this.buttonName = item;
       this.showList = false;
-      console.log("click: " + itemKey)
+      let pc = new PluginController();
+      let list = pc.getPluginsByPresetValue(item);
+      EventBus.emit("change-plugins", list)
+    },
+    getCookies(key){
+      return this.$cookies.get(key);
+    },
+    setCookies(key, value){
+      if(this.isCookiesAllowed()){
+        return this.$cookies.set(key, value);
+      }
+    },
+    isCookiesAllowed(){
+      let allow = this.getCookies("cookiesAllowed");
+      if(allow == "false"){
+        return false;
+      }else if (allow == "true"){
+        return true;
+      }else{
+        return null;
+      }
     }
   },
 

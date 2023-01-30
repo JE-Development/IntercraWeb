@@ -202,4 +202,19 @@ export class PluginController {
         }
         return [];
     }
+
+    getPluginsByPresetValue(value: string): string[]{
+        let matched: string[] = [];
+        for(let i = 0; i < this.plugins.length; i++){
+            // @ts-ignore
+            let plug = this.plugins[i];
+            let list = plug.addToPreset().getPresetList();
+            for(let j = 0; j < list.length; j++){
+                if(value === list[j]){
+                    matched.push(plug.getId());
+                }
+            }
+        }
+        return matched;
+    }
 }

@@ -11,7 +11,7 @@
     <div class="center">
       <div class="search-box">
         <div class="center-horizontal">
-          <img src="../assets/intercra_text_anim.gif" class="logo-text center-horizontal">
+          <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
         </div>
         <input
             @keyup.enter="enterClicked()"
@@ -55,6 +55,7 @@ import ViewTemplatesPage from "./ViewTemplatesPage.vue";
 import SpotifyLoginPopup from "./views/SpotifyLoginPopup.vue";
 import PresetView from "./views/PresetView.vue";
 import {PresetController} from "./intercraSystemCode/controllers/PresetController";
+import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 
 export default {
   //npm run dev | npm run build
@@ -87,6 +88,23 @@ export default {
         enable: active,
       });
     }
+
+
+
+
+
+    EventBus.addEventListener('change-plugins', (event) => {
+      let ids = event.data;
+      for(let i = 0; i < this.pluginList.length; i++){
+        if(ids.includes(this.pluginList[i].pluginId)){
+          this.pluginList[i].enable = "true";
+          this.$cookies.set(this.pluginList[i].pluginId, "true")
+        }else{
+          this.pluginList[i].enable = "false";
+          this.$cookies.set(this.pluginList[i].pluginId, "false")
+        }
+      }
+    })
   },
 
   mounted() {
@@ -96,6 +114,8 @@ export default {
 
     let pc = new PluginController();
     pc.getPresetSettings("amazon");
+    let pre = new PresetController();
+    pre.getEnumValueByKey("SHOPPING")
 
   },
   data() {
@@ -124,7 +144,7 @@ export default {
     },
 
     onCheckBoxClicked: function (index) {
-      //let ic = new IntercraController();
+      EventBus.emit("change-preset-button-name")
 
       if (this.getCookies("cookiesAllowed") == "true") {
         if (this.pluginList[index].enable === "true") {
@@ -134,6 +154,14 @@ export default {
         } else {
           this.pluginList[index].enable = "true";
           this.$cookies.set(this.pluginList[index].pluginId, "true")
+        }
+      }
+    },
+
+    getCheckBoxIndexById(id){
+      for(let i = 0; i < this.pluginList.length; i++){
+        if(id === this.pluginList[i].pluginId){
+          return i;
         }
       }
     },
