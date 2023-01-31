@@ -62,6 +62,13 @@
                  :duration="duration"
                  :album="album"
   />
+  <GithubView v-else-if="choosenView === 'githubView'"
+              :url="url"
+              :headline="headline"
+              :pluginName="pluginName"
+              :teaser="teaser"
+              :lang="lang"
+  />
 
 
 
@@ -77,9 +84,11 @@ import PlayStoreView from "./layouts/PlayStoreView.vue";
 import PlayStoreNoIconView from "./layouts/PlayStoreNoIconView.vue";
 import ImageView from "./layouts/ImageView.vue";
 import SpotifyView from "./layouts/SpotifyView.vue";
+import GithubView from "./layouts/GithubView.vue";
 export default {
   name: "ViewTemplatesPage",
-  components: {BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
+  components: {
+    GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
     ImageView, SpotifyView},
 
   props: {
@@ -114,6 +123,9 @@ export default {
     //spotify
     album: String,
     duration: String,
+
+    //GitHub
+    lang: String,
   },
 }
 </script>

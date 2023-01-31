@@ -34,6 +34,7 @@
                      :platform="dat.platform"
                      :album="dat.album"
                      :duration="dat.duration"
+                     :lang="dat.lang"
   />
 
   <div v-if="errors.length > 0">

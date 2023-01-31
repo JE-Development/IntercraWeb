@@ -17,7 +17,9 @@ import {Fandom} from "../plugins/Fandom";
 import {OscoboImage} from "../plugins/OscoboImage";
 import {SpotifyTracks} from "../plugins/SpotifyTracks";
 import EventBus from "../classes/EventBusEvent";
-import {PresetEnum} from "../enums/PresetEnum";
+import {Reddit} from "../plugins/Reddit";
+import {GitHubRepositories} from "../plugins/GitHubRepositories";
+import {GitHubIssues} from "../plugins/GitHubIssues";
 
 export class PluginController {
 
@@ -45,6 +47,9 @@ export class PluginController {
         this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
         this.plugins.push(new OscoboImage());
+        this.plugins.push(new Reddit());
+        this.plugins.push(new GitHubRepositories());
+        this.plugins.push(new GitHubIssues());
 
         this.special.push(new SpotifyTracks().id);
     }
