@@ -50,8 +50,10 @@ export class GitHubRepositories implements PluginInterface{
     }
 
     startSearch(document: any): void{
+
         const ul = document.getElementsByClassName("repo-list")[0];
         const rawList = ul.children;
+
 
         for(let j = 0; j < rawList.length; j++){
             let map = new Map<string, string>;

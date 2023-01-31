@@ -9,7 +9,6 @@ export class SpotifyController{
     login(){
         let CLIENT_ID = '15d6a40e579740e8b8eab83339e01744';
         let REDIRECT_URI = document.baseURI.toString().split("search")[0] + 'redirect/callback/';
-        console.log("redirect: " + REDIRECT_URI)
 
         let scope = ['user-read-private'];
 
@@ -32,7 +31,6 @@ export class SpotifyController{
             '&redirect_uri=' + encodeURIComponent(redirect_uri) +
             '&scope=' + encodeURIComponent(scopes.join(' ')) +
             '&response_type=token';
-        console.log("request: " + request);
         return request;
     }
 
@@ -48,7 +46,6 @@ export class SpotifyController{
 
 
 
-        console.log("stringify: " + token)
 
         let ok = true;
 
@@ -63,10 +60,8 @@ export class SpotifyController{
             })
             .catch(error => {
                 if(doSearchEmit) {
-                    console.log("login circle")
                     EventBus.emit("login-circle")
                 }else{
-                    console.log("in error: sc")
                     ok = false;
                 }
             });

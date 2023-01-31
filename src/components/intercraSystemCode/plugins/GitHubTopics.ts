@@ -4,12 +4,12 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 
-export class GitHubIssues implements PluginInterface{
+export class GitHubTopics implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "GitHub Issues";
-    id = "github_issues";
+    displayName = "GitHub Topics";
+    id = "github_topics";
     page = 1;
 
     addToPreset(): PresetController {
@@ -20,7 +20,7 @@ export class GitHubIssues implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/github_issues/" + searchText);
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/github_topics/" + searchText);
             let text = await html.text();
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");
@@ -37,7 +37,7 @@ export class GitHubIssues implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/github_issues/" + searchText + "/" + this.page);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/github_topics/" + searchText + "/" + this.page);
         let text = await html.text();
         const parser = new DOMParser();
         const document: any = parser.parseFromString(text, "text/html");
@@ -51,25 +51,24 @@ export class GitHubIssues implements PluginInterface{
 
     startSearch(document: any): void{
 
-        const rawList = document.getElementsByClassName("issue-list-item");
+        const rawList = document.getElementsByClassName("topic-list-item");
 
         for(let j = 0; j < rawList.length; j++){
             let map = new Map<string, string>;
             let list = rawList[j];
 
-            const headline = list.getElementsByTagName("a")[0].textContent;
+            const headline = list.getElementsByClassName("d-flex")[0].getElementsByTagName("a")[0].textContent;
             map.set("headline", headline);
 
             const url = list.getElementsByTagName("a")[0].getAttribute("href");
             map.set("url", "https://github.com" + url);
 
             try {
-                const sub = list.getElementsByClassName("mb-0")[0].textContent;
+                const sub = list.getElementsByClassName("mt-n1")[0].getElementsByTagName("p")[0].textContent;
                 map.set("teaser", sub);
             }catch (e){
                 map.set("teaser", "");
             }
-
             this.contentList.push(map);
 
         }

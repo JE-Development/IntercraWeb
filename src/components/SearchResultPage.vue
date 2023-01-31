@@ -15,6 +15,14 @@
         class="search-input center-horizontal search-input-color search-input-border-color sticky">
 
   </div>
+
+  <div v-if="errors.length > 0">
+    <h3 class="center-horizontal error-color">Error in:</h3>
+    <div v-for="(err) in errors" class="center-horizontal">
+      <h4 class="error-color">{{err}}</h4>
+    </div>
+  </div>
+
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
                      :url="dat.url"
@@ -36,13 +44,6 @@
                      :duration="dat.duration"
                      :lang="dat.lang"
   />
-
-  <div v-if="errors.length > 0">
-    <h3 class="center-horizontal error-color">Error in:</h3>
-    <div v-for="(err) in errors" class="center-horizontal">
-      <h4 class="error-color">{{err}}</h4>
-    </div>
-  </div>
 
   <div id="searchRoot" v-if="showLoading">
     <div id="loading-result" class="center-horizontal">

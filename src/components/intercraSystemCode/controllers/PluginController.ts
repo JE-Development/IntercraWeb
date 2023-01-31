@@ -20,6 +20,7 @@ import EventBus from "../classes/EventBusEvent";
 import {Reddit} from "../plugins/Reddit";
 import {GitHubRepositories} from "../plugins/GitHubRepositories";
 import {GitHubIssues} from "../plugins/GitHubIssues";
+import {GitHubTopics} from "../plugins/GitHubTopics";
 
 export class PluginController {
 
@@ -28,6 +29,7 @@ export class PluginController {
     finishedPlugins: string[] = [];
     templates = new Map<string, string>;
     activePlugins: string[] = [];
+    errorNames: string[] = [];
 
 
     constructor() {
@@ -50,6 +52,7 @@ export class PluginController {
         this.plugins.push(new Reddit());
         this.plugins.push(new GitHubRepositories());
         this.plugins.push(new GitHubIssues());
+        this.plugins.push(new GitHubTopics());
 
         this.special.push(new SpotifyTracks().id);
     }
@@ -134,24 +137,18 @@ export class PluginController {
 
     gotError(id: string) {
         this.finishedPlugins.push(id);
-        let check = this.checkAllFinished();
 
         EventBus.emit("not-finished", this.getNotFinished())
 
-        if (check) {
+        console.log("error: " + id)
 
-            let errorNames = [];
-
-            for (let i = 0; i < this.plugins.length; i++) {
-                if (this.finishedPlugins.includes(this.plugins[i].getId())) {
-                    errorNames.push(this.plugins[i].getPluginDisplayName());
-                }
+        for (let i = 0; i < this.plugins.length; i++) {
+            if (this.plugins[i].getId() == id) {
+                this.errorNames.push(this.plugins[i].getPluginDisplayName());
             }
-
-            EventBus.emit('error-sender', errorNames)
-
-
         }
+        EventBus.emit('error-sender', this.errorNames)
+
     }
 
     checkAllFinished(): boolean {
