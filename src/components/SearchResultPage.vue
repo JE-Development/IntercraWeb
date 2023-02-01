@@ -58,7 +58,7 @@
   <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
 
   <div id="more-content-button-root" class="center-horizontal">
-    <MoreContentButton :show="show" :search="search" :plugin="plugin"/>
+    <MoreContentButton :show="show" :search="search" :plugin="plugin" :ic="ic"/>
   </div>
 
 </template>
@@ -71,7 +71,6 @@ import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
 import WaitingPlugins from "./views/WaitingPlugins.vue";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
-import {contains} from "cheerio";
 
 export default {
   name: "SearchResultPage",
@@ -89,6 +88,7 @@ export default {
       searchVisibility: true,
       showLoading: true,
       errors: [],
+      ic: new IntercraController(),
     };
   },
 
@@ -129,10 +129,9 @@ export default {
   },
   mounted() {
 
-    let ic = new IntercraController();
-    ic.startSearch(this.search, this.plugin, this.$cookies.get("token"));
+    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"));
 
-    ic.changeShow();
+    this.ic.changeShow();
 
   },
   methods: {

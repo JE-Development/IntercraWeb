@@ -74,6 +74,7 @@ export class PluginController {
 
     async findMoreContent(searchText: string, plugin: string, token: string) {
         this.activePlugins = plugin.split("---");
+        this.finishedPlugins = [];
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {

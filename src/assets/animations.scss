@@ -112,3 +112,17 @@
     background-position: 100% 100%;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .search-input-border-color:focus{
+    background: linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(to right, #c3ff15, #00e598) border-box;
+  }
+/*
+  .preset-border-color{
+    background: linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(to right, #00e598, #c3ff1500 50%) border-box;
+
+  }*/
+
+}

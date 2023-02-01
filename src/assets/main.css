@@ -19,9 +19,13 @@
   display: flex;
   height: 45px;
   width: 200px;
-  background-color: #76ffb9;
-  border: none;
-  color: white;
+
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+  linear-gradient(to right, #c3ff15 50%, #00e598) border-box;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+
   padding: 6px 8px;
   cursor: pointer;
   border-radius: 50px;
@@ -241,5 +245,9 @@ a,
 }
 
 @media (prefers-color-scheme: dark) {
+  .more-content-button{
+    background: linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(to right, #c3ff15 50%, #00e598) border-box;
+  }
 
 }

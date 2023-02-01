@@ -2,7 +2,7 @@
 <template id="parent-popup">
   <div class="button-layout" v-if="show">
       <button class="more-content-button center-horizontal" @click="onClickButton">
-        <p class="text-button more-content-button-text">More Content</p>
+        <p class="text-black more-content-button-text">More Content</p>
       </button>
   </div>
 </template>
@@ -10,14 +10,15 @@
 <script>
 
 
-import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 
 export default {
   name: "MoreContentButton",
   data() {
     return {
       show: false,
+      ic: new IntercraController(),
     }
   },
   props: {
@@ -29,10 +30,8 @@ export default {
   methods: {
     onClickButton: function (){
       EventBus.emit("show-loading")
-      let ic = new IntercraController();
-      ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"));
-
-      ic.changeShow();
+      this.ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"));
+      this.ic.changeShow();
     },
     getCookies(key){
       return this.$cookies.get(key);

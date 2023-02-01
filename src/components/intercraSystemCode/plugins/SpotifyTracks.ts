@@ -9,6 +9,8 @@ import {PresetEnum} from "../enums/PresetEnum";
 export class SpotifyTracks implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    limit = 30;
+    offset = 0;
 
     displayName = "Spotify Tracks";
     id = "spotify_tracks";
@@ -24,12 +26,15 @@ export class SpotifyTracks implements PluginInterface{
         await this.startSearch(searchText);
         this.finish = true;
 
-        //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        this.offset = this.offset + this.limit;
+        await this.startSearch(searchText);
+        this.finish = true;
+
         pc.isFinished(this.contentList, this.id);
     }
 
@@ -37,7 +42,7 @@ export class SpotifyTracks implements PluginInterface{
         let sc = new SpotifyController();
         let split = searchText.split(";;;");
 
-        await sc.httpLibraryRequest(split[1], split[0], "track", 30, 0, true).then(r =>
+        await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, true).then(r =>
             this.analyse(r)
         );
     }
