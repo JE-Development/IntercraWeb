@@ -18,6 +18,7 @@
             id="main-input-search"
             placeholder="Search here"
             class="search-input center-horizontal search-input-color search-input-border-color">
+        <font-awesome-icon icon="fa-solid fa-repeat" />
       </div>
     </div>
   </div>

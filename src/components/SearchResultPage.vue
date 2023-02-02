@@ -23,6 +23,8 @@
     </div>
   </div>
 
+  <SortingView/>
+
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
                      :url="dat.url"
@@ -71,10 +73,11 @@ import ViewTemplatesPage from "../components/ViewTemplatesPage.vue";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent"
 import WaitingPlugins from "./views/WaitingPlugins.vue";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
+import SortingView from "../components/views/SortingView.vue";
 
 export default {
   name: "SearchResultPage",
-  components: {ViewTemplatesPage, MoreContentButton, WaitingPlugins},
+  components: {SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins},
 
 
   data(){

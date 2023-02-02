@@ -117,12 +117,19 @@
   .search-input-border-color:focus{
     background: linear-gradient(#000000, #000000) padding-box,
     linear-gradient(to right, #c3ff15, #00e598) border-box;
+    background-size: 400% 400%;
   }
-/*
-  .preset-border-color{
-    background: linear-gradient(#000000, #000000) padding-box,
-    linear-gradient(to right, #00e598, #c3ff1500 50%) border-box;
 
-  }*/
+  .preset-border-color{
+    background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(to right, #00e598, #c3ff1500 50%) border-box;
+    background-size: 400% 400%;
+  }
+
+  .preset-border-color:hover{
+    background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(to right, #00e598, #c3ff1500) border-box;
+    background-size: 400% 400%;
+  }
 
 }
