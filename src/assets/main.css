@@ -31,6 +31,15 @@
   border-radius: 50px;
 }
 
+.icon{
+  height: 30px;
+  justify-content: space-around;
+}
+
+.icon-div{
+  width: 10vw;
+}
+
 
 
 body {
