@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/views/SortingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/SortingView.vue" afterDir="false" />
     </list>
@@ -191,6 +192,7 @@
       <workItem from="1675242588027" duration="3950000" />
       <workItem from="1675357134905" duration="1228000" />
       <workItem from="1675412359082" duration="1903000" />
+      <workItem from="1675431498121" duration="2437000" />
     </task>
     <servers />
   </component>

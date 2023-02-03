@@ -30,6 +30,75 @@
   padding: 2px;
 }
 
+
+.icon-div-left{
+  width: 10vw;
+  background: #ffffff;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.icon-div-middle{
+  width: 10vw;
+  background: #ffffff;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.icon-div-right{
+  width: 10vw;
+  background: #ffffff;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.icon-div-left:hover{
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+  linear-gradient(to right, #54c204, #c3ff1500) border-box;
+  background-size: 400% 400%;
+  animation: gradient 1s;
+
+  animation-name: icon-background-flow;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.icon-div-middle:hover{
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+  linear-gradient(to bottom, #2bb939, #c3ff1500) border-box;
+  background-size: 400% 400%;
+  animation: gradient 1s;
+
+  animation-name: icon-background-flow;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.icon-div-right:hover{
+  background: linear-gradient(#ffffff, #ffffff) padding-box,
+  linear-gradient(to left, #02b06d, #c3ff1500) border-box;
+  background-size: 400% 400%;
+  animation: gradient 1s;
+
+  animation-name: icon-background-flow;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+
+
 .preset-border-color{
   outline: none !important;
 
@@ -49,8 +118,6 @@
 
 
 }
-
-
 .preset-border-color:hover{
   outline: none !important;
 
@@ -61,7 +128,7 @@
   background-size: 400% 400%;
   animation: gradient 1s;
 
-  animation-name: button-gradient-flow;
+  animation-name: icon-background-flow;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
@@ -93,6 +160,24 @@
 }
 
 @keyframes button-gradient-flow-backwards{
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes icon-background-flow{
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes icon-background-flow-backwards{
   0% {
     background-position: 0% 0%;
   }
