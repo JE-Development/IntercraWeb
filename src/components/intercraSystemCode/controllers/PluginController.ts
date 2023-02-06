@@ -30,6 +30,8 @@ export class PluginController {
     templates = new Map<string, string>;
     activePlugins: string[] = [];
     errorNames: string[] = [];
+    sorting = "repeat";
+    all: string[] = []
 
 
     constructor() {
@@ -98,7 +100,6 @@ export class PluginController {
         if (check) {
 
             let box: string[][] = [];
-            let all: string[] = [];
 
             for (let i = 0; i < this.plugins.length; i++) {
                 if (this.finishedPlugins.includes(this.plugins[i].getId())) {
@@ -122,7 +123,7 @@ export class PluginController {
                 for (let i = 0; i < max; i++) {
                     for (let j = 0; j < box.length; j++) {
                         if (box[j].length > i) {
-                            all.push(box[j][i]);
+                            this.all.push(box[j][i]);
                         }
                     }
                 }
@@ -130,7 +131,24 @@ export class PluginController {
 
             }
 
-            EventBus.emit('data-sender', all)
+            if(this.sorting === "shuffle"){
+                this.all = this.shuffleArray(this.all);
+            }else if(this.sorting === "repeat"){
+                //default
+            }else if(this.sorting === "list"){
+                this.all = []
+                for (let i = 0; i < this.plugins.length; i++) {
+                    if (this.finishedPlugins.includes(this.plugins[i].getId())) {
+                        let view = this.plugins[i].getView();
+                        for(let j = 0; j < view.length; j++){
+                            this.all.push(view[j]);
+                        }
+                    }
+                }
+            }
+            
+
+            EventBus.emit('data-sender', this.all)
 
 
         }
@@ -227,5 +245,39 @@ export class PluginController {
             ids.push(this.plugins[i].getId());
         }
         return ids;
+    }
+
+    setSorting(sortType: string){
+        this.sorting = sortType;
+
+        if(this.sorting === "shuffle"){
+            this.all = this.shuffleArray(this.all);
+        }else if(this.sorting === "repeat"){
+            //default
+        }else if(this.sorting === "list"){
+            this.all = []
+            for (let i = 0; i < this.plugins.length; i++) {
+                if (this.finishedPlugins.includes(this.plugins[i].getId())) {
+                    let view = this.plugins[i].getView();
+                    for(let j = 0; j < view.length; j++){
+                        this.all.push(view[j]);
+                    }
+                }
+            }
+        }
+
+        EventBus.emit('data-sender', this.all)
+    }
+
+    shuffleArray(array: string[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    setSortVar(sort: string){
+        this.sorting = sort;
     }
 }

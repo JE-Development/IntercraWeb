@@ -16,11 +16,11 @@ export default {
   methods: {
     onAccept: function (){
       this.$emit("show-popup", this.showButton);
-      this.$cookies.set("cookiesAllowed",  "true");
+      this.$cookies.set("cookiesAllowed",  "true", 2147483647);
     },
     onDecline: function (){
       this.$emit("show-popup", this.showButton);
-      this.$cookies.set("cookiesAllowed",  "false");
+      this.$cookies.set("cookiesAllowed",  "false", 2147483647);
     },
 
     onCheckBoxClick(event){

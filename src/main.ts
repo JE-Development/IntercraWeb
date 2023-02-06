@@ -13,6 +13,7 @@ import './assets/main.css'
 import './assets/colors.css'
 import './assets/view-design.css'
 import './assets/animations.scss'
+import './assets/sorting.scss'
 
 const emitter = mitt()
 

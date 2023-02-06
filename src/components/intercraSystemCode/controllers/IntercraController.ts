@@ -8,11 +8,15 @@ export class IntercraController{
         this.pc = new PluginController();
     }
 
-    startSearch(searchText: string, plugin: string, token: string){
+    startSearch(searchText: string, plugin: string, token: string, sorting: string){
+        this.pc.setSortVar(sorting);
         this.pc.findContent(searchText, plugin, token);
     }
     startMoreSearch(searchText: string, plugin: string, token: string){
         this.pc.findMoreContent(searchText, plugin, token);
+    }
+    setSorting(sort: string){
+        this.pc.setSorting(sort);
     }
 
     /*setCookie(name: string, val: string) {

@@ -19,7 +19,7 @@ export default {
     },
     onAlways: function (){
       this.$emit("sl-message", "always");
-      this.$cookies.set("always-login",  "true");
+      this.$cookies.set("always-login",  "true", 2147483647);
     },
     onDecline: function (){
       this.$emit("sl-message", "no");

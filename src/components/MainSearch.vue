@@ -99,10 +99,10 @@ export default {
       for(let i = 0; i < this.pluginList.length; i++){
         if(ids.includes(this.pluginList[i].pluginId)){
           this.pluginList[i].enable = "true";
-          this.$cookies.set(this.pluginList[i].pluginId, "true")
+          this.$cookies.set(this.pluginList[i].pluginId, "true", 2147483647)
         }else{
           this.pluginList[i].enable = "false";
-          this.$cookies.set(this.pluginList[i].pluginId, "false")
+          this.$cookies.set(this.pluginList[i].pluginId, "false", 2147483647)
         }
       }
     })
@@ -150,11 +150,11 @@ export default {
       if (this.getCookies("cookiesAllowed") == "true") {
         if (this.pluginList[index].enable === "true") {
           this.pluginList[index].enable = "false";
-          this.$cookies.set(this.pluginList[index].pluginId, "false")
+          this.$cookies.set(this.pluginList[index].pluginId, "false", 2147483647)
 
         } else {
           this.pluginList[index].enable = "true";
-          this.$cookies.set(this.pluginList[index].pluginId, "true")
+          this.$cookies.set(this.pluginList[index].pluginId, "true", 2147483647)
         }
       }
     },
@@ -233,7 +233,7 @@ export default {
     },
     setCookies(key, value){
       if(this.isCookiesAllowed()){
-        return this.$cookies.set(key, value);
+        return this.$cookies.set(key, value, 2147483647);
       }
     },
     isCookiesAllowed(){

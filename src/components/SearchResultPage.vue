@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <SortingView/>
+  <SortingView :enabled="sorting"/>
 
   <ViewTemplatesPage v-for="(dat) in content"
                      :choosenView="dat.choosenView"
@@ -92,10 +92,17 @@ export default {
       showLoading: true,
       errors: [],
       ic: new IntercraController(),
+      sorting: "repeat"
     };
   },
 
   created() {
+    let sort = this.getCookies("sorting");
+    if(sort != null){
+      this.sorting = sort;
+    }
+
+
     EventBus.addEventListener('data-sender', (event) => {
       if(this.content.length <= 0){
         this.content = event.data;
@@ -125,14 +132,20 @@ export default {
       this.show = false;
     })
 
+    EventBus.addEventListener('change-sorting', (event) => {
+      this.ic.setSorting(event.data);
+      location.reload();
+    })
+
     EventBus.addEventListener('login-circle', (event) => {
       let sc = new SpotifyController();
       sc.login();
     })
   },
   mounted() {
+    let sorting = this.getCookies("sorting");
 
-    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"));
+    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting);
 
     this.ic.changeShow();
 
@@ -156,7 +169,7 @@ export default {
     },
     setCookies(key, value){
       if(this.isCookiesAllowed()){
-        return this.$cookies.set(key, value);
+        return this.$cookies.set(key, value, 2147483647);
       }
     },
     isCookiesAllowed(){

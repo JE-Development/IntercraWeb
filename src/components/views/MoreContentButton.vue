@@ -38,7 +38,7 @@ export default {
     },
     setCookies(key, value){
       if(this.isCookiesAllowed()){
-        return this.$cookies.set(key, value);
+        return this.$cookies.set(key, value, 2147483647);
       }
     },
     isCookiesAllowed(){

@@ -12,6 +12,7 @@ export class PresetController{
     }
 
     getAllPresetValues(): string[]{
+        // @ts-ignore
         let value = Object.values(PresetEnum);
         return value;
     }
