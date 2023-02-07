@@ -1,6 +1,6 @@
 <template>
-  <div class="center-horizontal">
-    <div class="view-border content-layout-color">
+  <div class="view-border content-layout-color">
+    <div>
 
       <div class="content-layout-color center-horizontal">
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
@@ -10,15 +10,20 @@
       <h3 class="teaser-color">{{artist}}</h3>
       <h4 class="teaser-color">{{duration}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
+      <a @click="savedClick">save</a>
     </div>
   </div>
 </template>
 
 <script>
+
+import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+
 export default {
   name: "SpotifyView",
 
   props: {
+    index: Number,
     url: String,
     headline: String,
     pluginName: String,
@@ -27,6 +32,12 @@ export default {
     duration: String,
     album: String,
   },
+
+  methods: {
+    savedClick(){
+      EventBus.emit("save-result", this.index)
+    }
+  }
 }
 </script>
 

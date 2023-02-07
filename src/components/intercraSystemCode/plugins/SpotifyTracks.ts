@@ -87,7 +87,7 @@ export class SpotifyTracks implements PluginInterface{
             mStr = "0" + m;
         }
         if(s <= 9){
-            sStr = "" + s;
+            sStr = "0" + s;
         }
         let fin = mStr + ":" + sStr;
         return fin;

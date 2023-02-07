@@ -7,7 +7,10 @@ import Notifications from '@kyvg/vue3-notification'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+import PerfectScrollbar from 'vue3-perfect-scrollbar'
 
+
+import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 
 import './assets/main.css'
 import './assets/colors.css'
@@ -23,6 +26,7 @@ const app = createApp(App)
 app.use(router)
 app.use(VueCookies)
 app.use(Notifications)
+app.use(PerfectScrollbar)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.config.globalProperties.emitter = emitter
 app.mount("#app")

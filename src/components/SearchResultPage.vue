@@ -25,27 +25,61 @@
 
   <SortingView :enabled="sorting"/>
 
-  <ViewTemplatesPage v-for="(dat) in content"
-                     :choosenView="dat.choosenView"
-                     :url="dat.url"
-                     :headline="dat.headline"
-                     :pluginName="dat.pluginName"
-                     :teaser="dat.teaser"
-                     :image="dat.image"
-                     :date="dat.date"
-                     :price="dat.price"
-                     :artist="dat.artist"
-                     :release="dat.release"
-                     :tags="dat.tags"
-                     :genre="dat.genre"
-                     :type="dat.type"
-                     :publisher="dat.publisher"
-                     :appIcon="dat.appIcon"
-                     :platform="dat.platform"
-                     :album="dat.album"
-                     :duration="dat.duration"
-                     :lang="dat.lang"
-  />
+  <div class="center-horizontal">
+    <div ref="mainresult">
+      <ViewTemplatesPage v-for="(dat, id) in content"
+                         :index="id"
+                         :choosenView="dat.choosenView"
+                         :url="dat.url"
+                         :headline="dat.headline"
+                         :pluginName="dat.pluginName"
+                         :teaser="dat.teaser"
+                         :image="dat.image"
+                         :date="dat.date"
+                         :price="dat.price"
+                         :artist="dat.artist"
+                         :release="dat.release"
+                         :tags="dat.tags"
+                         :genre="dat.genre"
+                         :type="dat.type"
+                         :publisher="dat.publisher"
+                         :appIcon="dat.appIcon"
+                         :platform="dat.platform"
+                         :album="dat.album"
+                         :duration="dat.duration"
+                         :lang="dat.lang"
+      />
+    </div>
+    <div style="width: 30px">
+    </div>
+    <div class="view-border-saved" v-if="savedContent.length != 0">
+      <div ref="header" class="outer-scroll">
+        <perfect-scrollbar height="100px" class="inner-scroll">
+          <ViewTemplatesPage v-for="(dat) in savedContent"
+                             :choosenView="dat.choosenView"
+                             :url="dat.url"
+                             :headline="dat.headline"
+                             :pluginName="dat.pluginName"
+                             :teaser="dat.teaser"
+                             :image="dat.image"
+                             :date="dat.date"
+                             :price="dat.price"
+                             :artist="dat.artist"
+                             :release="dat.release"
+                             :tags="dat.tags"
+                             :genre="dat.genre"
+                             :type="dat.type"
+                             :publisher="dat.publisher"
+                             :appIcon="dat.appIcon"
+                             :platform="dat.platform"
+                             :album="dat.album"
+                             :duration="dat.duration"
+                             :lang="dat.lang"
+          />
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </div>
 
   <div id="searchRoot" v-if="showLoading">
     <div id="loading-result" class="center-horizontal">
@@ -86,6 +120,8 @@ export default {
       plugin: String(this.$route.params.plugin),
       show: false,
       content: [],
+      savedContent: [],
+      savedIds: [],
       relKey: 0,
       waitingPlugins: null,
       searchVisibility: true,
@@ -141,8 +177,18 @@ export default {
       let sc = new SpotifyController();
       sc.login();
     })
+    EventBus.addEventListener('save-result', (event) => {
+      if(!this.savedIds.includes(event.data)){
+        let index = event.data;
+        let index2 = index + 1;
+        this.savedContent = this.savedContent.concat(this.content.slice(index,index2));
+        this.savedIds = this.savedIds.concat(index);
+      }
+    })
   },
   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+
     let sorting = this.getCookies("sorting");
 
     this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting);
@@ -150,6 +196,19 @@ export default {
     this.ic.changeShow();
 
   },
+
+  updated() {
+    if(this.savedContent.length != 0) {
+      if (this.$refs.header.getBoundingClientRect().top <= 0 && this.$refs.mainresult.getBoundingClientRect().top <= 0) {
+        this.$refs.header.style.top = "0";
+        this.$refs.header.style.position = "fixed";
+      } else {
+        this.$refs.header.style.top = "initial";
+        this.$refs.header.style.position = "absolute";
+      }
+    }
+  },
+
   methods: {
 
     updateSearch: function (){
@@ -182,6 +241,28 @@ export default {
         return null;
       }
     },
+    handleScroll() {
+      if(this.savedContent.length != 0) {
+        if (this.$refs.header.getBoundingClientRect().top <= 0 && this.$refs.mainresult.getBoundingClientRect().top <= 0) {
+          this.$refs.header.style.top = "0";
+          this.$refs.header.style.position = "fixed";
+        } else {
+          this.$refs.header.style.top = "initial";
+          this.$refs.header.style.position = "absolute";
+        }
+      }
+    },
   }
 }
 </script>
+
+<style>
+.outer-scroll {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+
+
+
+</style>

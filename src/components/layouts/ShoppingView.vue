@@ -1,6 +1,6 @@
 <template>
-  <div class="center-horizontal">
-    <div class="view-border content-layout-color">
+  <div class="view-border content-layout-color">
+    <div>
 
       <div class="content-layout-color center-horizontal">
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
@@ -8,21 +8,32 @@
       <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
       <h3>{{price}}</h3>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
+      <a @click="savedClick">save</a>
     </div>
   </div>
 </template>
 
 <script>
+
+import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+
 export default {
   name: "ShoppingView",
 
   props: {
+    index: Number,
     url: String,
     headline: String,
     pluginName: String,
     image: String,
     price: String,
   },
+
+  methods: {
+    savedClick(){
+      EventBus.emit("save-result", this.index)
+    }
+  }
 }
 </script>
 

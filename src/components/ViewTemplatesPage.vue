@@ -1,12 +1,14 @@
 <template>
 
   <InformationView v-if="choosenView === 'informationView'"
+                   :index="index"
                    :url="url"
                    :headline="headline"
                    :pluginName="pluginName"
                    :teaser="teaser"
   />
   <ArticleView v-else-if="choosenView === 'articleView'"
+               :index="index"
                :url="url"
                :headline="headline"
                :pluginName="pluginName"
@@ -16,6 +18,7 @@
                :platform="platform"
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
+                :index="index"
                 :url="url"
                 :headline="headline"
                 :pluginName="pluginName"
@@ -23,6 +26,7 @@
                 :image="image"
   />
   <BandcampView v-else-if="choosenView === 'bandcampView'"
+                :index="index"
                 :url="url"
                 :headline="headline"
                 :pluginName="pluginName"
@@ -34,14 +38,16 @@
                 :type="type"
   />
   <PlayStoreView v-else-if="choosenView === 'playStoreView'"
-                :url="url"
-                :headline="headline"
-                :pluginName="pluginName"
-                :publisher="publisher"
-                :image="image"
-                :appIcon="appIcon"
+                 :index="index"
+                 :url="url"
+                 :headline="headline"
+                 :pluginName="pluginName"
+                 :publisher="publisher"
+                 :image="image"
+                 :appIcon="appIcon"
   />
   <PlayStoreNoIconView v-else-if="choosenView === 'playStoreNoIconView'"
+                 :index="index"
                  :url="url"
                  :headline="headline"
                  :pluginName="pluginName"
@@ -49,11 +55,13 @@
                  :image="image"
   />
   <ImageView v-else-if="choosenView === 'imageView'"
+                 :index="index"
                  :url="url"
                  :pluginName="pluginName"
                  :image="image"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
+                 :index="index"
                  :url="url"
                  :headline="headline"
                  :pluginName="pluginName"
@@ -63,6 +71,7 @@
                  :album="album"
   />
   <GithubView v-else-if="choosenView === 'githubView'"
+              :index="index"
               :url="url"
               :headline="headline"
               :pluginName="pluginName"
@@ -92,6 +101,7 @@ export default {
     ImageView, SpotifyView},
 
   props: {
+    index: Number,
     choosenView: String,
 
     //multiple use props

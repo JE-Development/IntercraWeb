@@ -10,7 +10,11 @@
 export default {
   name: "PluginCheckBox",
 
-  props: ['title', 'check'],
+  props: {
+    title: String,
+    check: String,
+    hasSettings: String,
+  },
   emits: ['click']
 }
 </script>
