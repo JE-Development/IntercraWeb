@@ -2,6 +2,7 @@
 
   <InformationView v-if="choosenView === 'informationView'"
                    :index="index"
+                   :savedContent="savedContent"
                    :url="url"
                    :headline="headline"
                    :pluginName="pluginName"
@@ -9,6 +10,7 @@
   />
   <ArticleView v-else-if="choosenView === 'articleView'"
                :index="index"
+               :savedContent="savedContent"
                :url="url"
                :headline="headline"
                :pluginName="pluginName"
@@ -19,6 +21,7 @@
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
                 :index="index"
+                :savedContent="savedContent"
                 :url="url"
                 :headline="headline"
                 :pluginName="pluginName"
@@ -27,6 +30,7 @@
   />
   <BandcampView v-else-if="choosenView === 'bandcampView'"
                 :index="index"
+                :savedContent="savedContent"
                 :url="url"
                 :headline="headline"
                 :pluginName="pluginName"
@@ -39,6 +43,7 @@
   />
   <PlayStoreView v-else-if="choosenView === 'playStoreView'"
                  :index="index"
+                 :savedContent="savedContent"
                  :url="url"
                  :headline="headline"
                  :pluginName="pluginName"
@@ -48,6 +53,7 @@
   />
   <PlayStoreNoIconView v-else-if="choosenView === 'playStoreNoIconView'"
                  :index="index"
+                 :savedContent="savedContent"
                  :url="url"
                  :headline="headline"
                  :pluginName="pluginName"
@@ -56,12 +62,14 @@
   />
   <ImageView v-else-if="choosenView === 'imageView'"
                  :index="index"
+                 :savedContent="savedContent"
                  :url="url"
                  :pluginName="pluginName"
                  :image="image"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
                  :index="index"
+                 :savedContent="savedContent"
                  :url="url"
                  :headline="headline"
                  :pluginName="pluginName"
@@ -72,6 +80,7 @@
   />
   <GithubView v-else-if="choosenView === 'githubView'"
               :index="index"
+              :savedContent="savedContent"
               :url="url"
               :headline="headline"
               :pluginName="pluginName"
@@ -103,6 +112,7 @@ export default {
   props: {
     index: Number,
     choosenView: String,
+    savedContent: Boolean,
 
     //multiple use props
     url: String,

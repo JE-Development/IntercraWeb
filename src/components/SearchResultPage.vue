@@ -55,7 +55,9 @@
     <div class="view-border-saved" v-if="savedContent.length != 0">
       <div ref="header" class="outer-scroll">
         <perfect-scrollbar height="100px" class="inner-scroll">
-          <ViewTemplatesPage v-for="(dat) in savedContent"
+          <ViewTemplatesPage v-for="(dat, id) in savedContent"
+                             :index="id"
+                             :savedContent="true"
                              :choosenView="dat.choosenView"
                              :url="dat.url"
                              :headline="dat.headline"
@@ -178,12 +180,24 @@ export default {
       sc.login();
     })
     EventBus.addEventListener('save-result', (event) => {
-      if(!this.savedIds.includes(event.data)){
+      if(/*!this.savedIds.includes(event.data)*/true){
         let index = event.data;
         let index2 = index + 1;
         this.savedContent = this.savedContent.concat(this.content.slice(index,index2));
         this.savedIds = this.savedIds.concat(index);
       }
+    })
+    EventBus.addEventListener('save-remove', (event) => {
+      this.savedContent.forEach((element,index)=>{
+        if(index == event.data){
+          this.savedContent.splice(index,1);
+        }
+      });
+      this.savedIds.forEach((element,index)=>{
+        if(element == event.data){
+          this.savedIds.splice(index,1);
+        }
+      });
     })
   },
   mounted() {

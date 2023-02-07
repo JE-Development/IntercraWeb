@@ -22,6 +22,7 @@ export default {
 
   props: {
     index: Number,
+    savedContent: Boolean,
     url: String,
     image: String,
     pluginName: String,
@@ -29,7 +30,11 @@ export default {
 
   methods: {
     savedClick(){
-      EventBus.emit("save-result", this.index)
+      if(!this.savedContent) {
+        EventBus.emit("save-result", this.index)
+      }else{
+        EventBus.emit("save-remove", this.index)
+      }
     }
   }
 }
