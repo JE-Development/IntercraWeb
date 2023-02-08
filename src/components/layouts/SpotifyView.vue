@@ -10,7 +10,16 @@
       <h3 class="teaser-color">{{artist}}</h3>
       <h4 class="teaser-color">{{duration}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
-      <a @click="savedClick">save</a>
+      <div v-if="savedContent">
+        <div class="saved-content-div center-horizontal">
+          <a @click="savedClick"><img src="../../assets/arrow_left.png" class="saved-content-icon"/></a>
+        </div>
+      </div>
+      <div v-else class="saved-content-right">
+        <div class="saved-content-div center-horizontal">
+          <a @click="savedClick"><img src="../../assets/arrow_right.png" class="saved-content-icon"/></a>
+        </div>
+      </div>
     </div>
   </div>
 </template>

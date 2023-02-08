@@ -180,22 +180,26 @@ export default {
       sc.login();
     })
     EventBus.addEventListener('save-result', (event) => {
-      if(/*!this.savedIds.includes(event.data)*/true){
+      if(!this.savedIds.includes(event.data)){
         let index = event.data;
         let index2 = index + 1;
-        this.savedContent = this.savedContent.concat(this.content.slice(index,index2));
+        let saved = this.content.slice(index,index2)
+        saved[0].parentId = index;
+        this.savedContent = this.savedContent.concat(saved);
         this.savedIds = this.savedIds.concat(index);
       }
     })
     EventBus.addEventListener('save-remove', (event) => {
+      let parentId = -1;
       this.savedContent.forEach((element,index)=>{
         if(index == event.data){
+          parentId = this.savedContent[index].parentId;
           this.savedContent.splice(index,1);
         }
       });
       this.savedIds.forEach((element,index)=>{
-        if(element == event.data){
-          this.savedIds.splice(index,1);
+        if(element == parentId){
+          this.savedIds.splice(index, 1);
         }
       });
     })

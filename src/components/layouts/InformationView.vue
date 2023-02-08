@@ -5,7 +5,16 @@
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <p class="teaser-color">{{teaser}}</p>
       <p class="plugin-name-color view-plugin-name">Plugin: {{pluginName}}</p>
-      <a @click="savedClick">save</a>
+      <div v-if="savedContent">
+        <div class="saved-content-div center-horizontal">
+          <a @click="savedClick"><img src="../../assets/arrow_left.png" class="saved-content-icon"/></a>
+        </div>
+      </div>
+      <div v-else class="saved-content-right">
+        <div class="saved-content-div center-horizontal">
+          <a @click="savedClick"><img src="../../assets/arrow_right.png" class="saved-content-icon"/></a>
+        </div>
+      </div>
     </div>
   </div>
 </template>

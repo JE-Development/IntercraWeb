@@ -41,6 +41,9 @@
   </div>
 
 
+  <div class="center-horizontal">
+    <a href="/#/impressum">Impressum / Privacy Policy</a>
+  </div>
 </template>
 
 <script>

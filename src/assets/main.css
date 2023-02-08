@@ -53,12 +53,20 @@ a,
   justify-content: center;
 }
 
+b{
+  font-weight: bold;
+}
+
 .app-content-width{
   width: 500%;
 }
 
 .display-flex{
   display: flex;
+}
+
+.text-impressum{
+  font-size: 15pt;
 }
 
 .logo-text{

@@ -64,16 +64,13 @@ export class Ebay implements PluginInterface{
                     map.set("url", url);
                 }
             }
-            const img = product.getElementsByClassName("s-item__image-img");
-            for(let i = 0; i < img.length; i++){
-                let image = img[i];
-                let imgUrl = image.getAttribute("src");
-                let headline = image.getAttribute("alt");
-                map.set("imageUrl", imgUrl);
-                map.set("headline", headline);
-                if(headline === "Shop on eBay"){
-                    skip = true;
-                }
+            const image = product.getElementsByClassName("s-item__image-wrapper")[0].firstChild;
+            let imgUrl = image.getAttribute("src");
+            let headline = image.getAttribute("alt");
+            map.set("imageUrl", imgUrl);
+            map.set("headline", headline);
+            if(headline === "Shop on eBay"){
+                skip = true;
             }
 
             const price = product.getElementsByClassName("s-item__price")[0];

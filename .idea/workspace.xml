@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/arrow_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/arrow_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ImpressumPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/raw/arrow.ai" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Ebay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Ebay.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" afterDir="false" />
@@ -17,6 +24,7 @@
       <change beforePath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +84,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -204,6 +212,7 @@
       <workItem from="1675635931925" duration="5996000" />
       <workItem from="1675721756286" duration="9362000" />
       <workItem from="1675805208884" duration="1746000" />
+      <workItem from="1675847391387" duration="9457000" />
     </task>
     <servers />
   </component>

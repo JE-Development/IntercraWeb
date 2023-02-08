@@ -5,6 +5,7 @@ import SearchResultPage from '../components/SearchResultPage.vue'
 import ViewCollectionPage from '../components/ViewCollectionPage.vue'
 import AndroidPage from '../components/AndroidPage.vue'
 import RedirectPage from '../components/RedirectPage.vue'
+import ImpressumPage from '../components/ImpressumPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -31,6 +32,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/:token',
         name: 'RedirectPage',
         component: RedirectPage
+    },
+    {
+        path: '/impressum',
+        name: 'ImpressumPage',
+        component: ImpressumPage
     },
 ]
 
