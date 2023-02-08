@@ -6,8 +6,9 @@
     margin-top: 20px;
 }
 
-.view-border-saved{
-    width: 700px;
+.outer-scroll {
+    max-height: 100vh;
+    overflow: scroll;
 }
 
 .border-width{
@@ -42,6 +43,10 @@
 
 .preset{
     margin-top: 20px;
+}
+
+.view-border-saved{
+    width: 700px;
 }
 
 .waiting-border{
@@ -96,8 +101,23 @@
     font-size: 12px;
 }
 
+.main-results{
+
+}
+
 .bold{
     font-weight: bold;
+}
+
+@media (max-width: 1440px) {
+
+    .view-border-saved{
+        width: auto;
+    }
+    .main-results{
+        width: 100vw;
+    }
+
 }
 
 @media (max-width: 700px) {

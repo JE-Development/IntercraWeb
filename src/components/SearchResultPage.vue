@@ -26,29 +26,31 @@
   <SortingView :enabled="sorting"/>
 
   <div class="center-horizontal">
-    <div ref="mainresult">
-      <ViewTemplatesPage v-for="(dat, id) in content"
-                         :index="id"
-                         :choosenView="dat.choosenView"
-                         :url="dat.url"
-                         :headline="dat.headline"
-                         :pluginName="dat.pluginName"
-                         :teaser="dat.teaser"
-                         :image="dat.image"
-                         :date="dat.date"
-                         :price="dat.price"
-                         :artist="dat.artist"
-                         :release="dat.release"
-                         :tags="dat.tags"
-                         :genre="dat.genre"
-                         :type="dat.type"
-                         :publisher="dat.publisher"
-                         :appIcon="dat.appIcon"
-                         :platform="dat.platform"
-                         :album="dat.album"
-                         :duration="dat.duration"
-                         :lang="dat.lang"
-      />
+    <div ref="mainresult" class="main-results center-horizontal">
+      <div>
+        <ViewTemplatesPage v-for="(dat, id) in content"
+                           :index="id"
+                           :choosenView="dat.choosenView"
+                           :url="dat.url"
+                           :headline="dat.headline"
+                           :pluginName="dat.pluginName"
+                           :teaser="dat.teaser"
+                           :image="dat.image"
+                           :date="dat.date"
+                           :price="dat.price"
+                           :artist="dat.artist"
+                           :release="dat.release"
+                           :tags="dat.tags"
+                           :genre="dat.genre"
+                           :type="dat.type"
+                           :publisher="dat.publisher"
+                           :appIcon="dat.appIcon"
+                           :platform="dat.platform"
+                           :album="dat.album"
+                           :duration="dat.duration"
+                           :lang="dat.lang"
+        />
+      </div>
     </div>
     <div style="width: 30px">
     </div>
@@ -130,7 +132,8 @@ export default {
       showLoading: true,
       errors: [],
       ic: new IntercraController(),
-      sorting: "repeat"
+      sorting: "repeat",
+      savedPressed: false,
     };
   },
 
@@ -180,6 +183,10 @@ export default {
       sc.login();
     })
     EventBus.addEventListener('save-result', (event) => {
+      if(!this.savedPressed){
+        this.savedPressed = true;
+        this.$notify("search result saved! For smaller displays swipe to the left.n");
+      }
       if(!this.savedIds.includes(event.data)){
         let index = event.data;
         let index2 = index + 1;
@@ -273,14 +280,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.outer-scroll {
-  max-height: 100vh;
-  overflow: scroll;
-}
-
-
-
-
-</style>
