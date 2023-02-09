@@ -183,9 +183,10 @@ export default {
       sc.login();
     })
     EventBus.addEventListener('save-result', (event) => {
+      this.$notify("This feature is still in progress.");
+      /*
       if(!this.savedPressed){
         this.savedPressed = true;
-        this.$notify("search result saved! For smaller displays swipe to the left.n");
       }
       if(!this.savedIds.includes(event.data)){
         let index = event.data;
@@ -194,7 +195,7 @@ export default {
         saved[0].parentId = index;
         this.savedContent = this.savedContent.concat(saved);
         this.savedIds = this.savedIds.concat(index);
-      }
+      }*/
     })
     EventBus.addEventListener('save-remove', (event) => {
       let parentId = -1;
