@@ -1,18 +1,18 @@
 
 
 <template ref="srp">
-  <div class="center-horizontal result-search">
-    <a href="https://intercra.com">
-      <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
-    </a>
-  </div>
   <div class="center-horizontal">
-    <input
-        @keyup.enter="enterClicked()"
-        id="result-input-search"
-        placeholder="Search here"
-        :value="search"
-        class="search-input center-horizontal search-input-color search-input-border-color sticky">
+    <div>
+      <a href="https://intercra.com">
+        <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
+      </a>
+      <input
+          @keyup.enter="enterClicked()"
+          id="result-input-search"
+          placeholder="Search here"
+          :value="search"
+          class="search-input center-horizontal search-input-color search-input-border-color">
+    </div>
 
   </div>
 
@@ -25,8 +25,8 @@
 
   <SortingView :enabled="sorting"/>
 
-  <div class="center-horizontal">
-    <div ref="mainresult" class="main-results center-horizontal">
+  <div class="center-horizontal" :style="{width: width}">
+    <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
                            :index="id"
@@ -52,11 +52,11 @@
         />
       </div>
     </div>
-    <div style="width: 30px">
-    </div>
-    <div class="view-border-saved" v-if="savedContent.length != 0">
+    <div style="width: 30px" v-if="checkScreenSize()"></div>
+    <div style="width: 30px" v-else-if="isSaveContent"></div>
+    <div class="view-border-saved sticky" v-if="savedContent.length != 0">
       <div ref="header" class="outer-scroll">
-        <perfect-scrollbar height="100px" class="inner-scroll">
+        <perfect-scrollbar>
           <ViewTemplatesPage v-for="(dat, id) in savedContent"
                              :index="id"
                              :savedContent="true"
@@ -134,6 +134,8 @@ export default {
       ic: new IntercraController(),
       sorting: "repeat",
       savedPressed: false,
+      width: "100vw",
+      isSaveContent: false,
     };
   },
 
@@ -183,8 +185,6 @@ export default {
       sc.login();
     })
     EventBus.addEventListener('save-result', (event) => {
-      this.$notify("This feature is still in progress.");
-      /*
       if(!this.savedPressed){
         this.savedPressed = true;
       }
@@ -195,10 +195,14 @@ export default {
         saved[0].parentId = index;
         this.savedContent = this.savedContent.concat(saved);
         this.savedIds = this.savedIds.concat(index);
-      }*/
+        this.width = "200vw";
+        this.isSaveContent = true;
+      }
     })
     EventBus.addEventListener('save-remove', (event) => {
       let parentId = -1;
+      this.width = "100vw";
+      this.isSaveContent = false;
       this.savedContent.forEach((element,index)=>{
         if(index == event.data){
           parentId = this.savedContent[index].parentId;
@@ -213,7 +217,7 @@ export default {
     })
   },
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    //window.addEventListener("scroll", this.handleScroll);
 
     let sorting = this.getCookies("sorting");
 
@@ -221,18 +225,6 @@ export default {
 
     this.ic.changeShow();
 
-  },
-
-  updated() {
-    if(this.savedContent.length != 0) {
-      if (this.$refs.header.getBoundingClientRect().top <= 0 && this.$refs.mainresult.getBoundingClientRect().top <= 0) {
-        this.$refs.header.style.top = "0";
-        this.$refs.header.style.position = "fixed";
-      } else {
-        this.$refs.header.style.top = "initial";
-        this.$refs.header.style.position = "absolute";
-      }
-    }
   },
 
   methods: {
@@ -267,17 +259,13 @@ export default {
         return null;
       }
     },
-    handleScroll() {
-      if(this.savedContent.length != 0) {
-        if (this.$refs.header.getBoundingClientRect().top <= 0 && this.$refs.mainresult.getBoundingClientRect().top <= 0) {
-          this.$refs.header.style.top = "0";
-          this.$refs.header.style.position = "fixed";
-        } else {
-          this.$refs.header.style.top = "initial";
-          this.$refs.header.style.position = "absolute";
-        }
+    checkScreenSize(){
+      if(window.innerWidth > 1440){
+        return true;
+      }else{
+        return false;
       }
-    },
+    }
   }
 }
 </script>

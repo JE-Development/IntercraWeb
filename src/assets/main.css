@@ -108,10 +108,6 @@ b{
   max-width: 50px;
 }
 
-.result-search{
-  margin-top: 10px;
-}
-
 .result-image{
   max-height: 100px;
 }
@@ -171,12 +167,6 @@ b{
   height: 45px;
 }
 
-.sticky{
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
 
 .plugin-close{
   width: 200px;
@@ -199,6 +189,13 @@ b{
 
 .button-layout{
   margin: 10px;
+}
+
+.sticky {
+  position: sticky;
+  height: 50px;
+  width: 100%;
+  top: 0;
 }
 
 @media (hover: hover) {
