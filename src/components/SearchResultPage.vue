@@ -25,7 +25,7 @@
 
   <SortingView :enabled="sorting"/>
 
-  <div class="center-horizontal" :style="{width: width}">
+  <div :style="{width: width}" :class="center" style="display: flex">
     <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
@@ -136,6 +136,7 @@ export default {
       savedPressed: false,
       width: "100vw",
       isSaveContent: false,
+      center: "center-horizontal",
     };
   },
 
@@ -195,7 +196,13 @@ export default {
         saved[0].parentId = index;
         this.savedContent = this.savedContent.concat(saved);
         this.savedIds = this.savedIds.concat(index);
-        this.width = "200vw";
+        if(this.checkScreenSize()) {
+          this.width = "100vw";
+          this.center = "center-horizontal";
+        }else{
+          this.width = "200vw";
+          this.center = "";
+        }
         this.isSaveContent = true;
       }
     })
