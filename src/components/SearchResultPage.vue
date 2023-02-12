@@ -25,7 +25,7 @@
 
   <SortingView :enabled="sorting"/>
 
-  <div :style="{width: width}" :class="center" style="display: flex">
+  <div class="center-horizontal" style="display: flex">
     <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
@@ -134,9 +134,7 @@ export default {
       ic: new IntercraController(),
       sorting: "repeat",
       savedPressed: false,
-      width: "100vw",
       isSaveContent: false,
-      center: "center-horizontal",
     };
   },
 
@@ -196,19 +194,11 @@ export default {
         saved[0].parentId = index;
         this.savedContent = this.savedContent.concat(saved);
         this.savedIds = this.savedIds.concat(index);
-        if(this.checkScreenSize()) {
-          this.width = "100vw";
-          this.center = "center-horizontal";
-        }else{
-          this.width = "200vw";
-          this.center = "";
-        }
         this.isSaveContent = true;
       }
     })
     EventBus.addEventListener('save-remove', (event) => {
       let parentId = -1;
-      this.width = "100vw";
       this.isSaveContent = false;
       this.savedContent.forEach((element,index)=>{
         if(index == event.data){
