@@ -49,7 +49,6 @@
 <script>
 
 import PluginPopup from "./views/PluginPopup.vue";
-import PluginButton from "./views/PluginButton.vue";
 import {ViewCollection} from "./intercraSystemCode/classes/ViewCollection";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 import {IntercraController} from "./intercraSystemCode/controllers/IntercraController";
@@ -64,9 +63,11 @@ import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {PresetView, PluginCheckBox, PluginButton, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
+  components: {PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
+    this.$cookies.set("cookiesAllowed",  "true", 2147483647);
+    //always allowed because cookies are necessary
 
 
     let pc = new PluginController();

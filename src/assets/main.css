@@ -36,6 +36,10 @@
   justify-content: space-around;
 }
 
+.top-position{
+  z-index: 100;
+}
+
 body {
   display: flex;
   place-items: center;

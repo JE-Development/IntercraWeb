@@ -1,6 +1,7 @@
 
 
 <template ref="srp">
+  <SavedPopup :show="showPopup" @show-popup="showFromPopup" :saved-content="savedContent"/>
   <div class="center-horizontal">
     <div>
       <a href="https://intercra.com">
@@ -24,6 +25,10 @@
   </div>
 
   <SortingView :enabled="sorting"/>
+
+  <div class="center-horizontal sticky top-position" v-if="!checkScreenSize() && hasSaved()">
+    <SavedContentButton :show="true"/>
+  </div>
 
   <div class="center-horizontal" style="display: flex">
     <div class="main-results center-horizontal">
@@ -53,8 +58,7 @@
       </div>
     </div>
     <div style="width: 30px" v-if="checkScreenSize()"></div>
-    <div style="width: 30px" v-else-if="isSaveContent"></div>
-    <div class="view-border-saved sticky" v-if="savedContent.length != 0">
+    <div class="view-border-saved sticky" v-if="savedContent.length != 0 && checkScreenSize()">
       <div ref="header" class="outer-scroll">
         <perfect-scrollbar>
           <ViewTemplatesPage v-for="(dat, id) in savedContent"
@@ -112,10 +116,12 @@ import EventBus from "./intercraSystemCode/classes/EventBusEvent"
 import WaitingPlugins from "./views/WaitingPlugins.vue";
 import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyController";
 import SortingView from "../components/views/SortingView.vue";
+import SavedContentButton from "../components/views/SavedContentButton.vue";
+import SavedPopup from "../components/views/SavedPopup.vue";
 
 export default {
   name: "SearchResultPage",
-  components: {SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins},
+  components: {SavedContentButton, SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins, SavedPopup},
 
 
   data(){
@@ -135,6 +141,7 @@ export default {
       sorting: "repeat",
       savedPressed: false,
       isSaveContent: false,
+      showPopup: false,
     };
   },
 
@@ -182,6 +189,13 @@ export default {
     EventBus.addEventListener('login-circle', (event) => {
       let sc = new SpotifyController();
       sc.login();
+    })
+    EventBus.addEventListener('show-saved-popup', (event) => {
+      this.showPopup = true;
+      EventBus.emit("data-sender-saved-popup", this.savedContent)
+    })
+    EventBus.addEventListener('close-saved-popup', (event) => {
+      this.showPopup = false;
     })
     EventBus.addEventListener('save-result', (event) => {
       if(!this.savedPressed){
@@ -262,7 +276,16 @@ export default {
       }else{
         return false;
       }
-    }
+    },
+    hasSaved(){
+      if(this.savedContent.length > 0){
+        return true;
+      }
+      return false;
+    },
+    showFromPopup: function (message){
+      this.showPopup = message;
+    },
   }
 }
 </script>
