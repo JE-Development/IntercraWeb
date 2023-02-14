@@ -21,6 +21,7 @@ import {Reddit} from "../plugins/Reddit";
 import {GitHubRepositories} from "../plugins/GitHubRepositories";
 import {GitHubIssues} from "../plugins/GitHubIssues";
 import {GitHubTopics} from "../plugins/GitHubTopics";
+import {GoogleWeb} from "../plugins/GoogleWeb";
 
 export class PluginController {
 
@@ -36,6 +37,7 @@ export class PluginController {
 
     constructor() {
         this.plugins.push(new SpotifyTracks());
+        this.plugins.push(new GoogleWeb());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());
@@ -77,6 +79,7 @@ export class PluginController {
     async findMoreContent(searchText: string, plugin: string, token: string) {
         this.activePlugins = plugin.split("---");
         this.finishedPlugins = [];
+        this.all = []
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -93,7 +96,6 @@ export class PluginController {
     isFinished(contentList: Map<string, string>[], id: string) {
         this.finishedPlugins.push(id);
         let check = this.checkAllFinished();
-        let vc = new ViewCollection();
 
         EventBus.emit("not-finished", this.getNotFinished())
 
