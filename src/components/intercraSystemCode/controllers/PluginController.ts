@@ -22,6 +22,7 @@ import {GitHubRepositories} from "../plugins/GitHubRepositories";
 import {GitHubIssues} from "../plugins/GitHubIssues";
 import {GitHubTopics} from "../plugins/GitHubTopics";
 import {GoogleWeb} from "../plugins/GoogleWeb";
+import {YoutubeVideo} from "../plugins/YoutubeVideo";
 
 export class PluginController {
 
@@ -38,6 +39,7 @@ export class PluginController {
     constructor() {
         this.plugins.push(new SpotifyTracks());
         this.plugins.push(new GoogleWeb());
+        this.plugins.push(new YoutubeVideo());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());
@@ -59,16 +61,23 @@ export class PluginController {
         this.plugins.push(new GitHubTopics());
 
         this.special.push(new SpotifyTracks().id);
+        this.special.push(new YoutubeVideo().id);
     }
 
-    async findContent(searchText: string, plugin: string, token: string) {
+    async findContent(searchText: string, plugin: string, token: string, ytToken: string) {
         this.activePlugins = plugin.split("---");
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
                 if(this.special.includes(this.plugins[i].getId())) {
-                    let st = searchText + ";;;" + token;
-                    this.plugins[i].findContent(st, "", this);
+                    if(this.plugins[i].getId() === "spotify_tracks") {
+                        let st = searchText + ";;;" + token;
+                        this.plugins[i].findContent(st, "", this);
+                    }
+                    if(this.plugins[i].getId() === "youtube_video"){
+                        let st = searchText + ";;;" + ytToken;
+                        this.plugins[i].findContent(st, "", this);
+                    }
                 }else{
                     this.plugins[i].findContent(searchText, "", this);
                 }
@@ -76,7 +85,7 @@ export class PluginController {
         }
     }
 
-    async findMoreContent(searchText: string, plugin: string, token: string) {
+    async findMoreContent(searchText: string, plugin: string, token: string, ytToken: string) {
         this.activePlugins = plugin.split("---");
         this.finishedPlugins = [];
         this.all = []
@@ -84,8 +93,14 @@ export class PluginController {
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
                 if(this.special.includes(this.plugins[i].getId())) {
-                    let st = searchText + ";;;" + token;
-                    this.plugins[i].findMoreContent(st, "", this);
+                    if(this.plugins[i].getId() === "spotify_tracks") {
+                        let st = searchText + ";;;" + token;
+                        this.plugins[i].findMoreContent(st, "", this);
+                    }
+                    if(this.plugins[i].getId() === "youtube_video"){
+                        let st = searchText + ";;;" + ytToken;
+                        this.plugins[i].findMoreContent(st, "", this);
+                    }
                 }else{
                     this.plugins[i].findMoreContent(searchText, "", this);
                 }

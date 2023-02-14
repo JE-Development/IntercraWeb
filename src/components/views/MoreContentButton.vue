@@ -30,7 +30,7 @@ export default {
   methods: {
     onClickButton: function (){
       EventBus.emit("show-loading")
-      this.ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"));
+      this.ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"), this.$cookies.get("token-youtube"));
       this.ic.changeShow();
     },
     getCookies(key){

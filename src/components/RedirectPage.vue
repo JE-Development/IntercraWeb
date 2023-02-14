@@ -6,9 +6,13 @@
 export default {
   name: "RedirectPage",
 
+  created() {
+    console.log("uri" + document.documentURI)
+  },
+
   mounted() {
-    this.$notify("successfully logged into spotify");
     if(document.documentURI.includes("access_token=")){
+      this.$notify("successfully logged into spotify");
       let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
       let token = parser.split(";;;")[1];
       this.$cookies.set("token", token);

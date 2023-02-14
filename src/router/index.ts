@@ -34,6 +34,11 @@ const routes: Array<RouteRecordRaw> = [
         component: RedirectPage
     },
     {
+        path: '/google/callback/:token',
+        name: 'RedirectPage',
+        component: RedirectPage
+    },
+    {
         path: '/impressum',
         name: 'ImpressumPage',
         component: ImpressumPage

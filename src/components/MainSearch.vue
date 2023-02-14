@@ -59,6 +59,7 @@ import SpotifyLoginPopup from "./views/SpotifyLoginPopup.vue";
 import PresetView from "./views/PresetView.vue";
 import {PresetController} from "./intercraSystemCode/controllers/PresetController";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent";
+import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 
 export default {
   //npm run dev | npm run build
@@ -66,6 +67,7 @@ export default {
   components: {PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
+
     this.$cookies.set("cookiesAllowed",  "true", 2147483647);
     //always allowed because cookies are necessary
 
@@ -201,6 +203,10 @@ export default {
       }else{
         this.startSearch();
       }*/
+
+      //let gc = new GoogleController();
+      //gc.login();
+
       this.startSearch();
     },
 

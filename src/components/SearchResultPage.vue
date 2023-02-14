@@ -118,6 +118,7 @@ import {SpotifyController} from "./intercraSystemCode/controllers/SpotifyControl
 import SortingView from "../components/views/SortingView.vue";
 import SavedContentButton from "../components/views/SavedContentButton.vue";
 import SavedPopup from "../components/views/SavedPopup.vue";
+import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 
 export default {
   name: "SearchResultPage",
@@ -190,6 +191,10 @@ export default {
       let sc = new SpotifyController();
       sc.login();
     })
+    EventBus.addEventListener('youtube-login-circle', (event) => {
+      let gc = new GoogleController();
+      gc.login();
+    })
     EventBus.addEventListener('show-saved-popup', (event) => {
       this.showPopup = true;
       EventBus.emit("data-sender-saved-popup", this.savedContent)
@@ -232,7 +237,7 @@ export default {
 
     let sorting = this.getCookies("sorting");
 
-    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting);
+    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
 
     this.ic.changeShow();
 

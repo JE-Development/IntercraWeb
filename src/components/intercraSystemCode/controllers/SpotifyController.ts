@@ -19,7 +19,8 @@ export class SpotifyController{
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
 
-        let w = window.open(url, '_self');
+
+        window.open("https://google.com", '_self');
 
         /*let w = window.open(url,
             'Spotify',
@@ -44,9 +45,6 @@ export class SpotifyController{
 
         let json;
 
-
-
-
         let ok = true;
 
         await axios.get('https://api.spotify.com/v1/search?' + qs.stringify(data), {headers: {
@@ -60,6 +58,7 @@ export class SpotifyController{
             })
             .catch(error => {
                 if(doSearchEmit) {
+                    console.log("spotify error")
                     EventBus.emit("login-circle")
                 }else{
                     ok = false;
