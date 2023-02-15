@@ -80,7 +80,7 @@ export default {
     for(let i = 0; i < allPlugins.length; i++){
       let active = "";
       if(this.getEnabledFromCookie(allPlugins[i].getId()) == null){
-        if(allPlugins[i].getId() === "spotify_tracks") {
+        if(allPlugins[i].getId() === "spotify_tracks" || allPlugins[i].getId() === "youtube_video") {
           active = "false";
         }else{
           active = "true";

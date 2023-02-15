@@ -20,6 +20,11 @@
         – email address<br>
         Website:<br>
         - email address<br>
+
+        <b>Google / YouTube:</b><br>
+        We do not collect any personal information in these plugins. <br><br>
+
+
         We do not collect data from children under 13 years old.
       </p>
       <h1><br><b>This is how we use this information:</b></h1>
@@ -30,6 +35,10 @@
       <h1><br><b>Do we share information?</b></h1>
       <p class="text-impressum">
         No, we don’t share any kind of information.<br>
+      </p>
+      <h1><br><b>How to delete personal information?</b></h1>
+      <p class="text-impressum">
+        We save all of the personal information on your device.<br>To remove them just delete all cookies.<br>
       </p>
       <h1><br><b>What happens when our<br>Privacy Policy changes?</b></h1>
       <p class="text-impressum">

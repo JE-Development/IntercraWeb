@@ -9,7 +9,6 @@ export default {
     console.log(document.documentURI)
     if(!document.documentURI.includes("expires_in=3600")){
       if(document.documentURI.includes("access_token=")){
-        this.$notify("successfully logged into youtube");
         let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
         let token = parser.split(";;;")[1];
         console.log("yt token: " + token)
