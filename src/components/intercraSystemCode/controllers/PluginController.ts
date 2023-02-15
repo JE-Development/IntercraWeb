@@ -72,6 +72,11 @@ export class PluginController {
                 if(this.special.includes(this.plugins[i].getId())) {
                     if(this.plugins[i].getId() === "spotify_tracks") {
                         let st = searchText + ";;;" + token;
+                        if(plugin.includes("youtube_video")){
+                            st = st + ";;;false";
+                        }else{
+                            st = st + ";;;true";
+                        }
                         this.plugins[i].findContent(st, "", this);
                     }
                     if(this.plugins[i].getId() === "youtube_video"){

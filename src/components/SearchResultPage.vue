@@ -4,9 +4,11 @@
   <SavedPopup :show="showPopup" @show-popup="showFromPopup" :saved-content="savedContent"/>
   <div class="center-horizontal">
     <div>
-      <a href="https://intercra.com">
-        <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
-      </a>
+      <div class="center-horizontal">
+        <a href="https://intercra.com">
+          <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
+        </a>
+      </div>
       <input
           @keyup.enter="enterClicked()"
           id="result-input-search"
@@ -185,11 +187,6 @@ export default {
     EventBus.addEventListener('change-sorting', (event) => {
       this.ic.setSorting(event.data);
       location.reload();
-    })
-
-    EventBus.addEventListener('login-circle', (event) => {
-      let sc = new SpotifyController();
-      sc.login();
     })
     EventBus.addEventListener('youtube-login-circle', (event) => {
       let gc = new GoogleController();

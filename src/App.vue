@@ -1,5 +1,7 @@
 <script>
 
+import {SpotifyController} from "./components/intercraSystemCode/controllers/SpotifyController";
+
 export default {
   name: "App",
 
@@ -13,6 +15,21 @@ export default {
         console.log("yt token: " + token)
         this.$cookies.set("token-youtube", token);
         let route = this.$router.resolve({path: '/'});
+
+        let sc = new SpotifyController();
+
+        let sl = false;
+
+        console.log("here")
+
+        if(this.$cookies.get("spotify_tracks") === "true") {
+
+          sc.httpLibraryRequest(this.$cookies.get("token"), "test", "track", 10, 0, true).then(r =>
+              sl = true
+          );
+
+        }
+
         window.open("https://intercra.com", '_self');
       }else{
         //window.open("https://intercra.com", "_self");

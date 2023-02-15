@@ -23,7 +23,7 @@ export class SpotifyTracks implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
-        await this.startSearch(searchText);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
@@ -32,47 +32,56 @@ export class SpotifyTracks implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
         this.offset = this.offset + this.limit;
-        await this.startSearch(searchText);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
 
-    async startSearch(searchText: String): Promise<void>{
+    async startSearch(searchText: String, pc: PluginController): Promise<void>{
         let sc = new SpotifyController();
         let split = searchText.split(";;;");
 
-        await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, true).then(r =>
-            this.analyse(r)
+        let se = Boolean(split[2])
+
+        console.log("in working token: " + split[1])
+
+        await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, se).then(r =>
+            this.analyse(r, pc)
         );
     }
 
-    analyse(json: any){
-        let array = json.tracks.items;
-        for(let i = 0; i < array.length; i++){
-            let items = array[i];
+    analyse(json: any, pc: PluginController){
+        if(json.tracks != null) {
+            let array = json.tracks.items;
+            for (let i = 0; i < array.length; i++) {
+                let items = array[i];
 
-            let artist = JSON.stringify(items.artists[0].name).replace('"', "").replace('"', "");
-            let time = this.parseToTime(JSON.stringify(items.duration_ms)).replace('"', "").replace('"', "");
-            let url = "https://open.spotify.com/track/" + JSON.stringify(items.id).replace('"', "").replace('"', "");
-            let uri = JSON.stringify(items.uri).replace('"', "").replace('"', "");
-            let prevLink = JSON.stringify(items.preview_url).replace('"', "").replace('"', "");
-            let name = JSON.stringify(items.name).replace('"', "").replace('"', "");
-            let album = JSON.stringify(items.album.name).replace('"', "").replace('"', "");
-            let imageUrl = JSON.stringify(items.album.images[0].url).replace('"', "").replace('"', "");
+                let artist = JSON.stringify(items.artists[0].name).replace('"', "").replace('"', "");
+                let time = this.parseToTime(JSON.stringify(items.duration_ms)).replace('"', "").replace('"', "");
+                let url = "https://open.spotify.com/track/" + JSON.stringify(items.id).replace('"', "").replace('"', "");
+                let uri = JSON.stringify(items.uri).replace('"', "").replace('"', "");
+                let prevLink = JSON.stringify(items.preview_url).replace('"', "").replace('"', "");
+                let name = JSON.stringify(items.name).replace('"', "").replace('"', "");
+                let album = JSON.stringify(items.album.name).replace('"', "").replace('"', "");
+                let imageUrl = JSON.stringify(items.album.images[0].url).replace('"', "").replace('"', "");
 
-            let map = new Map<string, string>;
+                let map = new Map<string, string>;
 
-            map.set("headline", name);
-            map.set("artist", artist);
-            map.set("url", url);
-            map.set("uri", uri);
-            map.set("time", time);
-            map.set("album", album);
-            map.set("imageUrl", imageUrl);
-            map.set("prevLink", prevLink);
+                map.set("headline", name);
+                map.set("artist", artist);
+                map.set("url", url);
+                map.set("uri", uri);
+                map.set("time", time);
+                map.set("album", album);
+                map.set("imageUrl", imageUrl);
+                map.set("prevLink", prevLink);
 
-            this.contentList.push(map);
+                this.contentList.push(map);
+            }
+        }else{
+            console.log("tracks: " + json.tracks)
+            pc.gotError(this.id);
         }
     }
 

@@ -11,7 +11,7 @@ export default {
   },
 
   mounted() {
-    if(document.documentURI.includes("access_token=")){
+    /*if(document.documentURI.includes("access_token=")){
       this.$notify("successfully logged into spotify");
       let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
       let token = parser.split(";;;")[1];
@@ -20,7 +20,7 @@ export default {
       window.open(route.href, '_self');
     }else{
       window.open(document.baseURI, "_self");
-    }
+    }*/
   }
 }
 </script>

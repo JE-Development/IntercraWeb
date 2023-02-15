@@ -15,7 +15,8 @@ export class GoogleController{
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
 
-        let w = window.open(url, '_self');
+        console.log("google login")
+        window.open(url, '_self');
 
         /*let w = window.open(url,
             'Spotify',

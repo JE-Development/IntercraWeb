@@ -17,7 +17,8 @@ export class GoogleWeb implements PluginInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.AUDIO);
+        pc.addPreset(PresetEnum.NEWS);
+        pc.addPreset(PresetEnum.INFORMATION);
         return pc;
     }
 
