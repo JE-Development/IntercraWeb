@@ -37,6 +37,7 @@
                                      :album="dat.album"
                                      :duration="dat.duration"
                                      :lang="dat.lang"
+                                     :author="dat.author"
                   />
                   <div style="height: 200px"></div>
                 </div>

@@ -65,8 +65,15 @@ export class Fandom implements PluginInterface{
                 map.set("url", linkString);
                 map.set("headline", headline);
 
-                const image = list.getElementsByClassName("wp-post-image")[0];
-                map.set("imageUrl", image.getAttribute("src"));
+                let imageUrl = "";
+
+                try{
+                    const image = list.getElementsByClassName("wp-post-image")[0];
+                    imageUrl = image.getAttribute("src")
+                    map.set("imageUrl", imageUrl);
+                }catch (error){
+                    //no image
+                }
 
                 const time = list.getElementsByTagName("time")[0];
                 map.set("time", time.textContent);

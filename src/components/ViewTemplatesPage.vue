@@ -18,6 +18,7 @@
                :image="image"
                :date="date"
                :platform="platform"
+               :author="author"
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
                 :index="index"
@@ -66,6 +67,7 @@
                  :url="url"
                  :pluginName="pluginName"
                  :image="image"
+                 :headline="headline"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
                  :index="index"
@@ -87,6 +89,17 @@
               :teaser="teaser"
               :lang="lang"
   />
+  <ITunesView v-else-if="choosenView === 'itunesView'"
+              :index="index"
+              :savedContent="savedContent"
+              :url="url"
+              :headline="headline"
+              :pluginName="pluginName"
+              :image="image"
+              :artist="artist"
+              :type="type"
+              :price="price"
+  />
 
 
 
@@ -103,9 +116,11 @@ import PlayStoreNoIconView from "./layouts/PlayStoreNoIconView.vue";
 import ImageView from "./layouts/ImageView.vue";
 import SpotifyView from "./layouts/SpotifyView.vue";
 import GithubView from "./layouts/GithubView.vue";
+import ITunesView from "./layouts/ITunesView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    ITunesView,
     GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
     ImageView, SpotifyView},
 
@@ -125,6 +140,7 @@ export default {
     //article
     date: String,
     platform: String,
+    author: String,
 
     //shopping
     price: String,

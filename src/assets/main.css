@@ -90,6 +90,7 @@ b{
   border: solid;
   border-radius: 50px;
   border-color: transparent;
+  padding-left: 10px;
 }
 
 .center{

@@ -6,6 +6,7 @@
         <a :href="url">
           <img :src="image" class="center-horizontal view-image"/>
         </a>
+        <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       </div>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
       <div v-if="savedContent">
@@ -35,6 +36,7 @@ export default {
     url: String,
     image: String,
     pluginName: String,
+    headline: String,
   },
 
   methods: {

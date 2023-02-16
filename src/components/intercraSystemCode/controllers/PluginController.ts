@@ -23,6 +23,11 @@ import {GitHubIssues} from "../plugins/GitHubIssues";
 import {GitHubTopics} from "../plugins/GitHubTopics";
 import {GoogleWeb} from "../plugins/GoogleWeb";
 import {YoutubeVideo} from "../plugins/YoutubeVideo";
+import {Stackoverflow} from "../plugins/Stackoverflow";
+import {ITunes} from "../plugins/ITunes";
+import {Flickr} from "../plugins/Flickr";
+import {NewsApi} from "../plugins/NewsApi";
+import {Giphy} from "../plugins/Giphy";
 
 export class PluginController {
 
@@ -40,6 +45,8 @@ export class PluginController {
         this.plugins.push(new SpotifyTracks());
         this.plugins.push(new GoogleWeb());
         this.plugins.push(new YoutubeVideo());
+        this.plugins.push(new ITunes());
+        this.plugins.push(new NewsApi());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());
@@ -55,10 +62,13 @@ export class PluginController {
         this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
         this.plugins.push(new OscoboImage());
+        this.plugins.push(new Flickr());
+        this.plugins.push(new Giphy());
         this.plugins.push(new Reddit());
         this.plugins.push(new GitHubRepositories());
         this.plugins.push(new GitHubIssues());
         this.plugins.push(new GitHubTopics());
+        this.plugins.push(new Stackoverflow());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);

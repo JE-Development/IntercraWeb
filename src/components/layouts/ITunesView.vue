@@ -5,11 +5,10 @@
       <div class="content-layout-color center-horizontal">
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
-      <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
-      <h3 class="complementary-color bold">{{platform}}</h3>
-      <h3 class="text-black">{{teaser}}</h3>
-      <h4 class="teaser-color">{{author}}</h4>
-      <h4 class="teaser-color">{{date}}</h4>
+      <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
+      <h3 class="complementary-color bold">{{type}}</h3>
+      <h3>{{price}}</h3>
+      <h4 class="teaser-color">{{artist}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
       <div v-if="savedContent">
         <div class="saved-content-div center-horizontal">
@@ -30,18 +29,18 @@
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 
 export default {
-  name: "ArticleView",
+  name: "ITunesView",
+
   props: {
     index: Number,
     savedContent: Boolean,
     url: String,
     headline: String,
     pluginName: String,
-    teaser: String,
     image: String,
-    date: String,
-    platform: String,
-    author: String,
+    price: String,
+    artist: String,
+    type: String,
   },
 
   methods: {
@@ -53,7 +52,6 @@ export default {
       }
     }
   }
-
 }
 </script>
 

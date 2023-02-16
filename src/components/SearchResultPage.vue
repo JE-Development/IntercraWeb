@@ -56,6 +56,7 @@
                            :album="dat.album"
                            :duration="dat.duration"
                            :lang="dat.lang"
+                           :author="dat.author"
         />
       </div>
     </div>
@@ -85,6 +86,7 @@
                              :album="dat.album"
                              :duration="dat.duration"
                              :lang="dat.lang"
+                             :author="dat.author"
           />
         </perfect-scrollbar>
       </div>
