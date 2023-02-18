@@ -3,6 +3,8 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
+import {apiKey} from '../classes/Var'
 
 export class Amazon implements PluginInterface{
     finish = false;
@@ -23,16 +25,12 @@ export class Amazon implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/amazon/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -40,41 +38,44 @@ export class Amazon implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/amazon/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
 
-        this.startSearch(document);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
-        //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("div");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            if(e.getAttribute("data-component-type") === "s-search-result"){
-                let map = new Map<string, string>;
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-                const productLink = e.getElementsByClassName("s-no-outline")[0];
-                map.set("url", "https://www.amazon.com" + productLink.getAttribute("href"));
+        await hrc.httpRequest(
+            "https://intercra-backend.jason-apps.workers.dev/api/plugins/id=" + this.id + "&q=" + searchText + "&page=" + this.page + "&key=" + apiKey,
+            pc, this.id).then(r =>
+            this.analyse(r)
+        );
+    }
 
-                const imageLink = e.getElementsByClassName("s-image")[0];
-                map.set("imageUrl", imageLink.getAttribute("src"));
-                map.set("headline", imageLink.getAttribute("alt"));
+    analyse(json: any){
+        console.log(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}"))
+        let array = JSON.parse(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}")).items;
+        for(let i = 0; i < array.length; i++){
+            console.log("array: " + array.length)
+            let items = array[i];
 
-                const price = e.getElementsByClassName("a-offscreen")[0];
-                if(price == null){
-                    map.set("price", "");
-                }else{
-                    map.set("price", price.textContent);
-                }
+            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
+            let image = JSON.stringify(items.imageUrl).replace('"', "").replace('"', "");
+            let headline = JSON.stringify(items.headline).replace('"', "").replace('"', "");
+            let price = JSON.stringify(items.price).replace('"', "").replace('"', "");
 
-                this.contentList.push(map);
-            }
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
+            map.set("price", price);
+
+            this.contentList.push(map);
         }
     }
 
@@ -121,6 +122,7 @@ export class Amazon implements PluginInterface{
         for(let i = 0; i < this.contentList.length; i++){
 
             let contentMap = this.contentList[i];
+
 
             content.push({
                 choosenView: "shoppingView",
