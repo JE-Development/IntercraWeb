@@ -54,7 +54,6 @@ export class NonaWeb implements PluginInterface{
     }
 
     analyse(json: any){
-        console.log(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}"))
         let array = JSON.parse(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}")).items;
         for(let i = 0; i < array.length; i++){
             let items = array[i];

@@ -4,6 +4,8 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
+import {apiKey} from "../classes/Var";
 
 export class NonaVideo implements PluginInterface{
     finish = false;
@@ -22,16 +24,12 @@ export class NonaVideo implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/nona_video/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -39,35 +37,43 @@ export class NonaVideo implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/nona_video/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
+
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("video-results__item");
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
+        await hrc.httpRequest(
+            "https://intercra-backend.jason-apps.workers.dev/api/plugins/id=nona_video&q=test&page=1&key=iRK4yPoX9Wc4eKwuTwKzRsPYehC60dY0",
+            pc, this.id).then(r =>
+            this.analyse(r)
+        );
+    }
+
+    analyse(json: any){
+        console.log(JSON.stringify(json))
+        let array = JSON.parse(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}")).items;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
+
+            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
+            let teaser = JSON.stringify(items.teaser).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
+            let headline = JSON.stringify(items.headline).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
+            let time = JSON.stringify(items.time).replace('"', "").replace('"', "").split("\\n")[1];
+            let platform = JSON.stringify(items.platform).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
+
+
             let map = new Map<string, string>;
 
-            const link = elem.getElementsByClassName("video-result-teaser__link")[0];
-            const url = link.getAttribute("href");
             map.set("url", url);
-
-            const headline = elem.getElementsByClassName("video-result-teaser__image")[0];
-            map.set("headline", headline.getAttribute("alt"));
-
-            const time = elem.getElementsByClassName("video-result-teaser__image-duration")[0];
-            map.set("time", time.textContent);
-
-            const platform = elem.getElementsByClassName("video-result-teaser__source")[0];
-            map.set("topic", platform.textContent);
+            map.set("teaser", teaser);
+            map.set("headline", headline);
+            map.set("time", time);
+            map.set("topic", platform);
 
             this.contentList.push(map);
         }
