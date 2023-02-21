@@ -57,14 +57,14 @@ export class SpotifyTracks implements PluginInterface{
             for (let i = 0; i < array.length; i++) {
                 let items = array[i];
 
-                let artist = JSON.stringify(items.artists[0].name).replace('"', "").replace('"', "");
-                let time = this.parseToTime(JSON.stringify(items.duration_ms)).replace('"', "").replace('"', "");
-                let url = "https://open.spotify.com/track/" + JSON.stringify(items.id).replace('"', "").replace('"', "");
-                let uri = JSON.stringify(items.uri).replace('"', "").replace('"', "");
-                let prevLink = JSON.stringify(items.preview_url).replace('"', "").replace('"', "");
-                let name = JSON.stringify(items.name).replace('"', "").replace('"', "");
-                let album = JSON.stringify(items.album.name).replace('"', "").replace('"', "");
-                let imageUrl = JSON.stringify(items.album.images[0].url).replace('"', "").replace('"', "");
+                let artist = JSON.stringify(items.artists[0].name).replace(/\"+/g, '');
+                let time = this.parseToTime(JSON.stringify(items.duration_ms)).replace(/\"+/g, '');
+                let url = "https://open.spotify.com/track/" + JSON.stringify(items.id).replace(/\"+/g, '');
+                let uri = JSON.stringify(items.uri).replace(/\"+/g, '');
+                let prevLink = JSON.stringify(items.preview_url).replace(/\"+/g, '');
+                let name = JSON.stringify(items.name).replace(/\"+/g, '');
+                let album = JSON.stringify(items.album.name).replace(/\"+/g, '');
+                let imageUrl = JSON.stringify(items.album.images[0].url).replace(/\"+/g, '');
 
                 let map = new Map<string, string>;
 

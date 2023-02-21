@@ -54,14 +54,13 @@ export class NewsApi implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.urlToImage).replace('"', "").replace('"', "");
-            let teaser = JSON.stringify(items.description).replace('"', "").replace('"', "");
-            let author = JSON.stringify(items.author).replace('"', "").replace('"', "");
-            let time = JSON.stringify(items.publishedAt).replace('"', "").replace('"', "")
-                .split("T")[0];
-            let source = JSON.stringify(items.source.name).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.title).replace(/\"+/g, '');
+            let image = JSON.stringify(items.urlToImage).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.description).replace(/\"+/g, '');
+            let author = JSON.stringify(items.author).replace(/\"+/g, '');
+            let time = JSON.stringify(items.publishedAt).replace(/\"+/g, '').split("T")[0];
+            let source = JSON.stringify(items.source.name).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

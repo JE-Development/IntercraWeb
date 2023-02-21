@@ -51,12 +51,12 @@ export class ITunes implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.collectionViewUrl).replace('"', "").replace('"', "");
-            let type = JSON.stringify(items.wrapperType).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
-            let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
-            let price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.collectionViewUrl).replace(/\"+/g, '');
+            let type = JSON.stringify(items.wrapperType).replace(/\"+/g, '');
+            let image = JSON.stringify(items.artworkUrl100).replace(/\"+/g, '');
+            let artist = JSON.stringify(items.artistName).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.collectionName).replace(/\"+/g, '');
+            let price = "$" + JSON.stringify(items.collectionPrice).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

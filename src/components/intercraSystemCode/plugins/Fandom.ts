@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class Fandom implements PluginInterface{
     finish = false;
@@ -23,16 +24,12 @@ export class Fandom implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/fandom/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -40,53 +37,47 @@ export class Fandom implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/fandom/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
+
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const rawList = document.getElementsByTagName("div");
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        for(let j = 0; j < rawList.length; j++){
-            if(rawList[j].getAttribute("data-tracking-type") === "fandomstories"){
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
+    }
 
-                const list = rawList[j];
-                let map = new Map<string, string>;
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            console.log("array: " + array.length)
+            let items = array[i];
 
-                const url = list.getElementsByClassName("clickable-anchor")[0];
-                let linkString = url.getAttribute("href");
-                let headline = url.textContent;
-                map.set("url", linkString);
-                map.set("headline", headline);
-
-                let imageUrl = "";
-
-                try{
-                    const image = list.getElementsByClassName("wp-post-image")[0];
-                    imageUrl = image.getAttribute("src")
-                    map.set("imageUrl", imageUrl);
-                }catch (error){
-                    //no image
-                }
-
-                const time = list.getElementsByTagName("time")[0];
-                map.set("time", time.textContent);
-
-                const teaser = list.getElementsByClassName("excerpt")[0].getElementsByTagName("a")[0];
-                map.set("teaser", teaser.textContent);
-
-
-                this.contentList.push(map);
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
+            let time = JSON.stringify(items.time).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/\"+/g, '');
+            let image = "";
+            try{
+                image = JSON.stringify(items.imageUrl).replace(/\"+/g, '');
+            }catch (error){
+                //no image
             }
+
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
+            map.set("time", time);
+            map.set("teaser", teaser);
+
+            this.contentList.push(map);
         }
-
-
     }
 
     getContentList(): Map<string, string>[] {

@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class GooglePlayApps implements PluginInterface{
     finish = false;
@@ -20,83 +21,54 @@ export class GooglePlayApps implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/google_play_apps/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("div");
-        for(let i = 0; i < article.length; i++){
-            if(article[i].getAttribute("role") === "listitem") {
-                const e = article[i];
-                //if (e.getAttribute("data-component-type") === "s-search-result") {
-                    let map = new Map<string, string>;
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-                    let appLink = e.getElementsByTagName("a")[0];
-                    map.set("url", "https://play.google.com" + appLink.getAttribute("href"));
+        await hrc.intercraHttpRequest(this.id, searchText, 1, pc).then(r => this.analyse(r));
+    }
 
-                    let image = e.getElementsByTagName("img");
-                    for(let j = 0; j < image.length; j++){
-                        let img = image[0];
-                        if(img.getAttribute("alt") === "Screenshot image"){
-                            map.set("imageUrl", img.getAttribute("src"));
-                        }
-                    }
+    analyse(json: any){
+        let array = json.items;
+        console.log(json)
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
 
-                    let parent = e.getElementsByTagName("a")[0];
-                    let icon = parent.children[1].children[0];
-                    map.set("appIconUrl", icon.getAttribute("src"));
+            let url = "https://play.google.com" + JSON.stringify(items.url).replace(/\"+/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
+            let price = JSON.stringify(items.price).replace(/\"+/g, '');
+            let icon = JSON.stringify(items.icon).replace(/\"+/g, '');
+            let publisher = JSON.stringify(items.publisher).replace(/\"+/g, '');
 
-                    let names = e.getElementsByTagName("span");
-                    if(names.length >= 3){
-                        let appName = names[0].textContent;
-                        let publisher = names[1].textContent;
 
-                        if(appName === ""){
-                            appName = names[1].textContent;
-                            publisher = names[2].textContent;
-                        }
+            let map = new Map<string, string>;
 
-                        map.set("headline", appName);
-                        map.set("publisher", publisher);
-                    }
+            console.log(JSON.stringify(icon))
 
-                    let price = e.getElementsByTagName("span");
-                    for(let j = 0; j < price.length; j++){
-                        let pr = price[j];
-                        if(pr.textContent.includes("$")){
-                            map.set("price", pr.textContent);
-                        }
-                    }
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
+            map.set("price", price);
+            map.set("appIconUrl", icon);
+            map.set("publisher", publisher);
 
-                    let bool = true;
-                    for(let j = 0; j < this.contentList.length; j++){
-                        let s = this.contentList[j].get("url");
-                        if(s === map.get("url")){
-                            bool = false;
-                        }
-                    }
-                    let checkUrl = String(map.get("url"));
-                    if(bool && !checkUrl.includes("https://play.google.com/store/search?q=")){
-                        this.contentList.push(map);
-                    }
-                //}
-            }
+            this.contentList.push(map);
         }
     }
 

@@ -35,6 +35,8 @@ export class HttpRequestController {
 
         let json;
 
+        console.log("https://intercra-backend.jason-apps.workers.dev/api/plugins/?id=" + id + "&q=" + q + "&page=" + page + "&key=" + apiKey)
+
         await axios.get("https://intercra-backend.jason-apps.workers.dev/api/plugins/?id=" + id + "&q=" + q + "&page=" + page + "&key=" + apiKey)
             .then(response => {
                 json = response.data;

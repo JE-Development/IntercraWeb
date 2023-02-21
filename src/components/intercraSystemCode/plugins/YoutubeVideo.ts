@@ -51,11 +51,11 @@ export class YoutubeVideo implements PluginInterface{
 
 
                 if (array[i].id.videoId != null) {
-                    let url = "https://www.youtube.com/watch?v=" + JSON.stringify(array[i].id.videoId).replace('"', "").replace('"', "");
-                    let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
-                    let channel = JSON.stringify(items.channelTitle).replace('"', "").replace('"', "");
-                    let image = JSON.stringify(items.thumbnails.high.url).replace('"', "").replace('"', "");
-                    let date = JSON.stringify(items.publishTime).replace('"', "").replace('"', "").split("T")[0];
+                    let url = "https://www.youtube.com/watch?v=" + JSON.stringify(array[i].id.videoId).replace(/\"+/g, '');
+                    let headline = JSON.stringify(items.title).replace(/\"+/g, '');
+                    let channel = JSON.stringify(items.channelTitle).replace(/\"+/g, '');
+                    let image = JSON.stringify(items.thumbnails.high.url).replace(/\"+/g, '');
+                    let date = JSON.stringify(items.publishTime).replace(/\"+/g, '').split("T")[0];
 
                     let map = new Map<string, string>;
 

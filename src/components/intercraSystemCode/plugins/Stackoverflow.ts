@@ -55,11 +55,10 @@ export class Stackoverflow implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.link).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.title).replace('"', "").replace('"', "")
-                .replace("&#39;", "'");
-            let answerCount = "Answer Count: " + JSON.stringify(items.answer_count).replace('"', "").replace('"', "");
-            let score = "Score: " + JSON.stringify(items.score).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.link).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.title).replace(/\"+/g, '').replace("&#39;", "'");
+            let answerCount = "Answer Count: " + JSON.stringify(items.answer_count).replace(/\"+/g, '');
+            let score = "Score: " + JSON.stringify(items.score).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

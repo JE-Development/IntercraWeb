@@ -52,9 +52,9 @@ export class GoogleWeb implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.link).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
-            let teaser = JSON.stringify(items.snippet).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.link).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.title).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.snippet).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

@@ -55,11 +55,11 @@ export class NonaVideo implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
-            let teaser = JSON.stringify(items.teaser).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
-            let headline = JSON.stringify(items.headline).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
-            let time = JSON.stringify(items.time).replace('"', "").replace('"', "").split("\\n")[1];
-            let platform = JSON.stringify(items.platform).replace('"', "").replace('"', "").replace("\\n", "").replace("\\n", "");
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
+            let time = JSON.stringify(items.time).replace(/\"+/g, '').split("\\n")[1];
+            let platform = JSON.stringify(items.platform).replace(/\"+/g, '');
 
 
             let map = new Map<string, string>;

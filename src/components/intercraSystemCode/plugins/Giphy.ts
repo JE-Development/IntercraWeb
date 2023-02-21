@@ -54,8 +54,8 @@ export class Giphy implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.images.original.url).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let image = JSON.stringify(items.images.original.url).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

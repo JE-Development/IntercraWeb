@@ -54,15 +54,15 @@ export class Flickr implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = "https://www.flickr.com/photos/" + JSON.stringify(items.owner).replace('"', "").replace('"', "")
-            + "/" + JSON.stringify(items.id).replace('"', "").replace('"', "");
+            let url = "https://www.flickr.com/photos/" + JSON.stringify(items.owner).replace(/\"+/g, '');
+            + "/" + JSON.stringify(items.id).replace('"', "").replace(/\"+/g, '');
 
-            let image = "https://live.staticflickr.com/" + JSON.stringify(items.server).replace('"', "").replace('"', "")
-                + "/" + JSON.stringify(items.id).replace('"', "").replace('"', "")
-                + "_" + JSON.stringify(items.secret).replace('"', "").replace('"', "")
+            let image = "https://live.staticflickr.com/" + JSON.stringify(items.server).replace(/\"+/g, '');
+                + "/" + JSON.stringify(items.id).replace(/\"+/g, '');
+                + "_" + JSON.stringify(items.secret).replace(/\"+/g, '');
                 + ".jpg";
 
-            let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
+            let headline = JSON.stringify(items.title).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 

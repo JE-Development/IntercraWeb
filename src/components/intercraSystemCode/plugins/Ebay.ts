@@ -56,10 +56,10 @@ export class Ebay implements PluginInterface{
             console.log("array: " + array.length)
             let items = array[i];
 
-            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.imageUrl).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.headline).replace('"', "").replace('"', "");
-            let price = JSON.stringify(items.price).replace('"', "").replace('"', "");
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
+            let price = JSON.stringify(items.price).replace(/\"+/g, '');
 
 
             let map = new Map<string, string>;
