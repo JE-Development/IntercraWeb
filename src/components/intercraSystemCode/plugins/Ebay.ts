@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class Ebay implements PluginInterface{
     finish = false;
@@ -23,16 +24,12 @@ export class Ebay implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/ebay/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -40,44 +37,39 @@ export class Ebay implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/ebay/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
+
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const list = document.getElementsByClassName("s-item s-item__pl-on-bottom");
-        for(let loop = 0; loop < list.length; loop++){
-            const product = list[loop];
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
+
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
+    }
+
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            console.log("array: " + array.length)
+            let items = array[i];
+
+            let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
+            let image = JSON.stringify(items.imageUrl).replace('"', "").replace('"', "");
+            let headline = JSON.stringify(items.headline).replace('"', "").replace('"', "");
+            let price = JSON.stringify(items.price).replace('"', "").replace('"', "");
+
+
             let map = new Map<string, string>;
-            let skip = false;
 
-            const productLink = product.getElementsByTagName("a")
-            for(let i = 0; i < productLink.length; i++){
-                if(productLink[i].hasAttribute("tabindex")){
-                    let url:string = productLink[i].getAttribute("href");
-                    map.set("url", url);
-                }
-            }
-            const image = product.getElementsByClassName("s-item__image-wrapper")[0].firstChild;
-            let imgUrl = image.getAttribute("src");
-            let headline = image.getAttribute("alt");
-            map.set("imageUrl", imgUrl);
+            map.set("url", url);
+            map.set("imageUrl", image);
             map.set("headline", headline);
-            if(headline === "Shop on eBay"){
-                skip = true;
-            }
+            map.set("price", price);
 
-            const price = product.getElementsByClassName("s-item__price")[0];
-            map.set("price", price.textContent);
-            if(!skip){
-                this.contentList.push(map);
-            }
+            this.contentList.push(map);
         }
     }
 

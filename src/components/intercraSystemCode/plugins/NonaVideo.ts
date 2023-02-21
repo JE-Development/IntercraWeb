@@ -47,16 +47,11 @@ export class NonaVideo implements PluginInterface{
     async startSearch(searchText: string, pc: PluginController): Promise<void>{
         let hrc = new HttpRequestController()
 
-        await hrc.httpRequest(
-            "https://intercra-backend.jason-apps.workers.dev/api/plugins/id=nona_video&q=test&page=1&key=iRK4yPoX9Wc4eKwuTwKzRsPYehC60dY0",
-            pc, this.id).then(r =>
-            this.analyse(r)
-        );
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
     }
 
     analyse(json: any){
-        console.log(JSON.stringify(json))
-        let array = JSON.parse(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}")).items;
+        let array = json.items;
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 

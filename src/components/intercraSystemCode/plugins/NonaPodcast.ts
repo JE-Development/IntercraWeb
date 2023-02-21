@@ -45,15 +45,11 @@ export class NonaPodcast implements PluginInterface{
     async startSearch(searchText: string, pc: PluginController): Promise<void>{
         let hrc = new HttpRequestController()
 
-        await hrc.httpRequest(
-            "https://intercra-backend.jason-apps.workers.dev/api/plugins/id=" + this.id + "&q=" + searchText + "&page=" + this.page + "&key=" + apiKey,
-            pc, this.id).then(r =>
-            this.analyse(r)
-        );
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
     }
 
     analyse(json: any){
-        let array = JSON.parse(json.replace("\{\"items\"\:\{\{", "\{\"items\"\:\[\{").replace("\}\}\}", "\}\]\}")).items;
+        let array = json.items
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
