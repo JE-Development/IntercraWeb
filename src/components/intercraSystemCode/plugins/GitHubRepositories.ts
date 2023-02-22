@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class GitHubRepositories implements PluginInterface{
     finish = false;
@@ -20,16 +21,12 @@ export class GitHubRepositories implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/github_repositories/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -37,53 +34,38 @@ export class GitHubRepositories implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/github_repositories/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
 
-        this.startSearch(document);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
-        //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        const ul = document.getElementsByClassName("repo-list")[0];
-        const rawList = ul.children;
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
+    }
 
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
 
-        for(let j = 0; j < rawList.length; j++){
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
+            let lang = JSON.stringify(items.language).replace(/\"+/g, '');
+
             let map = new Map<string, string>;
-            let list = rawList[j];
 
-            const headline = list.getElementsByTagName("a")[0].textContent;
+            map.set("url", url);
+            map.set("teaser", teaser);
             map.set("headline", headline);
-
-            const url = list.getElementsByTagName("a")[0].getAttribute("href");
-            map.set("url", "https://github.com" + url);
-
-            try {
-                const sub = list.getElementsByClassName("mb-1")[0].textContent;
-                map.set("teaser", sub);
-            }catch (e){
-                map.set("teaser", "");
-            }
-
-            const lang = list.getElementsByTagName("span");
-            for(let k = 0; k < lang.length; k++){
-                if(lang[k].getAttribute("itemprop") === "programmingLanguage"){
-                    map.set("lang", lang[k].textContent);
-                }
-            }
+            map.set("lang", lang);
 
             this.contentList.push(map);
-
         }
-
-
     }
 
     getContentList(): Map<string, string>[] {

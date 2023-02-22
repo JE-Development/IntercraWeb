@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class GitHubIssues implements PluginInterface{
     finish = false;
@@ -20,16 +21,12 @@ export class GitHubIssues implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/github_issues/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
@@ -37,44 +34,41 @@ export class GitHubIssues implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/github_issues/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
 
-        this.startSearch(document);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
-        //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        const rawList = document.getElementsByClassName("issue-list-item");
+        await hrc.intercraHttpRequest(this.id, searchText, this.page, pc).then(r => this.analyse(r));
+    }
 
-        for(let j = 0; j < rawList.length; j++){
-            let map = new Map<string, string>;
-            let list = rawList[j];
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
 
-            const headline = list.getElementsByTagName("a")[0].textContent;
-            map.set("headline", headline);
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
 
-            const url = list.getElementsByTagName("a")[0].getAttribute("href");
-            map.set("url", "https://github.com" + url);
-
-            try {
-                const sub = list.getElementsByClassName("mb-0")[0].textContent;
-                map.set("teaser", sub);
-            }catch (e){
-                map.set("teaser", "");
+            if(headline.length >= 65){
+                headline = headline.substring(0,65) + "...";
             }
 
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("teaser", teaser);
+            map.set("headline", headline);
+
             this.contentList.push(map);
-
         }
-
-
     }
 
     getContentList(): Map<string, string>[] {

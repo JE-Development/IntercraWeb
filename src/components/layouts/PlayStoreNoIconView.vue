@@ -8,7 +8,8 @@
       <div class="display-flex">
         <div class="app-content-width">
           <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
-          <h3>{{publisher}}</h3>
+          <h3 class="text-black">{{publisher}}</h3>
+          <h3 class="teaser-color">{{price}}</h3>
           <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
           <div v-if="savedContent">
             <div class="saved-content-div center-horizontal">
@@ -42,6 +43,7 @@ export default {
     pluginName: String,
     image: String,
     publisher: String,
+    price: String,
   },
 
   methods: {

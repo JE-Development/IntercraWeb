@@ -54,7 +54,6 @@ export class Amazon implements PluginInterface{
     analyse(json: any){
         let array = json.items;
         for(let i = 0; i < array.length; i++){
-            console.log("array: " + array.length)
             let items = array[i];
 
             let url = JSON.stringify(items.url).replace(/\"+/g, '');

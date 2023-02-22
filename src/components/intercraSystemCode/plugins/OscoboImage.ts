@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class OscoboImage implements PluginInterface{
     finish = false;
@@ -20,37 +21,41 @@ export class OscoboImage implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/oscobo_image/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("item");
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
+        await hrc.intercraHttpRequest(this.id, searchText, 1, pc).then(r => this.analyse(r));
+    }
+
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
+
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/\"+/g, '');
+
+
             let map = new Map<string, string>;
 
-            const url = elem.getElementsByTagName("a")[0];
-            map.set("url", url.getAttribute("href"));
-
-            const image = elem.getElementsByTagName("img")[0];
-            map.set("imageUrl", image.getAttribute("src"));
+            map.set("url", url);
+            map.set("imageUrl", image);
 
             this.contentList.push(map);
         }

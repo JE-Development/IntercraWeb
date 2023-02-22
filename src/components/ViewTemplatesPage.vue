@@ -60,6 +60,7 @@
                  :pluginName="pluginName"
                  :publisher="publisher"
                  :image="image"
+                 :price="price"
   />
   <ImageView v-else-if="choosenView === 'imageView'"
                  :index="index"

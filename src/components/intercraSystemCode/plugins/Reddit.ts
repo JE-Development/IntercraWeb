@@ -3,6 +3,7 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class Reddit implements PluginInterface{
     finish = false;
@@ -23,58 +24,46 @@ export class Reddit implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/reddit/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
+            await this.startSearch(searchText, pc);
             this.finish = true;
 
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(String(error))
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+
         pc.isFinished(this.contentList, this.id);
     }
 
-    startSearch(document: any): void{
-        const rawList = document.getElementsByTagName("div");
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
 
-        for(let j = 0; j < rawList.length; j++){
+        await hrc.intercraHttpRequest(this.id, searchText, 1, pc).then(r => this.analyse(r));
+    }
 
-            if(rawList[j].getAttribute("data-testid") === "posts-list"){
-                let children = rawList[j].firstChild.children;
-                for(let k = 0; k < children.length; k++){
-                    let divs = children[k].getElementsByTagName("div");
-                    let map = new Map<string, string>;
-                    for(let l = 0; l < divs.length; l++){
-                        if(divs[l].getAttribute("data-adclicklocation") === "media"){
-                            const list = divs[l];
+    analyse(json: any){
+        let array = json.items;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
 
-                            let headline = list.getAttribute("aria-label");
-                            map.set("headline", headline);
-
-                            let image = list.getAttribute("style").split("url(")[1].split(");")[0];
-                            map.set("imageUrl", image);
+            let url = JSON.stringify(items.url).replace(/\"+/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.headline).replace(/\"+/g, '');
 
 
+            let map = new Map<string, string>;
 
-                        }
-                    }
-                    let a = children[k].getElementsByTagName("a")[0].getAttribute("href");
-                    map.set("url", "https://www.reddit.com" + a);
-                    this.contentList.push(map);
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
 
-                }
-            }
+            this.contentList.push(map);
         }
-
-
     }
 
     getContentList(): Map<string, string>[] {
