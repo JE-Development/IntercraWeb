@@ -43,7 +43,7 @@ export class PluginController {
 
     constructor() {
         this.plugins.push(new SpotifyTracks());
-        this.plugins.push(new GoogleWeb());
+        //this.plugins.push(new GoogleWeb());
         this.plugins.push(new YoutubeVideo());
         this.plugins.push(new ITunes());
         this.plugins.push(new NewsApi());
