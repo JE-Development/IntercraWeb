@@ -19,14 +19,14 @@
 
   </div>
 
+  <SortingView :enabled="sorting"/>
+
   <div v-if="errors.length > 0">
     <h3 class="center-horizontal error-color">Error in:</h3>
     <div v-for="(err) in errors" class="center-horizontal">
       <h4 class="error-color">{{err}}</h4>
     </div>
   </div>
-
-  <SortingView :enabled="sorting"/>
 
   <div class="center-horizontal sticky top-position" v-if="!checkScreenSize() && hasSaved()">
     <SavedContentButton :show="true"/>

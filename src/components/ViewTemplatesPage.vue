@@ -101,6 +101,17 @@
               :type="type"
               :price="price"
   />
+  <ModelsView v-else-if="choosenView === 'modelsView'"
+              :index="index"
+              :savedContent="savedContent"
+              :url="url"
+              :headline="headline"
+              :pluginName="pluginName"
+              :image="image"
+              :artist="artist"
+              :type="type"
+              :price="price"
+  />
 
 
 
@@ -118,9 +129,11 @@ import ImageView from "./layouts/ImageView.vue";
 import SpotifyView from "./layouts/SpotifyView.vue";
 import GithubView from "./layouts/GithubView.vue";
 import ITunesView from "./layouts/ITunesView.vue";
+import ModelsView from "./layouts/ModelsView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    ModelsView,
     ITunesView,
     GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
     ImageView, SpotifyView},

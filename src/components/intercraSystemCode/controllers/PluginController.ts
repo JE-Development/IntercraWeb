@@ -28,6 +28,7 @@ import {ITunes} from "../plugins/ITunes";
 import {Flickr} from "../plugins/Flickr";
 import {NewsApi} from "../plugins/NewsApi";
 import {Giphy} from "../plugins/Giphy";
+import {Sketchfab} from "../plugins/Sketchfab";
 
 export class PluginController {
 
@@ -43,7 +44,6 @@ export class PluginController {
 
     constructor() {
         this.plugins.push(new SpotifyTracks());
-        this.plugins.push(new GoogleWeb());
         this.plugins.push(new YoutubeVideo());
         this.plugins.push(new ITunes());
         this.plugins.push(new NewsApi());
@@ -69,6 +69,7 @@ export class PluginController {
         this.plugins.push(new GitHubIssues());
         this.plugins.push(new GitHubTopics());
         this.plugins.push(new Stackoverflow());
+        this.plugins.push(new Sketchfab());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
@@ -76,6 +77,7 @@ export class PluginController {
 
     async findContent(searchText: string, plugin: string, token: string, ytToken: string) {
         this.activePlugins = plugin.split("---");
+        this.finishedPlugins = [];
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -203,6 +205,8 @@ export class PluginController {
     }
 
     checkAllFinished(): boolean {
+        console.log(this.activePlugins);
+        console.log(this.finishedPlugins);
         if (this.activePlugins.length != this.finishedPlugins.length) {
             return false;
         } else {

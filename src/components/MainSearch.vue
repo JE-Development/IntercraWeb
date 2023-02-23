@@ -13,13 +13,14 @@
         <div class="center-horizontal">
           <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
         </div>
-        <!--<input
+        <input
             @keyup.enter="enterClicked()"
             id="main-input-search"
             placeholder="Search here"
             class="search-input center-horizontal search-input-color search-input-border-color">
-        /!-->
+        <!--
         <h2>Intercra has been temporarily disabled due to development work.</h2>
+        /!-->
       </div>
     </div>
   </div>

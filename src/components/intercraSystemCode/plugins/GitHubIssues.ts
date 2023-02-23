@@ -26,7 +26,7 @@ export class GitHubIssues implements PluginInterface{
 
             pc.isFinished(this.contentList, this.id);
         }catch (error){
-            console.log(String(error))
+            console.log("error in github issues")
             pc.gotError(this.id);
         }
     }

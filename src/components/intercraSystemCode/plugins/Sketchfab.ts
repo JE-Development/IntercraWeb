@@ -1,40 +1,40 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
-import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
-import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
-import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
+import {apiKey} from '../classes/Var'
 
-export class Flickr implements PluginInterface{
+export class Sketchfab implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
-    page: number = 1;
 
-    displayName = "Flickr";
-    id = "flickr";
+    displayName = "Sketchfab";
+    id = "sketchfab";
+    page = 1;
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.IMAGES)
+        pc.addPreset(PresetEnum.MODELS3D);
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        try {
+            await this.startSearch(searchText, pc);
+            this.finish = true;
 
-        await this.startSearch(searchText, pc);
-        this.finish = true;
-
-        pc.isFinished(this.contentList, this.id);
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(String(error))
+            pc.gotError(this.id);
+        }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+
         this.contentList = [];
-        this.page = this.page + 1;
-        await this.startSearch(searchText, pc);
-        this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
@@ -43,32 +43,30 @@ export class Flickr implements PluginInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=4d7ad36ec7d127e1e48b5a3800277c70&text=" + searchText + "&format=json&nojsoncallback=1&page=" + this.page,
+            "https://sketchfab.com/v3/search?type=models&q=" + searchText,
             pc, this.id).then(r =>
             this.analyse(r)
         );
     }
 
     analyse(json: any){
-        let array = json.photos.photo;
+        let array = json.results;
+        console.log(array)
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            let url = "https://www.flickr.com/photos/" + JSON.stringify(items.owner).replace(/\"+/g, '');
-            + "/" + JSON.stringify(items.id).replace('"', "").replace(/\"+/g, '');
+            let url = JSON.stringify(items.viewerUrl).replace(/\"+/g, '');
+            let image = JSON.stringify(items.thumbnails.images[0].url).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.name).replace(/\"+/g, '');
+            let creator = JSON.stringify(items.user.displayName).replace(/\"+/g, '');
 
-            let image = "https://live.staticflickr.com/" + JSON.stringify(items.server).replace(/\"+/g, '')
-                + "/" + JSON.stringify(items.id).replace(/\"+/g, '')
-                + "_" + JSON.stringify(items.secret).replace(/\"+/g, '')
-                + ".jpg";
-
-            let headline = JSON.stringify(items.title).replace(/\"+/g, '');
 
             let map = new Map<string, string>;
 
             map.set("url", url);
             map.set("imageUrl", image);
             map.set("headline", headline);
+            map.set("creator", creator);
 
             this.contentList.push(map);
         }
@@ -118,19 +116,28 @@ export class Flickr implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
+
             content.push({
-                choosenView: "itunesView",
+                choosenView: "modelsView",
                 url: contentMap.get("url"),
-                headline: contentMap.get("headline"),
+                headline: this.cutString(String(contentMap.get("headline"))),
                 pluginName: this.displayName,
-                price: contentMap.get("price"),
-                image: contentMap.get("imageUrl"),
-                type: contentMap.get("type"),
-                artist: contentMap.get("artist"),
+                artist: contentMap.get("creator"),
+                image: contentMap.get("imageUrl")
             })
         }
 
         return content;
+    }
+
+    cutString(str: string): string{
+        let index = 80;
+        if(str.length > index) {
+            let cut = str.substring(0, index) + "...";
+            return cut;
+        }else{
+            return str;
+        }
     }
 
 }

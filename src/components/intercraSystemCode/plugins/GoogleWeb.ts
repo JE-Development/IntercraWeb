@@ -23,11 +23,15 @@ export class GoogleWeb implements PluginInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        try{
+            await this.startSearch(searchText);
+            this.finish = true;
 
-        await this.startSearch(searchText);
-        this.finish = true;
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id)
+        }
 
-        pc.isFinished(this.contentList, this.id);
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {

@@ -35,19 +35,17 @@ export class HttpRequestController {
 
         let json;
 
-        console.log("https://intercra-backend.jason-apps.workers.dev/api/plugins/?id=" + id + "&q=" + q + "&page=" + page + "&key=" + apiKey)
-
-        await axios.get("https://intercra-backend.jason-apps.workers.dev/api/plugins/?id=" + id + "&q=" + q + "&page=" + page + "&key=" + apiKey)
+        await axios.get("http://localhost:8787/api/plugins/?id=" + id + "&q=" + q + "&page=" + page + "&key=" + apiKey)
             .then(response => {
                 json = response.data;
             })
             .catch(error => {
-                pc.gotError(id);
+                //pc.gotError(id);
             });
         if(ok) {
             return json;
         }else{
-            pc.gotError(id);
+            //pc.gotError(id);
             return "error";
         }
 

@@ -18,17 +18,22 @@ export class ITunes implements PluginInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.INFORMATION)
-        pc.addPreset(PresetEnum.PROGRAMMING)
+        pc.addPreset(PresetEnum.AUDIO)
+        pc.addPreset(PresetEnum.PODCAST)
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
-        await this.startSearch(searchText, pc);
-        this.finish = true;
+        try{
+            await this.startSearch(searchText, pc);
+            this.finish = true;
 
-        pc.isFinished(this.contentList, this.id);
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotError(this.id)
+        }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
@@ -51,12 +56,24 @@ export class ITunes implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
+            console.log("debug1")
             let url = JSON.stringify(items.collectionViewUrl).replace(/\"+/g, '');
+            console.log("debug2")
             let type = JSON.stringify(items.wrapperType).replace(/\"+/g, '');
+            console.log("debug3")
             let image = JSON.stringify(items.artworkUrl100).replace(/\"+/g, '');
+            console.log("debug4")
             let artist = JSON.stringify(items.artistName).replace(/\"+/g, '');
+            console.log("debug5")
             let headline = JSON.stringify(items.collectionName).replace(/\"+/g, '');
-            let price = "$" + JSON.stringify(items.collectionPrice).replace(/\"+/g, '');
+            console.log("debug6")
+            let price = ""
+            try {
+                price = "$" + JSON.stringify(items.collectionPrice).replace(/\"+/g, '');
+            }catch (e){
+                // no price
+            }
+            console.log("debug7")
 
             let map = new Map<string, string>;
 
