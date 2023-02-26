@@ -6,25 +6,24 @@ import type {PluginController} from "../controllers/PluginController";
 import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
 import {GoogleController} from "../controllers/GoogleController";
-import {HttpRequestController} from "../controllers/HttpRequestController";
 
-export class ITunes implements PluginInterface{
+export class GoogleImage implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
-    page: number = 1;
+    offset: number = 1;
 
-    displayName = "iTunes";
-    id = "itunes";
+    displayName = "Google Image";
+    id = "google_image";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.AUDIO)
+        pc.addPreset(PresetEnum.IMAGES);
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
-        await this.startSearch(searchText, pc);
+        await this.startSearch(searchText);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
@@ -32,49 +31,37 @@ export class ITunes implements PluginInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        this.offset = this.offset + 10;
+        await this.startSearch(searchText);
+        this.finish = true;
+
         pc.isFinished(this.contentList, this.id);
     }
 
-    async startSearch(searchText: string, pc: PluginController): Promise<void>{
-        let hrc = new HttpRequestController()
+    async startSearch(searchText: string): Promise<void>{
+        let gc = new GoogleController();
 
-        await hrc.httpRequest(
-            "https://itunes.apple.com/search?term=" + searchText + "&limit=50",
-            pc, this.id).then(r =>
+        await gc.httpImageRequest(searchText, this.offset).then(r =>
             this.analyse(r)
         );
     }
 
     analyse(json: any){
-        let array = json.results;
-        console.log(array)
+        let array = json.items;
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            if(items.collectionViewUrl != null) {
-                let url = JSON.stringify(items.collectionViewUrl).replace('"', "").replace('"', "");
-                let type = JSON.stringify(items.wrapperType).replace('"', "").replace('"', "");
-                let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
-                let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
-                let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
-                let price = "";
-                try {
-                    price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");
-                } catch (e) {
-                    // no price
-                }
+            let url = JSON.stringify(items.image.contextLink).replace('"', "").replace('"', "");
+            let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
+            let image = JSON.stringify(items.link).replace('"', "").replace('"', "");
 
-                let map = new Map<string, string>;
+            let map = new Map<string, string>;
 
-                map.set("url", url);
-                map.set("headline", headline);
-                map.set("type", type);
-                map.set("imageUrl", image);
-                map.set("artist", artist);
-                map.set("price", price);
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
 
-                this.contentList.push(map);
-            }
+            this.contentList.push(map);
         }
     }
 
@@ -123,14 +110,11 @@ export class ITunes implements PluginInterface{
             let contentMap = this.contentList[i];
 
             content.push({
-                choosenView: "itunesView",
+                choosenView: "imageView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.displayName,
-                price: contentMap.get("price"),
                 image: contentMap.get("imageUrl"),
-                type: contentMap.get("type"),
-                artist: contentMap.get("artist"),
+                pluginName: this.displayName,
             })
         }
 

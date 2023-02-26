@@ -3,11 +3,11 @@
     <div>
 
       <div class="content-layout-color center-horizontal">
-        <a :href="url">
-          <img :src="image" class="center-horizontal view-image"/>
-        </a>
+        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
       <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
+      <h3>{{artist}}</h3>
+      <h4 class="teaser-color">{{price}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
       <div v-if="savedContent">
         <div class="saved-content-div center-horizontal">
@@ -24,21 +24,19 @@
 </template>
 
 <script>
-
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
-
 export default {
-  name: "ImageView",
-
+  name: "ModelsView",
   props: {
     index: Number,
     savedContent: Boolean,
     url: String,
-    image: String,
-    pluginName: String,
     headline: String,
+    pluginName: String,
+    image: String,
+    price: String,
+    artist: String,
   },
-
   methods: {
     savedClick(){
       if(!this.savedContent) {
@@ -52,5 +50,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

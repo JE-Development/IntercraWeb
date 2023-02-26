@@ -13,4 +13,5 @@ export enum PresetEnum{
     AUDIO = "Audio",
     MOVIES = "Movies",
     PROGRAMMING = "Programming",
+    MODELS3D = "3D Models"
 }

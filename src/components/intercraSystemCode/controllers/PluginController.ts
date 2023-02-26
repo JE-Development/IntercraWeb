@@ -28,6 +28,9 @@ import {ITunes} from "../plugins/ITunes";
 import {Flickr} from "../plugins/Flickr";
 import {NewsApi} from "../plugins/NewsApi";
 import {Giphy} from "../plugins/Giphy";
+import {Sketchfab} from "../plugins/Sketchfab";
+import {Free3D} from "../plugins/Free3D";
+import {GoogleImage} from "../plugins/GoogleImage";
 
 export class PluginController {
 
@@ -43,10 +46,11 @@ export class PluginController {
 
     constructor() {
         this.plugins.push(new SpotifyTracks());
-        //this.plugins.push(new GoogleWeb());
-        this.plugins.push(new YoutubeVideo());
+        //this.plugins.push(new YoutubeVideo());
+        this.plugins.push(new GoogleWeb());
+        this.plugins.push(new GoogleImage());
         this.plugins.push(new ITunes());
-        this.plugins.push(new NewsApi());
+        //this.plugins.push(new NewsApi()); not working in production
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());
@@ -69,9 +73,11 @@ export class PluginController {
         this.plugins.push(new GitHubIssues());
         this.plugins.push(new GitHubTopics());
         this.plugins.push(new Stackoverflow());
+        this.plugins.push(new Sketchfab());
+        this.plugins.push(new Free3D());
 
         this.special.push(new SpotifyTracks().id);
-        this.special.push(new YoutubeVideo().id);
+        //this.special.push(new YoutubeVideo().id);
     }
 
     async findContent(searchText: string, plugin: string, token: string, ytToken: string) {

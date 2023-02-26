@@ -17,6 +17,7 @@ export class HttpRequestController {
                 json = response.data;
             })
             .catch(error => {
+                console.log(error)
                 pc.gotError(id);
             });
         if(ok) {

@@ -119,6 +119,11 @@ export default {
       this.show = true;
     }
 
+    if(this.getCookies("spotifyLogin") == "true"){
+      this.setCookies("spotifyLogin", false);
+      this.$notify("successfully logged into spotify");
+    }
+
     let pc = new PluginController();
     pc.getPresetSettings("amazon");
     let pre = new PresetController();

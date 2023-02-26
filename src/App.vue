@@ -11,7 +11,6 @@ export default {
       if(document.documentURI.includes("access_token=")){
         let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
         let token = parser.split(";;;")[1];
-        console.log("yt token: " + token)
         this.$cookies.set("token-youtube", token);
         let route = this.$router.resolve({path: '/'});
 
@@ -38,8 +37,8 @@ export default {
         this.$notify("successfully logged into spotify");
         let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
         let token = parser.split(";;;")[1];
-        console.log("token: " + token)
         this.$cookies.set("token", token);
+        this.$cookies.set("spotifyLogin", "true");
         let route = this.$router.resolve({path: '/'});
         window.open("https://intercra.com", '_self');
       }else{

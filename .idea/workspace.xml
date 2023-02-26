@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Free3D.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleImage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Sketchfab.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/GoogleController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/GoogleController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/HttpRequestController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/HttpRequestController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/enums/PresetEnum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/enums/PresetEnum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flickr.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flickr.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Giphy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Giphy.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +72,7 @@
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.11",
-    "last_opened_file_path": "C:/Users/Jason Enns/Desktop/Development/GitHub/IntercraWeb",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/intercraSystemCode/plugins",
     "list.type.of.created.stylesheet": "SCSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -66,7 +80,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -201,6 +215,7 @@
       <workItem from="1676452217739" duration="8890000" />
       <workItem from="1676538409027" duration="12559000" />
       <workItem from="1677174846158" duration="296000" />
+      <workItem from="1677233857552" duration="6143000" />
     </task>
     <servers />
   </component>

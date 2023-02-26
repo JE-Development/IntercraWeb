@@ -53,32 +53,33 @@
                  :appIcon="appIcon"
   />
   <PlayStoreNoIconView v-else-if="choosenView === 'playStoreNoIconView'"
-                 :index="index"
-                 :savedContent="savedContent"
-                 :url="url"
-                 :headline="headline"
-                 :pluginName="pluginName"
-                 :publisher="publisher"
-                 :image="image"
+                       :index="index"
+                       :savedContent="savedContent"
+                       :url="url"
+                       :headline="headline"
+                       :pluginName="pluginName"
+                       :publisher="publisher"
+                       :image="image"
+                       :price="price"
   />
   <ImageView v-else-if="choosenView === 'imageView'"
-                 :index="index"
-                 :savedContent="savedContent"
-                 :url="url"
-                 :pluginName="pluginName"
-                 :image="image"
-                 :headline="headline"
+             :index="index"
+             :savedContent="savedContent"
+             :url="url"
+             :pluginName="pluginName"
+             :image="image"
+             :headline="headline"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
-                 :index="index"
-                 :savedContent="savedContent"
-                 :url="url"
-                 :headline="headline"
-                 :pluginName="pluginName"
-                 :image="image"
-                 :artist="artist"
-                 :duration="duration"
-                 :album="album"
+               :index="index"
+               :savedContent="savedContent"
+               :url="url"
+               :headline="headline"
+               :pluginName="pluginName"
+               :image="image"
+               :artist="artist"
+               :duration="duration"
+               :album="album"
   />
   <GithubView v-else-if="choosenView === 'githubView'"
               :index="index"
@@ -90,6 +91,17 @@
               :lang="lang"
   />
   <ITunesView v-else-if="choosenView === 'itunesView'"
+              :index="index"
+              :savedContent="savedContent"
+              :url="url"
+              :headline="headline"
+              :pluginName="pluginName"
+              :image="image"
+              :artist="artist"
+              :type="type"
+              :price="price"
+  />
+  <ModelsView v-else-if="choosenView === 'modelsView'"
               :index="index"
               :savedContent="savedContent"
               :url="url"
@@ -117,35 +129,39 @@ import ImageView from "./layouts/ImageView.vue";
 import SpotifyView from "./layouts/SpotifyView.vue";
 import GithubView from "./layouts/GithubView.vue";
 import ITunesView from "./layouts/ITunesView.vue";
+import ModelsView from "./layouts/ModelsView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    ModelsView,
     ITunesView,
     GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
     ImageView, SpotifyView},
-
   props: {
     index: Number,
     choosenView: String,
     savedContent: Boolean,
 
     //multiple use props
+
     url: String,
     headline: String,
     pluginName: String,
-
     teaser: String,
     image: String,
 
     //article
+
     date: String,
     platform: String,
     author: String,
 
     //shopping
+
     price: String,
 
     //bandcamp
+
     artist: String,
     release: String,
     tags: String,
@@ -153,19 +169,21 @@ export default {
     type: String,
 
     //play store
+
     publisher: String,
     appIcon: String,
 
     //spotify
+
     album: String,
     duration: String,
 
     //GitHub
+
     lang: String,
   },
 }
 </script>
 
 <style scoped>
-
 </style>

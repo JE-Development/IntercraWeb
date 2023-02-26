@@ -119,14 +119,11 @@ export class Flickr implements PluginInterface{
             let contentMap = this.contentList[i];
 
             content.push({
-                choosenView: "itunesView",
+                choosenView: "imageView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.displayName,
-                price: contentMap.get("price"),
                 image: contentMap.get("imageUrl"),
-                type: contentMap.get("type"),
-                artist: contentMap.get("artist"),
+                pluginName: this.displayName,
             })
         }
 

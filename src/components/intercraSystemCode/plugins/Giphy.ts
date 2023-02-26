@@ -18,7 +18,7 @@ export class Giphy implements PluginInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.NEWS)
+        pc.addPreset(PresetEnum.IMAGES)
         return pc;
     }
 

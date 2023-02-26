@@ -1,37 +1,40 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
-import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
-import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
-import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
 
-export class ITunes implements PluginInterface{
+export class Sketchfab implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
-    page: number = 1;
 
-    displayName = "iTunes";
-    id = "itunes";
+    displayName = "Sketchfab";
+    id = "sketchfab";
+    page = 1;
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.AUDIO)
+        pc.addPreset(PresetEnum.MODELS3D);
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+        try {
+            await this.startSearch(searchText, pc);
+            this.finish = true;
 
-        await this.startSearch(searchText, pc);
-        this.finish = true;
-
-        pc.isFinished(this.contentList, this.id);
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(String(error))
+            pc.gotError(this.id);
+        }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+
         this.contentList = [];
+
         pc.isFinished(this.contentList, this.id);
     }
 
@@ -39,7 +42,7 @@ export class ITunes implements PluginInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://itunes.apple.com/search?term=" + searchText + "&limit=50",
+            "https://sketchfab.com/v3/search?type=models&q=" + searchText,
             pc, this.id).then(r =>
             this.analyse(r)
         );
@@ -47,34 +50,23 @@ export class ITunes implements PluginInterface{
 
     analyse(json: any){
         let array = json.results;
-        console.log(array)
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            if(items.collectionViewUrl != null) {
-                let url = JSON.stringify(items.collectionViewUrl).replace('"', "").replace('"', "");
-                let type = JSON.stringify(items.wrapperType).replace('"', "").replace('"', "");
-                let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
-                let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
-                let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
-                let price = "";
-                try {
-                    price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");
-                } catch (e) {
-                    // no price
-                }
+            let url = JSON.stringify(items.viewerUrl).replace(/\"+/g, '');
+            let image = JSON.stringify(items.thumbnails.images[0].url).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.name).replace(/\"+/g, '');
+            let creator = JSON.stringify(items.user.displayName).replace(/\"+/g, '');
 
-                let map = new Map<string, string>;
 
-                map.set("url", url);
-                map.set("headline", headline);
-                map.set("type", type);
-                map.set("imageUrl", image);
-                map.set("artist", artist);
-                map.set("price", price);
+            let map = new Map<string, string>;
 
-                this.contentList.push(map);
-            }
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
+            map.set("creator", creator);
+
+            this.contentList.push(map);
         }
     }
 
@@ -122,19 +114,28 @@ export class ITunes implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
+
             content.push({
-                choosenView: "itunesView",
+                choosenView: "modelsView",
                 url: contentMap.get("url"),
-                headline: contentMap.get("headline"),
+                headline: this.cutString(String(contentMap.get("headline"))),
                 pluginName: this.displayName,
-                price: contentMap.get("price"),
-                image: contentMap.get("imageUrl"),
-                type: contentMap.get("type"),
-                artist: contentMap.get("artist"),
+                artist: contentMap.get("creator"),
+                image: contentMap.get("imageUrl")
             })
         }
 
         return content;
+    }
+
+    cutString(str: string): string{
+        let index = 80;
+        if(str.length > index) {
+            let cut = str.substring(0, index) + "...";
+            return cut;
+        }else{
+            return str;
+        }
     }
 
 }
