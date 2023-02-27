@@ -15,6 +15,7 @@ import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 import './assets/main.css'
 import './assets/colors.css'
 import './assets/view-design.css'
+import './assets/nav.scss'
 import './assets/animations.scss'
 import './assets/sorting.scss'
 

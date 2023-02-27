@@ -31,6 +31,9 @@ import {Giphy} from "../plugins/Giphy";
 import {Sketchfab} from "../plugins/Sketchfab";
 import {Free3D} from "../plugins/Free3D";
 import {GoogleImage} from "../plugins/GoogleImage";
+import {GNews} from "../plugins/GNews";
+import {NewsCatcher} from "../plugins/NewsCatcher";
+import {NewYorkTimes} from "../plugins/NewYorkTimes";
 
 export class PluginController {
 
@@ -51,6 +54,9 @@ export class PluginController {
         this.plugins.push(new GoogleImage());
         this.plugins.push(new ITunes());
         //this.plugins.push(new NewsApi()); not working in production
+        this.plugins.push(new GNews());
+        this.plugins.push(new NewsCatcher());
+        this.plugins.push(new NewYorkTimes());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
         this.plugins.push(new NonaPodcast());

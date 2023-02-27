@@ -12,13 +12,9 @@
         Email: jm.enns04@gmail.com<br><br><br>
       </p>
       <h1><b>Privacy Policy</b><br><br></h1>
-      <h1><b>We collect this information:</b></h1>
+      <h1><b>We collect this information:</b></h1><br>
       <p class="text-impressum">
         <b>Spotify:</b><br>
-        Android App:<br>
-        – username<br>
-        – email address<br>
-        Website:<br>
         - email address<br>
 
         <b>Google / YouTube:</b><br>
