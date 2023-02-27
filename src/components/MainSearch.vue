@@ -61,7 +61,6 @@ import PresetView from "./views/PresetView.vue";
 import {PresetController} from "./intercraSystemCode/controllers/PresetController";
 import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
-import {OpenAIController} from "./intercraSystemCode/controllers/OpenAIController";
 import MainNav from "./views/MainNav.vue";
 
 export default {
@@ -118,9 +117,6 @@ export default {
   },
 
   mounted() {
-    let ai = new OpenAIController();
-    ai.setup()
-
 
     if(this.getCookies("cookiesAllowed") == null){
       this.show = true;
