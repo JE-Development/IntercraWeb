@@ -5,26 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/image.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/list-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/repeat-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/shuffle-white.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/SocialMediaPopup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/sorting.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/sorting.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkTimes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkTimes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/MainNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MainNav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/PresetView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/PresetView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/SortingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/SortingView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/list.ai" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/list.ai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/repeat.ai" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/repeat.ai" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/raw/shuffle.ai" beforeDir="false" afterPath="$PROJECT_DIR$/src/raw/shuffle.ai" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +204,7 @@
       <workItem from="1677233857552" duration="6144000" />
       <workItem from="1677489934333" duration="8439000" />
       <workItem from="1677524921939" duration="4104000" />
-      <workItem from="1677569229575" duration="6624000" />
+      <workItem from="1677569229575" duration="7890000" />
     </task>
     <servers />
   </component>
