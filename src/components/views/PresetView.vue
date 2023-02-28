@@ -3,7 +3,7 @@
     <div class="dropdown center-horizontal">
       <button class="preset-border preset-border-color text-black" @click="onClickButton">{{buttonName}}</button>
       <div class="dropdown-content" v-if="showList">
-        <a @click="onClickPresetItem(pk)" v-for="(pk) in presetKeys">{{pk}}</a>
+        <a @click="onClickPresetItem(pk)" class="pointer" v-for="(pk) in presetKeys">{{pk}}</a>
       </div>
     </div>
   </div>

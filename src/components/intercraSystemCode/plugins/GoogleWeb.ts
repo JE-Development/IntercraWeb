@@ -54,7 +54,12 @@ export class GoogleWeb implements PluginInterface{
 
             let url = JSON.stringify(items.link).replace('"', "").replace('"', "");
             let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
-            let teaser = JSON.stringify(items.snippet).replace('"', "").replace('"', "");
+            let teaser = "";
+            try {
+                teaser = JSON.stringify(items.snippet).replace('"', "").replace('"', "");
+            }catch (e){
+                //something went wrong
+            }
 
             let map = new Map<string, string>;
 

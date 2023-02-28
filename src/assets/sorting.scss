@@ -1,41 +1,41 @@
 .icon-div-left{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid transparent;
   padding: 2px;
 }
 
 .icon-div-middle{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid transparent;
   padding: 2px;
 }
 
 .icon-div-right{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid transparent;
   padding: 2px;
 }
 
 .icon-div-selected-left{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid #FF9900;
   padding: 2px;
 }
 
 .icon-div-selected-middle{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid #FF9900;
   padding: 2px;
 }
 
 .icon-div-selected-right{
   width: 10vw;
-  background: #ffffff;
+  background: #ffffff00;
   border: 3px solid #FF9900;
   padding: 2px;
 }
@@ -168,5 +168,93 @@
 
 
 @media (prefers-color-scheme: dark) {
+  .icon-div-selected-left:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to right, #54c204, #FF9900) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
 
+    animation-name: icon-background-flow;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
+
+  .icon-div-selected-middle:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to bottom, #2bb939, #FF9900) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
+
+    animation-name: icon-background-flow;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
+
+  .icon-div-selected-right:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to left, #02b06d, #FF9900) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
+
+    animation-name: icon-background-flow-right;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
+
+  .icon-div-left:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to right, #54c204, #c3ff1500) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
+
+    animation-name: icon-background-flow;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
+
+  .icon-div-middle:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to bottom, #2bb939, #c3ff1500) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
+
+    animation-name: icon-background-flow;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
+
+  .icon-div-right:hover{
+    background: linear-gradient(#111111, #111111) padding-box,
+    linear-gradient(to left, #02b06d, #c3ff1500) border-box;
+    background-size: 400% 400%;
+    animation: gradient 1s;
+
+    animation-name: icon-background-flow-right;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+
+    border: 3px solid transparent;
+    padding: 2px;
+  }
 }

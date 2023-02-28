@@ -1,0 +1,26 @@
+.image-list{
+    content: url("../assets/list.png");
+}
+
+.image-shuffle{
+    content: url("../assets/shuffle.png");
+}
+
+.image-repeat{
+    content: url("../assets/repeat.png");
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .image-list{
+        content: url("../assets/list-white.png");
+    }
+
+    .image-shuffle{
+        content: url("../assets/shuffle-white.png");
+    }
+
+    .image-repeat{
+        content: url("../assets/repeat-white.png");
+    }
+}

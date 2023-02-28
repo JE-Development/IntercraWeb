@@ -49,26 +49,30 @@ export class NewYorkTimes implements PluginInterface{
     analyse(json: any){
         let array = json.response.docs;
         for(let i = 0; i < array.length; i++){
-            let items = array[i];
+            try{
+                let items = array[i];
 
-            let url = JSON.stringify(items.web_url).replace('"', "").replace('"', "");
-            let headline = JSON.stringify(items.headline.main).replace('"', "").replace('"', "");
-            let image = "https://www.nytimes.com/" + JSON.stringify(items.multimedia[0].url).replace('"', "").replace('"', "");
-            let teaser = JSON.stringify(items.snippet).replace('"', "").replace('"', "");
-            let time = JSON.stringify(items.pub_date).replace('"', "").replace('"', "")
-                .split("T")[0];
-            let source = JSON.stringify(items.source).replace('"', "").replace('"', "");
+                let url = JSON.stringify(items.web_url).replace('"', "").replace('"', "");
+                let headline = JSON.stringify(items.headline.main).replace('"', "").replace('"', "");
+                let image = "https://www.nytimes.com/" + JSON.stringify(items.multimedia[0].url).replace('"', "").replace('"', "");
+                let teaser = JSON.stringify(items.snippet).replace('"', "").replace('"', "");
+                let time = JSON.stringify(items.pub_date).replace('"', "").replace('"', "")
+                    .split("T")[0];
+                let source = JSON.stringify(items.source).replace('"', "").replace('"', "");
 
-            let map = new Map<string, string>;
+                let map = new Map<string, string>;
 
-            map.set("url", url);
-            map.set("imageUrl", image);
-            map.set("headline", headline);
-            map.set("teaser", teaser);
-            map.set("time", time);
-            map.set("source", source);
+                map.set("url", url);
+                map.set("imageUrl", image);
+                map.set("headline", headline);
+                map.set("teaser", teaser);
+                map.set("time", time);
+                map.set("source", source);
 
-            this.contentList.push(map);
+                this.contentList.push(map);
+            }catch (e){
+                //something went wrong
+            }
         }
     }
 

@@ -1,7 +1,7 @@
 <template>
   <PluginPopup :show="show" @show-popup="showFromPopup"/>
+  <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
   <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
-  <MainNav/>
   <div class="fullscreen">
     <div class="scroll-down">
       <p class="center-horizontal">Scroll down for the plugin list</p>
@@ -42,9 +42,7 @@
   </div>
 
 
-  <div class="center-horizontal">
-    <a href="/#/impressum">Impressum / Privacy Policy</a>
-  </div>
+  <MainNav/>
 </template>
 
 <script>
@@ -62,11 +60,12 @@ import {PresetController} from "./intercraSystemCode/controllers/PresetControlle
 import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import MainNav from "./views/MainNav.vue";
+import SocialMediaPopup from "./views/SocialMediaPopup.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
+  components: {SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
 
@@ -114,6 +113,14 @@ export default {
         }
       }
     })
+
+    EventBus.addEventListener('hide-social-media', (event) => {
+      this.smShow = false;
+    })
+
+    EventBus.addEventListener('show-social-media', (event) => {
+      this.smShow = true;
+    })
   },
 
   mounted() {
@@ -139,6 +146,7 @@ export default {
       pluginList: [],
       callback: "",
       slShow: false,
+      smShow: false,
     }
   },
   methods: {

@@ -3,28 +3,28 @@
 
     <div @click="leftClicked">
       <div class="icon-div-selected-left center-horizontal" v-if="sort==='list'">
-        <img src="../../assets/list.png" class="icon"/>
+        <img class="icon image-list"/>
       </div>
       <div class="icon-div-left center-horizontal" v-else>
-        <img src="../../assets/list.png" class="icon"/>
+        <img class="icon image-list"/>
       </div>
     </div>
 
     <div @click="middleClicked">
       <div class="icon-div-selected-middle center-horizontal" v-if="sort==='shuffle'">
-        <img src="../../assets/shuffle.png" class="icon"/>
+        <img class="icon image-shuffle"/>
       </div>
       <div class="icon-div-middle center-horizontal" v-else>
-        <img src="../../assets/shuffle.png" class="icon"/>
+        <img class="icon image-shuffle"/>
       </div>
     </div>
 
     <div @click="rightClicked">
       <div class="icon-div-selected-right center-horizontal" v-if="sort==='repeat'">
-        <img src="../../assets/repeat.png" class="icon"/>
+        <img class="icon image-repeat"/>
       </div>
       <div class="icon-div-right center-horizontal" v-else>
-        <img src="../../assets/repeat.png" class="icon"/>
+        <img class="icon image-repeat"/>
       </div>
     </div>
 
