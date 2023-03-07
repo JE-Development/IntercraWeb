@@ -2,12 +2,16 @@
 
 
   <ViewTemplatesPage
-      :choosen-view="'githubView'"
-      :url="'test url'"
-      :headline="'headline'"
-      :plugin-name="'test plugin'"
-      :teaser="'teaser'"
-      :lang="'lang'"
+      :choosen-view="'newgroundsAudioView'"
+      :index="1"
+      :savedContent="false"
+      :url="'https://www.google.com'"
+      :headline="'test headline'"
+      :pluginName="'internal plugin'"
+      :teaser="'this is a teaser'"
+      :image="'https://img.ngfiles.com/defaults/icon-audio-smaller.png?f1578181335'"
+      :genre="'genre'"
+      :artist="'artist'"
   />
 
 

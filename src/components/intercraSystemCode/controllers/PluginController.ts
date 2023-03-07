@@ -34,6 +34,8 @@ import {GoogleImage} from "../plugins/GoogleImage";
 import {GNews} from "../plugins/GNews";
 import {NewsCatcher} from "../plugins/NewsCatcher";
 import {NewYorkTimes} from "../plugins/NewYorkTimes";
+import {NewgroundsAudio} from "../plugins/NewgroundsAudio";
+import {NewgroundsUsers} from "../plugins/NewgroundsUsers";
 
 export class PluginController {
 
@@ -81,6 +83,8 @@ export class PluginController {
         this.plugins.push(new Stackoverflow());
         this.plugins.push(new Sketchfab());
         this.plugins.push(new Free3D());
+        this.plugins.push(new NewgroundsAudio());
+        this.plugins.push(new NewgroundsUsers());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);

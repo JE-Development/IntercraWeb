@@ -109,6 +109,24 @@
     font-weight: bold;
 }
 
+.match-parent{
+    width: 100%;
+}
+
+.ng-audio-content{
+    margin-left: 10px;
+}
+
+.ng-image-div{
+    margin-left: 10px;
+    align-items: center;
+}
+
+.ng-image{
+    width: 100px;
+}
+
+
 @media (max-width: 1440px) {
 
     .view-border-saved{

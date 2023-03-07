@@ -112,6 +112,17 @@
               :type="type"
               :price="price"
   />
+  <NewgroundsAudioView v-else-if="choosenView === 'newgroundsAudioView'"
+               :index="index"
+               :savedContent="savedContent"
+               :url="url"
+               :headline="headline"
+               :pluginName="pluginName"
+               :teaser="teaser"
+               :image="image"
+               :genre="genre"
+               :artist="artist"
+  />
 
 
 
@@ -130,9 +141,11 @@ import SpotifyView from "./layouts/SpotifyView.vue";
 import GithubView from "./layouts/GithubView.vue";
 import ITunesView from "./layouts/ITunesView.vue";
 import ModelsView from "./layouts/ModelsView.vue";
+import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    NewgroundsAudioView,
     ModelsView,
     ITunesView,
     GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
