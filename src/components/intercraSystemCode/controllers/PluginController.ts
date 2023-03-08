@@ -36,6 +36,10 @@ import {NewsCatcher} from "../plugins/NewsCatcher";
 import {NewYorkTimes} from "../plugins/NewYorkTimes";
 import {NewgroundsAudio} from "../plugins/NewgroundsAudio";
 import {NewgroundsUsers} from "../plugins/NewgroundsUsers";
+import {NewgroundsBlogs} from "../plugins/NewgroundsBlogs";
+import {NewgroundsArt} from "../plugins/NewgroundsArt";
+import {NewgroundsGames} from "../plugins/NewgroundsGames";
+import {NewgroundsMovies} from "../plugins/NewgroundsMovies";
 
 export class PluginController {
 
@@ -85,6 +89,10 @@ export class PluginController {
         this.plugins.push(new Free3D());
         this.plugins.push(new NewgroundsAudio());
         this.plugins.push(new NewgroundsUsers());
+        this.plugins.push(new NewgroundsBlogs());
+        this.plugins.push(new NewgroundsArt());
+        this.plugins.push(new NewgroundsGames());
+        this.plugins.push(new NewgroundsMovies());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);

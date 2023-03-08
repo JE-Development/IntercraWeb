@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsAudio.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsUsers.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsArt.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsBlogs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsGames.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsMovies.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsImageView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +213,8 @@
       <workItem from="1677489934333" duration="8439000" />
       <workItem from="1677524921939" duration="4104000" />
       <workItem from="1677569229575" duration="7890000" />
-      <workItem from="1678099752246" duration="6720000" />
+      <workItem from="1678099752246" duration="7059000" />
+      <workItem from="1678261083741" duration="4159000" />
     </task>
     <servers />
   </component>

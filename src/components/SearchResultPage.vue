@@ -19,6 +19,8 @@
 
   </div>
 
+  <h3 class="center-horizontal error-color" v-if="noPlugin">No plugin is enabled</h3>
+
   <div v-if="errors.length > 0">
     <h3 class="center-horizontal error-color">Error in:</h3>
     <div v-for="(err) in errors" class="center-horizontal">
@@ -147,6 +149,7 @@ export default {
       savedPressed: false,
       isSaveContent: false,
       showPopup: false,
+      noPlugin: false,
     };
   },
 
@@ -236,8 +239,14 @@ export default {
 
     let sorting = this.getCookies("sorting");
 
-    this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
-
+    if(this.plugin === "null") {
+      this.showLoading = false;
+      this.noPlugin = true;
+    }else{
+      this.showLoading = true;
+      this.noPlugin = false;
+      this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
+    }
     this.ic.changeShow();
 
   },

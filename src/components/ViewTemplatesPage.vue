@@ -123,6 +123,15 @@
                :genre="genre"
                :artist="artist"
   />
+  <NewgroundsImageView v-else-if="choosenView === 'newgroundsImageView'"
+               :index="index"
+               :savedContent="savedContent"
+               :url="url"
+               :headline="headline"
+               :pluginName="pluginName"
+               :image="image"
+               :artist="artist"
+  />
 
 
 
@@ -142,9 +151,11 @@ import GithubView from "./layouts/GithubView.vue";
 import ITunesView from "./layouts/ITunesView.vue";
 import ModelsView from "./layouts/ModelsView.vue";
 import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
+import NewgroundsImageView from "./layouts/NewgroundsImageView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    NewgroundsImageView,
     NewgroundsAudioView,
     ModelsView,
     ITunesView,
