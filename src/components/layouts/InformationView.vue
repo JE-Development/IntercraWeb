@@ -1,7 +1,7 @@
 <template>
   <div class="view-border content-layout-color">
     <div>
-      <a :href="url" class="visible-link-color">{{url}}</a>
+      <a :href="url" class="visible-link-color" style="overflow: hidden">{{url}}</a>
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <p class="teaser-color">{{teaser}}</p>
       <p class="plugin-name-color view-plugin-name">Plugin: {{pluginName}}</p>

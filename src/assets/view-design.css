@@ -46,7 +46,7 @@
 }
 
 .view-border-saved{
-    width: 700px;
+    width: 720px;
 }
 
 .waiting-border{
@@ -124,6 +124,11 @@
 
 .ng-image{
     width: 100px;
+}
+
+.result-root{
+    display: flex;
+    overflow: hidden
 }
 
 

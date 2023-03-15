@@ -1,6 +1,6 @@
 <template>
   <div class="button-layout">
-    <div class="dropdown center-horizontal">
+    <div class="center-horizontal">
       <button class="preset-border preset-border-color text-black" @click="onClickButton">{{buttonName}}</button>
       <div class="dropdown-content" v-if="showList">
         <a @click="onClickPresetItem(pk)" class="pointer" v-for="(pk) in presetKeys">{{pk}}</a>

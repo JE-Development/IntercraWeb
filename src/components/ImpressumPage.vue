@@ -4,7 +4,7 @@
       <h1><b>Impressum</b></h1>
       <p class="text-impressum">
         <br>
-        Intercra by Interation<br><br>
+        Intercra by JE-Development<br><br>
         Jason Enns<br>
         Ulmenstraße 13<br>
         34281 Gudensberg<br>
@@ -39,7 +39,7 @@
       <h1><br><b>What happens when our<br>Privacy Policy changes?</b></h1>
       <p class="text-impressum">
         Every time something changes in our Privacy Policy<br>
-        you get informed in our app and website.<br>
+        you get informed in our website.<br>
       </p>
     </div>
   </div>

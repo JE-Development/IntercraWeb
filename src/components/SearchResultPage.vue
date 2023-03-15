@@ -34,7 +34,7 @@
     <SavedContentButton :show="true"/>
   </div>
 
-  <div class="center-horizontal" style="display: flex">
+  <div class="result-root center-horizontal">
     <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
@@ -64,33 +64,31 @@
     </div>
     <div style="width: 30px" v-if="checkScreenSize()"></div>
     <div class="view-border-saved sticky" v-if="savedContent.length != 0 && checkScreenSize()">
-      <div ref="header" class="outer-scroll">
-        <perfect-scrollbar>
-          <ViewTemplatesPage v-for="(dat, id) in savedContent"
-                             :index="id"
-                             :savedContent="true"
-                             :choosenView="dat.choosenView"
-                             :url="dat.url"
-                             :headline="dat.headline"
-                             :pluginName="dat.pluginName"
-                             :teaser="dat.teaser"
-                             :image="dat.image"
-                             :date="dat.date"
-                             :price="dat.price"
-                             :artist="dat.artist"
-                             :release="dat.release"
-                             :tags="dat.tags"
-                             :genre="dat.genre"
-                             :type="dat.type"
-                             :publisher="dat.publisher"
-                             :appIcon="dat.appIcon"
-                             :platform="dat.platform"
-                             :album="dat.album"
-                             :duration="dat.duration"
-                             :lang="dat.lang"
-                             :author="dat.author"
-          />
-        </perfect-scrollbar>
+      <div class="outer-scroll">
+        <ViewTemplatesPage v-for="(dat, id) in savedContent"
+                           :index="id"
+                           :savedContent="true"
+                           :choosenView="dat.choosenView"
+                           :url="dat.url"
+                           :headline="dat.headline"
+                           :pluginName="dat.pluginName"
+                           :teaser="dat.teaser"
+                           :image="dat.image"
+                           :date="dat.date"
+                           :price="dat.price"
+                           :artist="dat.artist"
+                           :release="dat.release"
+                           :tags="dat.tags"
+                           :genre="dat.genre"
+                           :type="dat.type"
+                           :publisher="dat.publisher"
+                           :appIcon="dat.appIcon"
+                           :platform="dat.platform"
+                           :album="dat.album"
+                           :duration="dat.duration"
+                           :lang="dat.lang"
+                           :author="dat.author"
+        />
       </div>
     </div>
   </div>
