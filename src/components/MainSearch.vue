@@ -1,48 +1,66 @@
 <template>
-  <PluginPopup :show="show" @show-popup="showFromPopup"/>
-  <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
-  <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
-  <div class="fullscreen">
-    <div class="scroll-down">
-      <p class="center-horizontal">Scroll down for the plugin list</p>
-      <div class="center-horizontal">
-        <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
-      </div>
-    </div>
-    <div class="center">
-      <div class="search-box">
-        <div class="center-horizontal">
-          <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
+  <div>
+    <div>
+      <PluginPopup :show="show" @show-popup="showFromPopup"/>
+      <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
+      <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
+      <div class="fullscreen">
+        <div class="relative">
+          <div class="absolute">
+            <div v-if="gifPlay">
+              <img src="../assets/intercra-gif.gif" style="width: 100vw; height: 3000px; object-fit: cover; object-position: 0% 20%;">
+            </div>
+            <div v-else>
+              <img src="../assets/intercra-gif-first.png" style="width: 100vw; height: 3000px; object-fit: cover; object-position: 0% 20%;">
+            </div>
+          </div>
+          <div class="absolute">
+            <div class="scroll-down">
+              <p class="center-horizontal">Scroll down for the plugin list</p>
+              <div class="center-horizontal">
+                <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
+              </div>
+            </div>
+            <div class="center">
+              <div class="search-box">
+                <div class="center-horizontal">
+                  <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
+                </div>
+                <input
+                    @click="clickedInput()"
+                    @keyup.enter="enterClicked()"
+                    id="main-input-search"
+                    placeholder="Search here"
+                    class="search-input center-horizontal search-input-color search-input-border-color">
+                <font-awesome-icon icon="fa-solid fa-repeat" />
+              </div>
+            </div>
+
+          </div>
         </div>
-        <input
-            @keyup.enter="enterClicked()"
-            id="main-input-search"
-            placeholder="Search here"
-            class="search-input center-horizontal search-input-color search-input-border-color">
-        <font-awesome-icon icon="fa-solid fa-repeat" />
       </div>
+      <div class="center-horizontal preset">
+        <PresetView/>
+      </div>
+      <div class="center-horizontal">
+        <div id="plugin-list" class="block-display">
+          <p v-if="isCookiesAllowed()"></p>
+          <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
+          <PluginCheckBox
+              v-for="(pl, index) in pluginList"
+              :title="pl.title"
+              :check="pl.enable"
+              @click="onCheckBoxClicked(index)">
+
+          </PluginCheckBox>
+
+        </div>
+      </div>
+
+
+      <MainNav/>
     </div>
   </div>
-  <div class="center-horizontal preset">
-    <PresetView/>
-  </div>
-  <div class="center-horizontal">
-    <div id="plugin-list" class="block-display">
-      <p v-if="isCookiesAllowed()"></p>
-      <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
-      <PluginCheckBox
-          v-for="(pl, index) in pluginList"
-          :title="pl.title"
-          :check="pl.enable"
-          @click="onCheckBoxClicked(index)">
-
-      </PluginCheckBox>
-
-    </div>
-  </div>
-
-
-  <MainNav/>
 </template>
 
 <script>
@@ -147,6 +165,7 @@ export default {
       callback: "",
       slShow: false,
       smShow: false,
+      gifPlay: false,
     }
   },
   methods: {
@@ -271,6 +290,10 @@ export default {
       }else{
         return null;
       }
+    },
+
+    clickedInput(){
+      this.gifPlay = true;
     }
 
 

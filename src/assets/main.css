@@ -15,6 +15,10 @@ h2, h3, h4, p, a{
   cursor: pointer;
 }
 
+.relative{
+  position: relative;
+}
+
 #more-content-button-root{
 
 }
@@ -260,6 +264,7 @@ b{
   .result-image{
     max-width: 90vw;
   }
+
 
 }
 
