@@ -5,13 +5,11 @@
       <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
       <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
       <div class="fullscreen">
-        <div class="relative">
-          <div class="absolute">
-            <div>
-              <!--<img ref="gif" src="../assets/intercra-gif.gif" :loop="false" @load="stopGif" />/!-->
-              <video ref="video">
-                <source src="../assets/intercra-video.mp4" type="video/mp4">
-              </video>
+        <div class="relative center-horizontal">
+          <div class="absolute" style="background: #00b576">
+            <div class="relative center-horizontal">
+              <video ref="video" class="absolute" src="../assets/intercra-video.mp4" type="video/mp4"/>
+              <video ref="videoreverse" class="absolute" v-if="reverse" src="../assets/intercra-video-reverse.mp4" type="video/mp4"/>
             </div>
           </div>
           <div class="absolute">
@@ -27,7 +25,8 @@
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
                 </div>
                 <input
-                    @click="clickedInput()"
+                    v-on:focus="inputFocus()"
+                    v-on:blur="inputLostFocus()"
                     @keyup.enter="enterClicked()"
                     id="main-input-search"
                     placeholder="Search here"
@@ -175,10 +174,17 @@ export default {
         duration: 0,
         timerId: null
       },
+      reverse: false,
       placeholder: firstGifFrame,
-      gifSrc: "../assets/intercra-gif.gif"
     }
   },
+
+  updated() {
+    if(this.reverse){
+      this.$refs.videoreverse.play();
+    }
+  },
+
   methods: {
 
     showFromPopup: function (message){
@@ -303,14 +309,18 @@ export default {
       }
     },
 
-    clickedInput(){
-      this.gifPlay = true;
-      this.startVideo()
-    },
-
-    startVideo() {
+    inputFocus(){
+      this.reverse = false;
       this.$refs.video.play();
     },
+
+    inputLostFocus(){
+      this.reverse = true;
+    },
+
+    reverseActive(){
+      this.$refs.videoreverse.play();
+    }
 
 
   }
