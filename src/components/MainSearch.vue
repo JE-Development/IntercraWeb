@@ -7,11 +7,11 @@
       <div class="fullscreen">
         <div class="relative">
           <div class="absolute">
-            <div v-if="gifPlay">
-              <img src="../assets/intercra-gif.gif" style="width: 100vw; height: 3000px; object-fit: cover; object-position: 0% 20%;">
-            </div>
-            <div v-else>
-              <img src="../assets/intercra-gif-first.png" style="width: 100vw; height: 3000px; object-fit: cover; object-position: 0% 20%;">
+            <div>
+              <!--<img ref="gif" src="../assets/intercra-gif.gif" :loop="false" @load="stopGif" />/!-->
+              <video ref="video">
+                <source src="../assets/intercra-video.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
           <div class="absolute">
@@ -79,11 +79,15 @@ import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
+import myGif from '../assets/intercra-gif.gif';
+import firstGifFrame from '../assets/intercra-gif-first.png';
+import lastGifFrame from '../assets/intercra-gif-last.png';
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
-  components: {SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
+  components: {
+    SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
 
@@ -165,7 +169,14 @@ export default {
       callback: "",
       slShow: false,
       smShow: false,
-      gifPlay: false,
+      gifPlay: true,
+      gifStatus: {
+        isPlaying: false,
+        duration: 0,
+        timerId: null
+      },
+      placeholder: firstGifFrame,
+      gifSrc: "../assets/intercra-gif.gif"
     }
   },
   methods: {
@@ -294,7 +305,12 @@ export default {
 
     clickedInput(){
       this.gifPlay = true;
-    }
+      this.startVideo()
+    },
+
+    startVideo() {
+      this.$refs.video.play();
+    },
 
 
   }
