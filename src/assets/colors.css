@@ -10,8 +10,16 @@
     color: #000000;
 }
 
+.background-black{
+    background: #000000;
+}
+
 .text-button{
     color: #000000;
+}
+
+.white{
+    color: #ffffff;
 }
 
 .black{
@@ -19,7 +27,7 @@
 }
 
 .check-box-text{
-    color: #ffffff;
+    color: #c0c0c0;
 }
 
 .popup-background{

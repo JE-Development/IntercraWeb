@@ -7,10 +7,6 @@
   font-weight: normal;
 }
 
-body{
-  background: #000000;
-}
-
 h2, h3, h4, p, a{
   overflow: hidden;
 }
@@ -230,7 +226,7 @@ b{
   height: 350vh;
   object-fit: cover;
   object-position: top;
-  top: -200px;
+  top: -15vw;
 }
 
 

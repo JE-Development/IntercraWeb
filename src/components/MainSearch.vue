@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>
+    <div class="background-black">
       <PluginPopup :show="show" @show-popup="showFromPopup"/>
       <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
       <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
@@ -16,7 +16,7 @@
           </div>
           <div class="absolute">
             <div class="scroll-down">
-              <p class="center-horizontal">Scroll down for the plugin list</p>
+              <p class="center-horizontal white">Scroll down for the plugin list</p>
               <div class="center-horizontal">
                 <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
               </div>
@@ -185,6 +185,7 @@ export default {
   updated() {
     if(this.reverse){
       this.$refs.videoreverse.play();
+      setTimeout(() => this.$refs.video.currentTime = 0, 100);
     }
   },
 
@@ -313,8 +314,8 @@ export default {
     },
 
     inputFocus(){
-      this.reverse = false;
       this.$refs.video.play();
+      this.reverse = false;
       this.$refs.input.className = this.$refs.input.className.replace("glow-after", "glow");
     },
 
@@ -322,10 +323,6 @@ export default {
       this.reverse = true;
       this.$refs.input.className = this.$refs.input.className.replace("glow", "glow-after");
     },
-
-    reverseActive(){
-      this.$refs.videoreverse.play();
-    }
 
 
   }
