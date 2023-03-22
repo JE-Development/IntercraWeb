@@ -4,7 +4,9 @@ import MainSearch from "../components/MainSearch.vue";
 </script>
 
 <template>
-  <MainSearch/>
+  <div>
+    <MainSearch/>
+  </div>
 </template>
 
 <style scoped>

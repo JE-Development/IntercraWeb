@@ -58,7 +58,7 @@
     color: #ff0000;
 }
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {*/
 
     body{
         background-color: #111111;
@@ -95,4 +95,4 @@
     .headline-color{
         color: #00ff06;
     }
-}
+/*}*/
