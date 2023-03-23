@@ -34,7 +34,7 @@
     <SavedContentButton :show="true"/>
   </div>
 
-  <div class="result-root center-horizontal">
+  <div class="center-horizontal">
     <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
@@ -62,8 +62,9 @@
         />
       </div>
     </div>
+
     <div style="width: 30px" v-if="checkScreenSize()"></div>
-    <div class="view-border-saved sticky" v-if="savedContent.length != 0 && checkScreenSize()">
+    <div class="view-border-saved sticky" v-if="savedContent.length != 0 && checkScreenSize()" style="pos">
       <div class="outer-scroll">
         <ViewTemplatesPage v-for="(dat, id) in savedContent"
                            :index="id"

@@ -6,7 +6,7 @@
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
       <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
-      <h3>{{artist}}</h3>
+      <h3 class="text-black">{{artist}}</h3>
       <h4 class="teaser-color">{{price}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
       <div v-if="savedContent">

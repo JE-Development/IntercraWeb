@@ -11,7 +11,7 @@
 }
 
 
-@media (prefers-color-scheme: dark) {
+/*@media (prefers-color-scheme: dark) {*/
     .image-list{
         content: url("../assets/list-white.png");
     }
@@ -23,4 +23,4 @@
     .image-repeat{
         content: url("../assets/repeat-white.png");
     }
-}
+/*}*/

@@ -23,7 +23,7 @@
             </div>
             <div class="center">
               <div class="search-box">
-                <div class="center-horizontal">
+                <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
                 </div>
                 <input
@@ -34,7 +34,6 @@
                     id="main-input-search"
                     placeholder="Search here"
                     class="glow search-input center-horizontal search-input-color search-input-border-color">
-                <font-awesome-icon icon="fa-solid fa-repeat" />
               </div>
             </div>
 
@@ -179,13 +178,16 @@ export default {
       },
       reverse: false,
       placeholder: firstGifFrame,
+      alreadyPlayed: false,
     }
   },
 
   updated() {
-    if(this.reverse){
+    if(this.reverse && !this.alreadyPlayed){
+      this.alreadyPlayed = true;
       this.$refs.videoreverse.play();
-      setTimeout(() => this.$refs.video.currentTime = 0, 100);
+      setTimeout(() => this.$refs.video.currentTime = 0, 500);
+
     }
   },
 
@@ -314,7 +316,9 @@ export default {
     },
 
     inputFocus(){
+      this.alreadyPlayed = false;
       this.$refs.video.play();
+      setTimeout(() => this.$refs.videoreverse.currentTime = 0, 500);
       this.reverse = false;
       this.$refs.input.className = this.$refs.input.className.replace("glow-after", "glow");
     },

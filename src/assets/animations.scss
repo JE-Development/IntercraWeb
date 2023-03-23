@@ -70,6 +70,31 @@
   padding: 2px;
 }
 
+.not-glow-check-box{
+
+}
+
+.glow-check-box {
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ffffff, #ffffff) border-box;
+  background-size: 400% 400%;
+
+  box-shadow: 0px 0px 40px #ffffff;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.glow-after-check-box{
+  outline: none !important;
+
+  box-shadow: 0 0 40px #ffffff;
+  animation: glowing-back-check-box 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
 
 .glow:focus {
   outline: none !important;
@@ -89,6 +114,26 @@
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+}
+
+@keyframes glowing-check-box {
+  0% {
+    box-shadow: 0 0 0px #ffffff;
+  }
+
+  100% {
+    box-shadow: 0 0 40px #ffffff;
+  }
+}
+
+@keyframes glowing-back-check-box {
+  0% {
+    box-shadow: 0 0 40px #ffffff;
+  }
+
+  100% {
+    box-shadow: 0 0 0px #ffffff;
+  }
 }
 
 @keyframes glowing {
