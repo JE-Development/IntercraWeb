@@ -7,11 +7,9 @@
       <div class="fullscreen">
         <div class="relative center-horizontal">
           <div class="absolute">
-            <div class="relative center-horizontal video-div">
-
+            <div class="relative center-horizontal video-div" v-if="checkScreenSizeForVideo()">
               <video ref="video" class="absolute video-effect" src="../assets/intercra-video.mp4" type="video/mp4"/>
               <video ref="videoreverse" class="absolute video-effect" v-if="reverse" src="../assets/intercra-video-reverse.mp4" type="video/mp4"/>
-
             </div>
           </div>
           <div class="absolute">
@@ -326,6 +324,14 @@ export default {
     inputLostFocus(){
       this.reverse = true;
       this.$refs.input.className = this.$refs.input.className.replace("glow", "glow-after");
+    },
+
+    checkScreenSizeForVideo(){
+      if(window.innerWidth > 1000){
+        return true;
+      }else{
+        return false;
+      }
     },
 
 
