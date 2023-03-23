@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="064392ca-c06e-4f3b-af88-a4400bbaed18" name="StratoSub">
+        <fileTransfer accessType="SFTP" host="ssh.strato.de" port="22" sshConfigId="284c81c4-df6d-4eab-8f46-4ce83938dc51" sshConfig="intercra.com@ssh.strato.de:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
