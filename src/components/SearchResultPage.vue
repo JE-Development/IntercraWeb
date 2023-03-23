@@ -1,6 +1,6 @@
 
 
-<template ref="srp">
+<template>
   <SavedPopup :show="showPopup" @show-popup="showFromPopup" :saved-content="savedContent"/>
   <div class="center-horizontal">
     <div>
