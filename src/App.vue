@@ -28,7 +28,7 @@ export default {
 
         }
 
-        window.open("https://intercra.com", '_self');
+        window.open("htts://blueprint.intercra.com", '_self');
       }else{
         //window.open("https://intercra.com", "_self");
       }
@@ -40,7 +40,7 @@ export default {
         this.$cookies.set("token", token);
         this.$cookies.set("spotifyLogin", "true");
         let route = this.$router.resolve({path: '/'});
-        window.open("https://intercra.com", '_self');
+        window.open("http://blueprint.intercra.com", '_self');
       }else{
         //window.open(document.baseURI, "_self");
       }

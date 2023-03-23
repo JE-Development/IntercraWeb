@@ -8,7 +8,7 @@ export class SpotifyController{
 
     login(){
         let CLIENT_ID = '15d6a40e579740e8b8eab83339e01744';
-        let REDIRECT_URI = 'https://intercra.com/';
+        let REDIRECT_URI = 'http://blueprint.intercra.com/';
 
         let scope = ['user-read-private'];
 

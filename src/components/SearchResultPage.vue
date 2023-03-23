@@ -34,7 +34,7 @@
     <SavedContentButton :show="true"/>
   </div>
 
-  <div class="result-root center-horizontal">
+  <div class="center-horizontal">
     <div class="main-results center-horizontal">
       <div>
         <ViewTemplatesPage v-for="(dat, id) in content"
