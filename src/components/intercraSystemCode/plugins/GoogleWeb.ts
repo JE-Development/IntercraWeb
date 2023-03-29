@@ -24,7 +24,7 @@ export class GoogleWeb implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
-        await this.startSearch(searchText);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
@@ -33,16 +33,16 @@ export class GoogleWeb implements PluginInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
         this.offset = this.offset + 10;
-        await this.startSearch(searchText);
+        await this.startSearch(searchText, pc);
         this.finish = true;
 
         pc.isFinished(this.contentList, this.id);
     }
 
-    async startSearch(searchText: string): Promise<void>{
+    async startSearch(searchText: string, pc: PluginController): Promise<void>{
         let gc = new GoogleController();
 
-        await gc.httpSearchRequest(searchText, this.offset).then(r =>
+        await gc.httpSearchRequest(searchText, this.offset, pc, this.id).then(r =>
             this.analyse(r)
         );
     }

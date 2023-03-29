@@ -2,13 +2,14 @@
 
 <template>
   <SavedPopup :show="showPopup" @show-popup="showFromPopup" :saved-content="savedContent"/>
-  <div class="center-horizontal">
+  <div class="center-horizontal opacity-fade-in">
     <div>
       <div class="center-horizontal">
         <a href="https://intercra.com">
           <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
         </a>
       </div>
+
       <input
           @keyup.enter="enterClicked()"
           id="result-input-search"
@@ -64,34 +65,37 @@
     </div>
 
     <div style="width: 30px" v-if="checkScreenSize()"></div>
-    <div class="view-border-saved sticky" v-if="savedContent.length != 0 && checkScreenSize()" style="pos">
-      <div class="outer-scroll">
-        <ViewTemplatesPage v-for="(dat, id) in savedContent"
-                           :index="id"
-                           :savedContent="true"
-                           :choosenView="dat.choosenView"
-                           :url="dat.url"
-                           :headline="dat.headline"
-                           :pluginName="dat.pluginName"
-                           :teaser="dat.teaser"
-                           :image="dat.image"
-                           :date="dat.date"
-                           :price="dat.price"
-                           :artist="dat.artist"
-                           :release="dat.release"
-                           :tags="dat.tags"
-                           :genre="dat.genre"
-                           :type="dat.type"
-                           :publisher="dat.publisher"
-                           :appIcon="dat.appIcon"
-                           :platform="dat.platform"
-                           :album="dat.album"
-                           :duration="dat.duration"
-                           :lang="dat.lang"
-                           :author="dat.author"
-        />
+    <div class="view-border-null" ref="saved">
+      <div class="sticky" v-if="savedContent.length != 0 && checkScreenSize()" style="width: 100%">
+        <div class="outer-scroll">
+          <ViewTemplatesPage v-for="(dat, id) in savedContent"
+                             :index="id"
+                             :savedContent="true"
+                             :choosenView="dat.choosenView"
+                             :url="dat.url"
+                             :headline="dat.headline"
+                             :pluginName="dat.pluginName"
+                             :teaser="dat.teaser"
+                             :image="dat.image"
+                             :date="dat.date"
+                             :price="dat.price"
+                             :artist="dat.artist"
+                             :release="dat.release"
+                             :tags="dat.tags"
+                             :genre="dat.genre"
+                             :type="dat.type"
+                             :publisher="dat.publisher"
+                             :appIcon="dat.appIcon"
+                             :platform="dat.platform"
+                             :album="dat.album"
+                             :duration="dat.duration"
+                             :lang="dat.lang"
+                             :author="dat.author"
+          />
+        </div>
       </div>
     </div>
+
   </div>
 
   <div id="searchRoot" v-if="showLoading">
@@ -149,6 +153,7 @@ export default {
       isSaveContent: false,
       showPopup: false,
       noPlugin: false,
+      beforeSaved: false,
     };
   },
 
@@ -204,34 +209,27 @@ export default {
       this.showPopup = false;
     })
     EventBus.addEventListener('save-result', (event) => {
-      if(!this.savedPressed){
-        this.savedPressed = true;
-      }
-      if(!this.savedIds.includes(event.data)){
-        let index = event.data;
-        let index2 = index + 1;
-        let saved = this.content.slice(index,index2)
-        saved[0].parentId = index;
-        this.savedContent = this.savedContent.concat(saved);
-        this.savedIds = this.savedIds.concat(index);
-        this.isSaveContent = true;
+      if(this.checkScreenSize()) {
+        this.$refs.saved.className = this.$refs.saved.className.replace("view-border-decrease", "view-border-increase")
+        this.$refs.saved.className = this.$refs.saved.className.replace("view-border-null", "view-border-increase")
+        this.addSaved(event);
+      }else{
+        this.addSaved(event)
       }
     })
     EventBus.addEventListener('save-remove', (event) => {
-      let parentId = -1;
-      this.isSaveContent = false;
-      this.savedContent.forEach((element,index)=>{
-        if(index == event.data){
-          parentId = this.savedContent[index].parentId;
-          this.savedContent.splice(index,1);
+      if(this.checkScreenSize()) {
+        if (this.hasOneSaved()) {
+          this.$refs.saved.className = this.$refs.saved.className.replace("view-border-increase", "view-border-decrease")
+          setTimeout(() => this.removeSaved(event), 500);
+        } else {
+          this.removeSaved(event);
         }
-      });
-      this.savedIds.forEach((element,index)=>{
-        if(element == parentId){
-          this.savedIds.splice(index, 1);
-        }
-      });
+      }else{
+        this.removeSaved(event)
+      }
     })
+
   },
   mounted() {
     //window.addEventListener("scroll", this.handleScroll);
@@ -251,6 +249,37 @@ export default {
   },
 
   methods: {
+
+    addSaved(event){
+      if(!this.savedPressed){
+        this.savedPressed = true;
+      }
+      if(!this.savedIds.includes(event.data)){
+        let index = event.data;
+        let index2 = index + 1;
+        let saved = this.content.slice(index,index2)
+        saved[0].parentId = index;
+        this.savedContent = this.savedContent.concat(saved);
+        this.savedIds = this.savedIds.concat(index);
+        this.isSaveContent = true;
+      }
+    },
+
+    removeSaved(event){
+      let parentId = -1;
+      this.isSaveContent = false;
+      this.savedContent.forEach((element,index)=>{
+        if(index == event.data){
+          parentId = this.savedContent[index].parentId;
+          this.savedContent.splice(index,1);
+        }
+      });
+      this.savedIds.forEach((element,index)=>{
+        if(element == parentId){
+          this.savedIds.splice(index, 1);
+        }
+      });
+    },
 
     updateSearch: function (){
       this.show = true;
@@ -291,6 +320,12 @@ export default {
     },
     hasSaved(){
       if(this.savedContent.length > 0){
+        return true;
+      }
+      return false;
+    },
+    hasOneSaved(){
+      if(this.savedContent.length == 1){
         return true;
       }
       return false;

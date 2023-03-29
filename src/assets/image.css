@@ -9,6 +9,22 @@
 .image-repeat{
     content: url("../assets/repeat.png");
 }
+/*
+.image-arrow-left{
+    content: url("../assets/arrow_left.png");
+}
+
+.image-arrow-right{
+    content: url("../assets/arrow_right.png");
+}*/
+
+.image-arrow-left{
+    content: url("../assets/arrow_left_white.png");
+}
+
+.image-arrow-right{
+    content: url("../assets/arrow_right_white.png");
+}
 
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -22,5 +38,13 @@
 
     .image-repeat{
         content: url("../assets/repeat-white.png");
+    }
+
+    .image-arrow-left{
+        content: url("../assets/arrow_left_white.png");
+    }
+
+    .image-arrow-right{
+        content: url("../assets/arrow_right_white.png");
     }
 /*}*/

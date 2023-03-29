@@ -116,6 +116,78 @@
   animation-fill-mode: forwards;
 }
 
+.opacity-fade-out{
+  opacity: 1.0;
+
+  animation: opacity-out 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.opacity-fade-in{
+  opacity: 0;
+
+  animation: opacity-in 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.view-border-increase{
+  width: 0px;
+
+  animation: increase-width 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.view-border-decrease{
+  width: 720px;
+
+  animation: decrease-width 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes decrease-width {
+  0%{
+    width: 720px;
+  }
+  100%{
+    width: 0px;
+  }
+}
+
+@keyframes increase-width {
+  0%{
+    width: 0px;
+  }
+  100%{
+    width: 720px;
+  }
+}
+
+@keyframes opacity-out {
+  0%{
+    opacity: 1.0;
+  }
+  100%{
+    opacity: 0.0;
+  }
+}
+
+@keyframes opacity-in {
+  0%{
+    opacity: 0.0;
+  }
+  100%{
+    opacity: 1.0;
+  }
+}
+
 @keyframes glowing-check-box {
   0% {
     box-shadow: 0 0 0px #ffffff;

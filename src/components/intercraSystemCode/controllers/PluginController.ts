@@ -61,7 +61,7 @@ export class PluginController {
         this.plugins.push(new ITunes());
         //this.plugins.push(new NewsApi()); not working in production
         this.plugins.push(new GNews());
-        this.plugins.push(new NewsCatcher());
+        //this.plugins.push(new NewsCatcher()); only 50 calls per month
         this.plugins.push(new NewYorkTimes());
         this.plugins.push(new NonaWeb());
         this.plugins.push(new NonaNews());
@@ -220,6 +220,22 @@ export class PluginController {
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {
                 this.errorNames.push(this.plugins[i].getPluginDisplayName());
+            }
+        }
+        EventBus.emit('error-sender', this.errorNames)
+
+    }
+
+    gotErrorMessage(id: string, message: string) {
+        this.finishedPlugins.push(id);
+
+        EventBus.emit("not-finished", this.getNotFinished())
+
+        console.log("error: " + id)
+
+        for (let i = 0; i < this.plugins.length; i++) {
+            if (this.plugins[i].getId() == id) {
+                this.errorNames.push(this.plugins[i].getPluginDisplayName() + ": " + message);
             }
         }
         EventBus.emit('error-sender', this.errorNames)

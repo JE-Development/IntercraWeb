@@ -1,6 +1,7 @@
 import * as qs from 'querystring';
 import axios from 'axios'
 import EventBus from "../classes/EventBusEvent";
+import type {PluginController} from "./PluginController";
 
 export class GoogleController{
 
@@ -29,7 +30,7 @@ export class GoogleController{
     }
 
 
-    async httpSearchRequest(q: string, offset: number): Promise<any>{
+    async httpSearchRequest(q: string, offset: number, pc: PluginController, id:string): Promise<any>{
         const data = {
             q: q,
             key: "AIzaSyBsIIXPf7H7s9ctuwQAimiAbvueJnRS-IA",
@@ -47,10 +48,9 @@ export class GoogleController{
         await axios.get('https://www.googleapis.com/customsearch/v1?' + qs.stringify(data))
             .then(response => {
                 json = response.data;
-                console.log("google success")
             })
             .catch(error => {
-                console.log("google error")
+                pc.gotErrorMessage(id, "" + error);
             });
         if(ok) {
             return json;
@@ -60,7 +60,7 @@ export class GoogleController{
 
     }
 
-    async httpImageRequest(q: string, offset: number): Promise<any>{
+    async httpImageRequest(q: string, offset: number, pc: PluginController, id: string): Promise<any>{
         const data = {
             q: q,
             key: "AIzaSyBsIIXPf7H7s9ctuwQAimiAbvueJnRS-IA",
@@ -79,10 +79,9 @@ export class GoogleController{
         await axios.get('https://www.googleapis.com/customsearch/v1?' + qs.stringify(data))
             .then(response => {
                 json = response.data;
-                console.log("google success")
             })
             .catch(error => {
-                console.log("google error")
+                pc.gotErrorMessage(id, "" + error);
             });
         if(ok) {
             return json;

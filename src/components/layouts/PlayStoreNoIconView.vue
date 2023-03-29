@@ -12,12 +12,12 @@
           <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
           <div v-if="savedContent">
             <div class="saved-content-div center-horizontal">
-              <a @click="savedClick"><img src="../../assets/arrow_left.png" class="saved-content-icon"/></a>
+              <a @click="savedClick"><img class="saved-content-icon image-arrow-left"/></a>
             </div>
           </div>
           <div v-else class="saved-content-right">
             <div class="saved-content-div center-horizontal">
-              <a @click="savedClick"><img src="../../assets/arrow_right.png" class="saved-content-icon"/></a>
+              <a @click="savedClick"><img class="saved-content-icon image-arrow-right"/></a>
             </div>
           </div>
         </div>

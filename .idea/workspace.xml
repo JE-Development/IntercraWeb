@@ -6,7 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/image.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/image.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/GoogleController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/GoogleController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleImage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ITunesView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ITunesView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/NewgroundsImageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsImageView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/PlayStoreNoIconView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/PlayStoreNoIconView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +239,7 @@
       <workItem from="1679559219255" duration="4258000" />
       <workItem from="1679570789662" duration="444000" />
       <workItem from="1679601291765" duration="2504000" />
+      <workItem from="1680120301726" duration="5265000" />
     </task>
     <servers />
   </component>

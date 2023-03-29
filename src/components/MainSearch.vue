@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="background-black">
+    <div class="background-black opacity-fade-in" ref="background">
       <PluginPopup :show="show" @show-popup="showFromPopup"/>
       <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
       <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
@@ -250,18 +250,7 @@ export default {
     },
 
     enterClicked(){
-      /*if(this.pluginIsEnabled("spotify_tracks")) {
-
-        let sc = new SpotifyController();
-        sc.httpLibraryRequest(this.$cookies.get("token"), "test", "track", 10, 0, false).then(
-            r => this.checkSearch(r)
-        );
-      }else{
-        this.startSearch();
-      }*/
-
-      //let gc = new GoogleController();
-      //gc.login();
+      this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
       this.startSearch();
     },
@@ -282,7 +271,7 @@ export default {
       }
 
       let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
-      window.open(route.href, '_self');
+      setTimeout(() => window.open(route.href, '_self'), 500);
     },
 
     checkSearch(response){
