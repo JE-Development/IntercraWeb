@@ -4,9 +4,9 @@
   <Transition name="modal">
     <div v-if="show" class="modal-mask-saved">
       <div class="modal-wrapper-saved">
-        <div class="modal-container-saved search-box popup-background popup-width">
-          <div style="justify-content: center">
-            <div class="center-horizontal text-black" style="margin-top: 5px">
+        <div class="modal-container-saved search-box popup-background popup-width" style="background: #171717">
+          <div style="justify-content: center;">
+            <div class="center-horizontal" style="margin-top: 5px">
               <div>
                 <div class="center-horizontal">
                   <button class="plugin-menu plugin-close center-horizontal" @click="onClose">
