@@ -15,6 +15,7 @@ export class GooglePlayApps implements PluginInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.GAMES);
+        pc.addPreset(PresetEnum.SOFTWARE);
         return pc;
     }
 

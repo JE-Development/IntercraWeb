@@ -8,13 +8,13 @@ import {PresetEnum} from "../enums/PresetEnum";
 import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
 
-export class ITunes implements PluginInterface{
+export class ITunesPodcast implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     page: number = 1;
 
-    displayName = "iTunes";
-    id = "itunes";
+    displayName = "iTunes Podcast";
+    id = "itunes_podcast";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -39,7 +39,7 @@ export class ITunes implements PluginInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://itunes.apple.com/search?term=" + searchText + "&limit=50",
+            "https://itunes.apple.com/search?term=" + searchText + "&limit=50&media=podcast",
             pc, this.id).then(r =>
             this.analyse(r)
         );
@@ -51,15 +51,14 @@ export class ITunes implements PluginInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
-            if(items.collectionViewUrl != null) {
-                let url = JSON.stringify(items.collectionViewUrl).replace('"', "").replace('"', "");
-                let type = JSON.stringify(items.wrapperType).replace('"', "").replace('"', "");
+            if(items.trackViewUrl != null) {
+                let url = JSON.stringify(items.trackViewUrl).replace('"', "").replace('"', "");
                 let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
                 let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
-                let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
+                let headline = JSON.stringify(items.trackCensoredName).replace('"', "").replace('"', "");
                 let price = "";
                 try {
-                    price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");
+                    price = "$" + JSON.stringify(items.trackPrice).replace('"', "").replace('"', "");
                 } catch (e) {
                     // no price
                 }
@@ -68,10 +67,10 @@ export class ITunes implements PluginInterface{
 
                 map.set("url", url);
                 map.set("headline", headline);
-                map.set("type", type);
                 map.set("imageUrl", image);
                 map.set("artist", artist);
                 map.set("price", price);
+                map.set("scaleIndex", "150");
 
                 this.contentList.push(map);
             }
@@ -131,6 +130,7 @@ export class ITunes implements PluginInterface{
                 image: contentMap.get("imageUrl"),
                 type: contentMap.get("type"),
                 artist: contentMap.get("artist"),
+                scaleIndex: contentMap.get("scaleIndex")
             })
         }
 

@@ -24,7 +24,7 @@ import {GitHubTopics} from "../plugins/GitHubTopics";
 import {GoogleWeb} from "../plugins/GoogleWeb";
 import {YoutubeVideo} from "../plugins/YoutubeVideo";
 import {Stackoverflow} from "../plugins/Stackoverflow";
-import {ITunes} from "../plugins/ITunes";
+import {ITunesTracks} from "../plugins/ITunesTracks";
 import {Flickr} from "../plugins/Flickr";
 import {NewsApi} from "../plugins/NewsApi";
 import {Giphy} from "../plugins/Giphy";
@@ -40,6 +40,11 @@ import {NewgroundsBlogs} from "../plugins/NewgroundsBlogs";
 import {NewgroundsArt} from "../plugins/NewgroundsArt";
 import {NewgroundsGames} from "../plugins/NewgroundsGames";
 import {NewgroundsMovies} from "../plugins/NewgroundsMovies";
+import {AppStore} from "../plugins/AppStore";
+import {ITunesMovies} from "../plugins/ITunesMovies";
+import {ITunesPodcast} from "../plugins/ITunesPodcast";
+import {ITunesBooks} from "../plugins/ITunesBooks";
+import {ITunesAudioBook} from "../plugins/ITunesAudioBook";
 
 export class PluginController {
 
@@ -58,7 +63,12 @@ export class PluginController {
         //this.plugins.push(new YoutubeVideo());
         this.plugins.push(new GoogleWeb());
         this.plugins.push(new GoogleImage());
-        this.plugins.push(new ITunes());
+        this.plugins.push(new ITunesTracks());
+        this.plugins.push(new ITunesMovies());
+        this.plugins.push(new ITunesPodcast());
+        this.plugins.push(new ITunesBooks());
+        this.plugins.push(new ITunesAudioBook());
+        this.plugins.push(new AppStore());
         //this.plugins.push(new NewsApi()); not working in production
         this.plugins.push(new GNews());
         //this.plugins.push(new NewsCatcher()); only 50 calls per month

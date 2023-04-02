@@ -60,6 +60,7 @@
                            :duration="dat.duration"
                            :lang="dat.lang"
                            :author="dat.author"
+                           :scaleIndex="dat.scaleIndex"
         />
       </div>
     </div>
@@ -91,6 +92,7 @@
                              :duration="dat.duration"
                              :lang="dat.lang"
                              :author="dat.author"
+                             :scaleIndex="dat.scaleIndex"
           />
         </div>
       </div>

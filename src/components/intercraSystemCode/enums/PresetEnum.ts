@@ -4,6 +4,7 @@ export enum PresetEnum{
     SHOPPING = "Shopping",
     INFORMATION = "Information",
     GAMES = "Games",
+    SOFTWARE = "Software",
     BOOKS = "Books",
     IMAGES = "Images",
     VIDEOS = "Videos",

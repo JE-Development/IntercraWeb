@@ -100,6 +100,7 @@
               :artist="artist"
               :type="type"
               :price="price"
+              :scaleIndex="scaleIndex"
   />
   <ModelsView v-else-if="choosenView === 'modelsView'"
               :index="index"
@@ -173,6 +174,7 @@ export default {
     pluginName: String,
     teaser: String,
     image: String,
+    scaleIndex:String,
 
     //article
 
