@@ -45,6 +45,7 @@ import {ITunesMovies} from "../plugins/ITunesMovies";
 import {ITunesPodcast} from "../plugins/ITunesPodcast";
 import {ITunesBooks} from "../plugins/ITunesBooks";
 import {ITunesAudioBook} from "../plugins/ITunesAudioBook";
+import {PNGWing} from "../plugins/PNGWing";
 
 export class PluginController {
 
@@ -88,6 +89,7 @@ export class PluginController {
         this.plugins.push(new GooglePlayMovies());
         this.plugins.push(new Fandom());
         this.plugins.push(new OscoboImage());
+        this.plugins.push(new PNGWing());
         this.plugins.push(new Flickr());
         this.plugins.push(new Giphy());
         this.plugins.push(new Reddit());
