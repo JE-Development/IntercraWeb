@@ -39,6 +39,7 @@ export default {
   methods: {
     savedClick(){
       if(!this.savedContent) {
+        console.log("information")
         EventBus.emit("save-result", this.index)
       }else{
         EventBus.emit("save-remove", this.index)
