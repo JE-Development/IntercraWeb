@@ -18,8 +18,6 @@ export class SpotifyController{
             height = 730,
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
-
-        console.log("spotify login")
         window.open(url, '_self');
 
         /*let w = window.open(url,

@@ -31,7 +31,6 @@ export class NewgroundsAudio implements PluginInterface{
             //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
-            console.log(error)
             pc.gotError(this.id);
         }
     }

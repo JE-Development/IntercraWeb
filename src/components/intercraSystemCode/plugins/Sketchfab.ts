@@ -26,7 +26,6 @@ export class Sketchfab implements PluginInterface{
 
             pc.isFinished(this.contentList, this.id);
         }catch (error){
-            console.log(String(error))
             pc.gotError(this.id);
         }
     }

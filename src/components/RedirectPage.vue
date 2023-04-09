@@ -7,7 +7,6 @@ export default {
   name: "RedirectPage",
 
   created() {
-    console.log("uri" + document.documentURI)
   },
 
   mounted() {

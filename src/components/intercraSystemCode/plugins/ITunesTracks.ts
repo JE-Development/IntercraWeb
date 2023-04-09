@@ -47,7 +47,6 @@ export class ITunesTracks implements PluginInterface{
 
     analyse(json: any){
         let array = json.results;
-        console.log(array)
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 

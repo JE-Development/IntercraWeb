@@ -3,7 +3,6 @@ import type {RouteRecordRaw} from 'vue-router';
 import Main from '../components/MainPage.vue'
 import SearchResultPage from '../components/SearchResultPage.vue'
 import ViewCollectionPage from '../components/ViewCollectionPage.vue'
-import AndroidPage from '../components/AndroidPage.vue'
 import RedirectPage from '../components/RedirectPage.vue'
 import ImpressumPage from '../components/ImpressumPage.vue'
 
@@ -22,11 +21,6 @@ const routes: Array<RouteRecordRaw> = [
         path: '/view-templates',
         name: 'ViewCollectionPage',
         component: ViewCollectionPage
-    },
-    {
-        path: '/android',
-        name: 'AndroidPage',
-        component: AndroidPage
     },
     {
         path: '/:token',

@@ -44,7 +44,6 @@ export class SpotifyTracks implements PluginInterface{
 
         let se = Boolean(split[2])
 
-        console.log("in working token: " + split[1])
 
         await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, se).then(r =>
             this.analyse(r, pc)
@@ -80,7 +79,6 @@ export class SpotifyTracks implements PluginInterface{
                 this.contentList.push(map);
             }
         }else{
-            console.log("tracks: " + json.tracks)
             pc.gotError(this.id);
         }
     }

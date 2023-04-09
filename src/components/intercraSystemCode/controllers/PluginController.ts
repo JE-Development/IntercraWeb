@@ -225,8 +225,6 @@ export class PluginController {
 
         EventBus.emit("not-finished", this.getNotFinished())
 
-        console.log("error: " + id)
-
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {
                 this.errorNames.push(this.plugins[i].getPluginDisplayName());
@@ -240,8 +238,6 @@ export class PluginController {
         this.finishedPlugins.push(id);
 
         EventBus.emit("not-finished", this.getNotFinished())
-
-        console.log("error: " + id)
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {

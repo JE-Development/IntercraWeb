@@ -275,7 +275,6 @@ export default {
     },
 
     checkSearch(response){
-      console.log("check this: " + response)
       if(response == null || response === "error") {
         this.slShow = true;
       }else{
