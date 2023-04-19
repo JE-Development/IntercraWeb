@@ -97,6 +97,27 @@
     justify-content: right;
 }
 
+.audio-play{
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin-right: 10px;
+}
+
+.audio-border{
+    width: 3vw;
+    height: 3vw;
+    background: #FF9900;
+    border: solid;
+    border-radius: 20px;
+    border-color: transparent;
+}
+
+.audio-image{
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
 .view-plugin-name{
     font-size: 12px;
 }

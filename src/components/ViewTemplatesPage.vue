@@ -69,6 +69,7 @@
              :pluginName="pluginName"
              :image="image"
              :headline="headline"
+             :scaleIndex="scaleIndex"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
                :index="index"

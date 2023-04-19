@@ -45,6 +45,7 @@ import {ITunesMovies} from "../plugins/ITunesMovies";
 import {ITunesPodcast} from "../plugins/ITunesPodcast";
 import {ITunesBooks} from "../plugins/ITunesBooks";
 import {ITunesAudioBook} from "../plugins/ITunesAudioBook";
+import {Tenor} from "../plugins/Tenor";
 
 export class PluginController {
 
@@ -90,6 +91,7 @@ export class PluginController {
         this.plugins.push(new OscoboImage());
         this.plugins.push(new Flickr());
         this.plugins.push(new Giphy());
+        this.plugins.push(new Tenor());
         this.plugins.push(new Reddit());
         this.plugins.push(new GitHubRepositories());
         this.plugins.push(new GitHubIssues());

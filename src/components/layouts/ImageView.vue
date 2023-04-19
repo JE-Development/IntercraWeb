@@ -4,7 +4,7 @@
 
       <div class="content-layout-color center-horizontal">
         <a :href="url">
-          <img :src="image" class="center-horizontal view-image"/>
+          <img :src="image" class="center-horizontal view-image" ref="image"/>
         </a>
       </div>
       <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
@@ -37,6 +37,13 @@ export default {
     image: String,
     pluginName: String,
     headline: String,
+    scaleIndex: String,
+  },
+
+  mounted() {
+    if(this.scaleIndex != null && this.scaleIndex != ""){
+      this.$refs.image.style.width = this.scaleIndex + "px";
+    }
   },
 
   methods: {

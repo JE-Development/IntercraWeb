@@ -39,6 +39,7 @@ export class Ebay implements PluginInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.page = this.page + 1;
+        console.log("page: " + this.page)
         this.contentList = [];
         let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/ebay/" + searchText + "/" + this.page);
         let text = await html.text();

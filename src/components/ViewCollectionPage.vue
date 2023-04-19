@@ -2,16 +2,16 @@
 
 
   <ViewTemplatesPage
-      :choosen-view="'newgroundsAudioView'"
-      :index="1"
+      :choosen-view="'spotifyView'"
+      :index="0"
       :savedContent="false"
-      :url="'https://www.google.com'"
-      :headline="'test headline'"
-      :pluginName="'internal plugin'"
-      :teaser="'this is a teaser'"
-      :image="'https://img.ngfiles.com/defaults/icon-audio-smaller.png?f1578181335'"
-      :genre="'genre'"
+      :url="''"
+      :headline="'headline'"
+      :pluginName="'pluginName'"
+      :image="'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png'"
       :artist="'artist'"
+      :duration="'0:00'"
+      :album="'album'"
   />
 
 
