@@ -2,28 +2,33 @@ import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
+import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
-import {HttpRequestController} from "../controllers/HttpRequestController";
 
-export class Sketchfab implements PluginInterface{
+export class PNGWing implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
-    displayName = "Sketchfab";
-    id = "sketchfab";
+    displayName = "PNGWing";
+    id = "png_wing";
     page = 1;
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.MODELS3D);
+        pc.addPreset(PresetEnum.IMAGES);
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            await this.startSearch(searchText, pc);
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/pngwing/" + searchText);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startSearch(document);
             this.finish = true;
 
+            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
@@ -31,41 +36,35 @@ export class Sketchfab implements PluginInterface{
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-
         this.contentList = [];
+        this.page += 1;
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/pngwing/" + searchText + "/" + this.page);
+        let text = await html.text();
+        const parser = new DOMParser();
+        const document: any = parser.parseFromString(text, "text/html");
+        this.startSearch(document);
+        this.finish = true;
 
+        //let pc = new PluginController();
         pc.isFinished(this.contentList, this.id);
     }
 
-    async startSearch(searchText: string, pc: PluginController): Promise<void>{
-        let hrc = new HttpRequestController()
+    startSearch(document: any): void{
+        const content = document.getElementsByTagName("li");
 
-        await hrc.httpRequest(
-            "https://sketchfab.com/v3/search?type=models&q=" + searchText,
-            pc, this.id).then(r =>
-            this.analyse(r)
-        );
-    }
+        for(let i = 0; i < content.length; i++){
+            const elem = content[i];
+            if(elem.getAttribute("itemprop") === "associatedMedia"){
+                let map = new Map<string, string>;
 
-    analyse(json: any){
-        let array = json.results;
-        for(let i = 0; i < array.length; i++){
-            let items = array[i];
+                const url = elem.getElementsByTagName("a")[0];
+                map.set("url", url.getAttribute("href"));
 
-            let url = JSON.stringify(items.viewerUrl).replace(/\"+/g, '');
-            let image = JSON.stringify(items.thumbnails.images[0].url).replace(/\"+/g, '');
-            let headline = JSON.stringify(items.name).replace(/\"+/g, '');
-            let creator = JSON.stringify(items.user.displayName).replace(/\"+/g, '');
+                const image = elem.getElementsByTagName("img")[0];
+                map.set("imageUrl", image.getAttribute("data-src"));
 
-
-            let map = new Map<string, string>;
-
-            map.set("url", url);
-            map.set("imageUrl", image);
-            map.set("headline", headline);
-            map.set("creator", creator);
-
-            this.contentList.push(map);
+                this.contentList.push(map);
+            }
         }
     }
 
@@ -113,28 +112,15 @@ export class Sketchfab implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
-
             content.push({
-                choosenView: "modelsView",
+                choosenView: "imageView",
                 url: contentMap.get("url"),
-                headline: this.cutString(String(contentMap.get("headline"))),
+                image: contentMap.get("imageUrl"),
                 pluginName: this.displayName,
-                artist: contentMap.get("creator"),
-                image: contentMap.get("imageUrl")
             })
         }
 
         return content;
-    }
-
-    cutString(str: string): string{
-        let index = 80;
-        if(str.length > index) {
-            let cut = str.substring(0, index) + "...";
-            return cut;
-        }else{
-            return str;
-        }
     }
 
 }

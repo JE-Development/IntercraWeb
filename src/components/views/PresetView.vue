@@ -40,7 +40,6 @@ export default {
 
     if(this.getCookies("preset-name") != null && this.getCookies("preset-name") !== this.buttonName){
       this.onClickPresetItem(this.getCookies("preset-name"));
-      console.log("is custom")
     }
   },
 

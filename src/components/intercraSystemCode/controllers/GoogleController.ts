@@ -15,8 +15,6 @@ export class GoogleController{
             height = 730,
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
-
-        console.log("google login")
         window.open(url, '_self');
 
         /*let w = window.open(url,
@@ -100,8 +98,6 @@ export class GoogleController{
         };
 
         let json;
-
-        console.log("youtube token: " + token)
 
         let ok = true;
 

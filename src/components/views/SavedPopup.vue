@@ -73,7 +73,6 @@ export default {
 
   created() {
     EventBus.addEventListener('data-sender-saved-popup', (event) => {
-      console.log("bekommen: " + event.data)
       this.savedContent = event.data;
     })
   },

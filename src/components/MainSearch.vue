@@ -22,16 +22,22 @@
             <div class="center">
               <div class="search-box">
                 <div class="center-horizontal" style="margin-bottom: 10px">
-                  <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal">
+                  <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
-                <input
-                    ref="input"
-                    v-on:focus="inputFocus()"
-                    v-on:blur="inputLostFocus()"
-                    @keyup.enter="enterClicked()"
-                    id="main-input-search"
-                    placeholder="Search here"
-                    class="glow search-input center-horizontal search-input-color search-input-border-color">
+                <div v-if="!this.isEvil">
+                  <input
+                      ref="input"
+                      v-on:focus="inputFocus()"
+                      v-on:blur="inputLostFocus()"
+                      @keyup.enter="enterClicked()"
+                      placeholder="Search here"
+                      class="glow search-input center-horizontal search-input-color search-input-border-color">
+                </div>
+                <div v-else>
+                  <div class="center-horizontal">
+                    <h1 class="error-color">I am evil! Ha Ha Ha!</h1>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -81,6 +87,7 @@ import SocialMediaPopup from "./views/SocialMediaPopup.vue";
 import myGif from '../assets/intercra-gif.gif';
 import firstGifFrame from '../assets/intercra-gif-first.png';
 import lastGifFrame from '../assets/intercra-gif-last.png';
+import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
 
 export default {
   //npm run dev | npm run build
@@ -177,6 +184,7 @@ export default {
       reverse: false,
       placeholder: firstGifFrame,
       alreadyPlayed: false,
+      isEvil: false,
     }
   },
 
@@ -250,32 +258,41 @@ export default {
     },
 
     enterClicked(){
-      this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
+
 
       this.startSearch();
     },
 
     startSearch(){
-      let searchText = document.getElementById("main-input-search").value;
+      let searchText = this.$refs.input.value;
 
-      let activePlugins = "null";
+      let eec = new EasterEggController();
+      if(eec.checkUpsideDown(searchText)){
+        this.$refs.logo.className = this.$refs.logo.className + " upsideDown"
+      }else if(eec.checkEvil(searchText)){
+        this.isEvil = true;
+      }else{
+        this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
-      for(let i = 0; i < this.pluginList.length; i++){
-        if(this.pluginList[i].enable === "true"){
-          if(activePlugins == "null"){
-            activePlugins = this.pluginList[i].pluginId;
-          }else{
-            activePlugins = activePlugins + "---" + this.pluginList[i].pluginId;
+        let activePlugins = "null";
+
+        for(let i = 0; i < this.pluginList.length; i++){
+          if(this.pluginList[i].enable === "true"){
+            if(activePlugins == "null"){
+              activePlugins = this.pluginList[i].pluginId;
+            }else{
+              activePlugins = activePlugins + "---" + this.pluginList[i].pluginId;
+            }
           }
         }
+
+        let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
+        setTimeout(() => window.open(route.href, '_self'), 500);
       }
 
-      let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
-      setTimeout(() => window.open(route.href, '_self'), 500);
     },
 
     checkSearch(response){
-      console.log("check this: " + response)
       if(response == null || response === "error") {
         this.slShow = true;
       }else{
