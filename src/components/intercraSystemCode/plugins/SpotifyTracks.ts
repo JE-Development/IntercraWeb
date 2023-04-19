@@ -44,6 +44,7 @@ export class SpotifyTracks implements PluginInterface{
 
         let se = Boolean(split[2])
 
+        split[1] = "BQA8C2fEsA82JrCqQrV6y1HnA-sfWiTOKHJJCG8t0ibFQgIT880CioMfRRF-RLzPMwB-aM2Pcc7q3rB3W8LOLUrc1RqcwBcVrSjeJp2IdHuJHPuiGUjrxaMfgWaYeY9eRfzwV70OhBgHsMf4aWe36y4qyCgqCm0xtnqFt9VCyxkS_3Xw2ZXT4ZQHZQyKg-vT04S3RUfoP6CKj6kH5g"
 
         await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, se).then(r =>
             this.analyse(r, pc)
@@ -60,7 +61,7 @@ export class SpotifyTracks implements PluginInterface{
                 let time = this.parseToTime(JSON.stringify(items.duration_ms)).replace('"', "").replace('"', "");
                 let url = "https://open.spotify.com/track/" + JSON.stringify(items.id).replace('"', "").replace('"', "");
                 let uri = JSON.stringify(items.uri).replace('"', "").replace('"', "");
-                let prevLink = JSON.stringify(items.preview_url).replace('"', "").replace('"', "");
+                let preview = JSON.stringify(items.preview_url).replace('"', "").replace('"', "");
                 let name = JSON.stringify(items.name).replace('"', "").replace('"', "");
                 let album = JSON.stringify(items.album.name).replace('"', "").replace('"', "");
                 let imageUrl = JSON.stringify(items.album.images[0].url).replace('"', "").replace('"', "");
@@ -74,7 +75,7 @@ export class SpotifyTracks implements PluginInterface{
                 map.set("time", time);
                 map.set("album", album);
                 map.set("imageUrl", imageUrl);
-                map.set("prevLink", prevLink);
+                map.set("preview", preview);
 
                 this.contentList.push(map);
             }
@@ -153,6 +154,7 @@ export class SpotifyTracks implements PluginInterface{
                 artist: contentMap.get("artist"),
                 duration: contentMap.get("time"),
                 album: contentMap.get("album"),
+                preview: contentMap.get("preview"),
             })
         }
 

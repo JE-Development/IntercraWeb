@@ -8,8 +8,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import PerfectScrollbar from 'vue3-perfect-scrollbar'
+import VueSlider from 'vue-slider-component'
 
-
+import 'vue-slider-component/theme/default.css'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 
 import './assets/main.css'
@@ -30,6 +31,7 @@ app.use(VueCookies)
 app.use(Notifications)
 app.use(PerfectScrollbar)
 app.component('font-awesome-icon', FontAwesomeIcon)
+app.component('VueSlider', VueSlider)
 app.config.globalProperties.emitter = emitter
 app.mount("#app")
 

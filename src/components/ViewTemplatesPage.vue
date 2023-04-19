@@ -81,6 +81,7 @@
                :artist="artist"
                :duration="duration"
                :album="album"
+               :preview="preview"
   />
   <GithubView v-else-if="choosenView === 'githubView'"
               :index="index"
@@ -204,6 +205,7 @@ export default {
 
     album: String,
     duration: String,
+    preview: String,
 
     //GitHub
 

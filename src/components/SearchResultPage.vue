@@ -31,7 +31,9 @@
     </div>
 
     <SortingView :enabled="sorting"/>
-    
+
+    <audio ref="audioPlayer" :src="audioUrl"></audio>
+
     <div class="center-horizontal" v-if="this.easterEggBirthday">
       <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
       <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
@@ -69,6 +71,7 @@
                              :lang="dat.lang"
                              :author="dat.author"
                              :scaleIndex="dat.scaleIndex"
+                             :preview="dat.preview"
           />
         </div>
       </div>
@@ -101,6 +104,7 @@
                                :lang="dat.lang"
                                :author="dat.author"
                                :scaleIndex="dat.scaleIndex"
+                               :preview="dat.preview"
             />
           </div>
         </div>
@@ -166,6 +170,13 @@ export default {
       noPlugin: false,
       beforeSaved: false,
       easterEggBirthday: false,
+      audioUrl: "",
+      audioIndex: -1,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+      isDragging: false,
+      progress: 0,
     };
   },
 
@@ -243,8 +254,55 @@ export default {
       }
     })
 
+    EventBus.addEventListener('audio-play', (event) => {
+      let split = event.data.split(";;;");
+      let url = split[0];
+      let index = [split[1]];
+
+      this.isPlaying = true;
+
+      if(url === this.audioUrl){
+        this.playAudio()
+      }else{
+        if(this.audioIndex != -1){
+          EventBus.emit("audio-reset-" + this.audioIndex)
+        }
+        this.audioIndex = index;
+        this.audioUrl = url;
+        const playAudio = (audio) => {
+          audio.addEventListener('loadeddata', () => {
+            EventBus.emit("audio-max", audio.duration)
+            audio.play();
+          });
+          audio.load();
+        }
+        playAudio(this.$refs.audioPlayer)
+      }
+    })
+
+    EventBus.addEventListener('audio-pause', (event) => {
+      this.pauseAudio()
+      this.isPlaying = false;
+    })
+
+    EventBus.addEventListener('audio-play-dragged', (event) => {
+      console.log(this.$refs.audioPlayer.currentTime)
+      console.log(event.data)
+      console.log(event.data/100)
+      this.$refs.audioPlayer.currentTime = event.data/100
+      console.log(this.$refs.audioPlayer.currentTime)
+      this.playAudio()
+    })
+
   },
+
+  beforeDestroy() {
+    this.$refs.audioPlayer.removeEventListener('timeupdate', this.updateProgress);
+  },
+
   mounted() {
+    this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
+
     let eec = new EasterEggController();
     if(eec.checkBirthday(this.search, window.innerWidth, window.innerHeight)){
       this.easterEggBirthday = true;
@@ -349,6 +407,17 @@ export default {
     showFromPopup: function (message){
       this.showPopup = message;
     },
+    playAudio(){
+      this.$refs.audioPlayer.play();
+    },
+    pauseAudio(){
+      this.$refs.audioPlayer.pause();
+    },
+    updateProgress() {
+      this.progress = this.$refs.audioPlayer.currentTime
+      EventBus.emit("audio-pos", this.progress)
+    },
+
   }
 }
 </script>

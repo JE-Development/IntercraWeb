@@ -4,6 +4,7 @@
       <div class="content-layout-color center-horizontal">
         <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
       </div>
+      <vue-slider v-if="isPlaying" duration="0.2" :max="audioMax" ref="slider" @drag-start="dragStart" @drag-end="dragEnd" @click="dragEnd" tooltip="none"></vue-slider>
 
       <div style="display: flex">
         <div>
@@ -53,15 +54,32 @@ export default {
     artist: String,
     duration: String,
     album: String,
+    preview: String,
   },
 
   created() {
+    EventBus.addEventListener('audio-reset-' + this.index, (event) => {
+      this.isPlaying = false;
+    })
 
+    EventBus.addEventListener("audio-pos", (event) => {
+      try{
+        this.$refs.slider.setValue(parseInt(event.data*100))
+      }catch (e){
+        //undefined
+      }
+    })
+
+    EventBus.addEventListener("audio-max", (event) => {
+      console.log(parseInt("max: " + event.data*100))
+      this.audioMax = parseInt(event.data*100);
+    })
   },
 
   data() {
     return {
       isPlaying: false,
+      audioMax: 0,
     }
   },
 
@@ -76,9 +94,18 @@ export default {
     playPauseClicked(){
       if(this.isPlaying){
         this.isPlaying = false;
+        EventBus.emit("audio-pause")
       }else{
         this.isPlaying = true;
+        EventBus.emit("audio-play", this.preview + ";;;" + this.index)
       }
+    },
+    dragStart(){
+      console.log("ausio pause")
+      EventBus.emit("audio-pause")
+    },
+    dragEnd(){
+      EventBus.emit("audio-play-dragged", this.$refs.slider.getValue())
     }
   }
 }
