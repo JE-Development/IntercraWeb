@@ -72,6 +72,7 @@
                              :author="dat.author"
                              :scaleIndex="dat.scaleIndex"
                              :preview="dat.preview"
+                             :error="dat.error"
           />
         </div>
       </div>
@@ -105,6 +106,7 @@
                                :author="dat.author"
                                :scaleIndex="dat.scaleIndex"
                                :preview="dat.preview"
+                               :error="dat.error"
             />
           </div>
         </div>
@@ -177,6 +179,7 @@ export default {
       duration: 0,
       isDragging: false,
       progress: 0,
+      newgroundsAudioUrl: []
     };
   },
 
@@ -292,6 +295,10 @@ export default {
       this.$refs.audioPlayer.currentTime = event.data/100
       console.log(this.$refs.audioPlayer.currentTime)
       this.playAudio()
+    })
+
+    EventBus.addEventListener('newgrounds-audio-url', (event) => {
+      this.newgroundsAudioUrl.push(event.data)
     })
 
   },

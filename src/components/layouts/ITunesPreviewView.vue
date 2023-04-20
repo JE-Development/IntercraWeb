@@ -2,7 +2,7 @@
   <div class="view-border content-layout-color">
     <div>
       <div class="content-layout-color center-horizontal">
-        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
+        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image" ref="image"/></a>
       </div>
 
       <vue-slider
@@ -18,11 +18,10 @@
 
       <div class="view-audio-outer">
         <div class="view-content-inner">
-
-          <h3 class="complementary-color bold">{{album}}</h3>
-          <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
-          <h3 class="teaser-color">{{artist}}</h3>
-          <h4 class="teaser-color">{{duration}}</h4>
+          <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
+          <h3 class="complementary-color bold">{{type}}</h3>
+          <h3 class="text-black">{{price}}</h3>
+          <h4 class="teaser-color">{{artist}}</h4>
           <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
         </div>
         <div class="audio-play">
@@ -51,7 +50,7 @@
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 
 export default {
-  name: "SpotifyView",
+  name: "ITunesPreviewView",
 
   props: {
     index: Number,
@@ -60,9 +59,10 @@ export default {
     headline: String,
     pluginName: String,
     image: String,
+    price: String,
     artist: String,
-    duration: String,
-    album: String,
+    type: String,
+    scaleIndex: String,
     preview: String,
   },
 
@@ -88,6 +88,12 @@ export default {
     return {
       isPlaying: false,
       audioMax: 0,
+    }
+  },
+
+  mounted() {
+    if(this.scaleIndex != null && this.scaleIndex != ""){
+      this.$refs.image.style.width = this.scaleIndex + "px";
     }
   },
 

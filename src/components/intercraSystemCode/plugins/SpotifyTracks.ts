@@ -44,7 +44,6 @@ export class SpotifyTracks implements PluginInterface{
 
         let se = Boolean(split[2])
 
-        split[1] = "BQA8C2fEsA82JrCqQrV6y1HnA-sfWiTOKHJJCG8t0ibFQgIT880CioMfRRF-RLzPMwB-aM2Pcc7q3rB3W8LOLUrc1RqcwBcVrSjeJp2IdHuJHPuiGUjrxaMfgWaYeY9eRfzwV70OhBgHsMf4aWe36y4qyCgqCm0xtnqFt9VCyxkS_3Xw2ZXT4ZQHZQyKg-vT04S3RUfoP6CKj6kH5g"
 
         await sc.httpLibraryRequest(split[1], split[0], "track", this.limit, this.offset, se).then(r =>
             this.analyse(r, pc)

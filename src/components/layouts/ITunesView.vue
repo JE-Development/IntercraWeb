@@ -25,12 +25,9 @@
 </template>
 
 <script>
-
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
-
 export default {
   name: "ITunesView",
-
   props: {
     index: Number,
     savedContent: Boolean,
@@ -43,13 +40,11 @@ export default {
     type: String,
     scaleIndex: String,
   },
-
   mounted() {
     if(this.scaleIndex != null && this.scaleIndex != ""){
       this.$refs.image.style.width = this.scaleIndex + "px";
     }
   },
-
   methods: {
     savedClick(){
       if(!this.savedContent) {
@@ -63,5 +58,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

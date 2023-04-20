@@ -56,6 +56,7 @@ export class ITunesTracks implements PluginInterface{
                 let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
                 let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
                 let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
+                let preview = JSON.stringify(items.previewUrl).replace('"', "").replace('"', "");
                 let price = "";
                 try {
                     price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");
@@ -71,6 +72,7 @@ export class ITunesTracks implements PluginInterface{
                 map.set("imageUrl", image);
                 map.set("artist", artist);
                 map.set("price", price);
+                map.set("preview", preview);
 
                 this.contentList.push(map);
             }
@@ -122,7 +124,7 @@ export class ITunesTracks implements PluginInterface{
             let contentMap = this.contentList[i];
 
             content.push({
-                choosenView: "itunesView",
+                choosenView: "itunesPreviewView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
@@ -130,6 +132,7 @@ export class ITunesTracks implements PluginInterface{
                 image: contentMap.get("imageUrl"),
                 type: contentMap.get("type"),
                 artist: contentMap.get("artist"),
+                preview: contentMap.get("preview"),
             })
         }
 

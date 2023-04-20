@@ -104,6 +104,19 @@
               :price="price"
               :scaleIndex="scaleIndex"
   />
+  <ITunesPreviewView v-else-if="choosenView === 'itunesPreviewView'"
+              :index="index"
+              :savedContent="savedContent"
+              :url="url"
+              :headline="headline"
+              :pluginName="pluginName"
+              :image="image"
+              :artist="artist"
+              :type="type"
+              :price="price"
+              :scaleIndex="scaleIndex"
+              :preview="preview"
+  />
   <ModelsView v-else-if="choosenView === 'modelsView'"
               :index="index"
               :savedContent="savedContent"
@@ -152,6 +165,7 @@ import ImageView from "./layouts/ImageView.vue";
 import SpotifyView from "./layouts/SpotifyView.vue";
 import GithubView from "./layouts/GithubView.vue";
 import ITunesView from "./layouts/ITunesView.vue";
+import ITunesPreviewView from "./layouts/ITunesPreviewView.vue";
 import ModelsView from "./layouts/ModelsView.vue";
 import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
 import NewgroundsImageView from "./layouts/NewgroundsImageView.vue";
@@ -163,7 +177,7 @@ export default {
     ModelsView,
     ITunesView,
     GithubView, BandcampView, ShoppingView, ArticleView, InformationView, PlayStoreView, PlayStoreNoIconView,
-    ImageView, SpotifyView},
+    ImageView, SpotifyView, ITunesPreviewView},
   props: {
     index: Number,
     choosenView: String,
@@ -177,6 +191,7 @@ export default {
     teaser: String,
     image: String,
     scaleIndex:String,
+    error: String,
 
     //article
 

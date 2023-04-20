@@ -84,9 +84,6 @@ import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
-import myGif from '../assets/intercra-gif.gif';
-import firstGifFrame from '../assets/intercra-gif-first.png';
-import lastGifFrame from '../assets/intercra-gif-last.png';
 import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
 
 export default {
@@ -182,7 +179,6 @@ export default {
         timerId: null
       },
       reverse: false,
-      placeholder: firstGifFrame,
       alreadyPlayed: false,
       isEvil: false,
     }
