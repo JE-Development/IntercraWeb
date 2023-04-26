@@ -47,6 +47,10 @@ import {ITunesBooks} from "../plugins/ITunesBooks";
 import {ITunesAudioBook} from "../plugins/ITunesAudioBook";
 import {Tenor} from "../plugins/Tenor";
 import {PNGWing} from "../plugins/PNGWing";
+import {Forbes} from "../plugins/Forbes";
+import {TheAtlantic} from "../plugins/TheAtlantic";
+import {TechCrunch} from "../plugins/TechCrunch";
+import {Wired} from "../plugins/Wired";
 
 export class PluginController {
 
@@ -107,6 +111,10 @@ export class PluginController {
         this.plugins.push(new NewgroundsGames());
         this.plugins.push(new NewgroundsMovies());
         this.plugins.push(new PNGWing());
+        this.plugins.push(new Forbes());
+        this.plugins.push(new TheAtlantic());
+        this.plugins.push(new TechCrunch());
+        this.plugins.push(new Wired());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);
@@ -130,7 +138,6 @@ export class PluginController {
                 }
             }
         }
-        console.log(newList[0].getPluginDisplayName())
         return newList;
     }
 
@@ -238,7 +245,7 @@ export class PluginController {
                     }
                 }
             }
-            
+
 
             EventBus.emit('data-sender', this.all)
 
@@ -251,7 +258,6 @@ export class PluginController {
 
         EventBus.emit("not-finished", this.getNotFinished())
 
-        console.log("error: " + id)
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {
@@ -267,7 +273,6 @@ export class PluginController {
 
         EventBus.emit("not-finished", this.getNotFinished())
 
-        console.log("error: " + id)
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {

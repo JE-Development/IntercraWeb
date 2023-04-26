@@ -3,7 +3,7 @@
     <div>
 
       <div class="content-layout-color center-horizontal">
-        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image"/></a>
+        <a :href="url" class="headline-color"><img :src="image" class="center-horizontal view-image" ref="image"/></a>
       </div>
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <h3 class="complementary-color bold">{{platform}}</h3>
@@ -42,6 +42,13 @@ export default {
     date: String,
     platform: String,
     author: String,
+    scaleIndex: String,
+  },
+
+  mounted() {
+    if(this.scaleIndex != null && this.scaleIndex != ""){
+      this.$refs.image.style.width = this.scaleIndex + "px";
+    }
   },
 
   methods: {

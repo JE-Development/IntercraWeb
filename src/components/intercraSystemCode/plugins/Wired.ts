@@ -4,13 +4,13 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 
-export class Forbes implements PluginInterface{
+export class Wired implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     page: number = 1;
 
-    displayName = "Forbes";
-    id = "forbes";
+    displayName = "WIRED";
+    id = "wired";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -37,37 +37,59 @@ export class Forbes implements PluginInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        this.page++
 
-        pc.isFinished(this.contentList, this.id);
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByClassName("search-results__items")[0].children;
-        for(let i = 0; i < article.length; i++){
-            try{
-                const e = article[i];
-                let map = new Map<string, string>;
+        let section = document.getElementsByTagName("section")
+        for(let k = 0; k < section.length; k++){
+            const article = section[k].getElementsByClassName("summary-list__items")[0].children;
+            for(let i = 0; i < article.length; i++){
+                try{
+                    const e = article[i];
+                    let map = new Map<string, string>;
 
-                let link = e.getElementsByClassName("stream-item__title")[0];
-                map.set("url", link.getAttribute("href"));
-                map.set("headline", link.textContent);
+                    let link = e.getElementsByTagName("a")[0];
+                    map.set("url", link.getAttribute("href"));
 
-                let image = e.getElementsByClassName("stream-item__image")[0];
-                let imgUrl = image.getAttribute("style").replace("background-image: url(\"", "").replace("\")", "")
-                map.set("imageUrl", imgUrl);
+                    let headline = e.getElementsByTagName("h3")[0];
+                    map.set("headline", headline.textContent);
 
-                let teaser = e.getElementsByClassName("stream-item__description")[0];
-                map.set("teaser", teaser.textContent)
+                    try{
+                        let image = e.getElementsByTagName("picture")[0];
+                        let script = image.firstChild.innerHTML;
+                        console.log(script)
+                        let split = script.split("srcset=\"")[1].split(" ")[0];
+                        map.set("imageUrl", split);
+                        map.set("scaleIndex", "300")
+                    }catch (e){
+                        console.log(e)
+                    }
 
-                let author = e.getElementsByClassName("byline__author-name")[0]
-                map.set("author", author.textContent)
+                    let author = e.getElementsByClassName("byline__name")[0]
+                    map.set("author", author.textContent)
 
-                let time = e.getElementsByClassName("stream-item__date")
-                map.set("time", time.textContent)
+                    let time = e.getElementsByClassName("summary-item__publish-date")[0]
+                    map.set("time", time.lastChild.textContent)
 
-                this.contentList.push(map)
-            }catch (e){
-                //probably ad found
+                    this.contentList.push(map)
+                }catch (e){
+                    //probably ad found
+                }
             }
         }
     }
@@ -121,10 +143,10 @@ export class Forbes implements PluginInterface{
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                teaser: contentMap.get("teaser"),
                 image: contentMap.get("imageUrl"),
                 date: contentMap.get("time"),
-                author: contentMap.get("author")
+                author: contentMap.get("author"),
+                scaleIndex: contentMap.get("scaleIndex")
             })
         }
 

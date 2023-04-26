@@ -19,6 +19,7 @@
                :date="date"
                :platform="platform"
                :author="author"
+               :scaleIndex="scaleIndex"
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
                 :index="index"

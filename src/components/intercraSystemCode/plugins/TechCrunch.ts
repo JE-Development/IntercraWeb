@@ -4,13 +4,13 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 
-export class Forbes implements PluginInterface{
+export class TechCrunch implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     page: number = 1;
 
-    displayName = "Forbes";
-    id = "forbes";
+    displayName = "TechCrunch";
+    id = "techcrunch";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -37,33 +37,43 @@ export class Forbes implements PluginInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        this.page += 10
 
-        pc.isFinished(this.contentList, this.id);
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByClassName("search-results__items")[0].children;
+        const article = document.getElementsByClassName("compArticleList")[0].children;
         for(let i = 0; i < article.length; i++){
             try{
                 const e = article[i];
                 let map = new Map<string, string>;
 
-                let link = e.getElementsByClassName("stream-item__title")[0];
-                map.set("url", link.getAttribute("href"));
+                let link = e.getElementsByTagName("h4")[0];
+                map.set("url", link.firstChild.getAttribute("href"));
                 map.set("headline", link.textContent);
 
-                let image = e.getElementsByClassName("stream-item__image")[0];
-                let imgUrl = image.getAttribute("style").replace("background-image: url(\"", "").replace("\")", "")
-                map.set("imageUrl", imgUrl);
+                let image = e.getElementsByTagName("img")[0];
+                map.set("imageUrl", image.getAttribute("src"));
 
-                let teaser = e.getElementsByClassName("stream-item__description")[0];
+                let teaser = e.getElementsByTagName("p")[0];
                 map.set("teaser", teaser.textContent)
 
-                let author = e.getElementsByClassName("byline__author-name")[0]
-                map.set("author", author.textContent)
-
-                let time = e.getElementsByClassName("stream-item__date")
-                map.set("time", time.textContent)
+                let sub = e.getElementsByClassName("csub")[0]
+                map.set("author", sub.firstChild.textContent)
+                map.set("time", sub.lastChild.textContent)
 
                 this.contentList.push(map)
             }catch (e){
