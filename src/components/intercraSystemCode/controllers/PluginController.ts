@@ -46,6 +46,7 @@ import {ITunesPodcast} from "../plugins/ITunesPodcast";
 import {ITunesBooks} from "../plugins/ITunesBooks";
 import {ITunesAudioBook} from "../plugins/ITunesAudioBook";
 import {Tenor} from "../plugins/Tenor";
+import {PNGWing} from "../plugins/PNGWing";
 
 export class PluginController {
 
@@ -105,9 +106,32 @@ export class PluginController {
         this.plugins.push(new NewgroundsArt());
         this.plugins.push(new NewgroundsGames());
         this.plugins.push(new NewgroundsMovies());
+        this.plugins.push(new PNGWing());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);
+
+
+        this.plugins = this.sortPlugins(this.plugins);
+    }
+
+    sortPlugins(list: PluginInterface[]): PluginInterface[]{
+        let nameList: string[] = []
+        let newList: PluginInterface[] = []
+        for(let i = 0; i < list.length; i++){
+            nameList.push(list[i].getPluginDisplayName().toLowerCase())
+        }
+        nameList.sort();
+        for(let i = 0; i < nameList.length; i++){
+            let name = nameList[i]
+            for(let j = 0; j < list.length; j++){
+                if(name === list[j].getPluginDisplayName().toLowerCase()){
+                    newList.push(list[j])
+                }
+            }
+        }
+        console.log(newList[0].getPluginDisplayName())
+        return newList;
     }
 
     async findContent(searchText: string, plugin: string, token: string, ytToken: string) {

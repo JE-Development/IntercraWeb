@@ -21,7 +21,7 @@ export class GooglePlayApps implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/google_play_apps/" + searchText);
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
             let text = await html.text();
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");

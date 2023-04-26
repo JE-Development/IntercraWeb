@@ -23,7 +23,7 @@ export class Ebay implements PluginInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/ebay/" + searchText);
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
             let text = await html.text();
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");
@@ -41,7 +41,7 @@ export class Ebay implements PluginInterface{
         this.page = this.page + 1;
         console.log("page: " + this.page)
         this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/ebay/" + searchText + "/" + this.page);
+        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
         let text = await html.text();
         const parser = new DOMParser();
         const document = parser.parseFromString(text, "text/html");

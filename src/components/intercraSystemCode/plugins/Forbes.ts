@@ -1,26 +1,31 @@
 import type {PluginInterface} from "../interfaces/PluginInterface";
 import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
-import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
+import type {PluginController} from "../controllers/PluginController";
+import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
+import {GoogleController} from "../controllers/GoogleController";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
-export class OscoboImage implements PluginInterface{
+export class Forbes implements PluginInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    page: number = 1;
 
-    displayName = "Oscobo Image";
-    id = "oscobo_image";
+    displayName = "Forbes";
+    id = "forbes";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.IMAGES);
+        pc.addPreset(PresetEnum.NEWS)
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
+
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/forbes/" + searchText);
             let text = await html.text();
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");
@@ -36,23 +41,32 @@ export class OscoboImage implements PluginInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+
         pc.isFinished(this.contentList, this.id);
     }
 
     startSearch(document: any): void{
-        const content = document.getElementsByClassName("item");
-
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
+        const article = document.getElementsByTagName("search-results__items").children;
+        for(let i = 0; i < article.length; i++){
+            const e = article[i];
             let map = new Map<string, string>;
 
-            const url = elem.getElementsByTagName("a")[0];
-            map.set("url", url.getAttribute("href"));
+            let link = e.getElementsByClassName("stream-item__title")[0];
+            map.set("url", "https://play.google.com" + link.getAttribute("href"));
+            map.set("headline", link.textContent);
 
-            const image = elem.getElementsByTagName("img")[0];
-            map.set("imageUrl", image.getAttribute("src"));
+            let image = e.getElementsByClassName("stream-item__image")[0];
+            let imgUrl = image.getAttribute("style").replace("background-image: url(\"", "").replace("\")", "")
+            map.set("imageUrl", imgUrl);
 
-            this.contentList.push(map);
+            let teaser = e.getElementsByClassName("stream-item__description")[0];
+            map.set("teaser", teaser.textContent)
+
+            let author = e.getElementsByClassName("byline__author-name")[0]
+            map.set("author", author.textContent)
+
+            let time = e.getElementsByClassName("stream-item__date")
+            map.set("time", time.textContent)
         }
     }
 
@@ -101,10 +115,14 @@ export class OscoboImage implements PluginInterface{
             let contentMap = this.contentList[i];
 
             content.push({
-                choosenView: "imageView",
+                choosenView: "articleView",
                 url: contentMap.get("url"),
-                image: contentMap.get("imageUrl"),
+                headline: contentMap.get("headline"),
                 pluginName: this.displayName,
+                teaser: contentMap.get("teaser"),
+                image: contentMap.get("imageUrl"),
+                date: contentMap.get("time"),
+                author: contentMap.get("author")
             })
         }
 
