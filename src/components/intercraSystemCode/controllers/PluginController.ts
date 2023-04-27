@@ -51,6 +51,16 @@ import {Forbes} from "../plugins/Forbes";
 import {TheAtlantic} from "../plugins/TheAtlantic";
 import {TechCrunch} from "../plugins/TechCrunch";
 import {Wired} from "../plugins/Wired";
+import {Arxiv} from "../plugins/Arxiv";
+import {LosAngelesTimes} from "../plugins/LosAngelesTimes";
+import {NewYorkPost} from "../plugins/NewYorkPost";
+import {Engadget} from "../plugins/Engadget";
+import {TED} from "../plugins/TED";
+import {Nature} from "../plugins/Nature";
+import {Quartz} from "../plugins/Quartz";
+import {VentureBeat} from "../plugins/VentureBeat";
+import {Mashabe} from "../plugins/Mashabe";
+import {HarvardBusinessReview} from "../plugins/HarvardBusinessReview";
 
 export class PluginController {
 
@@ -115,6 +125,16 @@ export class PluginController {
         this.plugins.push(new TheAtlantic());
         this.plugins.push(new TechCrunch());
         this.plugins.push(new Wired());
+        this.plugins.push(new Arxiv());
+        this.plugins.push(new LosAngelesTimes());
+        this.plugins.push(new NewYorkPost());
+        this.plugins.push(new Engadget());
+        this.plugins.push(new TED());
+        this.plugins.push(new Nature());
+        this.plugins.push(new Quartz());
+        this.plugins.push(new VentureBeat());
+        this.plugins.push(new Mashabe());
+        this.plugins.push(new HarvardBusinessReview());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);
