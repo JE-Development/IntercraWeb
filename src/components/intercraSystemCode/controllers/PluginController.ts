@@ -61,6 +61,11 @@ import {Quartz} from "../plugins/Quartz";
 import {VentureBeat} from "../plugins/VentureBeat";
 import {Mashabe} from "../plugins/Mashabe";
 import {HarvardBusinessReview} from "../plugins/HarvardBusinessReview";
+import {RT} from "../plugins/RT";
+import {PewResearchCenter} from "../plugins/PewResearchCenter";
+import {DigitalTrends} from "../plugins/DigitalTrends";
+import {SearchEngineLand} from "../plugins/SearchEngineLand";
+import {ProductHunt} from "../plugins/ProductHunt";
 
 export class PluginController {
 
@@ -135,6 +140,11 @@ export class PluginController {
         this.plugins.push(new VentureBeat());
         this.plugins.push(new Mashabe());
         this.plugins.push(new HarvardBusinessReview());
+        this.plugins.push(new RT());
+        this.plugins.push(new DigitalTrends());
+        this.plugins.push(new PewResearchCenter());
+        this.plugins.push(new SearchEngineLand());
+        this.plugins.push(new ProductHunt());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);
