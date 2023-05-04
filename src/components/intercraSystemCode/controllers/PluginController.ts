@@ -66,6 +66,10 @@ import {PewResearchCenter} from "../plugins/PewResearchCenter";
 import {DigitalTrends} from "../plugins/DigitalTrends";
 import {SearchEngineLand} from "../plugins/SearchEngineLand";
 import {ProductHunt} from "../plugins/ProductHunt";
+import {WebMD} from "../plugins/WebMD";
+import {BoredPanda} from "../plugins/BoredPanda";
+import {LiveScience} from "../plugins/LiveScience";
+import {Unsplash} from "../plugins/Unsplash";
 
 export class PluginController {
 
@@ -145,6 +149,10 @@ export class PluginController {
         this.plugins.push(new PewResearchCenter());
         this.plugins.push(new SearchEngineLand());
         this.plugins.push(new ProductHunt());
+        this.plugins.push(new WebMD());
+        this.plugins.push(new BoredPanda());
+        this.plugins.push(new LiveScience());
+        this.plugins.push(new Unsplash());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);
