@@ -70,6 +70,7 @@ import {WebMD} from "../plugins/WebMD";
 import {BoredPanda} from "../plugins/BoredPanda";
 import {LiveScience} from "../plugins/LiveScience";
 import {Unsplash} from "../plugins/Unsplash";
+import {Iconfinder} from "../plugins/Iconfinder";
 
 export class PluginController {
 
@@ -153,6 +154,7 @@ export class PluginController {
         this.plugins.push(new BoredPanda());
         this.plugins.push(new LiveScience());
         this.plugins.push(new Unsplash());
+        this.plugins.push(new Iconfinder());
 
         this.special.push(new SpotifyTracks().id);
         //this.special.push(new YoutubeVideo().id);

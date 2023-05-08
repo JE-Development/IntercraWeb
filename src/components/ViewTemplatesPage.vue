@@ -149,6 +149,14 @@
                :image="image"
                :artist="artist"
   />
+  <IconDownloadView v-else-if="choosenView === 'iconDownloadView'"
+                    :index="index"
+                    :savedContent="savedContent"
+                    :pluginName="pluginName"
+                    :image="image"
+                    :sizes="sizes"
+                    :vectorDownloadUrl="vectorDownloadUrl"
+  />
 
 
 
@@ -170,9 +178,11 @@ import ITunesPreviewView from "./layouts/ITunesPreviewView.vue";
 import ModelsView from "./layouts/ModelsView.vue";
 import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
 import NewgroundsImageView from "./layouts/NewgroundsImageView.vue";
+import IconDownloadView from "./layouts/IconDownloadView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    IconDownloadView,
     NewgroundsImageView,
     NewgroundsAudioView,
     ModelsView,
@@ -226,6 +236,12 @@ export default {
     //GitHub
 
     lang: String,
+
+    //icon
+
+    sizes: String,
+    vectorDownloadUrl: String,
+
   },
 }
 </script>

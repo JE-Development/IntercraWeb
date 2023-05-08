@@ -6,9 +6,17 @@
     margin-top: 20px;
 }
 
+.download{
+    max-width: 20px;
+}
+
 .outer-scroll {
     max-height: 100vh;
     overflow: scroll;
+}
+
+.usage-button-layout{
+    margin: 10px;
 }
 
 .seekbar {

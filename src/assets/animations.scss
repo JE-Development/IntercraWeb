@@ -152,6 +152,77 @@
   animation-fill-mode: forwards;
 }
 
+
+.usage-button:hover{
+  display: flex;
+  height: 45px;
+  width: 200px;
+
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ff5900, #ffff22) border-box;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+
+  padding: 5px 0px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  background-size: 400% 400%;
+  animation: gradient 0.3s;
+
+  animation-name: usage-flow-forward;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+}
+
+.usage-button{
+
+
+  display: flex;
+  height: 45px;
+  width: 200px;
+
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ff5900, #ffff22) border-box;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+
+  padding: 5px 0px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  background-size: 400% 400%;
+  animation: gradient 0.3s;
+
+  animation-name: usage-flow-backward;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+}
+
+@keyframes usage-flow-backward {
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes usage-flow-forward {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
 @keyframes decrease-width {
   0%{
     width: 720px;

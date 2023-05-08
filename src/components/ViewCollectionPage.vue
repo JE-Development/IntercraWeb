@@ -2,16 +2,13 @@
 
 
   <ViewTemplatesPage
-      :choosen-view="'spotifyView'"
+      :choosen-view="'iconDownloadView'"
       :index="0"
       :savedContent="false"
-      :url="''"
-      :headline="'headline'"
       :pluginName="'pluginName'"
       :image="'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png'"
-      :artist="'artist'"
-      :duration="'0:00'"
-      :album="'album'"
+      :sizes="'1,2,3,4,5,6,7,8,9'"
+      :vectorDownloadUrl="''"
   />
 
 

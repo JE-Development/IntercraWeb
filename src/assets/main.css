@@ -212,6 +212,10 @@ b{
   margin: 10px;
 }
 
+.usage-button-layout{
+  display: flex;
+}
+
 .sticky {
   position: sticky;
   height: 50px;
@@ -286,6 +290,15 @@ b{
 
   .result-image{
     max-width: 90vw;
+  }
+
+
+}
+
+@media (max-width: 500px) {
+
+  .usage-button-layout{
+    display: block;
   }
 
 

@@ -5,13 +5,60 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BoredPanda.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LiveScience.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Unsplash.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/WebMD.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Iconfinder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/IconDownloadView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/views/UsageButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/bin/ssl_hotfix.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/axios.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/browser/axios.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/browser/axios.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/browser/axios.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/browser/axios.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/esm/axios.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/node/axios.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/node/axios.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/node/axios.cjs.map" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/dist/node/axios.cjs.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/gulpfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.d.cts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.d.cts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/karma.conf.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/adapters/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/adapters/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/adapters/xhr.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/adapters/xhr.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/Axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/Axios.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/AxiosHeaders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/AxiosHeaders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/dispatchRequest.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/dispatchRequest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/mergeConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/core/mergeConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/env/classes/FormData.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/env/classes/FormData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/env/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/env/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/helpers/speedometer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/helpers/speedometer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/helpers/toFormData.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/helpers/toFormData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/platform/browser/classes/FormData.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/platform/browser/classes/FormData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/platform/browser/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/platform/browser/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/lib/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/rollup.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/node_modules/axios/tslint.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewCollectionPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Quartz.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Quartz.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,40 +95,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
-    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/intercraSystemCode/plugins&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "javascript.nodejs.core.library.configured.version": "16.15.1",
+    "javascript.nodejs.core.library.typings.version": "16.18.11",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/views",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "inlay.hints",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
@@ -243,6 +290,8 @@
       <workItem from="1683146847427" duration="6221000" />
       <workItem from="1683153221480" duration="109000" />
       <workItem from="1683209961873" duration="4394000" />
+      <workItem from="1683490760998" duration="364000" />
+      <workItem from="1683491513688" duration="12934000" />
     </task>
     <servers />
   </component>

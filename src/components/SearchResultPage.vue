@@ -73,6 +73,8 @@
                              :scaleIndex="dat.scaleIndex"
                              :preview="dat.preview"
                              :error="dat.error"
+                             :sizes="dat.sizes"
+                             :vectorDownloadUrl="dat.vectorDownloadUrl"
           />
         </div>
       </div>
@@ -107,6 +109,8 @@
                                :scaleIndex="dat.scaleIndex"
                                :preview="dat.preview"
                                :error="dat.error"
+                               :sizes="dat.sizes"
+                               :vectorDownloadUrl="dat.vectorDownloadUrl"
             />
           </div>
         </div>
