@@ -1,5 +1,4 @@
 
-
 <template>
   <Transition name="modal">
     <div v-if="show" class="modal-mask-saved">
@@ -8,20 +7,14 @@
           <div style="justify-content: center;">
             <div class="center-horizontal" style="margin-top: 5px">
               <div>
-                <div class="center-horizontal">
-                  <button class="plugin-menu plugin-close center-horizontal" @click="onClose">
-                    <p id="plugin-menu-text">Close</p>
-                  </button>
-                </div>
-
-                <div class="center-horizontal popup-width">
-                  <div>
-                    <a href="https://twitter.com/je_development" class="pointer social-media-item popup-width center">Twitter</a>
-                    <a href="https://www.instagram.com/je.creator/" class="pointer social-media-item popup-width center">Instagram</a>
-                    <a href="https://www.youtube.com/channel/UCiCMvTtMFD4A9UJ5CwJAhOw" class="pointer social-media-item popup-width center">YouTube</a>
+                  <div class="center-horizontal">
+                      <button class="plugin-menu plugin-close center-horizontal" @click="closePressed">
+                          <p id="plugin-menu-text">Close</p>
+                      </button>
                   </div>
-                </div>
+                  <slot>
 
+                  </slot>
               </div>
             </div>
           </div>
@@ -33,17 +26,16 @@
 
 
 <script>
-import PluginCheckBox from "./PluginCheckBox.vue";
-import {ViewCollection} from "../intercraSystemCode/classes/ViewCollection";
-import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
-import EventBus from "../intercraSystemCode/classes/EventBusEvent";
-import ViewTemplatesPage from "../ViewTemplatesPage.vue";
+
+
 export default {
-  name: "SocialMediaPopup",
-  components: {ViewTemplatesPage, PluginCheckBox},
+  name: "CustomPopup",
 
   props: {
     show: Boolean,
+      onClose: {
+          type: Function,
+      },
   },
   data(){
     return{
@@ -57,9 +49,9 @@ export default {
   },
 
   methods: {
-    onClose(){
-      EventBus.emit("hide-social-media")
-    }
+      closePressed(){
+          this.onClose()
+      }
   },
 
 }

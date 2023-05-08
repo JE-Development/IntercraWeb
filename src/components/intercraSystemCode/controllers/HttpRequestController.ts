@@ -51,4 +51,15 @@ export class HttpRequestController {
         }
 
     }
+
+    async httpRequestIconApi(url: string): Promise<any>{
+
+        try {
+            let request = await fetch("https://intercra-backend.jason-apps.workers.dev/html/api/iconfinder_download/X0vjEUN6KRlxbp2DoUkyHeM0VOmxY91rA6BbU5j3Xu6wDodwS0McmilLPBWDUcJ1;;;" + url);
+            let json = await request.json()
+        }catch (error){
+            console.log(error)
+        }
+
+    }
 }

@@ -77,7 +77,6 @@ export class PluginController {
     plugins: PluginInterface[] = [];
     special: string[] = [];
     finishedPlugins: string[] = [];
-    templates = new Map<string, string>;
     activePlugins: string[] = [];
     errorNames: string[] = [];
     sorting = "repeat";
