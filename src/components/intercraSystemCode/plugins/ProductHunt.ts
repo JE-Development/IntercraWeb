@@ -50,7 +50,6 @@ export class ProductHunt implements PluginInterface{
             map.set("url", "https://www.producthunt.com" + link.parentNode.getAttribute("href"));
             map.set("headline", link.textContent);
 
-            console.log(link)
 
             try{
                 map.set("teaser", link.parentNode.childNodes[1].textContent);

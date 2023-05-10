@@ -90,6 +90,7 @@ export class Iconfinder implements PluginInterface{
             let map = new Map<string, any>;
 
             map.set("imageUrl", image);
+            map.set("url", image);
             map.set("sizes", sizes)
             map.set("vectorDownloadUrl", vector_url)
 
@@ -141,13 +142,20 @@ export class Iconfinder implements PluginInterface{
 
             let contentMap = this.contentList[i];
 
-            content.push({
+            /*content.push({
                 choosenView: "iconDownloadView",
                 url: contentMap.get("url"),
                 image: contentMap.get("imageUrl"),
                 pluginName: this.displayName,
                 sizes: contentMap.get("sizes"),
                 vectorDownloadUrl: contentMap.get("vectorDownloadUrl"),
+            })*/
+
+            content.push({
+                choosenView: "imageView",
+                url: contentMap.get("url"),
+                image: contentMap.get("imageUrl"),
+                pluginName: this.displayName,
             })
         }
 

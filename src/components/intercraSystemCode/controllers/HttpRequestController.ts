@@ -6,6 +6,16 @@ import type {PluginController} from "./PluginController";
 export class HttpRequestController {
 
 
+    async httpPost(url: string, data: any, pc: PluginController, id: string): Promise<any> {
+        try {
+            const response = await axios.post(url, data);
+            return response.data;
+        } catch (error) {
+            console.log(error)
+            pc.gotError(id);
+        }
+    }
+
     async httpRequest(url: string, pc: PluginController, id: string): Promise<any>{
 
         let ok = true;
@@ -48,6 +58,30 @@ export class HttpRequestController {
         }else{
             pc.gotError(id);
             return "error";
+        }
+
+    }
+
+    async httpRequestHeaderNoError(url: string, header: any, pc: PluginController, id: string): Promise<any>{
+
+        let json;
+        let ok = false;
+
+        await axios.get(url, {headers: header})
+            .then(response => {
+                json = response.data;
+                ok = true;
+                return json
+            })
+            .catch(error => {
+                console.log(error)
+                return "error"
+            });
+
+        if(ok){
+            return json
+        }else{
+            return "error"
         }
 
     }

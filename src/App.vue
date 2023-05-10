@@ -1,9 +1,22 @@
 <script>
 
 import {SpotifyController} from "./components/intercraSystemCode/controllers/SpotifyController";
+import {GoogleController} from "./components/intercraSystemCode/controllers/GoogleController";
 
 export default {
   name: "App",
+
+  methods:{
+    getCookie(name){
+      const value = "; " + document.cookie;
+      const parts = value.split("; " + name + "=");
+
+      if (parts.length == 2) {
+        return String(String(parts.pop()).split(";").shift());
+      }
+      return "null";
+    }
+  },
 
   created() {
     console.log(document.documentURI)
@@ -27,20 +40,27 @@ export default {
           );
 
         }
-
+        this.$notify("successfully logged into youtube");
         window.open("https://intercra.com", '_self');
       }else{
         //window.open("https://intercra.com", "_self");
       }
     }else{
       if(document.documentURI.includes("access_token=")){
-        this.$notify("successfully logged into spotify");
         let parser = document.documentURI.replace("&token_type=", ";;;").replace("access_token=", ";;;");
         let token = parser.split(";;;")[1];
         this.$cookies.set("token", token);
         this.$cookies.set("spotifyLogin", "true");
         let route = this.$router.resolve({path: '/'});
-        window.open("https://intercra.com", '_self');
+
+        if(this.getCookie("youtube_video") === "true" && this.getCookie("token-youtube") === "null"){
+          let gc = new GoogleController();
+          gc.login();
+        }else{
+          this.$notify("successfully logged into spotify");
+          window.open("https://intercra.com", '_self');
+        }
+
       }else{
         //window.open(document.baseURI, "_self");
       }

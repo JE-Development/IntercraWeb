@@ -26,6 +26,7 @@ export class SpotifyController{
         );*/
     }
     getLoginURL(scopes: string[], client_id: string, redirect_uri: string): string {
+        console.log("in spotify login")
         let request = 'https://accounts.spotify.com/authorize?client_id=' + client_id +
             '&redirect_uri=' + encodeURIComponent(redirect_uri) +
             '&scope=' + encodeURIComponent(scopes.join(' ')) +

@@ -72,12 +72,11 @@ export class Wired implements PluginInterface{
                     try{
                         let image = e.getElementsByTagName("picture")[0];
                         let script = image.firstChild.innerHTML;
-                        console.log(script)
                         let split = script.split("srcset=\"")[1].split(" ")[0];
                         map.set("imageUrl", split);
                         map.set("scaleIndex", "300")
                     }catch (e){
-                        console.log(e)
+                        //console.log(e)
                     }
 
                     let author = e.getElementsByClassName("byline__name")[0]

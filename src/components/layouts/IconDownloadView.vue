@@ -12,12 +12,13 @@
       <div class="content-layout-color center-horizontal">
         <img :src="image" class="center-horizontal view-image" ref="image"/>
       </div>
-      <div class="center-horizontal">
+      <!--<div class="center-horizontal">
         <div class="usage-button-layout">
             <UsageButton :onClick="imageDownloadClicked" title=" Image"/>
             <UsageButton :onClick="vectorDownloadClicked" title=" Vector"/>
         </div>
       </div>
+      /!-->
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
       <div v-if="savedContent">
         <div class="saved-content-div center-horizontal">

@@ -71,7 +71,7 @@ export class WebMD implements PluginInterface{
 
                 this.contentList.push(map)
             }catch (e){
-                console.log(e)
+                //console.log(e)
                 //broken article
             }
         }

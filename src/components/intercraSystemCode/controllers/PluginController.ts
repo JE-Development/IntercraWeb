@@ -71,6 +71,7 @@ import {BoredPanda} from "../plugins/BoredPanda";
 import {LiveScience} from "../plugins/LiveScience";
 import {Unsplash} from "../plugins/Unsplash";
 import {Iconfinder} from "../plugins/Iconfinder";
+import {Flaticon} from "../plugins/Flaticon";
 
 export class PluginController {
 
@@ -85,7 +86,7 @@ export class PluginController {
 
     constructor() {
         this.plugins.push(new SpotifyTracks());
-        //this.plugins.push(new YoutubeVideo());
+        this.plugins.push(new YoutubeVideo());
         this.plugins.push(new GoogleWeb());
         this.plugins.push(new GoogleImage());
         this.plugins.push(new ITunesTracks());
@@ -154,9 +155,10 @@ export class PluginController {
         this.plugins.push(new LiveScience());
         this.plugins.push(new Unsplash());
         this.plugins.push(new Iconfinder());
+        this.plugins.push(new Flaticon());
 
         this.special.push(new SpotifyTracks().id);
-        //this.special.push(new YoutubeVideo().id);
+        this.special.push(new YoutubeVideo().id);
 
 
         this.plugins = this.sortPlugins(this.plugins);
@@ -193,7 +195,7 @@ export class PluginController {
                         }else{
                             st = st + ";;;true";
                         }
-                        this.plugins[i].findContent(st, "", this);
+                        await this.plugins[i].findContent(st, "", this);
                     }
                     if(this.plugins[i].getId() === "youtube_video"){
                         let st = searchText + ";;;" + ytToken;
@@ -231,6 +233,10 @@ export class PluginController {
 
     isFinished(contentList: Map<string, string>[], id: string) {
         this.finishedPlugins.push(id);
+        this.makeFinish()
+    }
+
+    makeFinish(){
         let check = this.checkAllFinished();
 
         EventBus.emit("not-finished", this.getNotFinished())
@@ -304,6 +310,7 @@ export class PluginController {
             }
         }
         EventBus.emit('error-sender', this.errorNames)
+        this.makeFinish()
 
     }
 
@@ -323,6 +330,22 @@ export class PluginController {
     }
 
     checkAllFinished(): boolean {
+        let fehlen: String[] = []
+
+        for(let i = 0; i < this.activePlugins.length; i++){
+            let active = this.activePlugins[i];
+            let isIn = false;
+            for(let j = 0; j < this.finishedPlugins.length; j++){
+                if(active === this.finishedPlugins[j]){
+                    isIn = true;
+                }
+            }
+            if(!isIn){
+                fehlen.push(active)
+            }
+        }
+        //console.log(fehlen)
+
         if (this.activePlugins.length != this.finishedPlugins.length) {
             return false;
         } else {
