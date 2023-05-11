@@ -8,11 +8,11 @@ export class IntercraController{
         this.pc = new PluginController();
     }
 
-    startSearch(searchText: string, plugin: string, token: string, sorting: string, ytToken: string){
+    startSearch(searchText: string, plugin: string[], token: string, sorting: string, ytToken: string){
         this.pc.setSortVar(sorting);
         this.pc.findContent(searchText, plugin, token, ytToken);
     }
-    startMoreSearch(searchText: string, plugin: string, token: string, ytToken: string){
+    startMoreSearch(searchText: string, plugin: string[], token: string, ytToken: string){
         this.pc.findMoreContent(searchText, plugin, token, ytToken);
     }
     setSorting(sort: string){

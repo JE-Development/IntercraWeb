@@ -5,6 +5,7 @@ import SearchResultPage from '../components/SearchResultPage.vue'
 import ViewCollectionPage from '../components/ViewCollectionPage.vue'
 import RedirectPage from '../components/RedirectPage.vue'
 import ImpressumPage from '../components/ImpressumPage.vue'
+import FeedPage from '../components/feed/FeedPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -13,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
         component: Main
     },
     {
-        path: '/search/:plugin/:search',
+        path: '/search/:search',
         name: 'SearchResultPage',
         component: SearchResultPage
     },
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/impressum',
         name: 'ImpressumPage',
         component: ImpressumPage
+    },
+    {
+        path: '/feed',
+        name: 'FeedPage',
+        component: FeedPage
     },
 ]
 

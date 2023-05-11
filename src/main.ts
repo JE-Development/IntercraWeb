@@ -17,9 +17,11 @@ import './assets/main.css'
 import './assets/colors.css'
 import './assets/image.css'
 import './assets/view-design.css'
+import './assets/feed.css'
 import './assets/nav.scss'
 import './assets/animations.scss'
 import './assets/sorting.scss'
+import './assets/feed_anim.scss'
 
 const emitter = mitt()
 

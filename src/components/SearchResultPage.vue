@@ -131,7 +131,7 @@
     <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
 
     <div id="more-content-button-root" class="center-horizontal">
-      <MoreContentButton :show="show" :search="search" :plugin="plugin" :ic="ic"/>
+      <MoreContentButton :show="show" :search="search" :plugin="plugins" :ic="ic"/>
     </div>
   </div>
 </template>
@@ -149,6 +149,7 @@ import SavedContentButton from "../components/views/SavedContentButton.vue";
 import SavedPopup from "../components/views/SavedPopup.vue";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
+import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 
 export default {
   name: "SearchResultPage",
@@ -158,7 +159,7 @@ export default {
   data(){
     return {
       search: String(this.$route.params.search),
-      plugin: String(this.$route.params.plugin),
+      plugins: [],
       show: false,
       content: [],
       savedContent: [],
@@ -321,13 +322,15 @@ export default {
 
     let sorting = this.getCookies("sorting");
 
-    if(this.plugin === "null") {
+    this.getAllActivePlugins()
+
+    if(this.plugins.length == 0) {
       this.showLoading = false;
       this.noPlugin = true;
     }else{
       this.showLoading = true;
       this.noPlugin = false;
-      this.ic.startSearch(this.search, this.plugin, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
+      this.ic.startSearch(this.search, this.plugins, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
     }
     this.ic.changeShow();
 
@@ -374,7 +377,7 @@ export default {
 
       let searchText = document.getElementById("result-input-search").value;
 
-      let route = this.$router.resolve({path: '/search/' + this.plugin + "/" + searchText});
+      let route = this.$router.resolve({path: '/search/' + searchText});
       window.open(route.href, '_self');
       this.$router.go();
     },
@@ -428,6 +431,17 @@ export default {
       this.progress = this.$refs.audioPlayer.currentTime
       EventBus.emit("audio-pos", this.progress)
     },
+
+    getAllActivePlugins(){
+      let pc = new PluginController();
+      let all = pc.getAllPluginsAsId();
+      for(let i = 0; i < all.length; i++){
+        let status = this.getCookies(all[i])
+        if(status === "true"){
+          this.plugins.push(all[i])
+        }
+      }
+    }
 
   }
 }

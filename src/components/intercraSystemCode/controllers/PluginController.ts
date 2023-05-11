@@ -182,8 +182,8 @@ export class PluginController {
         return newList;
     }
 
-    async findContent(searchText: string, plugin: string, token: string, ytToken: string) {
-        this.activePlugins = plugin.split("---");
+    async findContent(searchText: string, plugin: string[], token: string, ytToken: string) {
+        this.activePlugins = plugin
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -208,8 +208,8 @@ export class PluginController {
         }
     }
 
-    async findMoreContent(searchText: string, plugin: string, token: string, ytToken: string) {
-        this.activePlugins = plugin.split("---");
+    async findMoreContent(searchText: string, plugin: string[], token: string, ytToken: string) {
+        this.activePlugins = plugin
         this.finishedPlugins = [];
         this.all = []
 

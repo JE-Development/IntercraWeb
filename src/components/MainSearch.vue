@@ -38,6 +38,12 @@
                     <h1 class="error-color">I am evil! Ha Ha Ha!</h1>
                   </div>
                 </div>
+                <div class="center-horizontal">
+                  <div>
+                    <div style="height: 20px"/>
+                    <FeedButton/>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -85,11 +91,13 @@ import {GoogleController} from "./intercraSystemCode/controllers/GoogleControlle
 import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
 import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
+import FeedButton from "./views/FeedButton.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
   components: {
+    FeedButton,
     SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
@@ -146,6 +154,10 @@ export default {
     EventBus.addEventListener('show-social-media', (event) => {
       this.smShow = true;
     })
+
+    EventBus.addEventListener('open-feed', (event) => {
+      this.openFeed()
+    })
   },
 
   mounted() {
@@ -159,10 +171,9 @@ export default {
       this.$notify("successfully logged into spotify");
     }
 
-    let pc = new PluginController();
-    pc.getPresetSettings("amazon");
-    let pre = new PresetController();
-    pre.getEnumValueByKey("SHOPPING")
+    if(!this.checkPluginsInCookies()){
+      this.setAllPluginsInCookies()
+    }
 
   },
   data() {
@@ -270,19 +281,7 @@ export default {
       }else{
         this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
-        let activePlugins = "null";
-
-        for(let i = 0; i < this.pluginList.length; i++){
-          if(this.pluginList[i].enable === "true"){
-            if(activePlugins == "null"){
-              activePlugins = this.pluginList[i].pluginId;
-            }else{
-              activePlugins = activePlugins + "---" + this.pluginList[i].pluginId;
-            }
-          }
-        }
-
-        let route = this.$router.resolve({path: '/search/' + activePlugins + "/" + searchText});
+        let route = this.$router.resolve({path: '/search/' + searchText});
         setTimeout(() => window.open(route.href, '_self'), 500);
       }
 
@@ -335,6 +334,29 @@ export default {
         return false;
       }
     },
+
+    setAllPluginsInCookies(){
+      console.log("in set")
+      for(let i = 0; i < this.pluginList.length; i++){
+        this.setCookies(this.pluginList[i].pluginId, this.pluginList[i].enable)
+      }
+    },
+
+    checkPluginsInCookies(){
+      for(let i = 0; i < this.pluginList.length; i++){
+        let check = this.getCookies(this.pluginList[i].pluginId)
+        if(check == null){
+          return false
+        }
+      }
+      return true
+    },
+    openFeed(){
+      this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
+
+      let route = this.$router.resolve({path: '/feed'});
+      setTimeout(() => window.open(route.href, '_self'), 500);
+    }
 
 
   }
