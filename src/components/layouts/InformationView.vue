@@ -5,17 +5,11 @@
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <p class="teaser-color">{{teaser}}</p>
       <p class="plugin-name-color view-plugin-name">Plugin: {{pluginName}}</p>
-      <div v-if="savedContent">
-        <div class="saved-content-div center-horizontal">
-          <a @click="savedClick"><img class="saved-content-icon image-arrow-left"/></a>
-
-        </div>
-      </div>
-      <div v-else class="saved-content-right">
-        <div class="saved-content-div center-horizontal">
-          <a @click="savedClick"><img class="saved-content-icon image-arrow-right"/></a>
-        </div>
-      </div>
+        <SavedIconView
+                :isResult="isResult"
+                :savedContent="savedContent"
+                :onClick="savedClick"
+        />
     </div>
   </div>
 </template>
@@ -23,9 +17,11 @@
 <script>
 
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+import SavedIconView from "../views/SavedIconView.vue";
 
 export default {
   name: "InformationView",
+    components: {SavedIconView},
 
   props: {
     index: Number,
@@ -34,6 +30,7 @@ export default {
     headline: String,
     pluginName: String,
     teaser: String,
+    isResult: Boolean,
   },
 
   methods: {

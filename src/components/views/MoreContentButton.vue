@@ -24,7 +24,7 @@ export default {
   props: {
     show: Boolean,
     search: String,
-    plugin: String,
+    plugin: Array,
   },
 
   methods: {

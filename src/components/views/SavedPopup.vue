@@ -38,6 +38,12 @@
                                      :duration="dat.duration"
                                      :lang="dat.lang"
                                      :author="dat.author"
+                                     :scaleIndex="dat.scaleIndex"
+                                     :preview="dat.preview"
+                                     :error="dat.error"
+                                     :sizes="dat.sizes"
+                                     :vectorDownloadUrl="dat.vectorDownloadUrl"
+                                     :isResult="true"
                   />
                   <div style="height: 200px"></div>
                 </div>

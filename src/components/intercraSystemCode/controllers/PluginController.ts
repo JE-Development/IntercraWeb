@@ -185,6 +185,8 @@ export class PluginController {
     async findContent(searchText: string, plugin: string[], token: string, ytToken: string) {
         this.activePlugins = plugin
 
+        console.log(plugin)
+
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
                 if(this.special.includes(this.plugins[i].getId())) {
@@ -232,6 +234,8 @@ export class PluginController {
     }
 
     isFinished(contentList: Map<string, string>[], id: string) {
+
+
         this.finishedPlugins.push(id);
         this.makeFinish()
     }

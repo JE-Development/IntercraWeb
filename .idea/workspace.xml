@@ -5,18 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/feed_anim.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/FeedButton.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/views/SavedIconView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/active-plugins.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/feed.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/feed.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/feed.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/feed_anim.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/feed_anim.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesTracks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ArticleView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/BandcampView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/GithubView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ITunesPreviewView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ITunesPreviewView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ITunesView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ITunesView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/IconDownloadView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/IconDownloadView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ImageView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsAudioView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/NewgroundsImageView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/NewgroundsImageView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/PlayStoreNoIconView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/PlayStoreNoIconView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/PlayStoreView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/MoreContentButton.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MoreContentButton.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/SavedPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/SavedPopup.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +47,7 @@
         <option value="TypeScript File" />
         <option value="Vue Single File Component" />
         <option value="CSS File" />
+        <option value="Vue Composition API Component" />
       </list>
     </option>
   </component>
@@ -67,7 +82,7 @@
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.27",
+    "javascript.nodejs.core.library.typings.version": "16.18.29",
     "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/assets",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -76,8 +91,13 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraBackEnd\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -254,6 +274,7 @@
       <workItem from="1683581808987" duration="4364000" />
       <workItem from="1683754587464" duration="5819000" />
       <workItem from="1683835774495" duration="4424000" />
+      <workItem from="1683880638338" duration="5401000" />
     </task>
     <servers />
   </component>

@@ -47,6 +47,8 @@ export class ITunesTracks implements PluginInterface{
     }
 
     analyse(json: any){
+        console.log(json)
+
         let array = json.results;
         for(let i = 0; i < array.length; i++){
             let items = array[i];
@@ -57,7 +59,12 @@ export class ITunesTracks implements PluginInterface{
                 let image = JSON.stringify(items.artworkUrl100).replace('"', "").replace('"', "");
                 let artist = JSON.stringify(items.artistName).replace('"', "").replace('"', "");
                 let headline = JSON.stringify(items.collectionName).replace('"', "").replace('"', "");
-                let preview = JSON.stringify(items.previewUrl).replace('"', "").replace('"', "");
+                let preview = "null"
+                try{
+                    preview = JSON.stringify(items.previewUrl).replace('"', "").replace('"', "");
+                }catch (e){
+                    //no preview
+                }
                 let price = "";
                 try {
                     price = "$" + JSON.stringify(items.collectionPrice).replace('"', "").replace('"', "");

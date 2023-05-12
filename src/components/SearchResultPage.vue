@@ -75,6 +75,7 @@
                              :error="dat.error"
                              :sizes="dat.sizes"
                              :vectorDownloadUrl="dat.vectorDownloadUrl"
+                             :isResult="true"
           />
         </div>
       </div>
@@ -111,6 +112,7 @@
                                :error="dat.error"
                                :sizes="dat.sizes"
                                :vectorDownloadUrl="dat.vectorDownloadUrl"
+                               :isResult="true"
             />
           </div>
         </div>

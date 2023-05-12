@@ -1,0 +1,52 @@
+.feed-page{
+    margin: 20px;
+}
+
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.feed-item{
+    max-width: 31vw;
+}
+
+
+
+
+@media (max-width: 1500px) {
+
+
+
+    .feed-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .feed-item{
+        max-width: 48vw;
+    }
+}
+
+@media (max-width: 950px) {
+
+
+
+    .feed-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .feed-item{
+        max-width: 700px;
+    }
+}

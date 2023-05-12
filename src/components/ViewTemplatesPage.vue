@@ -7,6 +7,7 @@
                    :headline="headline"
                    :pluginName="pluginName"
                    :teaser="teaser"
+                   :isResult="isResult"
   />
   <ArticleView v-else-if="choosenView === 'articleView'"
                :index="index"
@@ -20,6 +21,7 @@
                :platform="platform"
                :author="author"
                :scaleIndex="scaleIndex"
+               :isResult="isResult"
   />
   <ShoppingView v-else-if="choosenView === 'shoppingView'"
                 :index="index"
@@ -29,6 +31,7 @@
                 :pluginName="pluginName"
                 :price="price"
                 :image="image"
+                :isResult="isResult"
   />
   <BandcampView v-else-if="choosenView === 'bandcampView'"
                 :index="index"
@@ -42,6 +45,7 @@
                 :tags="tags"
                 :genre="genre"
                 :type="type"
+                :isResult="isResult"
   />
   <PlayStoreView v-else-if="choosenView === 'playStoreView'"
                  :index="index"
@@ -52,6 +56,7 @@
                  :publisher="publisher"
                  :image="image"
                  :appIcon="appIcon"
+                 :isResult="isResult"
   />
   <PlayStoreNoIconView v-else-if="choosenView === 'playStoreNoIconView'"
                        :index="index"
@@ -62,6 +67,7 @@
                        :publisher="publisher"
                        :image="image"
                        :price="price"
+                       :isResult="isResult"
   />
   <ImageView v-else-if="choosenView === 'imageView'"
              :index="index"
@@ -71,6 +77,7 @@
              :image="image"
              :headline="headline"
              :scaleIndex="scaleIndex"
+             :isResult="isResult"
   />
   <SpotifyView v-else-if="choosenView === 'spotifyView'"
                :index="index"
@@ -83,6 +90,7 @@
                :duration="duration"
                :album="album"
                :preview="preview"
+               :isResult="isResult"
   />
   <GithubView v-else-if="choosenView === 'githubView'"
               :index="index"
@@ -92,6 +100,7 @@
               :pluginName="pluginName"
               :teaser="teaser"
               :lang="lang"
+              :isResult="isResult"
   />
   <ITunesView v-else-if="choosenView === 'itunesView'"
               :index="index"
@@ -104,19 +113,21 @@
               :type="type"
               :price="price"
               :scaleIndex="scaleIndex"
+              :isResult="isResult"
   />
   <ITunesPreviewView v-else-if="choosenView === 'itunesPreviewView'"
-              :index="index"
-              :savedContent="savedContent"
-              :url="url"
-              :headline="headline"
-              :pluginName="pluginName"
-              :image="image"
-              :artist="artist"
-              :type="type"
-              :price="price"
-              :scaleIndex="scaleIndex"
-              :preview="preview"
+                    :index="index"
+                    :savedContent="savedContent"
+                    :url="url"
+                    :headline="headline"
+                    :pluginName="pluginName"
+                    :image="image"
+                    :artist="artist"
+                    :type="type"
+                    :price="price"
+                    :scaleIndex="scaleIndex"
+                    :preview="preview"
+                    :isResult="isResult"
   />
   <ModelsView v-else-if="choosenView === 'modelsView'"
               :index="index"
@@ -128,26 +139,29 @@
               :artist="artist"
               :type="type"
               :price="price"
+              :isResult="isResult"
   />
   <NewgroundsAudioView v-else-if="choosenView === 'newgroundsAudioView'"
-               :index="index"
-               :savedContent="savedContent"
-               :url="url"
-               :headline="headline"
-               :pluginName="pluginName"
-               :teaser="teaser"
-               :image="image"
-               :genre="genre"
-               :artist="artist"
+                       :index="index"
+                       :savedContent="savedContent"
+                       :url="url"
+                       :headline="headline"
+                       :pluginName="pluginName"
+                       :teaser="teaser"
+                       :image="image"
+                       :genre="genre"
+                       :artist="artist"
+                       :isResult="isResult"
   />
   <NewgroundsImageView v-else-if="choosenView === 'newgroundsImageView'"
-               :index="index"
-               :savedContent="savedContent"
-               :url="url"
-               :headline="headline"
-               :pluginName="pluginName"
-               :image="image"
-               :artist="artist"
+                       :index="index"
+                       :savedContent="savedContent"
+                       :url="url"
+                       :headline="headline"
+                       :pluginName="pluginName"
+                       :image="image"
+                       :artist="artist"
+                       :isResult="isResult"
   />
   <IconDownloadView v-else-if="choosenView === 'iconDownloadView'"
                     :index="index"
@@ -156,6 +170,7 @@
                     :image="image"
                     :sizes="sizes"
                     :vectorDownloadUrl="vectorDownloadUrl"
+                    :isResult="isResult"
   />
 
 
@@ -193,6 +208,7 @@ export default {
     index: Number,
     choosenView: String,
     savedContent: Boolean,
+      isResult: Boolean,
 
     //multiple use props
 
