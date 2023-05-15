@@ -3,10 +3,12 @@ import {PresetController} from "../controllers/PresetController";
 import {PluginLanguageController} from "../controllers/PluginLanguageController";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class Engadget implements PluginInterface{
+export class Engadget implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "Engadget";
@@ -124,6 +126,87 @@ export class Engadget implements PluginInterface{
         for(let i = 0; i < this.contentList.length; i++){
 
             let contentMap = this.contentList[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                teaser: contentMap.get("teaser"),
+                image: contentMap.get("imageUrl"),
+                author: contentMap.get("author"),
+                date: contentMap.get("time"),
+            })
+        }
+
+        return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentListFeed, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotError(this.id);
+        }
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        this.contentListFeed = [];
+        pc.isFeedFinished(this.contentListFeed, this.id);
+    }
+
+
+    startFeedSearch(document: any): void{
+        const article = document.getElementsByTagName("ul")
+        for(let i = 0; i < article.length; i++){
+            if(article[i].getAttribute("data-component") === "LatestStream"){
+                let el = article[i].children
+                for(let i = 0; i < el.length; i++){
+                    try{
+                        const e = el[i];
+                        let map = new Map<string, string>;
+
+                        let link = e.getElementsByTagName("a")[1];
+                        map.set("url", link.getAttribute("href"));
+                        map.set("headline", link.textContent);
+
+                        let image = e.getElementsByTagName("img")[0];
+                        map.set("imageUrl", image.getAttribute("src"));
+
+                        /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
+                        map.set("teaser", teaser.textContent)*/
+
+                        let author = e.getElementsByTagName("span")[0]
+                        map.set("author", author.textContent)
+
+                        let time = e.getElementsByTagName("span")[1]
+                        map.set("time", time.textContent)
+
+                        this.contentListFeed.push(map)
+                    }catch (e){
+                        //console.log(e)
+                        //no article
+                    }
+                }
+            }
+        }
+    }
+
+    getFeedView(): string[] {
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+
 
             content.push({
                 choosenView: "articleView",

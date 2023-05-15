@@ -16,7 +16,6 @@ export class YoutubeVideo implements PluginInterface{
         let pc = new PresetController();
         pc.addPreset(PresetEnum.AUDIO);
         pc.addPreset(PresetEnum.VIDEOS);
-        pc.addPreset(PresetEnum.NEWS);
         pc.addPreset(PresetEnum.PODCAST);
         return pc;
     }

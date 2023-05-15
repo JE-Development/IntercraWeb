@@ -3,18 +3,35 @@
 
   <div class="feed-page">
       <div class="feed-grid center-horizontal">
-          <ArticleView
-                  v-for="(dat, id) in feedContent"
-                  class="feed-item"
-                  :index="0"
-                  :savedContent="false"
-                  :url="''"
-                  :headline="'headline'"
-                  :pluginName="'Internal'"
-                  :image="'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png'"
-                  :date="'date'"
-                  :platform="'platform'"
-                  :author="'author'"
+          <ViewTemplatesPage v-for="(dat, id) in content"
+                             :index="id"
+                             :savedContent="false"
+                             :choosenView="dat.choosenView"
+                             :url="dat.url"
+                             :headline="dat.headline"
+                             :pluginName="dat.pluginName"
+                             :teaser="dat.teaser"
+                             :image="dat.image"
+                             :date="dat.date"
+                             :price="dat.price"
+                             :artist="dat.artist"
+                             :release="dat.release"
+                             :tags="dat.tags"
+                             :genre="dat.genre"
+                             :type="dat.type"
+                             :publisher="dat.publisher"
+                             :appIcon="dat.appIcon"
+                             :platform="dat.platform"
+                             :album="dat.album"
+                             :duration="dat.duration"
+                             :lang="dat.lang"
+                             :author="dat.author"
+                             :scaleIndex="dat.scaleIndex"
+                             :preview="dat.preview"
+                             :error="dat.error"
+                             :sizes="dat.sizes"
+                             :vectorDownloadUrl="dat.vectorDownloadUrl"
+                             :isResult="false"
           />
 
 
@@ -31,30 +48,46 @@
 import {PluginController} from "../intercraSystemCode/controllers/PluginController";
 import ArticleView from "../layouts/ArticleView.vue";
 import SavedPopup from "../views/SavedPopup.vue";
+import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+import ViewTemplatesPage from "../ViewTemplatesPage.vue";
+import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 
 export default {
   name: "FeedPage",
-    components: {SavedPopup, ArticleView},
+    components: {ViewTemplatesPage, SavedPopup, ArticleView},
 
   created() {
     this.getAllActivePlugins()
 
-      for(let i = 0; i < 20; i++){
+      /*for(let i = 0; i < 20; i++){
           this.feedContent.push("" + i)
-      }
+      }*/
+
+      EventBus.addEventListener('feed-data-sender', (event) => {
+          if(this.content.length <= 0){
+              this.content = event.data;
+          }else{
+              this.content = this.content.concat(event.data);
+          }
+          //this.waitingPlugins = false;
+          //this.show = true;
+          //this.showLoading = false;
+      })
   },
 
   mounted() {
 
+      this.ic.startFeedSearch()
 
   },
 
   data(){
     return{
       activePlugins: [],
-        feedContent: [],
         savedFeed: [],
         showSavedPopup: false,
+        content: [],
+        ic: new IntercraController(),
     }
   },
 

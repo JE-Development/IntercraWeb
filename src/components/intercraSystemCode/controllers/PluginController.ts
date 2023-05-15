@@ -72,9 +72,12 @@ import {LiveScience} from "../plugins/LiveScience";
 import {Unsplash} from "../plugins/Unsplash";
 import {Iconfinder} from "../plugins/Iconfinder";
 import {Flaticon} from "../plugins/Flaticon";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
 export class PluginController {
 
+    feedPlugins: FeedInterface[] = [];
+    anyPlugins: any[] = [];
     plugins: PluginInterface[] = [];
     special: string[] = [];
     finishedPlugins: string[] = [];
@@ -85,80 +88,89 @@ export class PluginController {
 
 
     constructor() {
-        this.plugins.push(new SpotifyTracks());
-        this.plugins.push(new YoutubeVideo());
-        this.plugins.push(new GoogleWeb());
-        this.plugins.push(new GoogleImage());
-        this.plugins.push(new ITunesTracks());
-        this.plugins.push(new ITunesMovies());
-        this.plugins.push(new ITunesPodcast());
-        this.plugins.push(new ITunesBooks());
-        this.plugins.push(new ITunesAudioBook());
-        this.plugins.push(new AppStore());
-        //this.plugins.push(new NewsApi()); not working in production
-        this.plugins.push(new GNews());
-        //this.plugins.push(new NewsCatcher()); only 50 calls per month
-        this.plugins.push(new NewYorkTimes());
-        this.plugins.push(new NonaWeb());
-        this.plugins.push(new NonaNews());
-        this.plugins.push(new NonaPodcast());
-        this.plugins.push(new NonaVideo());
-        this.plugins.push(new Amazon());
-        this.plugins.push(new Ebay());
-        this.plugins.push(new BandcampAlbum());
-        this.plugins.push(new BandcampArtistLabel());
-        this.plugins.push(new BandcampFan());
-        this.plugins.push(new BandcampTracks());
-        this.plugins.push(new GooglePlayApps());
-        this.plugins.push(new GooglePlayBooks());
-        this.plugins.push(new GooglePlayMovies());
-        this.plugins.push(new Fandom());
-        this.plugins.push(new OscoboImage());
-        this.plugins.push(new Flickr());
-        this.plugins.push(new Giphy());
-        this.plugins.push(new Tenor());
-        this.plugins.push(new Reddit());
-        this.plugins.push(new GitHubRepositories());
-        this.plugins.push(new GitHubIssues());
-        this.plugins.push(new GitHubTopics());
-        this.plugins.push(new Stackoverflow());
-        this.plugins.push(new Sketchfab());
-        this.plugins.push(new Free3D());
-        this.plugins.push(new NewgroundsAudio());
-        this.plugins.push(new NewgroundsUsers());
-        this.plugins.push(new NewgroundsBlogs());
-        this.plugins.push(new NewgroundsArt());
-        this.plugins.push(new NewgroundsGames());
-        this.plugins.push(new NewgroundsMovies());
-        this.plugins.push(new PNGWing());
-        this.plugins.push(new Forbes());
-        this.plugins.push(new TheAtlantic());
-        this.plugins.push(new TechCrunch());
-        this.plugins.push(new Wired());
-        this.plugins.push(new Arxiv());
-        this.plugins.push(new LosAngelesTimes());
-        this.plugins.push(new NewYorkPost());
-        this.plugins.push(new Engadget());
-        this.plugins.push(new TED());
-        this.plugins.push(new Nature());
-        this.plugins.push(new Quartz());
-        this.plugins.push(new VentureBeat());
-        this.plugins.push(new Mashabe());
-        this.plugins.push(new HarvardBusinessReview());
-        this.plugins.push(new RT());
-        this.plugins.push(new DigitalTrends());
-        this.plugins.push(new PewResearchCenter());
-        this.plugins.push(new SearchEngineLand());
-        this.plugins.push(new ProductHunt());
-        this.plugins.push(new WebMD());
-        this.plugins.push(new BoredPanda());
-        this.plugins.push(new LiveScience());
-        this.plugins.push(new Unsplash());
-        this.plugins.push(new Iconfinder());
-        this.plugins.push(new Flaticon());
+
+        this.anyPlugins.push(new SpotifyTracks())
+        this.anyPlugins.push(new YoutubeVideo())
+        this.anyPlugins.push(new GoogleWeb())
+        this.anyPlugins.push(new GoogleImage());
+        this.anyPlugins.push(new ITunesTracks());
+        this.anyPlugins.push(new ITunesMovies());
+        this.anyPlugins.push(new ITunesPodcast());
+        this.anyPlugins.push(new ITunesBooks());
+        this.anyPlugins.push(new ITunesAudioBook());
+        this.anyPlugins.push(new AppStore());
+        //this.anyPlugins.push(new NewsApi()); not working in production
+        this.anyPlugins.push(new GNews());
+        //this.anyPlugins.push(new NewsCatcher()); only 50 calls per month
+        this.anyPlugins.push(new NewYorkTimes());
+        this.anyPlugins.push(new NonaWeb());
+        this.anyPlugins.push(new NonaNews());
+        this.anyPlugins.push(new NonaPodcast());
+        this.anyPlugins.push(new NonaVideo());
+        this.anyPlugins.push(new Amazon());
+        this.anyPlugins.push(new Ebay());
+        this.anyPlugins.push(new BandcampAlbum());
+        this.anyPlugins.push(new BandcampArtistLabel());
+        this.anyPlugins.push(new BandcampFan());
+        this.anyPlugins.push(new BandcampTracks());
+        this.anyPlugins.push(new GooglePlayApps());
+        this.anyPlugins.push(new GooglePlayBooks());
+        this.anyPlugins.push(new GooglePlayMovies());
+        this.anyPlugins.push(new Fandom());
+        this.anyPlugins.push(new OscoboImage());
+        this.anyPlugins.push(new Flickr());
+        this.anyPlugins.push(new Giphy());
+        this.anyPlugins.push(new Tenor());
+        this.anyPlugins.push(new Reddit());
+        this.anyPlugins.push(new GitHubRepositories());
+        this.anyPlugins.push(new GitHubIssues());
+        this.anyPlugins.push(new GitHubTopics());
+        this.anyPlugins.push(new Stackoverflow());
+        this.anyPlugins.push(new Sketchfab());
+        this.anyPlugins.push(new Free3D());
+        this.anyPlugins.push(new NewgroundsAudio());
+        this.anyPlugins.push(new NewgroundsUsers());
+        this.anyPlugins.push(new NewgroundsBlogs());
+        this.anyPlugins.push(new NewgroundsArt());
+        this.anyPlugins.push(new NewgroundsGames());
+        this.anyPlugins.push(new NewgroundsMovies());
+        this.anyPlugins.push(new PNGWing());
+        this.anyPlugins.push(new Forbes());
+        this.anyPlugins.push(new TheAtlantic());
+        this.anyPlugins.push(new TechCrunch());
+        this.anyPlugins.push(new Wired());
+        this.anyPlugins.push(new Arxiv());
+        this.anyPlugins.push(new LosAngelesTimes());
+        this.anyPlugins.push(new NewYorkPost());
+        this.anyPlugins.push(new Engadget());
+        this.anyPlugins.push(new TED());
+        this.anyPlugins.push(new Nature());
+        this.anyPlugins.push(new Quartz());
+        this.anyPlugins.push(new VentureBeat());
+        this.anyPlugins.push(new Mashabe());
+        this.anyPlugins.push(new HarvardBusinessReview());
+        this.anyPlugins.push(new RT());
+        this.anyPlugins.push(new DigitalTrends());
+        this.anyPlugins.push(new PewResearchCenter());
+        this.anyPlugins.push(new SearchEngineLand());
+        this.anyPlugins.push(new ProductHunt());
+        this.anyPlugins.push(new WebMD());
+        this.anyPlugins.push(new BoredPanda());
+        this.anyPlugins.push(new LiveScience());
+        this.anyPlugins.push(new Unsplash());
+        this.anyPlugins.push(new Iconfinder());
+        this.anyPlugins.push(new Flaticon());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
+
+        for(let i = 0; i < this.anyPlugins.length; i++){
+            this.plugins.push(this.anyPlugins[i])
+        }
+        /*for(let i = 0; i < this.anyPlugins.length; i++){
+            this.feedPlugins.push(this.anyPlugins[i])
+        }*/
+        this.feedPlugins.push(new Engadget())
 
 
         this.plugins = this.sortPlugins(this.plugins);
@@ -184,8 +196,7 @@ export class PluginController {
 
     async findContent(searchText: string, plugin: string[], token: string, ytToken: string) {
         this.activePlugins = plugin
-
-        console.log(plugin)
+        this.finishedPlugins = [];
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -231,6 +242,16 @@ export class PluginController {
                 }
             }
         }
+    }
+
+    async findFeedContent() {
+        /*this.finishedPlugins = [];
+        for (let i = 0; i < this.plugins.length; i++) {
+            if (this.activePlugins.includes(this.plugins[i].getId())) {
+                this.feedPlugins[i].findFeedContent(this);
+            }
+        }*/
+        this.feedPlugins[0].findFeedContent(this)
     }
 
     isFinished(contentList: Map<string, string>[], id: string) {
@@ -300,6 +321,92 @@ export class PluginController {
 
 
         }
+    }
+
+    isFeedFinished(contentList: Map<string, string>[], id: string) {
+
+
+        this.finishedPlugins.push(id);
+        this.makeFeedFinish()
+    }
+
+    makeFeedFinish(){
+        let check = this.checkAllFinished();
+
+        EventBus.emit("feed-not-finished", this.getNotFinished())
+
+        //if (check) {
+        if (true) {
+
+            let box: string[][] = [];
+
+            for (let i = 0; i < this.feedPlugins.length; i++) {
+                if (this.finishedPlugins.includes(this.feedPlugins[i].getId())) {
+                    let view = this.feedPlugins[i].getFeedView();
+                    box.push(view);
+                }
+            }
+
+            let maxSize: Number[] = [];
+
+            for (let i = 0; i < this.feedPlugins.length; i++) {
+                if (this.finishedPlugins.includes(this.feedPlugins[i].getId())) {
+                    maxSize.push(this.feedPlugins[i].getFeedView().length);
+                }
+            }
+
+            maxSize = maxSize.sort((n1: any, n2: any) => n1 - n2);
+
+            try {
+                let max = maxSize[maxSize.length - 1];
+                for (let i = 0; i < max; i++) {
+                    for (let j = 0; j < box.length; j++) {
+                        if (box[j].length > i) {
+                            this.all.push(box[j][i]);
+                        }
+                    }
+                }
+            } catch (e) {
+
+            }
+
+            if(this.sorting === "shuffle"){
+                this.all = this.shuffleArray(this.all);
+            }else if(this.sorting === "repeat"){
+                //default
+            }else if(this.sorting === "list"){
+                this.all = []
+                for (let i = 0; i < this.feedPlugins.length; i++) {
+                    if (this.finishedPlugins.includes(this.feedPlugins[i].getId())) {
+                        let view = this.feedPlugins[i].getFeedView();
+                        for(let j = 0; j < view.length; j++){
+                            this.all.push(view[j]);
+                        }
+                    }
+                }
+            }
+
+
+            EventBus.emit('feed-data-sender', this.all)
+
+
+        }
+    }
+
+    gotFeedError(id: string) {
+        this.finishedPlugins.push(id);
+
+        EventBus.emit("feed-not-finished", this.getNotFinished())
+
+
+        for (let i = 0; i < this.feedPlugins.length; i++) {
+            if (this.feedPlugins[i].getId() == id) {
+                this.errorNames.push(this.feedPlugins[i].getPluginDisplayName());
+            }
+        }
+        EventBus.emit('feed-error-sender', this.errorNames)
+        this.makeFeedFinish()
+
     }
 
     gotError(id: string) {
