@@ -15,8 +15,8 @@ export class IntercraController{
     startMoreSearch(searchText: string, plugin: string[], token: string, ytToken: string){
         this.pc.findMoreContent(searchText, plugin, token, ytToken);
     }
-    startFeedSearch(){
-        this.pc.findFeedContent();
+    startFeedSearch(plugin: string[]){
+        this.pc.findFeedContent(plugin);
     }
     setSorting(sort: string){
         this.pc.setSorting(sort);

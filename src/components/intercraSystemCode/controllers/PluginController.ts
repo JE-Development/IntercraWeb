@@ -167,10 +167,10 @@ export class PluginController {
         for(let i = 0; i < this.anyPlugins.length; i++){
             this.plugins.push(this.anyPlugins[i])
         }
-        /*for(let i = 0; i < this.anyPlugins.length; i++){
+        for(let i = 0; i < this.anyPlugins.length; i++){
             this.feedPlugins.push(this.anyPlugins[i])
-        }*/
-        this.feedPlugins.push(new Engadget())
+        }
+        //this.feedPlugins.push(new Engadget())
 
 
         this.plugins = this.sortPlugins(this.plugins);
@@ -244,18 +244,17 @@ export class PluginController {
         }
     }
 
-    async findFeedContent() {
-        /*this.finishedPlugins = [];
-        for (let i = 0; i < this.plugins.length; i++) {
-            if (this.activePlugins.includes(this.plugins[i].getId())) {
+    async findFeedContent(plugin: string[]) {
+        this.activePlugins = plugin
+        this.finishedPlugins = []
+        for (let i = 0; i < this.feedPlugins.length; i++) {
+            if (this.activePlugins.includes(this.feedPlugins[i].getId())) {
                 this.feedPlugins[i].findFeedContent(this);
             }
-        }*/
-        this.feedPlugins[0].findFeedContent(this)
+        }
     }
 
     isFinished(contentList: Map<string, string>[], id: string) {
-
 
         this.finishedPlugins.push(id);
         this.makeFinish()
@@ -266,7 +265,9 @@ export class PluginController {
 
         EventBus.emit("not-finished", this.getNotFinished())
 
+
         if (check) {
+
 
             let box: string[][] = [];
 
@@ -325,7 +326,6 @@ export class PluginController {
 
     isFeedFinished(contentList: Map<string, string>[], id: string) {
 
-
         this.finishedPlugins.push(id);
         this.makeFeedFinish()
     }
@@ -333,10 +333,10 @@ export class PluginController {
     makeFeedFinish(){
         let check = this.checkAllFinished();
 
-        EventBus.emit("feed-not-finished", this.getNotFinished())
+        //EventBus.emit("feed-not-finished", this.getNotFinished())
 
-        //if (check) {
-        if (true) {
+        if (check) {
+        //if (true) {
 
             let box: string[][] = [];
 

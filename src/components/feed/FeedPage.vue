@@ -4,6 +4,7 @@
   <div class="feed-page">
       <div class="feed-grid center-horizontal">
           <ViewTemplatesPage v-for="(dat, id) in content"
+                             class="feed-item"
                              :index="id"
                              :savedContent="false"
                              :choosenView="dat.choosenView"
@@ -76,8 +77,7 @@ export default {
   },
 
   mounted() {
-
-      this.ic.startFeedSearch()
+      this.ic.startFeedSearch(this.activePlugins)
 
   },
 

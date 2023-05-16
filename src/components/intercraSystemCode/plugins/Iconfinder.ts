@@ -5,10 +5,9 @@ import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
-import {GoogleController} from "../controllers/GoogleController";
-import {HttpRequestController} from "../controllers/HttpRequestController";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class Iconfinder implements PluginInterface{
+export class Iconfinder implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     page: number = 0;
@@ -160,6 +159,20 @@ export class Iconfinder implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }

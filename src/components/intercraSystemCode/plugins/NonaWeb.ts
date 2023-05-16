@@ -4,8 +4,9 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class NonaWeb implements PluginInterface{
+export class NonaWeb implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
@@ -127,6 +128,20 @@ export class NonaWeb implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }

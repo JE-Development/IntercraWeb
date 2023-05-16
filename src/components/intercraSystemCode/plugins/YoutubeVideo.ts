@@ -4,8 +4,9 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import {GoogleController} from "../controllers/GoogleController";
+import type {FeedInterface} from "@/src/components/intercraSystemCode/interfaces/FeedInterface";
 
-export class YoutubeVideo implements PluginInterface{
+export class YoutubeVideo implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
@@ -145,6 +146,20 @@ export class YoutubeVideo implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }

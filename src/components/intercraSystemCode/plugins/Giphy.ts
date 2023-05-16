@@ -7,8 +7,9 @@ import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
 import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class Giphy implements PluginInterface{
+export class Giphy implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     offset: number = 0;
@@ -119,6 +120,20 @@ export class Giphy implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }

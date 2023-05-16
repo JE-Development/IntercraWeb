@@ -7,8 +7,9 @@ import {SpotifyController} from "../controllers/SpotifyController";
 import {PresetEnum} from "../enums/PresetEnum";
 import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class AppStore implements PluginInterface{
+export class AppStore implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     page: number = 1;
@@ -127,6 +128,20 @@ export class AppStore implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }

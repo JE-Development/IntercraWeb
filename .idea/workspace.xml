@@ -7,6 +7,80 @@
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/IntercraController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Amazon.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/AppStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/AppStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Arxiv.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Arxiv.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampAlbum.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampAlbum.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampArtistLabel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampArtistLabel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampFan.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampFan.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BandcampTracks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BoredPanda.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/BoredPanda.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/DigitalTrends.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/DigitalTrends.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Ebay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Ebay.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Fandom.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Fandom.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flaticon.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flaticon.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flickr.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Flickr.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Forbes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Forbes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Free3D.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Free3D.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GNews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GNews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Giphy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Giphy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubIssues.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubIssues.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubRepositories.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubRepositories.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubTopics.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GitHubTopics.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleImage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayApps.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayApps.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayBooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayBooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayMovies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GooglePlayMovies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/GoogleWeb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/HarvardBusinessReview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/HarvardBusinessReview.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesAudioBook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesAudioBook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesBooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesBooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesMovies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesMovies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesPodcast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesPodcast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesTracks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Iconfinder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Iconfinder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LiveScience.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LiveScience.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LosAngelesTimes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LosAngelesTimes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Mashabe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Mashabe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Nature.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Nature.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkPost.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkPost.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkTimes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewYorkTimes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsArt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsArt.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsAudio.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsAudio.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsBlogs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsBlogs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsGames.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsGames.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsMovies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsMovies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsUsers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewgroundsUsers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewsApi.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewsApi.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewsCatcher.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NewsCatcher.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaNews.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaNews.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaPodcast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaPodcast.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaVideo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaVideo.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/NonaWeb.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/OscoboImage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/OscoboImage.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/PNGWing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/PNGWing.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/PewResearchCenter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/PewResearchCenter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ProductHunt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ProductHunt.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Quartz.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Quartz.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/RT.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/RT.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Rebuy.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Rebuy.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Reddit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Reddit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SearchEngineLand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SearchEngineLand.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Sketchfab.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Sketchfab.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Stackoverflow.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Stackoverflow.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TED.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TED.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TechCrunch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TechCrunch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Tenor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Tenor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TheAtlantic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TheAtlantic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Unsplash.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Unsplash.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/VentureBeat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/VentureBeat.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/WebMD.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/WebMD.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Wired.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Wired.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/YoutubeVideo.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/YoutubeVideo.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +102,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../IntercraBackEnd" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,7 +132,7 @@
     "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
     "WebServerToolWindowPanel.toolwindow.show.size": "false",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.29",
+    "javascript.nodejs.core.library.typings.version": "16.18.31",
     "last_opened_file_path": "C:/Users/Jason Enns/Desktop/Development/GitHub/IntercraBackEnd",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -67,7 +141,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraBackEnd\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -253,6 +327,7 @@
       <workItem from="1683880638338" duration="5401000" />
       <workItem from="1684155933870" duration="536000" />
       <workItem from="1684168118855" duration="302000" />
+      <workItem from="1684270875518" duration="5276000" />
     </task>
     <servers />
   </component>

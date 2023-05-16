@@ -4,8 +4,9 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import {ViewCollection} from "../classes/ViewCollection";
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
+import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class GooglePlayMovies implements PluginInterface{
+export class GooglePlayMovies implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
 
@@ -150,6 +151,20 @@ export class GooglePlayMovies implements PluginInterface{
         }
 
         return content;
+    }
+
+    async findFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    async findMoreFeedContent(pc: PluginController): Promise<void> {
+        let list: Map<string, string>[] = []
+        pc.isFeedFinished(list, this.id)
+    }
+
+    getFeedView(): string[] {
+        return [];
     }
 
 }
