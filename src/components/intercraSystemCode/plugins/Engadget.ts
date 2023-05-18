@@ -187,7 +187,7 @@ export class Engadget implements PluginInterface, FeedInterface{
                         map.set("author", author.textContent)
 
                         let time = e.getElementsByTagName("span")[1]
-                        map.set("time", time.textContent)
+                        map.set("time", time.textContent.replace(", ", ""))
 
                         this.contentListFeed.push(map)
                     }catch (e){
