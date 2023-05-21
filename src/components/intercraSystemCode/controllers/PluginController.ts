@@ -333,7 +333,7 @@ export class PluginController {
     makeFeedFinish(){
         let check = this.checkAllFinished();
 
-        //EventBus.emit("feed-not-finished", this.getNotFinished())
+        EventBus.emit("feed-not-finished", this.getNotFinished())
 
         if (check) {
         //if (true) {

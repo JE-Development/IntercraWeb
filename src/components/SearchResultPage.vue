@@ -120,7 +120,7 @@
 
     </div>
 
-    <div id="searchRoot" v-if="showLoading">
+    <div id="searchRoot" v-if="waitingPlugins">
       <div id="loading-result" class="center-horizontal">
         <img src="../assets/loading.gif" class="loading-image"/>
       </div>

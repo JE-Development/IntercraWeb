@@ -31,7 +31,7 @@
                       v-on:blur="inputLostFocus()"
                       @keyup.enter="enterClicked()"
                       placeholder="Search here"
-                      class="glow search-input center-horizontal search-input-color search-input-border-color">
+                      class="glow search-input center-horizontal search-input-color search-input-border-color"/>
                 </div>
                 <div v-else>
                   <div class="center-horizontal">
@@ -356,6 +356,10 @@ export default {
 
       let route = this.$router.resolve({path: '/feed'});
       setTimeout(() => window.open(route.href, '_self'), 500);
+    },
+
+    searchIconClick(){
+
     }
 
 

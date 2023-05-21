@@ -147,7 +147,7 @@ export class BoredPanda implements PluginInterface, FeedInterface{
             pc.isFeedFinished(this.contentListFeed, this.id);
         }catch (error){
             console.log(error)
-            pc.gotError(this.id);
+            pc.gotFeedError(this.id);
         }
     }
 

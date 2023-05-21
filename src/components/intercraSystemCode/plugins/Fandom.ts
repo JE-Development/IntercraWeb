@@ -35,7 +35,7 @@ export class Fandom implements PluginInterface, FeedInterface{
             //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
-            pc.gotError(this.id);
+            pc.gotFeedError(this.id);
         }
     }
 

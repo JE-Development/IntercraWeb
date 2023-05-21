@@ -11,6 +11,8 @@ export class Engadget implements PluginInterface, FeedInterface{
     contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
+    feedError: boolean = false;
+
     displayName = "Engadget";
     id = "engadget";
 
@@ -150,10 +152,14 @@ export class Engadget implements PluginInterface, FeedInterface{
             const document: any = parser.parseFromString(text, "text/html");
             this.startFeedSearch(document);
             //let pc = new PluginController();
-            pc.isFeedFinished(this.contentListFeed, this.id);
+            if(this.feedError){
+                pc.gotFeedError(this.id)
+            }else{
+                pc.isFeedFinished(this.contentListFeed, this.id);
+            }
         }catch (error){
             console.log(error)
-            pc.gotError(this.id);
+            pc.gotFeedError(this.id);
         }
     }
 
@@ -173,6 +179,8 @@ export class Engadget implements PluginInterface, FeedInterface{
                         const e = el[i];
                         let map = new Map<string, string>;
 
+                        console.log(e)
+
                         let link = e.getElementsByTagName("a")[1];
                         map.set("url", link.getAttribute("href"));
                         map.set("headline", link.textContent);
@@ -183,17 +191,17 @@ export class Engadget implements PluginInterface, FeedInterface{
                         /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
                         map.set("teaser", teaser.textContent)*/
 
-                        let author = e.getElementsByTagName("span")[0]
+                        let author = e.getElementsByTagName("span")[0].parentNode
                         map.set("author", author.textContent)
-
-                        let time = e.getElementsByTagName("span")[1]
-                        map.set("time", time.textContent.replace(", ", ""))
 
                         this.contentListFeed.push(map)
                     }catch (e){
                         //console.log(e)
                         //no article
                     }
+                }
+                if(this.contentListFeed.length == 0){
+                    this.feedError = true;
                 }
             }
         }
@@ -216,7 +224,6 @@ export class Engadget implements PluginInterface, FeedInterface{
                 teaser: contentMap.get("teaser"),
                 image: contentMap.get("imageUrl"),
                 author: contentMap.get("author"),
-                date: contentMap.get("time"),
             })
         }
 
