@@ -8,6 +8,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class NewgroundsArt implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
 
     displayName = "Newgrounds Art";
     id = "newgrounds_art";
@@ -138,8 +139,19 @@ export class NewgroundsArt implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -147,8 +159,54 @@ export class NewgroundsArt implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const content = document.getElementsByClassName("portalitem-art-icons-medium")[0].children;
+
+        for(let i = 0; i < content.length; i++){
+            const elem = content[i];
+            let map = new Map<string, string>;
+
+            try{
+                const link = elem.getElementsByTagName("a")[0];
+                map.set("url", link.getAttribute("href"));
+
+                const image = elem.getElementsByTagName("img")[0];
+                map.set("imageUrl", image.getAttribute("src"));
+
+                const headline= elem.getElementsByTagName("h4")[0];
+                map.set("headline", headline.textContent)
+
+                const artist = elem.getElementsByTagName("span")[0];
+                map.set("artist", artist.textContent)
+
+                this.contentListFeed.push(map);
+            }catch (e){
+                //important information missing
+            }
+
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "newgroundsImageView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                image: contentMap.get("imageUrl"),
+                artist: contentMap.get("artist"),
+            })
+        }
+
+        return content;
     }
 
 }

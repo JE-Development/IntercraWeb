@@ -8,6 +8,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class Mashabe implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "Mashable";
@@ -57,7 +58,6 @@ export class Mashabe implements PluginInterface, FeedInterface{
     }
 
     startSearch(document: any): void{
-        console.log(document)
         const article = document.getElementsByClassName("w-full");
         for(let i = 0; i < article.length; i++){
             const e = article[i];
@@ -65,7 +65,7 @@ export class Mashabe implements PluginInterface, FeedInterface{
                 let map = new Map<string, string>;
 
                 let link = e.getElementsByTagName("a")[0];
-                map.set("url", link.getAttribute("href"));
+                map.set("url", "https://mashable.com" + link.getAttribute("href"));
                 map.set("headline", link.textContent);
 
                 try {
@@ -153,8 +153,20 @@ export class Mashabe implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -162,8 +174,63 @@ export class Mashabe implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const article = document.getElementsByClassName("flex-1");
+        for(let i = 0; i < article.length; i++){
+            const e = article[i];
+            if(e.hasAttribute("data-ga-position")) {
+                let map = new Map<string, string>;
+
+                let link = e.getElementsByTagName("a");
+                for(let j = 0; j < link.length; j++){
+                    if(link[j].getAttribute("data-ga-item") === "title"){
+                        map.set("url", "https://mashable.com" + link[j].getAttribute("href"));
+                        map.set("headline", link[j].textContent);
+                    }
+                }
+
+                try {
+                    let image = e.getElementsByTagName("img")[0];
+                    map.set("imageUrl", image.getAttribute("src"));
+                } catch (e) {
+                    //no image
+                }
+
+                try{
+                    let topic = e.getElementsByTagName("a")
+                    for(let j = 0; j < topic.length; j++){
+                        if(topic[j].getAttribute("data-ga-item") === "category_title"){
+                            map.set("topic", topic[j].textContent)
+                        }
+                    }
+                }catch (e){}
+
+                this.contentListFeed.push(map)
+            }
+        }
+    }
+
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                image: contentMap.get("imageUrl"),
+                platform: contentMap.get("topic"),
+            })
+        }
+
+        return content;
     }
 
 }

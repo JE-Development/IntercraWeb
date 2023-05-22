@@ -8,6 +8,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class Nature implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "Nature";
@@ -63,7 +64,7 @@ export class Nature implements PluginInterface, FeedInterface{
             let map = new Map<string, string>;
 
             let link = e.getElementsByTagName("h3")[0].children[0];
-            map.set("url", link.getAttribute("href"));
+            map.set("url", "https://www.nature.com" + link.getAttribute("href"));
             map.set("headline", link.textContent);
 
             try{
@@ -158,8 +159,20 @@ export class Nature implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -167,8 +180,58 @@ export class Nature implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const article = document.getElementsByTagName("article");
+        for(let i = 0; i < article.length; i++){
+            try{
+                const e = article[i];
+                let map = new Map<string, string>;
+
+                let link = e.getElementsByTagName("h3")[0].children[0];
+                map.set("url", "https://www.nature.com" + link.getAttribute("href"));
+                map.set("headline", link.textContent);
+
+                try{
+                    let image = e.getElementsByTagName("img")[0];
+                    map.set("imageUrl", "https:" + image.getAttribute("src"));
+                }catch (e){
+                    //no  image
+                }
+
+                try{
+                    let teaser = e.getElementsByClassName("c-card__summary")[0].children[0];
+                    map.set("teaser", teaser.textContent)
+                }catch (e){
+                    //no teaser
+                }
+
+                this.contentListFeed.push(map)
+            }catch (e){
+
+            }
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                teaser: contentMap.get("teaser"),
+                image: contentMap.get("imageUrl"),
+            })
+        }
+
+        return content;
     }
 
 }

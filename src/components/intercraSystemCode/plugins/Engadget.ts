@@ -179,8 +179,6 @@ export class Engadget implements PluginInterface, FeedInterface{
                         const e = el[i];
                         let map = new Map<string, string>;
 
-                        console.log(e)
-
                         let link = e.getElementsByTagName("a")[1];
                         map.set("url", link.getAttribute("href"));
                         map.set("headline", link.textContent);
