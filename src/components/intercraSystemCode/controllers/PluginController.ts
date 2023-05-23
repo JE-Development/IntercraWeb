@@ -121,7 +121,7 @@ export class PluginController {
         this.anyPlugins.push(new Flickr());
         this.anyPlugins.push(new Giphy());
         this.anyPlugins.push(new Tenor());
-        this.anyPlugins.push(new Reddit());
+        //this.anyPlugins.push(new Reddit()); required api | blocked content via crawling
         this.anyPlugins.push(new GitHubRepositories());
         this.anyPlugins.push(new GitHubIssues());
         this.anyPlugins.push(new GitHubTopics());
@@ -145,7 +145,7 @@ export class PluginController {
         this.anyPlugins.push(new Engadget());
         this.anyPlugins.push(new TED());
         this.anyPlugins.push(new Nature());
-        this.anyPlugins.push(new Quartz());
+        //this.anyPlugins.push(new Quartz());  document selection not working
         this.anyPlugins.push(new VentureBeat());
         this.anyPlugins.push(new Mashabe());
         this.anyPlugins.push(new HarvardBusinessReview());
@@ -324,7 +324,7 @@ export class PluginController {
         }
     }
 
-    isFeedFinished(contentList: Map<string, string>[], id: string) {
+    isFeedFinished(contentLis: Map<string, string>[], id: string) {
 
         this.finishedPlugins.push(id);
         this.makeFeedFinish()

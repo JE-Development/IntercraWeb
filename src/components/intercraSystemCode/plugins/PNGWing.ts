@@ -9,6 +9,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class PNGWing implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
 
     displayName = "PNGWing";
     id = "pngwing";
@@ -125,8 +126,20 @@ export class PNGWing implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -134,8 +147,43 @@ export class PNGWing implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const content = document.getElementsByTagName("li");
+
+        for(let i = 0; i < content.length; i++){
+            const elem = content[i];
+            if(elem.getAttribute("itemprop") === "associatedMedia"){
+                let map = new Map<string, string>;
+
+                const url = elem.getElementsByTagName("a")[0];
+                map.set("url", url.getAttribute("href"));
+
+                const image = elem.getElementsByTagName("img")[0];
+                map.set("imageUrl", image.getAttribute("data-src"));
+
+                this.contentListFeed.push(map);
+            }
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "imageView",
+                url: contentMap.get("url"),
+                image: contentMap.get("imageUrl"),
+                pluginName: this.displayName,
+            })
+        }
+
+        return content;
     }
 
 }

@@ -12,6 +12,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class NewYorkTimes implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "New York Times";
@@ -138,8 +139,10 @@ export class NewYorkTimes implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        await this.startFeedSearch(pc);
+        this.finish = true;
+
+        pc.isFeedFinished(this.contentList, this.id);
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -147,8 +150,67 @@ export class NewYorkTimes implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    async startFeedSearch(pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
+
+        await hrc.httpRequest(
+            "https://api.nytimes.com/svc/topstories/v2/home.json?api-key=2AXSfKzse0JvqZEdarXKWedWuPcU2vmS",
+            pc, this.id).then(r =>
+            this.analyseFeed(r)
+        );
+    }
+
+    analyseFeed(json: any){
+        let array = json.results;
+        for(let i = 0; i < array.length; i++){
+            try{
+                let items = array[i];
+
+                let url = JSON.stringify(items.url).replace('"', "").replace('"', "");
+                let headline = JSON.stringify(items.title).replace('"', "").replace('"', "");
+                let image = JSON.stringify(items.multimedia[1].url).replace('"', "").replace('"', "");
+                let teaser = JSON.stringify(items.abstract).replace('"', "").replace('"', "");
+                let time = JSON.stringify(items.published_date).replace('"', "").replace('"', "")
+                    .split("T")[0];
+
+                let map = new Map<string, string>;
+
+                map.set("url", url);
+                map.set("imageUrl", image);
+                map.set("headline", headline);
+                map.set("teaser", teaser);
+                map.set("time", time);
+
+                this.contentListFeed.push(map);
+            }catch (e){
+                //something went wrong
+            }
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                teaser: contentMap.get("teaser"),
+                image: contentMap.get("imageUrl"),
+                platform: contentMap.get("source"),
+                date: contentMap.get("time"),
+                author: contentMap.get("author")
+            })
+        }
+
+        return content;
     }
 
 }
