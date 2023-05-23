@@ -9,6 +9,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class Sketchfab implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
 
     displayName = "Sketchfab";
     id = "sketchfab";
@@ -139,8 +140,14 @@ export class Sketchfab implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            await this.startFeedSearch(pc);
+            this.finish = true;
+
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -148,8 +155,59 @@ export class Sketchfab implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    async startFeedSearch(pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
+
+        await hrc.httpRequest(
+            "https://sketchfab.com/v3/models",
+            pc, this.id).then(r =>
+            this.analyseFeed(r)
+        );
+    }
+
+    analyseFeed(json: any){
+        let array = json.results;
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
+
+            let url = JSON.stringify(items.viewerUrl).replace(/\"+/g, '');
+            let image = JSON.stringify(items.thumbnails.images[0].url).replace(/\"+/g, '');
+            let headline = JSON.stringify(items.name).replace(/\"+/g, '');
+            let creator = JSON.stringify(items.user.displayName).replace(/\"+/g, '');
+
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("imageUrl", image);
+            map.set("headline", headline);
+            map.set("creator", creator);
+
+            this.contentListFeed.push(map);
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+
+            content.push({
+                choosenView: "modelsView",
+                url: contentMap.get("url"),
+                headline: this.cutString(String(contentMap.get("headline"))),
+                pluginName: this.displayName,
+                artist: contentMap.get("creator"),
+                image: contentMap.get("imageUrl")
+            })
+        }
+
+        return content;
     }
 
 }

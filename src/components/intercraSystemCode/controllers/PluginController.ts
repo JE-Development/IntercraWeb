@@ -152,7 +152,7 @@ export class PluginController {
         this.anyPlugins.push(new RT());
         this.anyPlugins.push(new DigitalTrends());
         this.anyPlugins.push(new PewResearchCenter());
-        this.anyPlugins.push(new SearchEngineLand());
+        //this.anyPlugins.push(new SearchEngineLand()); not allows crawling anymore
         this.anyPlugins.push(new ProductHunt());
         this.anyPlugins.push(new WebMD());
         this.anyPlugins.push(new BoredPanda());
@@ -391,6 +391,10 @@ export class PluginController {
 
 
         }
+    }
+
+    addInFeed(content: any[]){
+        EventBus.emit('feed-data-sender', content)
     }
 
     gotFeedError(id: string) {

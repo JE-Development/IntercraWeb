@@ -69,4 +69,104 @@ export class SpotifyController{
         }
 
     }
+
+    getCookie(name: string): string {
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+
+        if (parts.length == 2) {
+            return String(String(parts.pop()).split(";").shift());
+        }
+        return "null";
+    }
+
+    async httpAlbumListRequest(): Promise<any>{
+        let token = this.getCookie("token")
+
+        const data = {
+            limit: 30,
+        };
+
+        let json;
+
+        let ok = true;
+
+        await axios.get('https://api.spotify.com/v1/browse/new-releases?' + qs.stringify(data), {headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }})
+            .then(response => {
+                json = response.data;
+                // response.data should contain your access token
+            })
+            .catch(error => {
+                this.login()
+                ok = false
+            });
+        if(ok) {
+            return json;
+        }else{
+            return "error";
+        }
+
+    }
+
+    async httpAlbumRequest(album_id: string): Promise<any>{
+        let token = this.getCookie("token")
+
+
+        let json;
+
+        let ok = true;
+
+        await axios.get('https://api.spotify.com/v1/albums/' + album_id, {headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }})
+            .then(response => {
+                json = response.data;
+                // response.data should contain your access token
+            })
+            .catch(error => {
+                ok = false
+            });
+        if(ok) {
+            return json;
+        }else{
+            return "error";
+        }
+
+    }
+
+    async httpTrackRequest(track_id: string): Promise<any>{
+        let token = this.getCookie("token")
+
+
+        let json;
+
+        let ok = true;
+
+        await axios.get('https://api.spotify.com/v1/tracks/' + track_id, {headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }})
+            .then(response => {
+                json = response.data;
+                // response.data should contain your access token
+            })
+            .catch(error => {
+                ok = false
+            });
+        if(ok) {
+            return json;
+        }else{
+            return "error";
+        }
+
+    }
+
+
 }
