@@ -7,14 +7,13 @@
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/SpotifyController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/RT.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/RT.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SearchEngineLand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SearchEngineLand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Sketchfab.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Sketchfab.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/SpotifyTracks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/SpotifyView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TED.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TED.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TechCrunch.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TechCrunch.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Tenor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Tenor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TheAtlantic.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TheAtlantic.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Unsplash.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Unsplash.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/VentureBeat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/VentureBeat.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,38 +51,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.31",
-    "last_opened_file_path": "C:/Users/Jason Enns/Desktop/Development/GitHub/IntercraBackEnd",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "inlay.hints",
-    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.31&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/Development/GitHub/IntercraBackEnd&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\assets" />
@@ -268,7 +267,8 @@
       <workItem from="1684784089414" duration="5935000" />
       <workItem from="1684842626507" duration="333000" />
       <workItem from="1684842972837" duration="4317000" />
-      <workItem from="1684874273230" duration="8401000" />
+      <workItem from="1684874273230" duration="8628000" />
+      <workItem from="1684959475332" duration="5536000" />
     </task>
     <servers />
   </component>

@@ -12,6 +12,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class Unsplash implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "Unsplash";
@@ -56,7 +57,7 @@ export class Unsplash implements PluginInterface, FeedInterface{
             let items = array[i];
 
             let url = JSON.stringify(items.links.html).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.urls.full).replace('"', "").replace('"', "");
+            let image = JSON.stringify(items.urls.small).replace('"', "").replace('"', "");
 
             let map = new Map<string, string>;
 
@@ -123,8 +124,10 @@ export class Unsplash implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        await this.startFeedSearch(pc);
+        this.finish = true;
+
+        pc.isFeedFinished(this.contentList, this.id);
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -132,8 +135,51 @@ export class Unsplash implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+    async startFeedSearch(pc: PluginController): Promise<void>{
+        let hrc = new HttpRequestController()
+
+        await hrc.httpRequestHeader(
+            "https://api.unsplash.com/photos/random?count=30", "Authorization: Client-ID nIQrhS3P4MoK7K1frkaWqAroCLdqkHLn-Zm-Rv_r0xs",
+            pc, this.id).then(r =>
+            this.analyseFeed(r)
+        );
+    }
+
+
+    analyseFeed(json: any){
+        let array = json
+        for(let i = 0; i < array.length; i++){
+            let items = array[i];
+
+            let url = JSON.stringify(items.links.html).replace('"', "").replace('"', "");
+            let image = JSON.stringify(items.urls.small).replace('"', "").replace('"', "");
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("imageUrl", image);
+
+            this.contentListFeed.push(map);
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "imageView",
+                url: contentMap.get("url"),
+                image: contentMap.get("imageUrl"),
+                pluginName: this.displayName,
+            })
+        }
+
+        return content;
     }
 
 }

@@ -8,6 +8,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class TechCrunch implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "TechCrunch";
@@ -32,6 +33,7 @@ export class TechCrunch implements PluginInterface, FeedInterface{
             //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
@@ -143,8 +145,20 @@ export class TechCrunch implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -152,8 +166,67 @@ export class TechCrunch implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const article = document.getElementsByClassName("post-block");
+        console.log(article.length)
+        for(let i = 0; i < article.length; i++){
+            try{
+                const e = article[i];
+                let map = new Map<string, string>;
+
+                let link = e.getElementsByClassName("post-block__title__link")[0];
+                map.set("url", link.getAttribute("href"));
+                map.set("headline", link.textContent);
+
+                try{
+                    let image = e.getElementsByTagName("img")[0];
+                    map.set("imageUrl", image.getAttribute("src"));
+                }catch (e){}
+
+                try{
+                    let teaser = e.getElementsByClassName("post-block__content")[0];
+                    map.set("teaser", teaser.textContent)
+                }catch (e){}
+
+                try{
+                    let sub = e.getElementsByClassName("river-byline__authors")[0]
+                    map.set("author", sub.textContent)
+                }catch (e){}
+
+                try{
+                    let time = e.getElementsByTagName("time")[0]
+                    map.set("time", time.textContent)
+                }catch (e){}
+
+                this.contentListFeed.push(map)
+            }catch (e){
+                //probably ad found
+            }
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                teaser: contentMap.get("teaser"),
+                image: contentMap.get("imageUrl"),
+                date: contentMap.get("time"),
+                author: contentMap.get("author"),
+            })
+        }
+
+        return content;
     }
 
 }
