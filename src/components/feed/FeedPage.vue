@@ -131,7 +131,6 @@ export default {
     })
 
     EventBus.addEventListener('audio-play', (event) => {
-      console.log("in play: " + event.data)
       let split = event.data.split(";;;");
       let url = split[0];
       let index = [split[1]];
@@ -174,6 +173,11 @@ export default {
   },
 
   mounted() {
+
+    if(this.activePlugins.length === 0){
+      this.setAllPluginsInCookies()
+    }
+
     this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
 
     this.ic.startFeedSearch(this.activePlugins)
@@ -206,7 +210,7 @@ export default {
       return this.$cookies.get(key);
     },
     setCookies(key, value){
-      if(this.isCookiesAllowed()){
+      if(true){
         return this.$cookies.set(key, value, 2147483647);
       }
     },
@@ -254,6 +258,18 @@ export default {
     updateProgress() {
       this.progress = this.$refs.audioPlayer.currentTime
       EventBus.emit("audio-pos", this.progress)
+    },
+    setAllPluginsInCookies(){
+      let pc = new PluginController()
+      let plugins = pc.getAllPluginsAsId()
+      for(let i = 0; i < plugins.length; i++){
+        if(plugins[i] === "spotify_tracks" || plugins[i] === "youtube_video"){
+          this.setCookies(plugins[i], false)
+        }else{
+          this.setCookies(plugins[i], true)
+          this.activePlugins.push(plugins[i])
+        }
+      }
     },
   },
 

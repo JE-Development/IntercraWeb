@@ -336,7 +336,6 @@ export default {
     },
 
     setAllPluginsInCookies(){
-      console.log("in set")
       for(let i = 0; i < this.pluginList.length; i++){
         this.setCookies(this.pluginList[i].pluginId, this.pluginList[i].enable)
       }
