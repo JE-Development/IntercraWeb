@@ -1,5 +1,5 @@
 <template>
-  <div class="view-border content-layout-color">
+  <div class="view-border content-layout-color" style="overflow: hidden">
     <div>
 
       <div class="content-layout-color center-horizontal">

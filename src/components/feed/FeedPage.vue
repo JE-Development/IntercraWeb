@@ -1,19 +1,27 @@
 <template>
     <div class="center-horizontal">
       <div>
+
         <div class="center-horizontal">
-          <div v-if="waitingPlugins != null && waitingPlugins.length > 0">
-            <div id="searchRoot">
-              <div id="loading-result" class="center-horizontal">
-                <img src="../../assets/loading.gif" class="loading-image"/>
+          <div>
+            <div v-if="this.notSpotifyCompatible">
+              <h4 class="error-color">
+                The plugin "Spotify Tracks" was disabled. To use it disable all other plugins.
+              </h4>
+            </div>
+            <div v-if="waitingPlugins != null && waitingPlugins.length > 0">
+              <div id="searchRoot">
+                <div id="loading-result" class="center-horizontal">
+                  <img src="../../assets/loading.gif" class="loading-image"/>
+                </div>
               </div>
-            </div>
 
-            <div class="center-horizontal waiting-margin headline-color">
-              <h2>Waiting for:</h2>
-            </div>
+              <div class="center-horizontal waiting-margin headline-color">
+                <h2>Waiting for:</h2>
+              </div>
 
-            <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
+              <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
+            </div>
           </div>
         </div>
         <div>
@@ -26,6 +34,8 @@
               <h4 class="error-color">{{err}}</h4>
             </div>
           </div>
+
+          <audio ref="audioPlayer" :src="audioUrl"></audio>
 
           <div class="feed-page">
             <div class="feed-grid center-horizontal">
@@ -89,16 +99,22 @@ export default {
 
   created() {
     this.getAllActivePlugins()
+    this.checkSpotifyActive()
 
       /*for(let i = 0; i < 20; i++){
           this.feedContent.push("" + i)
       }*/
 
       EventBus.addEventListener('feed-data-sender', (event) => {
-          if(this.content.length <= 0){
+          if(true){
+            if(this.content.length <= 0){
               this.content = event.data;
-          }else{
-              this.content = this.content.concat(event.data);
+            }else{
+              if(!this.checkDuplicate(event.data)){
+                this.content = this.content.concat(event.data);
+              }
+
+            }
           }
       })
 
@@ -113,10 +129,58 @@ export default {
     EventBus.addEventListener('feed-not-finished', (event) => {
       this.waitingPlugins = event.data;
     })
+
+    EventBus.addEventListener('audio-play', (event) => {
+      let split = event.data.split(";;;");
+      let url = split[0];
+      let index = [split[1]];
+
+      this.isPlaying = true;
+
+      if(url === this.audioUrl){
+        this.playAudio()
+      }else{
+        if(this.audioIndex != -1){
+          EventBus.emit("audio-reset-" + this.audioIndex)
+        }
+        this.audioIndex = index;
+        this.audioUrl = url;
+        const playAudio = (audio) => {
+          audio.addEventListener('loadeddata', () => {
+            EventBus.emit("audio-max", audio.duration)
+            audio.play();
+          });
+          audio.load();
+        }
+        playAudio(this.$refs.audioPlayer)
+      }
+    })
+
+    EventBus.addEventListener('audio-pause', (event) => {
+      this.pauseAudio()
+      this.isPlaying = false;
+    })
+
+    EventBus.addEventListener('audio-play-dragged', (event) => {
+      this.$refs.audioPlayer.currentTime = event.data/100
+      console.log(this.$refs.audioPlayer.currentTime)
+      this.playAudio()
+    })
+  },
+
+  beforeDestroy() {
+    this.$refs.audioPlayer.removeEventListener('timeupdate', this.updateProgress);
   },
 
   mounted() {
-      this.ic.startFeedSearch(this.activePlugins)
+
+    if(this.activePlugins.length === 0){
+      this.setAllPluginsInCookies()
+    }
+
+    this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
+
+    this.ic.startFeedSearch(this.activePlugins)
 
   },
 
@@ -129,6 +193,14 @@ export default {
         ic: new IntercraController(),
       waitingPlugins: null,
       errors: [],
+      audioUrl: "",
+      audioIndex: -1,
+      isPlaying: false,
+      currentTime: 0,
+      duration: 0,
+      isDragging: false,
+      progress: 0,
+      notSpotifyCompatible: false,
 
     }
   },
@@ -138,7 +210,7 @@ export default {
       return this.$cookies.get(key);
     },
     setCookies(key, value){
-      if(this.isCookiesAllowed()){
+      if(true){
         return this.$cookies.set(key, value, 2147483647);
       }
     },
@@ -152,9 +224,53 @@ export default {
         }
       }
     },
+    checkSpotifyActive(){
+      if(this.activePlugins.includes("spotify_tracks") && this.activePlugins.length >= 2){
+        this.notSpotifyCompatible = true
+        const index = this.activePlugins.indexOf("spotify_tracks");
+        if (index !== -1) {
+          this.activePlugins.splice(index, 1);
+        }
+      }else {
+        this.notSpotifyCompatible = false
+      }
+    },
       showFromPopup: function (message){
           this.showPopup = message;
       },
+
+    checkDuplicate(dat){
+      let data = dat[0]
+      for(let i = 0; i < this.content.length; i++){
+        let con = this.content[i]
+        if(con.url === data.url){
+          return true
+        }
+      }
+      return false
+    },
+    playAudio(){
+      this.$refs.audioPlayer.play();
+    },
+    pauseAudio(){
+      this.$refs.audioPlayer.pause();
+    },
+    updateProgress() {
+      this.progress = this.$refs.audioPlayer.currentTime
+      EventBus.emit("audio-pos", this.progress)
+    },
+    setAllPluginsInCookies(){
+      let pc = new PluginController()
+      let plugins = pc.getAllPluginsAsId()
+      for(let i = 0; i < plugins.length; i++){
+        if(plugins[i] === "spotify_tracks" || plugins[i] === "youtube_video"){
+          this.setCookies(plugins[i], false)
+        }else{
+          this.setCookies(plugins[i], true)
+          this.activePlugins.push(plugins[i])
+        }
+      }
+    },
   },
 
 }

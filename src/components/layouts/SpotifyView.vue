@@ -25,7 +25,7 @@
           <h4 class="teaser-color">{{duration}}</h4>
           <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
         </div>
-        <div class="audio-play">
+        <div class="audio-play" v-if="showPlayer">
           <div class="audio-border complementary-color center" @click="playPauseClicked()">
             <img src="../../assets/play.png" class="audio-image" v-if="!isPlaying">
             <img src="../../assets/pause.png" class="audio-image" v-else>
@@ -50,6 +50,7 @@ export default {
   name: "SpotifyView",
     components: {SavedIconView},
 
+
   props: {
     index: Number,
     savedContent: Boolean,
@@ -65,6 +66,10 @@ export default {
   },
 
   created() {
+    if(this.preview === "null"){
+      this.showPlayer = false;
+    }
+
     EventBus.addEventListener('audio-reset-' + this.index, (event) => {
       this.isPlaying = false;
     })
@@ -86,6 +91,7 @@ export default {
     return {
       isPlaying: false,
       audioMax: 0,
+      showPlayer: true
     }
   },
 
@@ -98,6 +104,7 @@ export default {
       }
     },
     playPauseClicked(){
+      console.log(this.preview)
       if(this.isPlaying){
         this.isPlaying = false;
         EventBus.emit("audio-pause")

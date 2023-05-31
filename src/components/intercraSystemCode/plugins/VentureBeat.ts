@@ -8,6 +8,7 @@ import type {FeedInterface} from "../interfaces/FeedInterface";
 export class VentureBeat implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
+    contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
     displayName = "VentureBeat";
@@ -88,7 +89,7 @@ export class VentureBeat implements PluginInterface, FeedInterface{
             }
 
             try{
-                let time = e.getElementsByClassName("time")[0]
+                let time = e.getElementsByTagName("time")[0]
                 map.set("time", time.textContent)
             }catch (e){
                 //no time
@@ -158,8 +159,20 @@ export class VentureBeat implements PluginInterface, FeedInterface{
     }
 
     async findFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id);
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearch(document);
+            this.finish = true;
+
+            //let pc = new PluginController();
+            pc.isFeedFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotFeedError(this.id);
+        }
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
@@ -167,8 +180,74 @@ export class VentureBeat implements PluginInterface, FeedInterface{
         pc.isFeedFinished(list, this.id)
     }
 
-    getFeedView(): string[] {
-        return [];
+
+    startFeedSearch(document: any): void{
+        const article = document.getElementsByTagName("article");
+        for(let i = 0; i < article.length; i++){
+            try{
+                const e = article[i];
+                let map = new Map<string, string>;
+
+                let link = e.getElementsByClassName("ArticleListing__title-link")[0];
+                map.set("url", link.getAttribute("href"));
+                map.set("headline", link.textContent);
+
+                try{
+                    let image = e.getElementsByTagName("img")[0];
+                    map.set("imageUrl", image.getAttribute("src"));
+                }catch (e){
+                    //no image
+                }
+
+                try{
+                    let type = e.getElementsByClassName("article-type")[0]
+                    map.set("type", type.textContent)
+                }catch (e){
+                    //no type
+                }
+
+                try{
+                    let author = e.getElementsByClassName("ArticleListing__author")[0]
+                    map.set("author", author.textContent)
+                }catch (e){
+                    //no author
+                }
+
+                try{
+                    let time = e.getElementsByTagName("time")[0]
+                    map.set("time", time.textContent)
+                }catch (e){
+                    //no time
+                }
+
+                this.contentListFeed.push(map)
+            }catch (e){
+
+            }
+        }
+    }
+
+    getFeedView(): any[] {
+
+        let content: any[] = [];
+
+        for(let i = 0; i < this.contentListFeed.length; i++){
+
+            let contentMap = this.contentListFeed[i];
+
+            content.push({
+                choosenView: "articleView",
+                url: contentMap.get("url"),
+                headline: contentMap.get("headline"),
+                pluginName: this.displayName,
+                platform: contentMap.get("type"),
+                image: contentMap.get("imageUrl"),
+                author: contentMap.get("author"),
+                date: contentMap.get("time"),
+            })
+        }
+
+        return content;
     }
 
 }
