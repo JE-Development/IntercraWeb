@@ -48,7 +48,6 @@ export class ITunesTracks implements PluginInterface, FeedInterface{
     }
 
     analyse(json: any){
-        console.log(json)
 
         let array = json.results;
         for(let i = 0; i < array.length; i++){

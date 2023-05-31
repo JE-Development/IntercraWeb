@@ -5,6 +5,7 @@ import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
+
 export class Amazon implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];

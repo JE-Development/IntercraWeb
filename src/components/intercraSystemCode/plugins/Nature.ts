@@ -81,16 +81,21 @@ export class Nature implements PluginInterface, FeedInterface{
                 //no teaser
             }
 
-            let authorElem = e.getElementsByClassName("c-author-list")[0].getElementsByTagName("li")
-            let authorList = "";
-            for(let j = 0; j < authorElem.length; j++){
-                if(j == 0){
-                    authorList = authorElem[j].textContent
-                }else{
-                    authorList = authorList + ", " + authorElem[j].textContent
+            try{
+                let authorElem = e.getElementsByClassName("c-author-list")[0].getElementsByTagName("li")
+                let authorList = "";
+                for(let j = 0; j < authorElem.length; j++){
+                    if(j == 0){
+                        authorList = authorElem[j].textContent
+                    }else{
+                        authorList = authorList + ", " + authorElem[j].textContent
+                    }
                 }
+                map.set("author", authorList)
+            }catch (e){
+                //no author
             }
-            map.set("author", authorList)
+
 
             let time = e.getElementsByTagName("time")[0]
             map.set("time", time.textContent)

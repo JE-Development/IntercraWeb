@@ -107,7 +107,7 @@ export class PluginController {
         this.anyPlugins.push(new NonaNews());
         this.anyPlugins.push(new NonaPodcast());
         this.anyPlugins.push(new NonaVideo());
-        this.anyPlugins.push(new Amazon());
+        //this.anyPlugins.push(new Amazon()); blocked crawling
         this.anyPlugins.push(new Ebay());
         this.anyPlugins.push(new BandcampAlbum());
         this.anyPlugins.push(new BandcampArtistLabel());
