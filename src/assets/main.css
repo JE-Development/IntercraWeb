@@ -116,6 +116,12 @@ b{
   justify-content: center;
 }
 
+.full-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .fullscreen{
   height: 100vh;
 }

@@ -26,6 +26,11 @@
     cursor: pointer;
 }
 
+.settings-icon{
+    width: 60px;
+    height: 60px;
+}
+
 .seekbar__progress {
     height: 100%;
     background-color: #000;
@@ -37,11 +42,12 @@
 
 .preset-border{
     font-size: 25px;
-    width: 400px;
+    width: 380px;
+    height: 40px;
     border: solid;
     border-radius: 50px;
     border-color: transparent;
-    margin-top: 20px;
+
 }
 
 .dropdown-content {
@@ -226,6 +232,11 @@
 }
 
 @media (max-width: 420px) {
+
+    .preset-border{
+        width: 80vw;
+
+    }
 
     .play-store-icon-image{
         border-radius: 5vw;

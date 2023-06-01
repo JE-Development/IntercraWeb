@@ -1,11 +1,12 @@
 <template>
-  <div class="button-layout">
-    <div class="center-horizontal">
+  <div class="button-layout display-flex">
+    <div class="center-horizontal full-center">
       <button class="preset-border preset-border-color text-black" @click="onClickButton">{{buttonName}}</button>
       <div class="dropdown-content" v-if="showList">
         <a @click="onClickPresetItem(pk)" class="pointer" v-for="(pk) in presetKeys">{{pk}}</a>
       </div>
     </div>
+      <img src="../../assets/settings-anim.gif" class="settings-icon pointer" @click="settingsClicked">
   </div>
 </template>
 
@@ -93,7 +94,10 @@ export default {
       }else{
         return null;
       }
-    }
+    },
+      settingsClicked(){
+
+      }
   },
 
   directives: {
