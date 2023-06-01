@@ -1,22 +1,21 @@
 <template>
   <div class="button-layout display-flex">
-    <div class="center-horizontal full-center">
+    <div class="center-horizontal">
       <button class="preset-border preset-border-color text-black" @click="onClickButton">{{buttonName}}</button>
-      <div class="dropdown-content" v-if="showList">
+      <div class="dropdown-content dropdown-settings" v-if="showList">
         <a @click="onClickPresetItem(pk)" class="pointer" v-for="(pk) in presetKeys">{{pk}}</a>
       </div>
-      <img src="../../assets/settings-anim.gif" class="settings-icon pointer" @click="settingsClicked">
     </div>
   </div>
 </template>
 
 <script>
-import {PresetController} from "../intercraSystemCode/controllers/PresetController";
 import {PluginController} from "../intercraSystemCode/controllers/PluginController";
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
+import {PresetController} from "../intercraSystemCode/controllers/PresetController";
 
 export default {
-  name: "PresetView",
+  name: "SettingsPresetView",
 
   data() {
     return {
@@ -33,15 +32,6 @@ export default {
   created() {
     let presetController = new PresetController();
     this.presetKeys = presetController.getAllPresetValues()
-
-    EventBus.addEventListener('change-preset-button-name', (event) => {
-      this.buttonName = "custom preset"
-      this.setCookies("preset-name", this.buttonName);
-    })
-
-    if(this.getCookies("preset-name") != null && this.getCookies("preset-name") !== this.buttonName){
-      this.onClickPresetItem(this.getCookies("preset-name"));
-    }
   },
 
   mounted() {
@@ -75,29 +65,16 @@ export default {
       if(item === "Enable All"){
         list = pc.getAllPluginsAsId();
       }
-      EventBus.emit("change-plugins", list)
+      EventBus.emit("display-plugins", list)
     },
     getCookies(key){
       return this.$cookies.get(key);
     },
     setCookies(key, value){
-      if(this.isCookiesAllowed()){
+      if(true){
         return this.$cookies.set(key, value, 2147483647);
       }
     },
-    isCookiesAllowed(){
-      let allow = this.getCookies("cookiesAllowed");
-      if(allow == "false"){
-        return false;
-      }else if (allow == "true"){
-        return true;
-      }else{
-        return null;
-      }
-    },
-      settingsClicked(){
-        EventBus.emit("open-settings")
-      }
   },
 
   directives: {

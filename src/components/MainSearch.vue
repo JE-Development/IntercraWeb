@@ -152,6 +152,10 @@ export default {
     EventBus.addEventListener('open-feed', (event) => {
       this.openFeed()
     })
+
+    EventBus.addEventListener('open-settings', (event) => {
+      this.openSettings()
+    })
   },
 
   mounted() {
@@ -343,8 +347,11 @@ export default {
       setTimeout(() => window.open(route.href, '_self'), 500);
     },
 
-    searchIconClick(){
+    openSettings(){
+      this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
+      let route = this.$router.resolve({path: '/settings'});
+      setTimeout(() => window.open(route.href, '_self'), 500);
     }
 
 

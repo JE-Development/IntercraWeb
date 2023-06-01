@@ -26,6 +26,28 @@
     cursor: pointer;
 }
 
+.positive-button{
+    width: 120px;
+    background-color: #00ff96;
+}
+
+.negative-button{
+    width: 120px;
+    background-color: #ff5a00;
+}
+
+.yesno-popup-space{
+    width: 80px
+}
+
+.positive-button:hover{
+    background-color: #00ff00;
+}
+
+.negative-button:hover{
+    background-color: #ff0000;
+}
+
 .settings-icon{
     width: 60px;
     height: 60px;
@@ -57,7 +79,11 @@
     width: 400px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-top: 56px;
+    margin-top: 770px;
+}
+
+.dropdown-settings{
+    margin-top: 50px;
 }
 
 .dropdown-content a {
@@ -236,6 +262,22 @@
     .preset-border{
         width: 80vw;
 
+    }
+
+    .positive-button{
+        width: 30vw;
+    }
+
+    .negative-button{
+        width: 30vw;
+    }
+
+    .yesno-popup-space{
+        width: 10vw
+    }
+
+    .dropdown-content {
+        width: 95vw;
     }
 
     .play-store-icon-image{

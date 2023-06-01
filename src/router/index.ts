@@ -6,6 +6,8 @@ import ViewCollectionPage from '../components/ViewCollectionPage.vue'
 import RedirectPage from '../components/RedirectPage.vue'
 import ImpressumPage from '../components/ImpressumPage.vue'
 import FeedPage from '../components/feed/FeedPage.vue'
+import SettingsPage from '../components/SettingsPage.vue'
+import NotFoundPage from '../components/NotFoundPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -42,6 +44,16 @@ const routes: Array<RouteRecordRaw> = [
         path: '/feed',
         name: 'FeedPage',
         component: FeedPage
+    },
+    {
+        path: '/settings',
+        name: 'SettingsPage',
+        component: SettingsPage
+    },
+    {
+        path: '/:catchAll(.*)',
+        name: 'NotFoundPage',
+        component: NotFoundPage
     },
 ]
 
