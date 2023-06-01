@@ -34,13 +34,6 @@
 
     <audio ref="audioPlayer" :src="audioUrl"></audio>
 
-    <div class="center-horizontal" v-if="this.easterEggBirthday">
-      <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
-      <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
-      <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
-      <img src="../assets/cake.png" style="width: 20vw; max-width: 100px">
-    </div>
-
     <div class="center-horizontal sticky top-position" v-if="!checkScreenSize() && hasSaved()">
       <SavedContentButton :show="true"/>
     </div>
@@ -150,7 +143,6 @@ import SortingView from "../components/views/SortingView.vue";
 import SavedContentButton from "../components/views/SavedContentButton.vue";
 import SavedPopup from "../components/views/SavedPopup.vue";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
-import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
 
 export default {
@@ -178,7 +170,6 @@ export default {
       showPopup: false,
       noPlugin: false,
       beforeSaved: false,
-      easterEggBirthday: false,
       audioUrl: "",
       audioIndex: -1,
       isPlaying: false,
@@ -316,11 +307,6 @@ export default {
 
   mounted() {
     this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
-
-    let eec = new EasterEggController();
-    if(eec.checkBirthday(this.search, window.innerWidth, window.innerHeight)){
-      this.easterEggBirthday = true;
-    }
 
     let sorting = this.getCookies("sorting");
 

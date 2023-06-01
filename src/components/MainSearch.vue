@@ -24,7 +24,7 @@
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
-                <div v-if="!this.isEvil">
+                <div>
                   <input
                       ref="input"
                       v-on:focus="inputFocus()"
@@ -32,11 +32,6 @@
                       @keyup.enter="enterClicked()"
                       placeholder="Search here"
                       class="glow search-input center-horizontal search-input-color search-input-border-color"/>
-                </div>
-                <div v-else>
-                  <div class="center-horizontal">
-                    <h1 class="error-color">I am evil! Ha Ha Ha!</h1>
-                  </div>
                 </div>
                 <div class="center-horizontal">
                   <div>
@@ -90,7 +85,6 @@ import EventBus from "./intercraSystemCode/classes/EventBusEvent";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
-import {EasterEggController} from "./intercraSystemCode/controllers/EasterEggController";
 import FeedButton from "./views/FeedButton.vue";
 
 export default {
@@ -191,7 +185,6 @@ export default {
       },
       reverse: false,
       alreadyPlayed: false,
-      isEvil: false,
     }
   },
 
@@ -273,17 +266,10 @@ export default {
     startSearch(){
       let searchText = this.$refs.input.value;
 
-      let eec = new EasterEggController();
-      if(eec.checkUpsideDown(searchText)){
-        this.$refs.logo.className = this.$refs.logo.className + " upsideDown"
-      }else if(eec.checkEvil(searchText)){
-        this.isEvil = true;
-      }else{
         this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
         let route = this.$router.resolve({path: '/search/' + searchText});
         setTimeout(() => window.open(route.href, '_self'), 500);
-      }
 
     },
 
