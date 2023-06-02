@@ -221,7 +221,7 @@ export default {
     onCheckBoxClicked: function (index) {
       EventBus.emit("change-preset-button-name")
 
-      if (this.getCookies("cookiesAllowed") == "true") {
+      if (true) {
         if (this.pluginList[index].enable === "true") {
           this.pluginList[index].enable = "false";
           this.$cookies.set(this.pluginList[index].pluginId, "false", 2147483647)

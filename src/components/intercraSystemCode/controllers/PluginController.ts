@@ -515,6 +515,28 @@ export class PluginController {
     }
 
     getPluginsByPresetValue(value: string): string[]{
+        let val = value.replace(" ", "_")
+        let modPresets = this.getCookie("modified-presets")
+        if(modPresets !== null){
+            let split = modPresets.split("---")
+            for(let i = 0; i < split.length; i++){
+                if(val === split[i]){
+                    return this.getModdesPresets(val)
+                }
+            }
+        }
+
+        return this.getNormalPresets(value)
+
+
+    }
+
+    getModdesPresets(value: string): string[]{
+        let plugins = this.getCookie("mod-preset-" + value).split("---")
+        return plugins;
+    }
+
+    getNormalPresets(value: string): string[]{
         let matched: string[] = [];
         for(let i = 0; i < this.plugins.length; i++){
             // @ts-ignore
@@ -569,5 +591,15 @@ export class PluginController {
 
     setSortVar(sort: string){
         this.sorting = sort;
+    }
+
+    getCookie(name: string): string {
+        const value = "; " + document.cookie;
+        const parts = value.split("; " + name + "=");
+
+        if (parts.length == 2) {
+            return String(String(parts.pop()).split(";").shift());
+        }
+        return "null";
     }
 }

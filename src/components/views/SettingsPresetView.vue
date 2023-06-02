@@ -31,7 +31,17 @@ export default {
 
   created() {
     let presetController = new PresetController();
-    this.presetKeys = presetController.getAllPresetValues()
+    let keys = presetController.getAllPresetValues()
+      let normalKeys = []
+      for(let i = 0; i < keys.length; i++){
+          if(keys[i] !== "Enable All"){
+              if(keys[i] !== "Disable All"){
+                  normalKeys.push(keys[i])
+              }
+          }
+      }
+      this.presetKeys = normalKeys
+
   },
 
   mounted() {
@@ -56,8 +66,7 @@ export default {
     },
 
     onClickPresetItem(item){
-      this.setCookies("preset-name", item);
-
+        EventBus.emit("choosen-preset-name", item)
       this.buttonName = item;
       this.showList = false;
       let pc = new PluginController();

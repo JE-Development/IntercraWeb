@@ -1,6 +1,6 @@
 <template>
   <div class="plugin-view center-vertical">
-    <img src="../../assets/cross_white.png" style="width: 20px; height: 20px" class="pointer" @click="clickedRemove"/>
+    <img src="../../assets/cross_white.png" style="width: 20px; height: 20px" class="pointer" @click="clickedRemove" v-if="showRemove"/>
     <div style="width: 10px"></div>
     <h2 class="white">{{name}}</h2>
   </div>
@@ -14,6 +14,11 @@ export default {
 
   props: {
     name: String,
+      onRemove: {
+          type: Function,
+          required: true,
+      },
+      showRemove: Boolean
   },
   //emits: ['click']
 
@@ -27,7 +32,7 @@ export default {
       }
     },
     clickedRemove(){
-      EventBus.emit("show-popup")
+      this.onRemove(this.name)
     }
   },
 }

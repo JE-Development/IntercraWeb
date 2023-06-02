@@ -8,10 +8,24 @@
   <div>
     <SettingsPresetView/>
     <div class="white-border" v-if="activePlugins.length > 0">
-      <PluginSettings
-          v-for="(pl) in activePlugins"
-          :name="pl"
-      />
+        <div class="white-border-button center-horizontal pointer" @click="addButtonClicked">
+            <h2 class="headline-color">Add Plugin</h2>
+        </div>
+      <div v-if="activePlugins.length > 1">
+          <PluginSettings
+                  v-for="(pl) in activePlugins"
+                  :name="pl"
+                  :onRemove="removeClicked"
+                  :showRemove="true"
+          />
+      </div>
+        <div v-else>
+            <PluginSettings
+                    :name="activePlugins[0]"
+                    :onRemove="removeClicked"
+                    :showRemove="false"
+            />
+        </div>
     </div>
   </div>
 </div>
@@ -33,16 +47,16 @@ export default {
     EventBus.addEventListener('display-plugins', (event) => {
       this.activePlugins = []
       let pc = new PluginController()
-      let ap = event.data
-      for(let i = 0; i < ap.length; i++){
-        let name = pc.getNameFromId(ap[i])
+      this.apid = event.data
+      for(let i = 0; i < this.apid.length; i++){
+        let name = pc.getNameFromId(this.apid[i])
         this.activePlugins.push(name)
       }
     })
 
-    EventBus.addEventListener('show-popup', (event) => {
-      this.showPopup = true
-    })
+      EventBus.addEventListener('choosen-preset-name', (event) => {
+          this.presetName = event.data
+      })
   },
 
   mounted() {
@@ -53,6 +67,9 @@ export default {
     return{
       activePlugins: [],
       showPopup: false,
+        apid: [],
+        clickedName: "",
+        presetName: ""
     }
   },
 
@@ -66,13 +83,51 @@ export default {
       }
     },
     yesClicked(){
-      this.showPopup = false
-      console.log("yes")
+        let name = this.clickedName
+        this.showPopup = false
+        let pc = new PluginController()
+        let id = pc.getIdFromName(name)
+        let presetValues = "null"
+        for(let i = 0; i < this.apid.length; i++){
+            if(id !== this.apid[i]){
+                if(presetValues === "null"){
+                    presetValues = this.apid[i]
+                }else{
+                    presetValues = presetValues + "---" + this.apid[i]
+                }
+            }
+        }
+        this.setCookies("mod-preset-" + this.presetName.replace(" ", "_"), presetValues)
+        let modPresets = this.getCookies("modified-presets")
+        if(modPresets === null){
+            this.setCookies("modified-presets", this.presetName.replace(" ", "_"))
+        }else{
+            if(!modPresets.includes(this.presetName)){
+                this.setCookies("modified-presets", modPresets + "---" + this.presetName.replace(" ", "_"))
+            }
+        }
+
+
+
+        this.activePlugins = []
+        this.apid = pc.getPluginsByPresetValue(this.presetName)
+        for(let i = 0; i < this.apid.length; i++){
+            let name = pc.getNameFromId(this.apid[i])
+            this.activePlugins.push(name)
+        }
+
     },
     noClicked(){
       this.showPopup = false
-      console.log("no")
-    }
+    },
+      removeClicked(name){
+        this.showPopup = true
+          this.clickedName = name
+
+      },
+      addButtonClicked(){
+        
+      }
   },
 
 }

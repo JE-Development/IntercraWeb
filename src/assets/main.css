@@ -107,6 +107,13 @@ b{
 
 }
 
+.white-border-button{
+  border: 1px solid;
+  border-color: #ffffff;
+  border-radius: 50px;
+
+}
+
 .search-input{
   width: 600px;
   height: 40px;
