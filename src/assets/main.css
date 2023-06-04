@@ -165,6 +165,10 @@ b{
   margin-bottom: 60vh;
 }
 
+.search-box-plugin{
+  display: block;
+}
+
 .block-display{
   display: block;
 
