@@ -68,6 +68,8 @@
                              :error="dat.error"
                              :sizes="dat.sizes"
                              :vectorDownloadUrl="dat.vectorDownloadUrl"
+                             :downloads="dat.downloads"
+                             :categories="dat.categories"
                              :isResult="true"
           />
         </div>
@@ -105,6 +107,8 @@
                                :error="dat.error"
                                :sizes="dat.sizes"
                                :vectorDownloadUrl="dat.vectorDownloadUrl"
+                               :downloads="dat.downloads"
+                               :categories="dat.categories"
                                :isResult="true"
             />
           </div>
@@ -429,6 +433,7 @@ export default {
           this.plugins.push(all[i])
         }
       }
+      console.log(this.plugins)
     }
 
   }

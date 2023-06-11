@@ -43,6 +43,8 @@
                                      :error="dat.error"
                                      :sizes="dat.sizes"
                                      :vectorDownloadUrl="dat.vectorDownloadUrl"
+                                     :downloads="dat.downloads"
+                                     :categories="dat.categories"
                                      :isResult="true"
                   />
                   <div style="height: 200px"></div>

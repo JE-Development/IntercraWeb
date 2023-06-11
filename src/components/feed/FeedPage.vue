@@ -68,6 +68,8 @@
                                  :error="dat.error"
                                  :sizes="dat.sizes"
                                  :vectorDownloadUrl="dat.vectorDownloadUrl"
+                                 :downloads="dat.downloads"
+                                 :categories="dat.categories"
                                  :isResult="false"
               />
 

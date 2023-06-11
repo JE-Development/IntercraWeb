@@ -172,6 +172,20 @@
                     :vectorDownloadUrl="vectorDownloadUrl"
                     :isResult="isResult"
   />
+  <ModView v-else-if="choosenView === 'modView'"
+               :index="index"
+               :savedContent="savedContent"
+               :url="url"
+               :headline="headline"
+               :pluginName="pluginName"
+               :teaser="teaser"
+               :image="image"
+               :downloads="downloads"
+               :author="author"
+               :scaleIndex="scaleIndex"
+               :isResult="isResult"
+               :categories="categories"
+  />
 
 
 
@@ -194,9 +208,11 @@ import ModelsView from "./layouts/ModelsView.vue";
 import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
 import NewgroundsImageView from "./layouts/NewgroundsImageView.vue";
 import IconDownloadView from "./layouts/IconDownloadView.vue";
+import ModView from "./layouts/ModView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+    ModView,
     IconDownloadView,
     NewgroundsImageView,
     NewgroundsAudioView,
@@ -257,6 +273,12 @@ export default {
 
     sizes: String,
     vectorDownloadUrl: String,
+
+    //mods
+
+    downloads: String,
+    categories: String,
+
 
   },
 }

@@ -73,6 +73,7 @@ import {Unsplash} from "../plugins/Unsplash";
 import {Iconfinder} from "../plugins/Iconfinder";
 import {Flaticon} from "../plugins/Flaticon";
 import type {FeedInterface} from "../interfaces/FeedInterface";
+import {CFMinecraft} from "../plugins/CFMinecraft";
 
 export class PluginController {
 
@@ -160,6 +161,7 @@ export class PluginController {
         this.anyPlugins.push(new Unsplash());
         this.anyPlugins.push(new Iconfinder());
         this.anyPlugins.push(new Flaticon());
+        this.anyPlugins.push(new CFMinecraft());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
