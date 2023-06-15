@@ -9,15 +9,15 @@ import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class CFMinecraft implements PluginInterface, FeedInterface{
+export class CFWoW implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     offset: number = 0;
 
-    displayName = "CurseForge Minecraft Mods";
-    id = "curseforge_minecraft";
+    displayName = "CurseForge WoW Mods";
+    id = "curseforge_wow";
 
-    gameId = "432"
+    gameId = "1"
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -58,9 +58,14 @@ export class CFMinecraft implements PluginInterface, FeedInterface{
         for(let i = 0; i < array.length; i++){
             let items = array[i];
 
+            let map = new Map<string, string>;
+
             let url = JSON.stringify(items.links.websiteUrl).replace('"', "").replace('"', "");
             let headline = JSON.stringify(items.name).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.logo.thumbnailUrl).replace('"', "").replace('"', "");
+            try{
+                let image = JSON.stringify(items.logo.thumbnailUrl).replace('"', "").replace('"', "");
+                map.set("imageUrl", image);
+            }catch (e){}
             let teaser = JSON.stringify(items.summary).replace('"', "").replace('"', "");
             let author = JSON.stringify(items.authors[0].name).replace('"', "").replace('"', "");
             let downloads = JSON.stringify(items.downloadCount).replace('"', "").replace('"', "");
@@ -74,10 +79,7 @@ export class CFMinecraft implements PluginInterface, FeedInterface{
                 }
             }
 
-            let map = new Map<string, string>;
-
             map.set("url", url);
-            map.set("imageUrl", image);
             map.set("headline", headline);
             map.set("author", author);
             map.set("teaser", teaser);
