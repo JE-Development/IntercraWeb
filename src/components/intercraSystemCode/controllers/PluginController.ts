@@ -75,6 +75,8 @@ import {Flaticon} from "../plugins/Flaticon";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 import {CFMinecraft} from "../plugins/CFMinecraft";
 import {CFWoW} from "../plugins/CFWoW";
+import {TurboSquid} from "../plugins/TurboSquid";
+import {DownloadFree3D} from "../plugins/DownloadFree3D";
 
 export class PluginController {
 
@@ -164,6 +166,8 @@ export class PluginController {
         this.anyPlugins.push(new Flaticon());
         this.anyPlugins.push(new CFMinecraft());
         this.anyPlugins.push(new CFWoW());
+        this.anyPlugins.push(new TurboSquid());
+        this.anyPlugins.push(new DownloadFree3D());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
@@ -256,6 +260,17 @@ export class PluginController {
         for (let i = 0; i < this.feedPlugins.length; i++) {
             if (this.activePlugins.includes(this.feedPlugins[i].getId())) {
                 this.feedPlugins[i].findFeedContent(this);
+                EventBus.emit("feed-not-finished", this.getNotFinished())
+            }
+        }
+    }
+
+    async findMoreFeedContent(plugin: string[]) {
+        this.activePlugins = plugin
+        this.finishedPlugins = []
+        for (let i = 0; i < this.feedPlugins.length; i++) {
+            if (this.activePlugins.includes(this.feedPlugins[i].getId())) {
+                this.feedPlugins[i].findMoreFeedContent(this);
                 EventBus.emit("feed-not-finished", this.getNotFinished())
             }
         }
@@ -487,7 +502,6 @@ export class PluginController {
                 list.push(this.getNameFromId(this.activePlugins[i]));
             }
         }
-        console.log(list)
         return list;
     }
 

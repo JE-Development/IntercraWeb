@@ -18,6 +18,9 @@ export class IntercraController{
     startFeedSearch(plugin: string[]){
         this.pc.findFeedContent(plugin);
     }
+    startMoreFeedSearch(plugin: string[]){
+        this.pc.findMoreFeedContent(plugin);
+    }
     setSorting(sort: string){
         this.pc.setSorting(sort);
     }

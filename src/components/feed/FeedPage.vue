@@ -94,10 +94,11 @@ import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 import ViewTemplatesPage from "../ViewTemplatesPage.vue";
 import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 import WaitingPlugins from "../views/WaitingPlugins.vue";
+import FeedMoreContentButton from "../views/FeedMoreContentButton.vue";
 
 export default {
   name: "FeedPage",
-    components: {WaitingPlugins, ViewTemplatesPage, SavedPopup, ArticleView},
+    components: {FeedMoreContentButton, WaitingPlugins, ViewTemplatesPage, SavedPopup, ArticleView},
 
   created() {
     this.getAllActivePlugins()
