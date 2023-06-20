@@ -32,6 +32,7 @@
                 :price="price"
                 :image="image"
                 :isResult="isResult"
+                :author="author"
   />
   <BandcampView v-else-if="choosenView === 'bandcampView'"
                 :index="index"
