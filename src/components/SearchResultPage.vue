@@ -79,6 +79,9 @@
       <div class="view-border-null" ref="saved">
         <div class="sticky" v-if="savedContent.length != 0 && checkScreenSize()" style="width: 100%">
           <div class="outer-scroll">
+
+              <div id="adsgoeshere" v-html="adsenseContent"></div>
+
             <ViewTemplatesPage v-for="(dat, id) in savedContent"
                                :index="id"
                                :savedContent="true"
@@ -181,7 +184,9 @@ export default {
       duration: 0,
       isDragging: false,
       progress: 0,
-      newgroundsAudioUrl: []
+      newgroundsAudioUrl: [],
+        adsenseContent: ''
+
     };
   },
 
@@ -310,21 +315,42 @@ export default {
   },
 
   mounted() {
-    this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
+      this.adsenseContent = document.getElementById('divadsensedisplaynone').innerHTML
+
+
+      this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
 
     let sorting = this.getCookies("sorting");
 
     this.getAllActivePlugins()
 
-    if(this.plugins.length == 0) {
-      this.showLoading = false;
-      this.noPlugin = true;
-    }else{
-      this.showLoading = true;
-      this.noPlugin = false;
-      this.ic.startSearch(this.search, this.plugins, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
-    }
-    this.ic.changeShow();
+      if(this.search === "---test-result"){
+          let pc = new PluginController()
+          this.plugins = pc.getPluginsByPresetValue("Shopping")
+          this.search = "test";
+
+          for(let i = 0; i < 50; i++){
+              this.content.push({
+                  choosenView: "shoppingView",
+                  url: "https://intercra.com",
+                  headline: "This is a headline",
+                  pluginName: "Intercra Plugin",
+                  price: "free",
+                  image: "https://intercra.com/assets/intercra-connected-text.331d4b22.png",
+                  author: "There is no author"
+              })
+          }
+      }else{
+          if(this.plugins.length == 0) {
+              this.showLoading = false;
+              this.noPlugin = true;
+          }else{
+              this.showLoading = true;
+              this.noPlugin = false;
+              this.ic.startSearch(this.search, this.plugins, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
+          }
+          this.ic.changeShow();
+      }
 
   },
 
