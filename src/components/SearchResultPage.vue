@@ -41,6 +41,7 @@
     <div class="center-horizontal">
       <div class="main-results center-horizontal">
         <div>
+          <div v-html="adsenseCode"></div>
           <ViewTemplatesPage v-for="(dat, id) in content"
                              :index="id"
                              :choosenView="dat.choosenView"
@@ -79,8 +80,6 @@
       <div class="view-border-null" ref="saved">
         <div class="sticky" v-if="savedContent.length != 0 && checkScreenSize()" style="width: 100%">
           <div class="outer-scroll">
-
-              <div id="adsgoeshere" v-html="adsenseContent"></div>
 
             <ViewTemplatesPage v-for="(dat, id) in savedContent"
                                :index="id"
@@ -185,7 +184,7 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-        adsenseContent: ''
+      adsenseCode: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3904729559747077"crossorigin=" anonymous"><\/script> <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-69+e1+1s-5v+a9" data-ad-client="ca-pub-3904729559747077" data-ad-slot="4137347402"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); <\/script>'
 
     };
   },
@@ -315,9 +314,6 @@ export default {
   },
 
   mounted() {
-      this.adsenseContent = document.getElementById('divadsensedisplaynone').innerHTML
-
-
       this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
 
     let sorting = this.getCookies("sorting");
