@@ -79,6 +79,7 @@ import {TurboSquid} from "../plugins/TurboSquid";
 import {DownloadFree3D} from "../plugins/DownloadFree3D";
 import {BlenderMarket} from "../plugins/BlenderMarket";
 import {SocialMediaToday} from "../plugins/SocialMediaToday";
+import {Politico} from "../plugins/Politico";
 
 export class PluginController {
 
@@ -172,6 +173,7 @@ export class PluginController {
         this.anyPlugins.push(new DownloadFree3D());
         this.anyPlugins.push(new BlenderMarket());
         this.anyPlugins.push(new SocialMediaToday());
+        this.anyPlugins.push(new Politico());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
