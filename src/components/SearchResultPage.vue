@@ -156,6 +156,7 @@ export default {
   components: {SavedContentButton, SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins, SavedPopup},
 
 
+
   data(){
     return {
       search: String(this.$route.params.search),
@@ -190,6 +191,7 @@ export default {
   },
 
   created() {
+
     let sort = this.getCookies("sorting");
     if(sort != null){
       this.sorting = sort;
@@ -347,6 +349,8 @@ export default {
           }
           this.ic.changeShow();
       }
+
+    document.title = "Search - " + this.search
 
   },
 

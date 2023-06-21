@@ -101,6 +101,8 @@ export default {
     components: {FeedMoreContentButton, WaitingPlugins, ViewTemplatesPage, SavedPopup, ArticleView},
 
   created() {
+    document.title = "Feed"
+
     this.getAllActivePlugins()
     this.checkSpotifyActive()
 

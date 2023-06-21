@@ -95,6 +95,7 @@ export default {
     SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
   created() {
+    document.title = "Intercra"
 
     this.$cookies.set("cookiesAllowed",  "true", 2147483647);
     //always allowed because cookies are necessary
