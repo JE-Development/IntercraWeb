@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import PerfectScrollbar from 'vue3-perfect-scrollbar'
 import VueSlider from 'vue-slider-component'
-import VueHead from 'vue-head';
+import Ads from 'vue-google-adsense'
+import ScriptX from 'vue-scriptx'
 
 import 'vue-slider-component/theme/default.css'
 import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
@@ -33,7 +34,10 @@ app.use(router)
 app.use(VueCookies)
 app.use(Notifications)
 app.use(PerfectScrollbar)
-//app.use(VueHead)
+app.use(Ads.Adsense)
+app.use(Ads.InFeedAdsense)
+app.use(Ads.AutoAdsense, { adClient: 'ca-pub-3904729559747077', isNewAdsCode: true })
+app.use(ScriptX)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('VueSlider', VueSlider)
 app.config.globalProperties.emitter = emitter
