@@ -42,12 +42,18 @@
       <div class="main-results center-horizontal">
         <div>
 
+          <div>
+            <!--
             <InFeedAdsense
-                    data-ad-client="ca-pub-3904729559747077"
-                    data-ad-slot="4137347402">
+                data-ad-client="ca-pub-3904729559747077"
+                data-ad-slot="4137347402">
             </InFeedAdsense>
+            </!-->
 
-            <div v-html="adsenseCode"></div>
+
+            <div v-html="adsense"></div>
+
+          </div>
 
           <ViewTemplatesPage v-for="(dat, id) in content"
                              :index="id"
@@ -192,8 +198,8 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-        adsenseCode: "<script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('punoocke.com',6070287,document.createElement('script'))<\/script>"
-    };
+      adsense: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3904729559747077" crossorigin="anonymous">' + '<' + '/script> <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-69+e1+1s-5v+a9" data-ad-client="ca-pub-3904729559747077" data-ad-slot="4137347402"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); ' + '<' + '/script>'
+     };
   },
 
   created() {
