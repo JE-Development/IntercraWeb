@@ -81,6 +81,7 @@ import {BlenderMarket} from "../plugins/BlenderMarket";
 import {SocialMediaToday} from "../plugins/SocialMediaToday";
 import {Politico} from "../plugins/Politico";
 import {LaughingSquid} from "../plugins/LaughingSquid";
+import {TheHill} from "../plugins/TheHill";
 
 export class PluginController {
 
@@ -176,6 +177,7 @@ export class PluginController {
         this.anyPlugins.push(new SocialMediaToday());
         this.anyPlugins.push(new Politico());
         this.anyPlugins.push(new LaughingSquid());
+        this.anyPlugins.push(new TheHill());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);

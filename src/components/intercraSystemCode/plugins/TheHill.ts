@@ -5,7 +5,7 @@ import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class LaughingSquid implements PluginInterface, FeedInterface{
+export class TheHill implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     contentListFeed: Map<string, string>[] = [];
@@ -13,8 +13,8 @@ export class LaughingSquid implements PluginInterface, FeedInterface{
 
     feedError: boolean = false;
 
-    displayName = "Laughing Squid";
-    id = "laughing_squid";
+    displayName = "The Hill";
+    id = "the_hill";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -65,20 +65,14 @@ export class LaughingSquid implements PluginInterface, FeedInterface{
             const e = article[i];
             let map = new Map<string, string>;
 
-            let link = e.getElementsByTagName("h2")[0].children[0];
+            let link = e.getElementsByTagName("h1")[0].children[0];
             map.set("url", link.getAttribute("href"));
             map.set("headline", link.textContent);
 
             let image = e.getElementsByTagName("img")[0];
             map.set("imageUrl", image.getAttribute("src"));
 
-            let teaser = e.getElementsByClassName("entry-excerpt")[0];
-            map.set("teaser", teaser.textContent)
-
-            let author = e.getElementsByClassName("ct-meta-element-author")[0]
-            map.set("author", author.textContent)
-
-            let time = e.getElementsByTagName("time")[0]
+            let time = e.getElementsByClassName("color-light-gray")[0]
             map.set("time", time.textContent)
 
             this.contentList.push(map)
@@ -134,9 +128,7 @@ export class LaughingSquid implements PluginInterface, FeedInterface{
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                teaser: contentMap.get("teaser"),
                 image: contentMap.get("imageUrl"),
-                author: contentMap.get("author"),
                 date: contentMap.get("time"),
             })
         }
@@ -175,15 +167,12 @@ export class LaughingSquid implements PluginInterface, FeedInterface{
             const e = article[i];
             let map = new Map<string, string>;
 
-            let link = e.getElementsByTagName("h2")[0].children[0];
+            let link = e.getElementsByTagName("h1")[0].children[0];
             map.set("url", link.getAttribute("href"));
             map.set("headline", link.textContent);
 
             let image = e.getElementsByTagName("img")[0];
             map.set("imageUrl", image.getAttribute("src"));
-
-            let teaser = e.getElementsByClassName("entry-excerpt")[0]
-            map.set("teaser", teaser.textContent)
 
             this.contentListFeed.push(map)
         }
@@ -203,7 +192,6 @@ export class LaughingSquid implements PluginInterface, FeedInterface{
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                teaser: contentMap.get("teaser"),
                 image: contentMap.get("imageUrl"),
             })
         }
