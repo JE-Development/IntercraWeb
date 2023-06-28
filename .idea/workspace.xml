@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/TheHill.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Kochplanet.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LaughingSquid.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/LaughingSquid.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ShoppingView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +32,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../IntercraBackEnd" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -285,6 +286,10 @@
       <workItem from="1687518716716" duration="1761000" />
       <workItem from="1687724996940" duration="5358000" />
       <workItem from="1687767830896" duration="1230000" />
+      <workItem from="1687787500409" duration="375000" />
+      <workItem from="1687787985585" duration="1611000" />
+      <workItem from="1687968301490" duration="16000" />
+      <workItem from="1687978975141" duration="1995000" />
     </task>
     <servers />
   </component>

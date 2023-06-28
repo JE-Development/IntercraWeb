@@ -132,13 +132,13 @@
 
     </div>
 
-    <div id="searchRoot" v-if="waitingPlugins">
+    <div id="searchRoot" v-if="waitingPlugins.length > 0">
       <div id="loading-result" class="center-horizontal">
         <img src="../assets/loading.gif" class="loading-image"/>
       </div>
     </div>
 
-    <div class="center-horizontal waiting-margin headline-color" v-if="waitingPlugins">
+    <div class="center-horizontal waiting-margin headline-color" v-if="waitingPlugins.length > 0">
       <h2>Waiting for:</h2>
     </div>
 
@@ -179,7 +179,7 @@ export default {
       savedContent: [],
       savedIds: [],
       relKey: 0,
-      waitingPlugins: null,
+      waitingPlugins: [],
       searchVisibility: true,
       showLoading: true,
       errors: [],

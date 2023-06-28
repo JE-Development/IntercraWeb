@@ -82,6 +82,7 @@ import {SocialMediaToday} from "../plugins/SocialMediaToday";
 import {Politico} from "../plugins/Politico";
 import {LaughingSquid} from "../plugins/LaughingSquid";
 import {TheHill} from "../plugins/TheHill";
+import {Kochplanet} from "../plugins/Kochplanet";
 
 export class PluginController {
 
@@ -178,6 +179,7 @@ export class PluginController {
         this.anyPlugins.push(new Politico());
         this.anyPlugins.push(new LaughingSquid());
         this.anyPlugins.push(new TheHill());
+        this.anyPlugins.push(new Kochplanet());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
@@ -289,6 +291,7 @@ export class PluginController {
     isFinished(contentList: Map<string, string>[], id: string) {
 
         this.finishedPlugins.push(id);
+        console.log(id)
         this.makeFinish()
     }
 
@@ -491,7 +494,7 @@ export class PluginController {
                 fehlen.push(active)
             }
         }
-        //console.log(fehlen)
+        console.log(fehlen)
 
         if (this.activePlugins.length != this.finishedPlugins.length) {
             return false;
