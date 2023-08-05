@@ -59,7 +59,6 @@ export class DownloadFree3D implements PluginInterface, FeedInterface{
     startSearch(document: any): void{
         const content = document.getElementsByClassName("finewp-grid-post");
 
-        console.log(content.length)
 
         for(let i = 0; i < content.length; i++){
             try{

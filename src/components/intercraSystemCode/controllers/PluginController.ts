@@ -123,18 +123,18 @@ export class PluginController {
         this.anyPlugins.push(new BandcampArtistLabel());
         this.anyPlugins.push(new BandcampFan());
         this.anyPlugins.push(new BandcampTracks());
-        this.anyPlugins.push(new GooglePlayApps());
-        this.anyPlugins.push(new GooglePlayBooks());
-        this.anyPlugins.push(new GooglePlayMovies());
+        //this.anyPlugins.push(new GooglePlayApps());
+        //this.anyPlugins.push(new GooglePlayBooks());
+        //this.anyPlugins.push(new GooglePlayMovies());
         this.anyPlugins.push(new Fandom());
         this.anyPlugins.push(new OscoboImage());
         this.anyPlugins.push(new Flickr());
         this.anyPlugins.push(new Giphy());
         this.anyPlugins.push(new Tenor());
         //this.anyPlugins.push(new Reddit()); required api | blocked content via crawling
-        this.anyPlugins.push(new GitHubRepositories());
-        this.anyPlugins.push(new GitHubIssues());
-        this.anyPlugins.push(new GitHubTopics());
+        //this.anyPlugins.push(new GitHubRepositories());
+        //this.anyPlugins.push(new GitHubIssues());
+        //this.anyPlugins.push(new GitHubTopics());
         this.anyPlugins.push(new Stackoverflow());
         this.anyPlugins.push(new Sketchfab());
         this.anyPlugins.push(new Free3D());
@@ -163,7 +163,7 @@ export class PluginController {
         this.anyPlugins.push(new DigitalTrends());
         this.anyPlugins.push(new PewResearchCenter());
         //this.anyPlugins.push(new SearchEngineLand()); not allows crawling anymore
-        this.anyPlugins.push(new ProductHunt());
+        //this.anyPlugins.push(new ProductHunt()); not working correctly. need a restore
         this.anyPlugins.push(new WebMD());
         this.anyPlugins.push(new BoredPanda());
         this.anyPlugins.push(new LiveScience());

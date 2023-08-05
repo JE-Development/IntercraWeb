@@ -43,15 +43,8 @@
         <div>
 
           <div>
-            <!--
-            <InFeedAdsense
-                data-ad-client="ca-pub-3904729559747077"
-                data-ad-slot="4137347402">
-            </InFeedAdsense>
-            </!-->
 
-
-            <div v-html="adsense"></div>
+              <div id="adsterra-banner"></div>
 
           </div>
 
@@ -198,11 +191,30 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-      adsense: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3904729559747077" crossorigin="anonymous">' + '<' + '/script> <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-69+e1+1s-5v+a9" data-ad-client="ca-pub-3904729559747077" data-ad-slot="4137347402"></ins> <script> (adsbygoogle = window.adsbygoogle || []).push({}); ' + '<' + '/script>'
+      adsterra: null,
      };
   },
 
   created() {
+
+      this.adsterra = {
+          slots: [
+              {
+                  key : 'a07474aa74bd2f07f728638a5395d920',
+                  format : 'iframe',
+                  height : 600,
+                  width : 160,
+                  params : {}
+              },
+          ],
+          usePrebid: false,
+          useAPS: false,
+          customEvents: {
+              blueBackground: {
+                  eventMessagePrefix: 'BlueBackground:',
+              },
+          },
+      }
 
     let sort = this.getCookies("sorting");
     if(sort != null){
@@ -328,6 +340,9 @@ export default {
   },
 
   mounted() {
+
+
+
       this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
 
     let sorting = this.getCookies("sorting");
