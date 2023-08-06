@@ -83,6 +83,7 @@ import {Politico} from "../plugins/Politico";
 import {LaughingSquid} from "../plugins/LaughingSquid";
 import {TheHill} from "../plugins/TheHill";
 import {Kochplanet} from "../plugins/Kochplanet";
+import {HttpRequestController} from "./HttpRequestController";
 
 export class PluginController {
 
@@ -95,6 +96,11 @@ export class PluginController {
     errorNames: string[] = [];
     sorting = "repeat";
     all: string[] = []
+    collected: any[] = []
+    forRequest: any[] = []
+    hrc = new HttpRequestController()
+    searchText = ""
+    page = 1
 
 
     constructor() {
@@ -217,6 +223,7 @@ export class PluginController {
     async findContent(searchText: string, plugin: string[], token: string, ytToken: string) {
         this.activePlugins = plugin
         this.finishedPlugins = [];
+        this.searchText = searchText
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -246,6 +253,8 @@ export class PluginController {
         this.activePlugins = plugin
         this.finishedPlugins = [];
         this.all = []
+        this.page = this.page + 1
+        this.searchText = searchText
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -284,6 +293,42 @@ export class PluginController {
             if (this.activePlugins.includes(this.feedPlugins[i].getId())) {
                 this.feedPlugins[i].findMoreFeedContent(this);
                 EventBus.emit("feed-not-finished", this.getNotFinished())
+            }
+        }
+    }
+
+    async collectRequests(self: any, skip: boolean, noMore: boolean){
+
+        this.collected.push(self)
+        if(!skip){
+            this.forRequest.push(self)
+        }
+        if(noMore){
+            this.isFinished([], self.getId())
+        }
+        if(this.collected.length === this.activePlugins.length){
+
+            let plugs = ""
+            for(let i = 0; i < this.forRequest.length; i++){
+                if(i === 0){
+                    plugs = this.forRequest[i].getId()
+                }else{
+                    plugs = plugs + "---" + this.forRequest[i].getId()
+                }
+            }
+
+            let json
+
+            await this.hrc.endpointRequest(
+                "http://212.227.183.160:3002/api/search?plugin=" + plugs + "&searchtext=" + this.searchText + "&page=" + this.page).then(r =>
+                json = r
+            );
+
+            console.log(this.forRequest.length)
+
+            for(let i = 0; i < this.forRequest.length; i++){
+                console.log("in for")
+                this.forRequest[i].analyse(json, this)
             }
         }
     }

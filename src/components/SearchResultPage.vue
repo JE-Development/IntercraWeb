@@ -231,6 +231,7 @@ export default {
       this.waitingPlugins = false;
       this.show = true;
       this.showLoading = false;
+      console.log("show: " + this.show)
     })
 
     EventBus.addEventListener('error-sender', (event) => {

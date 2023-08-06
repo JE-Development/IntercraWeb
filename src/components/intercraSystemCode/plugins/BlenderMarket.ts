@@ -23,59 +23,49 @@ export class BlenderMarket implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
-
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+            await pc.collectRequests(this, false, false)
         }catch (error){
             pc.gotError(this.id);
-            console.log(error)
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.page = this.page + 1;
-        this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
-
-        this.startSearch(document);
-        this.finish = true;
-
-        //let pc = new PluginController();
-        pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        let article = document.getElementsByClassName("card-product");
-        for(let i = 0; i < article.length; i++){
-            let e = article[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            let url = e.getElementsByTagName("a")[0];
-            map.set("url", "https://blendermarket.com" + url.getAttribute("href"));
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-            let imageLink = e.getElementsByTagName("img")[0];
-            map.set("imageUrl", imageLink.getAttribute("src"));
 
-            let headline = e.getElementsByTagName("h5")[0]
-            map.set("headline", headline.textContent);
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let author = JSON.stringify(items.author).replace(/"/g, '');
+                    let price = JSON.stringify(items.price).replace(/"/g, '');
 
-            let price = e.getElementsByClassName("card-price")[0];
-            map.set("price", price.textContent);
 
-            let author = e.getElementsByClassName("card-creator")[0];
-            map.set("author", author.textContent);
+                    let map = new Map<string, string>;
 
-            this.contentList.push(map);
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("author", author);
+                    map.set("price", price);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

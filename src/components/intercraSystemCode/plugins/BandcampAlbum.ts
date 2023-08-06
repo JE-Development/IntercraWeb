@@ -5,6 +5,7 @@ import type {PluginController} from "../controllers/PluginController";
 import {ViewCollection} from "../classes/ViewCollection";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class BandcampAlbum implements PluginInterface, FeedInterface{
     finish = false;
@@ -22,89 +23,59 @@ export class BandcampAlbum implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.page = this.page + 1;
-        this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, false, false)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const rawList = document.getElementsByClassName("searchresult");
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-        for(let i = 0; i < rawList.length; i++){
-            const e = rawList[i];
-            let map = new Map<string, string>;
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-            const link = e.getElementsByClassName("artcont")[0];
-            map.set("url", link.getAttribute("href"));
 
-            const img = e.getElementsByTagName("img")[0];
-            map.set("imageUrl", img.getAttribute("src"));
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let type = JSON.stringify(items.type).replace(/"/g, '');
+                    let artist = JSON.stringify(items.artist).replace(/"/g, '');
+                    let release = JSON.stringify(items.release).replace(/"/g, '');
+                    let tags = JSON.stringify(items.tags).replace(/"/g, '');
+                    let genre = JSON.stringify(items.genre).replace(/"/g, '');
 
-            const type = e.getElementsByClassName("itemtype")[0];
-            map.set("type", type.textContent);
 
-            const headline = e.getElementsByClassName("heading")[0].getElementsByTagName("a")[0];
-            map.set("headline", headline.textContent);
-            let headString = link.getAttribute("href");
+                    let map = new Map<string, string>;
 
-            const sub = e.getElementsByClassName("subhead")[0];
-            map.set("artist", sub.textContent);
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("type", type);
+                    map.set("artist", artist);
+                    map.set("release", release);
+                    map.set("tags", tags);
+                    map.set("genre", genre);
 
-            const release = e.getElementsByClassName("released")[0];
-            if(release == null){
-                map.set("release", "");
-            }else{
-                map.set("release", release.textContent);
-            }
-
-            const tags = e.getElementsByClassName("tags")[0];
-            if(tags == null){
-                map.set("tags", "");
-            }else{
-                map.set("tags", tags.textContent);
-            }
-
-            const genre = e.getElementsByClassName("genre")[0];
-            if(genre == null){
-                map.set("genre", "");
-            }else{
-                map.set("genre", genre.textContent);
-            }
-
-            let duplicate = false;
-            for(let j = 0; j < this.contentList.length; j++){
-                let h = new Map<string, string>;
-                if(h.has("headline") && h.get("headline") === headString){
-                    duplicate = true;
+                    this.contentList.push(map);
                 }
             }
-            if(!duplicate){
-                this.contentList.push(map);
-            }
-
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

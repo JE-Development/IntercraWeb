@@ -4,6 +4,7 @@ import {PluginLanguageController} from "../controllers/PluginLanguageController"
 import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
+import {HttpRequestController} from "../controllers/HttpRequestController";
 
 export class Arxiv implements PluginInterface, FeedInterface{
     finish = false;
@@ -22,63 +23,49 @@ export class Arxiv implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
-
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+            await pc.collectRequests(this, false, false)
         }catch (error){
-            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page += 50;
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
-
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+            await pc.collectRequests(this, false, false)
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByClassName("arxiv-result");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            let link = e.getElementsByTagName("a")[0];
-            map.set("url", link.getAttribute("href"));
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-            let headline = e.getElementsByClassName("title")[0];
-            map.set("headline", headline.textContent);
 
-            let teaser = e.getElementsByClassName("abstract-short")[0];
-            map.set("teaser", teaser.textContent.replace("▽ More", ""))
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+                    let author = JSON.stringify(items.author).replace(/"/g, '');
+                    let time = JSON.stringify(items.time).replace(/"/g, '');
 
-            let author = e.getElementsByClassName("authors")[0]
-            map.set("author", author.textContent)
 
-            let time = e.getElementsByClassName("is-size-7")[2]
-            map.set("time", time.textContent)
+                    let map = new Map<string, string>;
 
-            this.contentList.push(map)
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("teaser", teaser);
+                    map.set("author", author);
+                    map.set("time", time);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

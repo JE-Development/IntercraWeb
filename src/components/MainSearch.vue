@@ -24,7 +24,7 @@
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
-                <div>
+                <div v-if="true">
                   <input
                       ref="input"
                       v-on:focus="inputFocus()"
@@ -33,8 +33,11 @@
                       placeholder="Search here"
                       class="glow search-input center-horizontal search-input-color search-input-border-color"/>
                 </div>
+                  <div v-else>
+                      <h2 class="error-color">Intercra is currently undergoing maintenance.</h2>
+                  </div>
                 <div class="center-horizontal">
-                  <div>
+                  <div v-if="true">
                     <div style="height: 20px"/>
                     <FeedButton/>
                   </div>
