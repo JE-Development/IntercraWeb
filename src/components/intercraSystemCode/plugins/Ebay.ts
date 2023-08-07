@@ -44,30 +44,25 @@ export class Ebay implements PluginInterface, FeedInterface{
 
 
     analyse(json: any, pc: PluginController){
-        let array = json.data;
-
-        for(let i = 0; i < array.length; i++){
-            if(array[i].pluginContent.name === this.id){
-                for(let j = 0; j < array[i].pluginContent.content.length; j++){
-                    let items = array[i].pluginContent.content[j]
 
 
-                    let url = JSON.stringify(items.url).replace(/"/g, '');
-                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
-                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
-                    let price = JSON.stringify(items.teaser).replace(/"/g, '');
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
+
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let price = JSON.stringify(items.price).replace(/"/g, '');
 
 
-                    let map = new Map<string, string>;
+            let map = new Map<string, string>;
 
-                    map.set("url", url);
-                    map.set("headline", headline);
-                    map.set("imageUrl", image);
-                    map.set("price", price);
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("price", price);
 
-                    this.contentList.push(map);
-                }
-            }
+            this.contentList.push(map);
         }
         pc.isFinished(this.contentList, this.id)
     }

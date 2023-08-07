@@ -42,30 +42,25 @@ export class NewgroundsArt implements PluginInterface, FeedInterface{
 
 
     analyse(json: any, pc: PluginController){
-        let array = json.data;
-
-        for(let i = 0; i < array.length; i++){
-            if(array[i].pluginContent.name === this.id){
-                for(let j = 0; j < array[i].pluginContent.content.length; j++){
-                    let items = array[i].pluginContent.content[j]
 
 
-                    let url = JSON.stringify(items.url).replace(/"/g, '');
-                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
-                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
-                    let artist = JSON.stringify(items.artist).replace(/"/g, '');
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
+
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let artist = JSON.stringify(items.artist).replace(/"/g, '');
 
 
-                    let map = new Map<string, string>;
+            let map = new Map<string, string>;
 
-                    map.set("url", url);
-                    map.set("headline", headline);
-                    map.set("imageUrl", image);
-                    map.set("artist", artist);
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("artist", artist);
 
-                    this.contentList.push(map);
-                }
-            }
+            this.contentList.push(map);
         }
         pc.isFinished(this.contentList, this.id)
     }

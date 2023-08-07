@@ -306,6 +306,8 @@ export class PluginController {
         if(noMore){
             this.isFinished([], self.getId())
         }
+        console.log(this.collected)
+        console.log(this.activePlugins)
         if(this.collected.length === this.activePlugins.length){
 
             let plugs = ""
@@ -320,23 +322,29 @@ export class PluginController {
             let json
 
             await this.hrc.endpointRequest(
-                "http://212.227.183.160:3002/api/search?plugin=" + plugs + "&searchtext=" + this.searchText + "&page=" + this.page).then(r =>
+                "http://212.227.183.160:3002/api/sse?plugin=" + plugs + "&searchtext=" + this.searchText + "&page=" + this.page, this).then(r =>
                 json = r
             );
+        }
+    }
 
-            console.log(this.forRequest.length)
-
-            for(let i = 0; i < this.forRequest.length; i++){
-                console.log("in for")
-                this.forRequest[i].analyse(json, this)
+    endpointCallback(json: any){
+        for(let i = 0; i < this.forRequest.length; i++){
+            if(json.pluginContent.name === this.forRequest[i].getId()){
+                try{
+                    this.forRequest[i].analyse(json.pluginContent.content, this)
+                }catch (e){
+                    this.gotError(json.pluginContent.name)
+                    console.log(e)
+                }
             }
+
         }
     }
 
     isFinished(contentList: Map<string, string>[], id: string) {
 
         this.finishedPlugins.push(id);
-        console.log(id)
         this.makeFinish()
     }
 
@@ -539,7 +547,6 @@ export class PluginController {
                 fehlen.push(active)
             }
         }
-        console.log(fehlen)
 
         if (this.activePlugins.length != this.finishedPlugins.length) {
             return false;

@@ -40,27 +40,16 @@ export class HttpRequestController {
 
     }
 
-    async endpointRequest(url: string): Promise<any>{
-        console.log(url)
+    async endpointRequest(url: string, pc: PluginController): Promise<any>{
 
-        let ok = true;
+        // SSE-Verbindung herstellen
+        const eventSource = new EventSource(url);
 
-        let json;
-
-        await axios.get(url)
-            .then(response => {
-                json = response.data;
-            })
-            .catch(error => {
-                console.log(error)
-                //pc.gotError(id);
-            });
-        if(ok) {
-            return json;
-        }else{
-            //pc.gotError(id);
-            return "error";
-        }
+        // SSE-Ereignisse abonnieren
+        eventSource.onmessage = (event) => {
+            const eventData = JSON.parse(event.data);
+            pc.endpointCallback(eventData)
+        };
 
     }
 

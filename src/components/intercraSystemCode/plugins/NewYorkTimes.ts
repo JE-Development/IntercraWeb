@@ -26,6 +26,7 @@ export class NewYorkTimes implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
+        await pc.collectRequests(this, true, false)
         await this.startSearch(searchText, pc);
         this.finish = true;
 
@@ -34,6 +35,7 @@ export class NewYorkTimes implements PluginInterface, FeedInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        await pc.collectRequests(this, true, false)
 
         pc.isFinished(this.contentList, this.id);
     }

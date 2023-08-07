@@ -26,6 +26,7 @@ export class Iconfinder implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
+            await pc.collectRequests(this, true, false)
             let json = await fetch("https://intercra-backend.jason-apps.workers.dev/html/api/" + this.searchId + "/X0vjEUN6KRlxbp2DoUkyHeM0VOmxY91rA6BbU5j3Xu6wDodwS0McmilLPBWDUcJ1/" + searchText + "/0");
             let text = await json.json()
             this.analyse(text)
@@ -42,6 +43,7 @@ export class Iconfinder implements PluginInterface, FeedInterface{
         this.contentList = [];
         this.page = this.page + 30;
         try {
+            await pc.collectRequests(this, true, false)
             let json = await fetch("https://intercra-backend.jason-apps.workers.dev/html/api/" + this.searchId + "/X0vjEUN6KRlxbp2DoUkyHeM0VOmxY91rA6BbU5j3Xu6wDodwS0McmilLPBWDUcJ1/" + searchText + "/" + this.page);
             let text = await json.json()
             this.analyse(text)
