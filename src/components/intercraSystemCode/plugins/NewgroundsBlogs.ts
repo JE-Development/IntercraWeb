@@ -20,66 +20,57 @@ export class NewgroundsBlogs implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            this.page = this.page + 1;
-            this.contentList = [];
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            pc.isFinished(this.contentList, this.id);
-        }catch (e){
-            //no more content
+        }catch (error){
+            pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("searchitem-community-post");
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            const link = elem.getElementsByClassName("searchitem-title")[0].getElementsByTagName("a")[0];
-            map.set("url", link.getAttribute("href"));
-
-            const image = elem.getElementsByClassName("user-icon-bordered")[0].getElementsByTagName("img")[0];
-            map.set("imageUrl", image.getAttribute("src"));
-
-            map.set("headline", link.textContent)
-
-            const artist = elem.getElementsByClassName("searchitem-title")[0].getElementsByTagName("a")[1];
-            map.set("artist", artist.textContent)
-
-            const date = elem.getElementsByClassName("searchitem-meta")[0];
-            map.set("date", date.textContent)
-
-            const time = elem.getElementsByClassName("searchitem-body")[0];
-            map.set("teaser", time.textContent)
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
 
-            this.contentList.push(map);
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+                    let artist = JSON.stringify(items.artist).replace(/"/g, '');
+                    let date = JSON.stringify(items.date).replace(/"/g, '');
 
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("teaser", teaser);
+                    map.set("artist", artist);
+                    map.set("data", date);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

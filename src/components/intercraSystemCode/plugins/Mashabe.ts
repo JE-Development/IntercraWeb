@@ -23,15 +23,8 @@ export class Mashabe implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             console.log(error)
             pc.gotError(this.id);
@@ -39,58 +32,46 @@ export class Mashabe implements PluginInterface, FeedInterface{
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page++
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByClassName("w-full");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            if(e.hasAttribute("data-ga-position")) {
-                let map = new Map<string, string>;
 
-                let link = e.getElementsByTagName("a")[0];
-                map.set("url", "https://mashable.com" + link.getAttribute("href"));
-                map.set("headline", link.textContent);
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-                try {
-                    let image = e.getElementsByTagName("img")[0];
-                    map.set("imageUrl", image.getAttribute("src"));
-                } catch (e) {
-                    //no image
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
+
+
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+                    let author = JSON.stringify(items.author).replace(/"/g, '');
+                    let time = JSON.stringify(items.time).replace(/"/g, '');
+
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("teaser", teaser);
+                    map.set("author", author);
+                    map.set("time", time);
+
+                    this.contentList.push(map);
                 }
-
-                let teaser = e.getElementsByTagName("a")[0].parentNode.children[1];
-                map.set("teaser", teaser.textContent)
-
-                let author = e.getElementsByTagName("a")
-                for (let j = 0; j < author.length; j++) {
-                    if (author[j].getAttribute("href").includes("/author/")) {
-                        map.set("author", author[j].textContent)
-                    }
-                }
-
-                let time = e.getElementsByTagName("time")[0]
-                map.set("time", time.textContent)
-
-                this.contentList.push(map)
             }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

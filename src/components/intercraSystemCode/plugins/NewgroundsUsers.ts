@@ -20,63 +20,55 @@ export class NewgroundsUsers implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            this.page = this.page + 1;
-            this.contentList = [];
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            pc.isFinished(this.contentList, this.id);
-        }catch (e){
-            //no more content
+        }catch (error){
+            pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("item-user");
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            const link = elem.getElementsByClassName("item-details-main")[0].getElementsByTagName("a")[0];
-            map.set("url", link.getAttribute("href"));
-
-            const image = elem.getElementsByClassName("user-icon-bordered")[0].getElementsByTagName("image")[0];
-            map.set("imageUrl", image.getAttribute("href"));
-
-            map.set("headline", link.textContent)
-
-            const level = elem.getElementsByClassName("item-details-meta")[0].children[0];
-            map.set("level", level.textContent)
-
-            const genre = elem.getElementsByClassName("item-details-meta")[0].children[1];
-            map.set("genre", genre.textContent)
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
 
-            this.contentList.push(map);
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let level = JSON.stringify(items.level).replace(/"/g, '');
+                    let genre = JSON.stringify(items.genre).replace(/"/g, '');
 
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("level", level);
+                    map.set("genre", genre);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

@@ -21,52 +21,55 @@ export class Free3D implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
+        try {
+            await pc.collectRequests(this, true, true)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("search-result");
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            const link = elem.getElementsByClassName("product-page-link")[0];
-            const url = link.getAttribute("href");
-            map.set("url", "https://free3d.com" + url);
-            map.set("headline", link.textContent);
-
-            const teaser = elem.getElementsByClassName("search-result__thumb")[0];
-            map.set("imageUrl", teaser.getAttribute("src"))
-
-            const price = elem.getElementsByClassName("search-result__price")[0];
-            map.set("price", price.textContent)
-
-            const format = elem.getElementsByClassName("search-result__format")[0];
-            map.set("format", format.textContent)
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
 
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let price = JSON.stringify(items.price).replace(/"/g, '');
+                    let format = JSON.stringify(items.format).replace(/"/g, '');
 
-            this.contentList.push(map);
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("price", price);
+                    map.set("format", format);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

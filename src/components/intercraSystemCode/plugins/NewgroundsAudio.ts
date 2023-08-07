@@ -22,79 +22,57 @@ export class NewgroundsAudio implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
-            this.page = this.page + 1;
-            this.contentList = [];
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            pc.isFinished(this.contentList, this.id);
-        }catch (e){
-            //no more content
+        }catch (error){
+            pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("itemlist")[0].children;
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            const link = elem.getElementsByClassName("item-audiosubmission")[0];
-            if(link != null) {
-                map.set("url", link.getAttribute("href"));
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-                const image = elem.getElementsByClassName("item-icon")[0].firstElementChild.firstElementChild;
-                map.set("imageUrl", image.getAttribute("src"));
 
-                const headline = elem.getElementsByClassName("detail-title")[0].firstElementChild;
-                map.set("headline", headline.textContent)
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+                    let artist = JSON.stringify(items.artist).replace(/"/g, '');
+                    let genre = JSON.stringify(items.genre).replace(/"/g, '');
 
-                const artist = elem.getElementsByClassName("detail-title")[0].getElementsByTagName("span")[0];
-                map.set("artist", artist.textContent)
 
-                try {
-                    let genre = elem.getElementsByClassName("item-details-meta")[0].getElementsByTagName("dd")[1];
-                    if(genre.textContent.includes("Views")){
-                        genre = elem.getElementsByClassName("item-details-meta")[0].getElementsByTagName("dd")[0];
-                    }
-                    map.set("genre", genre.textContent)
-                }catch (e){
-                    //no genre
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("teaser", teaser);
+                    map.set("artist", artist);
+                    map.set("genre", genre);
+
+                    this.contentList.push(map);
                 }
-
-                try {
-                    const teaser = elem.getElementsByClassName("detail-description")[0];
-                    map.set("teaser", teaser.textContent)
-                } catch (e) {
-                    // no teaser
-                }
-
-
-                this.contentList.push(map);
             }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

@@ -23,15 +23,8 @@ export class DigitalTrends implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             console.log(error)
             pc.gotError(this.id);
@@ -39,39 +32,39 @@ export class DigitalTrends implements PluginInterface, FeedInterface{
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page += 10
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("section")[0].firstElementChild.children;
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-            let link = e.getElementsByClassName("b-meta__title")[0].children[0];
-            map.set("url", link.getAttribute("href"));
-            map.set("headline", link.textContent);
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-            let time = e.getElementsByTagName("time")[0]
-            map.set("time", time.textContent)
 
-            this.contentList.push(map)
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let time = JSON.stringify(items.headline).replace(/"/g, '');
+
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("time", time);
+
+                    this.contentList.push(map);
+                }
+            }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

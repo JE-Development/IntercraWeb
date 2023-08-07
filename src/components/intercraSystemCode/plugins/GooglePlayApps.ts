@@ -21,85 +21,55 @@ export class GooglePlayApps implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, true, true)
+
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("div");
-        for(let i = 0; i < article.length; i++){
-            if(article[i].getAttribute("role") === "listitem") {
-                const e = article[i];
-                //if (e.getAttribute("data-component-type") === "s-search-result") {
+
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
+
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
+
+
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let appIconUrl = JSON.stringify(items.appIconUrl).replace(/"/g, '');
+                    let publisher = JSON.stringify(items.publisher).replace(/"/g, '');
+
+
                     let map = new Map<string, string>;
 
-                    let appLink = e.getElementsByTagName("a")[0];
-                    map.set("url", "https://play.google.com" + appLink.getAttribute("href"));
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("appIconUrl", appIconUrl);
+                    map.set("publisher", publisher);
 
-                    let image = e.getElementsByTagName("img");
-                    for(let j = 0; j < image.length; j++){
-                        let img = image[0];
-                        if(img.getAttribute("alt") === "Screenshot image"){
-                            map.set("imageUrl", img.getAttribute("src"));
-                        }
-                    }
-
-                    let parent = e.getElementsByTagName("a")[0];
-                    let icon = parent.children[1].children[0];
-                    map.set("appIconUrl", icon.getAttribute("src"));
-
-                    let names = e.getElementsByTagName("span");
-                    if(names.length >= 3){
-                        let appName = names[0].textContent;
-                        let publisher = names[1].textContent;
-
-                        if(appName === ""){
-                            appName = names[1].textContent;
-                            publisher = names[2].textContent;
-                        }
-
-                        map.set("headline", appName);
-                        map.set("publisher", publisher);
-                    }
-
-                    let price = e.getElementsByTagName("span");
-                    for(let j = 0; j < price.length; j++){
-                        let pr = price[j];
-                        if(pr.textContent.includes("$")){
-                            map.set("price", pr.textContent);
-                        }
-                    }
-
-                    let bool = true;
-                    for(let j = 0; j < this.contentList.length; j++){
-                        let s = this.contentList[j].get("url");
-                        if(s === map.get("url")){
-                            bool = false;
-                        }
-                    }
-                    let checkUrl = String(map.get("url"));
-                    if(bool && !checkUrl.includes("https://play.google.com/store/search?q=")){
-                        this.contentList.push(map);
-                    }
-                //}
+                    this.contentList.push(map);
+                }
             }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

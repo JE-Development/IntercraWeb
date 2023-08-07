@@ -24,71 +24,55 @@ export class Fandom implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
-            pc.gotFeedError(this.id);
+            console.log(error)
+            pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.page = this.page + 1;
-        this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, true, true)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const rawList = document.getElementsByTagName("div");
 
-        for(let j = 0; j < rawList.length; j++){
-            if(rawList[j].getAttribute("data-tracking-type") === "fandomstories"){
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
 
-                const list = rawList[j];
-                let map = new Map<string, string>;
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
-                const url = list.getElementsByClassName("clickable-anchor")[0];
-                let linkString = url.getAttribute("href");
-                let headline = url.textContent;
-                map.set("url", linkString);
-                map.set("headline", headline);
 
-                let imageUrl = "";
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+                    let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+                    let time = JSON.stringify(items.time).replace(/"/g, '');
 
-                try{
-                    const image = list.getElementsByClassName("wp-post-image")[0];
-                    imageUrl = image.getAttribute("src")
-                    map.set("imageUrl", imageUrl);
-                }catch (error){
-                    //no image
+
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+                    map.set("teaser", teaser);
+                    map.set("time", time);
+
+                    this.contentList.push(map);
                 }
-
-                const time = list.getElementsByTagName("time")[0];
-                map.set("time", time.textContent);
-
-                const teaser = list.getElementsByClassName("excerpt")[0].getElementsByTagName("a")[0];
-                map.set("teaser", teaser.textContent);
-
-
-                this.contentList.push(map);
             }
         }
-
-
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

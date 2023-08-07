@@ -21,64 +21,51 @@ export class DownloadFree3D implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
-            pc.gotError(this.id);
             console.log(error)
+            pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page = this.page + 1
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("finewp-grid-post");
+
+    analyse(json: any, pc: PluginController){
+        let array = json.data;
+
+        for(let i = 0; i < array.length; i++){
+            if(array[i].pluginContent.name === this.id){
+                for(let j = 0; j < array[i].pluginContent.content.length; j++){
+                    let items = array[i].pluginContent.content[j]
 
 
-        for(let i = 0; i < content.length; i++){
-            try{
-                const elem = content[i];
-                let map = new Map<string, string>;
-
-                const link = elem.getElementsByTagName("h3")[0].firstElementChild;
-                const url = link.getAttribute("href");
-                map.set("url", url);
-                map.set("headline", link.textContent);
-
-                const teaser = elem.getElementsByTagName("img")[0];
-                map.set("imageUrl", teaser.getAttribute("src"))
+                    let url = JSON.stringify(items.url).replace(/"/g, '');
+                    let headline = JSON.stringify(items.headline).replace(/"/g, '');
+                    let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
 
 
-                this.contentList.push(map);
-            }catch (e){
-                console.log(e)
+                    let map = new Map<string, string>;
+
+                    map.set("url", url);
+                    map.set("headline", headline);
+                    map.set("imageUrl", image);
+
+                    this.contentList.push(map);
+                }
             }
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {
