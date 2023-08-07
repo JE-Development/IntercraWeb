@@ -44,18 +44,16 @@
 
           <div>
 
-              <scriptx type="text/javascript">
-                  atOptions = {
-                      'key' : 'a07474aa74bd2f07f728638a5395d920',
-                      'format' : 'iframe',
-                      'height' : 600,
-                      'width' : 160,
-                      'params' : {}
-                  };
-                  let str = "scr"
-                  let sym = "&lt;"
-                  document.write(sym + str + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitablecreativeformat.com/a07474aa74bd2f07f728638a5395d920/invoke.js">' + sym + '/' + str + 'ipt>');
-              </scriptx>
+              <VueScriptComponent script="<script type='text/javascript'>
+              atOptions = {
+              'key' : 'a07474aa74bd2f07f728638a5395d920',
+              'format' : 'iframe',
+              'height' : 600,
+              'width' : 160,
+              'params' : {}
+              };
+              document.write('<scr' + 'ipt type='text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitablecreativeformat.com/a07474aa74bd2f07f728638a5395d920/invoke.js'></scr' + 'ipt>');
+              </script>" />
 
           </div>
 
