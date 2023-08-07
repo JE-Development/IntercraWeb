@@ -14,6 +14,20 @@
           </div>
           <div class="absolute">
             <div class="scroll-down">
+                <div>
+
+                    <VueScriptComponent script="<script type='text/javascript'>
+              atOptions = {
+              'key' : 'a07474aa74bd2f07f728638a5395d920',
+              'format' : 'iframe',
+              'height' : 600,
+              'width' : 160,
+              'params' : {}
+              };
+              document.write('<scr' + 'ipt type='text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitablecreativeformat.com/a07474aa74bd2f07f728638a5395d920/invoke.js'></scr' + 'ipt>');
+              </script>" />
+
+                </div>
               <p class="center-horizontal white">Scroll down for the plugin list</p>
               <div class="center-horizontal">
                 <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>

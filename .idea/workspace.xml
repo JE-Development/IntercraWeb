@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -296,6 +297,9 @@
       <workItem from="1691260896969" duration="1412000" />
       <workItem from="1691268404057" duration="4508000" />
       <workItem from="1691433175650" duration="243000" />
+      <workItem from="1691434061375" duration="106000" />
+      <workItem from="1691438289534" duration="247000" />
+      <workItem from="1691439722975" duration="30000" />
     </task>
     <servers />
   </component>
