@@ -22,76 +22,49 @@ export class Wired implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page++
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        let section = document.getElementsByTagName("section")
-        for(let k = 0; k < section.length; k++){
-            const article = section[k].getElementsByClassName("summary-list__items")[0].children;
-            for(let i = 0; i < article.length; i++){
-                try{
-                    const e = article[i];
-                    let map = new Map<string, string>;
 
-                    let link = e.getElementsByTagName("a")[0];
-                    map.set("url", link.getAttribute("href"));
+    analyse(json: any, pc: PluginController){
 
-                    let headline = e.getElementsByTagName("h3")[0];
-                    map.set("headline", headline.textContent);
 
-                    try{
-                        let image = e.getElementsByTagName("picture")[0];
-                        let script = image.firstChild.innerHTML;
-                        let split = script.split("srcset=\"")[1].split(" ")[0];
-                        map.set("imageUrl", split);
-                        map.set("scaleIndex", "300")
-                    }catch (e){
-                        //console.log(e)
-                    }
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
 
-                    let author = e.getElementsByClassName("byline__name")[0]
-                    map.set("author", author.textContent)
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let author = JSON.stringify(items.author).replace(/"/g, '');
+            let time = JSON.stringify(items.time).replace(/"/g, '');
 
-                    let time = e.getElementsByClassName("summary-item__publish-date")[0]
-                    map.set("time", time.lastChild.textContent)
 
-                    this.contentList.push(map)
-                }catch (e){
-                    //probably ad found
-                }
-            }
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("scaleIndex", "300");
+            map.set("author", author);
+            map.set("time", time);
+
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

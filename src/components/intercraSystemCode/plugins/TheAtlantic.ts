@@ -23,89 +23,50 @@ export class TheAtlantic implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
+        try {
+            await pc.collectRequests(this, true, true)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("ul");
 
-        for(let k = 0; k < article.length; k++){
-            if(article[k].hasAttribute("class") && article[k].getAttribute("class").includes("SharedResults_searchResultsList")){
-                const elem = article[k].children;
-                for(let i = 0; i < elem.length; i++){
-                    try{
-                        let e = elem[i]
-
-                        let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
 
 
-                        let link = e.getElementsByTagName("a")[0];
-                        map.set("url", link.getAttribute("href"));
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
 
-                        let head = "";
-                        let headline = e.getElementsByTagName("div");
-                        for(let j = 0; j < headline.length; j++){
-                            if(headline[j].hasAttribute("class") && headline[j].getAttribute("class").includes("SharedResults_title")){
-                                console.log("in head")
-                                head = headline[j].textContent;
-                            }
-                        }
-                        map.set("headline", head)
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+            let author = JSON.stringify(items.author).replace(/"/g, '');
+            let time = JSON.stringify(items.time).replace(/"/g, '');
 
-                        try{
-                            let image = e.getElementsByTagName("img")[0];
-                            let imgUrl = image.getAttribute("src")
-                            map.set("imageUrl", imgUrl);
 
-                            let teaser = e.getElementsByTagName("p")[0];
-                            map.set("teaser", teaser.textContent)
-                        }catch (e){
-                            //no image and teaser available
-                        }
+            let map = new Map<string, string>;
 
-                        let auth = "";
-                        let author = e.getElementsByTagName("span");
-                        for(let j = 0; j < author.length; j++){
-                            if(author[j].hasAttribute("class") && author[j].getAttribute("class").includes("ArticleResults_byline")){
-                                auth = author[j].textContent;
-                            }
-                        }
-                        map.set("author", auth)
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("teaser", teaser);
+            map.set("author", author);
+            map.set("time", time);
 
-                        let time = "";
-                        let date = e.getElementsByTagName("span");
-                        for(let j = 0; j < date.length; j++){
-                            if(date[j].hasAttribute("class") && date[j].getAttribute("class").includes("ArticleResults_publishDate")){
-                                time = date[j].textContent;
-                            }
-                        }
-                        map.set("time", time)
-
-                        this.contentList.push(map)
-                    }catch (e){
-                        console.log("err: " + e)
-                        //probably ad found
-                    }
-                }
-            }
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

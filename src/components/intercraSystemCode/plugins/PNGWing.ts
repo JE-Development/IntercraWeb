@@ -22,52 +22,44 @@ export class PNGWing implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page += 1;
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/pngwing/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document: any = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, true, true)
 
-        //let pc = new PluginController();
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByTagName("li");
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
-            if(elem.getAttribute("itemprop") === "associatedMedia"){
-                let map = new Map<string, string>;
+    analyse(json: any, pc: PluginController){
 
-                const url = elem.getElementsByTagName("a")[0];
-                map.set("url", url.getAttribute("href"));
 
-                const image = elem.getElementsByTagName("img")[0];
-                map.set("imageUrl", image.getAttribute("data-src"));
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
 
-                this.contentList.push(map);
-            }
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("imageUrl", image);
+
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

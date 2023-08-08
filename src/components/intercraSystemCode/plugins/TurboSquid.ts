@@ -21,68 +21,48 @@ export class TurboSquid implements PluginInterface, FeedInterface{
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
-            pc.gotError(this.id);
             console.log(error)
+            pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page = this.page + 1
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementById("SearchResultAssets").children;
 
-        for(let i = 0; i < content.length; i++){
-            try{
-                const elem = content[i];
-                let map = new Map<string, string>;
-
-                const link = elem.getElementsByTagName("a")[0];
-                const url = link.getAttribute("href");
-                map.set("url", url);
-
-                let headline = elem.getElementsByClassName("thumbnail")[0]
-                map.set("headline", headline.getAttribute("assetname"));
-
-                const teaser = elem.getElementsByTagName("img")[0];
-                map.set("imageUrl", teaser.getAttribute("src"))
-
-                const price = elem.getElementsByClassName("thumbnail")[0]
-                map.set("price", price.getAttribute("data-price"))
+    analyse(json: any, pc: PluginController){
 
 
-                this.contentList.push(map);
-            }catch (e){
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
 
-            }
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let price = JSON.stringify(items.price).replace(/"/g, '');
+
+
+            let map = new Map<string, string>;
+
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("price", price);
+
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

@@ -25,15 +25,8 @@ export class Politico implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             console.log(error)
             pc.gotError(this.id);
@@ -41,54 +34,41 @@ export class Politico implements PluginInterface, FeedInterface{
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page += 10
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, true, true)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByTagName("article");
-        for(let i = 0; i < article.length; i++){
-            try{
-                const e = article[i];
-                let map = new Map<string, string>;
 
-                let link = e.getElementsByTagName("h3")[0].getElementsByTagName("a")[0];
-                map.set("url", link.getAttribute("href"));
-                map.set("headline", link.textContent);
+    analyse(json: any, pc: PluginController){
 
-                try{
-                    let teaser = e.getElementsByClassName("tease")[0]
-                    map.set("teaser", teaser.textContent)
-                }catch (e){}
 
-                let image = e.getElementsByTagName("img")[0];
-                map.set("imageUrl", image.getAttribute("data-lazy-img"));
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
 
-                let time = e.getElementsByClassName("timestamp")[0]
-                map.set("time", time.textContent)
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+            let category = JSON.stringify(items.category).replace(/"/g, '');
+            let time = JSON.stringify(items.time).replace(/"/g, '');
 
-                let category = e.getElementsByClassName("category")[0]
-                map.set("category", category.textContent)
 
-                this.contentList.push(map)
-            }catch (e){
+            let map = new Map<string, string>;
 
-            }
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("teaser", teaser);
+            map.set("category", category);
+            map.set("time", time);
+
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

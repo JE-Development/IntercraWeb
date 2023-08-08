@@ -16,62 +16,54 @@ export class NonaVideo implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.VIDEOS);
+        //pc.addPreset(PresetEnum.VIDEOS);
         pc.addPreset(PresetEnum.PODCAST);
         return pc;
     }
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
+        try {
+            await pc.collectRequests(this, false, false)
+
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.page = this.page + 1;
-        this.contentList = [];
-        let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-        let text = await html.text();
-        const parser = new DOMParser();
-        const document = parser.parseFromString(text, "text/html");
-        this.startSearch(document);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, false, false)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    startSearch(document: any): void{
-        const content = document.getElementsByClassName("video-results__item");
 
-        for(let i = 0; i < content.length; i++){
-            const elem = content[i];
+    analyse(json: any, pc: PluginController){
+
+
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
+
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let topic = JSON.stringify(items.topic).replace(/"/g, '');
+            let time = JSON.stringify(items.time).replace(/"/g, '');
+
+
             let map = new Map<string, string>;
 
-            const link = elem.getElementsByClassName("video-result-teaser__link")[0];
-            const url = link.getAttribute("href");
             map.set("url", url);
-
-            const headline = elem.getElementsByClassName("video-result-teaser__image")[0];
-            map.set("headline", headline.getAttribute("alt"));
-
-            const time = elem.getElementsByClassName("video-result-teaser__image-duration")[0];
-            map.set("time", time.textContent);
-
-            const platform = elem.getElementsByClassName("video-result-teaser__source")[0];
-            map.set("topic", platform.textContent);
+            map.set("headline", headline);
+            map.set("topic", topic);
+            map.set("time", time);
 
             this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

@@ -26,38 +26,34 @@ export class Unsplash implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
-        await this.startSearch(searchText, pc);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, false, false)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            console.log(error)
+            pc.gotError(this.id);
+        }
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page = this.page + 1;
-        await this.startSearch(searchText, pc);
-        this.finish = true;
+        try {
+            await pc.collectRequests(this, true, true)
 
-        pc.isFinished(this.contentList, this.id);
+        }catch (error){
+            pc.gotError(this.id);
+        }
     }
 
-    async startSearch(searchText: string, pc: PluginController): Promise<void>{
-        let hrc = new HttpRequestController()
 
-        await hrc.httpRequestHeader(
-            "https://api.unsplash.com/search/photos?query=" + searchText + "&page=" + this.page, "Authorization: Client-ID nIQrhS3P4MoK7K1frkaWqAroCLdqkHLn-Zm-Rv_r0xs",
-            pc, this.id).then(r =>
-            this.analyse(r)
-        );
-    }
+    analyse(json: any, pc: PluginController){
 
-    analyse(json: any){
-        let array = json.results;
-        for(let i = 0; i < array.length; i++){
-            let items = array[i];
 
-            let url = JSON.stringify(items.links.html).replace('"', "").replace('"', "");
-            let image = JSON.stringify(items.urls.small).replace('"', "").replace('"', "");
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
+
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+
 
             let map = new Map<string, string>;
 
@@ -66,6 +62,7 @@ export class Unsplash implements PluginInterface, FeedInterface{
 
             this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {

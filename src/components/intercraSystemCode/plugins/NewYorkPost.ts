@@ -23,15 +23,8 @@ export class NewYorkPost implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/data/" + this.id + "/" + searchText);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             console.log(error)
             pc.gotError(this.id);
@@ -39,45 +32,39 @@ export class NewYorkPost implements PluginInterface, FeedInterface{
     }
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
-        this.contentList = [];
-        this.page++;
-
         try {
-            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/more/" + this.id + "/" + searchText + "/" + this.page);
-            let text = await html.text();
-            const parser = new DOMParser();
-            const document: any = parser.parseFromString(text, "text/html");
-            this.startSearch(document);
-            this.finish = true;
+            await pc.collectRequests(this, false, false)
 
-            //let pc = new PluginController();
-            pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);
         }
     }
 
-    startSearch(document: any): void{
-        const article = document.getElementsByClassName("search-results__story");
-        for(let i = 0; i < article.length; i++){
-            const e = article[i];
+
+    analyse(json: any, pc: PluginController){
+
+
+        for(let i = 0; i < json.length; i++){
+            let items = json[i]
+
+            let url = JSON.stringify(items.url).replace(/"/g, '');
+            let headline = JSON.stringify(items.headline).replace(/"/g, '');
+            let image = JSON.stringify(items.imageUrl).replace(/"/g, '');
+            let teaser = JSON.stringify(items.teaser).replace(/"/g, '');
+            let author = JSON.stringify(items.author).replace(/"/g, '');
+
+
             let map = new Map<string, string>;
 
-            let link = e.getElementsByClassName("story__headline")[0].children[0];
-            map.set("url", link.getAttribute("href"));
-            map.set("headline", link.textContent);
+            map.set("url", url);
+            map.set("headline", headline);
+            map.set("imageUrl", image);
+            map.set("teaser", teaser);
+            map.set("author", author);
 
-            let image = e.getElementsByTagName("img")[0];
-            map.set("imageUrl", image.getAttribute("src"));
-
-            let teaser = e.getElementsByClassName("story__excerpt")[0];
-            map.set("teaser", teaser.textContent)
-
-            let author = e.getElementsByClassName("meta meta--byline")[0]
-            map.set("author", author.textContent)
-
-            this.contentList.push(map)
+            this.contentList.push(map);
         }
+        pc.isFinished(this.contentList, this.id)
     }
 
     getContentList(): Map<string, string>[] {
