@@ -216,7 +216,7 @@
 
 }
 .small-hidden{
-    visibility: visible;
+    display: block;
 }
 
 
@@ -271,7 +271,7 @@
     }
 
     .small-hidden{
-        visibility: collapse;
+        display: none;
     }
 
     .border-width{
