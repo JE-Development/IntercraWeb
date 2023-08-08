@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Test.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NoAdsPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layouts/AdsView.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ViewTemplatesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +70,7 @@
     &quot;git-widget-placeholder&quot;: &quot;new-main&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.31&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/Development/GitHub/IntercraWeb&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/Development/GitHub/DiceBluff&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -81,11 +89,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components" />
+      <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\layouts" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
@@ -302,7 +310,9 @@
       <workItem from="1691438289534" duration="247000" />
       <workItem from="1691439722975" duration="30000" />
       <workItem from="1691441997757" duration="3431000" />
-      <workItem from="1691494129684" duration="411000" />
+      <workItem from="1691494129684" duration="2051000" />
+      <workItem from="1691506393401" duration="5354000" />
+      <workItem from="1691513573132" duration="550000" />
     </task>
     <servers />
   </component>

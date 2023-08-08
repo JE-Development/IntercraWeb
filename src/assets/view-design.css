@@ -215,6 +215,10 @@
 .main-results{
 
 }
+.small-hidden{
+    visibility: visible;
+}
+
 
 .bold{
     font-weight: bold;
@@ -264,6 +268,10 @@
 
     .view-border{
         width: 90vw;
+    }
+
+    .small-hidden{
+        visibility: collapse;
     }
 
     .border-width{

@@ -8,6 +8,7 @@ import ImpressumPage from '../components/ImpressumPage.vue'
 import FeedPage from '../components/feed/FeedPage.vue'
 import SettingsPage from '../components/SettingsPage.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
+import NoAdsPage from "../components/NoAdsPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -49,6 +50,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/settings',
         name: 'SettingsPage',
         component: SettingsPage
+    },
+    {
+        path: '/noads',
+        name: 'NoAdsPage',
+        component: NoAdsPage
     },
     {
         path: '/:catchAll(.*)',

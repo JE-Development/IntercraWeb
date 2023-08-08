@@ -179,7 +179,7 @@ export class PluginController {
         this.anyPlugins.push(new Politico());
         this.anyPlugins.push(new LaughingSquid());
         this.anyPlugins.push(new TheHill());
-        this.anyPlugins.push(new Kochplanet());
+        //this.anyPlugins.push(new Kochplanet());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);

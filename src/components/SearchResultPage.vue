@@ -42,21 +42,6 @@
       <div class="main-results center-horizontal">
         <div>
 
-          <div>
-
-              <VueScriptComponent script="<script type='text/javascript'>
-              atOptions = {
-              'key' : 'a07474aa74bd2f07f728638a5395d920',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
-              };
-              document.write('<scr' + 'ipt type='text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitablecreativeformat.com/a07474aa74bd2f07f728638a5395d920/invoke.js'></scr' + 'ipt>');
-              </script>" />
-
-          </div>
-
           <ViewTemplatesPage v-for="(dat, id) in content"
                              :index="id"
                              :choosenView="dat.choosenView"
@@ -200,7 +185,7 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-      adsterra: ""
+      adsIdBanner: "cf408d86b5915d37b8e8c46e45304282"
      };
   },
 
@@ -239,9 +224,21 @@ export default {
       }else{
         this.content = this.content.concat(event.data);
       }
+      if(this.getCookies("noads") !== "true"){
+          for (let i = 0; i < this.content.length; i += 4) {
+              this.content.splice(i, 0, {
+                  choosenView: "adsView",
+              });
+          }
+      }
+
       this.waitingPlugins = false;
       this.show = true;
       this.showLoading = false;
+
+      if(this.getCookies("noads") !== "true"){
+          this.handleAds()
+      }
     })
 
     EventBus.addEventListener('error-sender', (event) => {
@@ -351,7 +348,6 @@ export default {
   },
 
   mounted() {
-
 
 
       this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
@@ -498,7 +494,54 @@ export default {
         }
       }
       console.log(this.plugins)
-    }
+    },
+      handleAds(){
+        for(let i = 0; i < this.content.length; i += 4){
+            if(true){
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src =
+                    'http' +
+                    (location.protocol === 'https:' ? 's' : '') +
+                    '://caresspincers.com/' + this.adsIdBanner + '/invoke.js';
+                document.getElementsByTagName('head')[0].appendChild(script);
+
+                if (typeof atAsyncOptions !== 'object') {
+                    window.atAsyncOptions = [];
+                }
+                window.atAsyncOptions.push({
+                    'key': this.adsIdBanner,
+                    'format': 'js',
+                    'async': true,
+                    'container': 'atContainer' + i + '-' + this.adsIdBanner,
+                    'params': {}
+                });
+            }
+
+            if(true){
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.async = true;
+                script.src =
+                    'http' +
+                    (location.protocol === 'https:' ? 's' : '') +
+                    '://caresspincers.com/' + this.adsIdBanner + '/invoke.js';
+                document.getElementsByTagName('head')[0].appendChild(script);
+
+                if (typeof atAsyncOptions !== 'object') {
+                    window.atAsyncOptions = [];
+                }
+                window.atAsyncOptions.push({
+                    'key': this.adsIdBanner,
+                    'format': 'js',
+                    'async': true,
+                    'container': 'atContainer' + i + '.1-' + this.adsIdBanner,
+                    'params': {}
+                });
+            }
+        }
+      }
 
   }
 }

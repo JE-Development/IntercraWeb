@@ -188,6 +188,10 @@
                :categories="categories"
   />
 
+    <AdsView v-else-if="choosenView === 'adsView'"
+             :index="index"
+    />
+
 
 
 
@@ -210,9 +214,11 @@ import NewgroundsAudioView from "./layouts/NewgroundsAudioView.vue";
 import NewgroundsImageView from "./layouts/NewgroundsImageView.vue";
 import IconDownloadView from "./layouts/IconDownloadView.vue";
 import ModView from "./layouts/ModView.vue";
+import AdsView from "./layouts/AdsView.vue";
 export default {
   name: "ViewTemplatesPage",
   components: {
+      AdsView,
     ModView,
     IconDownloadView,
     NewgroundsImageView,
