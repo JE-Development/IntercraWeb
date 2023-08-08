@@ -16,18 +16,23 @@
             <div class="scroll-down">
                 <div>
 
-                    <VueScriptComponent script="<script type='text/javascript'>
-              atOptions = {
-              'key' : 'a07474aa74bd2f07f728638a5395d920',
-              'format' : 'iframe',
-              'height' : 600,
-              'width' : 160,
-              'params' : {}
-              };
-              document.write('<scr' + 'ipt type='text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.profitablecreativeformat.com/a07474aa74bd2f07f728638a5395d920/invoke.js'></scr' + 'ipt>');
-              </script>" />
+                    <!--<VueScriptComponent :script="adsMore" />/!-->
+                    <div v-html="adsMore">
+
+                    </div>
+
+                    <div v-html="adsEvenMore">
+
+                    </div>
 
                 </div>
+
+                <div>
+
+                    <VueScriptComponent script="<script language='javascript'>document.write(unescape('%3C%73%63%72%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%3E%0A%09%61%74%4F%70%74%69%6F%6E%73%20%3D%20%7B%0A%09%09%27%6B%65%79%27%20%3A%20%27%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%27%2C%0A%09%09%27%66%6F%72%6D%61%74%27%20%3A%20%27%69%66%72%61%6D%65%27%2C%0A%09%09%27%68%65%69%67%68%74%27%20%3A%20%36%30%30%2C%0A%09%09%27%77%69%64%74%68%27%20%3A%20%31%36%30%2C%0A%09%09%27%70%61%72%61%6D%73%27%20%3A%20%7B%7D%0A%09%7D%3B%0A%09%64%6F%63%75%6D%65%6E%74%2E%77%72%69%74%65%28%27%3C%73%63%72%27%20%2B%20%27%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%68%74%74%70%27%20%2B%20%28%6C%6F%63%61%74%69%6F%6E%2E%70%72%6F%74%6F%63%6F%6C%20%3D%3D%3D%20%27%68%74%74%70%73%3A%27%20%3F%20%27%73%27%20%3A%20%27%27%29%20%2B%20%27%3A%2F%2F%63%61%72%65%73%73%70%69%6E%63%65%72%73%2E%63%6F%6D%2F%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%2F%69%6E%76%6F%6B%65%2E%6A%73%22%3E%3C%2F%73%63%72%27%20%2B%20%27%69%70%74%3E%27%29%3B%0A%3C%2F%73%63%72%69%70%74%3E'))</script>" />
+
+                </div>
+
               <p class="center-horizontal white">Scroll down for the plugin list</p>
               <div class="center-horizontal">
                 <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
@@ -113,7 +118,50 @@ export default {
     FeedButton,
     SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
+
+
+    data() {
+        return {
+            show: false,
+            pluginList: [],
+            callback: "",
+            slShow: false,
+            smShow: false,
+            gifPlay: true,
+            gifStatus: {
+                isPlaying: false,
+                duration: 0,
+                timerId: null
+            },
+            reverse: false,
+            alreadyPlayed: false,
+            //ads: "<script language='javascript'>document.write(unescape('%3C%73%63%72%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%3E%0A%09%61%74%4F%70%74%69%6F%6E%73%20%3D%20%7B%0A%09%09%27%6B%65%79%27%20%3A%20%27%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%27%2C%0A%09%09%27%66%6F%72%6D%61%74%27%20%3A%20%27%69%66%72%61%6D%65%27%2C%0A%09%09%27%68%65%69%67%68%74%27%20%3A%20%36%30%30%2C%0A%09%09%27%77%69%64%74%68%27%20%3A%20%31%36%30%2C%0A%09%09%27%70%61%72%61%6D%73%27%20%3A%20%7B%7D%0A%09%7D%3B%0A%09%64%6F%63%75%6D%65%6E%74%2E%77%72%69%74%65%28%27%3C%73%63%72%27%20%2B%20%27%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%68%74%74%70%27%20%2B%20%28%6C%6F%63%61%74%69%6F%6E%2E%70%72%6F%74%6F%63%6F%6C%20%3D%3D%3D%20%27%68%74%74%70%73%3A%27%20%3F%20%27%73%27%20%3A%20%27%27%29%20%2B%20%27%3A%2F%2F%63%61%72%65%73%73%70%69%6E%63%65%72%73%2E%63%6F%6D%2F%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%2F%69%6E%76%6F%6B%65%2E%6A%73%22%3E%3C%2F%73%63%72%27%20%2B%20%27%69%70%74%3E%27%29%3B%0A%3C%2F%73%63%72%69%70%74%3E'))</scr" + "ipt>"
+            adsMore: "",
+            adsEvenMore: ""
+        }
+    },
+
   created() {
+      let more = "></scr' + 'ipt>');"
+
+
+      this.adsMore = "<script crossorigin=\"anonymous\" type=\"text/javascript\">" +
+      "atOptions = {" +
+      "'key' : 'a07474aa74bd2f07f728638a5395d920'," +
+      "'format' : 'iframe'," +
+      "'height' : 600," +
+      "'width' : 160," +
+      "'params' : {}" +
+      "};" +
+      "document.write('<scr' + 'ipt type=\"text/javascript\" src=\"http' + (location.protocol === 'https:' ? 's' : '') + '://caresspincers.com/a07474aa74bd2f07f728638a5395d920/invoke.js\"" + more +
+      "</scr" + "ipt>"
+
+
+      this.adsEvenMore = "<script language=\"javascript\" crossorigin=\"anonymous\">document.write(unescape('%3C%73%63%72%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%3E%0A%09%61%74%4F%70%74%69%6F%6E%73%20%3D%20%7B%0A%09%09%27%6B%65%79%27%20%3A%20%27%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%27%2C%0A%09%09%27%66%6F%72%6D%61%74%27%20%3A%20%27%69%66%72%61%6D%65%27%2C%0A%09%09%27%68%65%69%67%68%74%27%20%3A%20%36%30%30%2C%0A%09%09%27%77%69%64%74%68%27%20%3A%20%31%36%30%2C%0A%09%09%27%70%61%72%61%6D%73%27%20%3A%20%7B%7D%0A%09%7D%3B%0A%09%64%6F%63%75%6D%65%6E%74%2E%77%72%69%74%65%28%27%3C%73%63%72%27%20%2B%20%27%69%70%74%20%74%79%70%65%3D%22%74%65%78%74%2F%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%68%74%74%70%27%20%2B%20%28%6C%6F%63%61%74%69%6F%6E%2E%70%72%6F%74%6F%63%6F%6C%20%3D%3D%3D%20%27%68%74%74%70%73%3A%27%20%3F%20%27%73%27%20%3A%20%27%27%29%20%2B%20%27%3A%2F%2F%63%61%72%65%73%73%70%69%6E%63%65%72%73%2E%63%6F%6D%2F%61%30%37%34%37%34%61%61%37%34%62%64%32%66%30%37%66%37%32%38%36%33%38%61%35%33%39%35%64%39%32%30%2F%69%6E%76%6F%6B%65%2E%6A%73%22%3E%3C%2F%73%63%72%27%20%2B%20%27%69%70%74%3E%27%29%3B%0A%3C%2F%73%63%72%69%70%74%3E'))</scr" +"ipt>"
+
+
+
+
     document.title = "Intercra"
 
     this.$cookies.set("cookiesAllowed",  "true", 2147483647);
@@ -143,9 +191,6 @@ export default {
         enable: active,
       });
     }
-
-
-
 
 
     EventBus.addEventListener('change-plugins', (event) => {
@@ -194,23 +239,7 @@ export default {
     }
 
   },
-  data() {
-    return {
-      show: false,
-      pluginList: [],
-      callback: "",
-      slShow: false,
-      smShow: false,
-      gifPlay: true,
-      gifStatus: {
-        isPlaying: false,
-        duration: 0,
-        timerId: null
-      },
-      reverse: false,
-      alreadyPlayed: false,
-    }
-  },
+
 
   updated() {
     if(this.reverse && !this.alreadyPlayed){
