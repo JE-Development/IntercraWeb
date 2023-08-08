@@ -191,27 +191,6 @@ export default {
 
   created() {
 
-      this.adsterra = "<h1>hello</h1>"
-
-      this.adsterra = {
-          slots: [
-              {
-                  key : 'a07474aa74bd2f07f728638a5395d920',
-                  format : 'iframe',
-                  height : 600,
-                  width : 160,
-                  params : {}
-              },
-          ],
-          usePrebid: false,
-          useAPS: false,
-          customEvents: {
-              blueBackground: {
-                  eventMessagePrefix: 'BlueBackground:',
-              },
-          },
-      }
-
     let sort = this.getCookies("sorting");
     if(sort != null){
       this.sorting = sort;
