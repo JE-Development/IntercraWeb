@@ -18,7 +18,7 @@ export class Ebay implements PluginInterface, FeedInterface{
         let pc = new PresetController();
         pc.addPreset(PresetEnum.GAMES);
         pc.addPreset(PresetEnum.BOOKS);
-        pc.addPreset(PresetEnum.SHOPPING);
+        //pc.addPreset(PresetEnum.SHOPPING);
         return pc;
     }
 

@@ -17,7 +17,7 @@ export class NewgroundsMovies implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.MOVIES)
+        //pc.addPreset(PresetEnum.MOVIES)
         return pc;
     }
 

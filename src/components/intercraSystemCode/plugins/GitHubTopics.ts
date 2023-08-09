@@ -15,7 +15,7 @@ export class GitHubTopics implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.PROGRAMMING);
+        //pc.addPreset(PresetEnum.PROGRAMMING);
         return pc;
     }
 
