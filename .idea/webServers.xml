@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="f01b8ac2-67ec-49c2-a3e0-0b75671b6965" name="VServer">
+        <fileTransfer accessType="SFTP" host="212.227.183.160" port="22" sshConfigId="1a2f74cf-14d7-40dd-9169-fc8bcdc0418e" sshConfig="root@212.227.183.160:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

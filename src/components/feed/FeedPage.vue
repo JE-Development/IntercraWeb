@@ -121,7 +121,7 @@ export default {
 
             }
               if(this.getCookies("noads") !== "true"){
-                  for (let i = 0; i < this.content.length; i += 4) {
+                  for (let i = 0; i < this.content.length; i += 6) {
                       this.content.splice(i, 0, {
                           choosenView: "adsView",
                       });
@@ -293,7 +293,7 @@ export default {
       }
     },
       handleAds(){
-          for(let i = 0; i < this.content.length; i += 4){
+          for(let i = 0; i < this.content.length; i += 6){
               if(true){
                   const script = document.createElement('script');
                   script.type = 'text/javascript';

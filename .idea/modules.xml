@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../IntercraBackEnd/.idea/IntercraBackEnd.iml" filepath="$PROJECT_DIR$/../IntercraBackEnd/.idea/IntercraBackEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/IntercraWeb.iml" filepath="$PROJECT_DIR$/.idea/IntercraWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../upload/.idea/upload.iml" filepath="$PROJECT_DIR$/../../../upload/.idea/upload.iml" />
     </modules>
   </component>
 </project>

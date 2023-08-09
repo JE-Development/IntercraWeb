@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IntercraWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feed/FeedPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/InformationView.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +67,7 @@
     &quot;git-widget-placeholder&quot;: &quot;new-main&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.31&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/Development/GitHub/DiceBluff&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/upload&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -306,6 +312,8 @@
       <workItem from="1691513573132" duration="550000" />
       <workItem from="1691514268657" duration="239000" />
       <workItem from="1691522504513" duration="287000" />
+      <workItem from="1691585835353" duration="5853000" />
+      <workItem from="1691595758985" duration="1379000" />
     </task>
     <servers />
   </component>

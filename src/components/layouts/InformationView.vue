@@ -1,6 +1,6 @@
 <template>
   <div class="view-border content-layout-color">
-    <div>
+    <div style="overflow: hidden">
       <a :href="url" class="visible-link-color" style="overflow: hidden">{{url}}</a>
       <h2><a :href="url" class="headline-color">{{headline}}</a></h2>
       <p class="teaser-color">{{teaser}}</p>
