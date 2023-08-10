@@ -28,6 +28,7 @@ export class Tenor implements PluginInterface, FeedInterface{
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
         try{
+            await pc.collectRequests(this, true, false)
             await this.startSearch(searchText, pc, false);
             this.finish = true;
             pc.isFinished(this.contentList, this.id);
@@ -38,6 +39,7 @@ export class Tenor implements PluginInterface, FeedInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
+        await pc.collectRequests(this, true, false)
         await this.startSearch(searchText, pc, true);
         this.finish = true;
 

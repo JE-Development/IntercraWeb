@@ -45,7 +45,6 @@ export class DigitalTrends implements PluginInterface, FeedInterface{
 
         for(let i = 0; i < json.length; i++){
             let items = json[i]
-            console.log(items)
             let url = JSON.stringify(items.url).replace(/"/g, '');
             let headline = JSON.stringify(items.headline).replace(/"/g, '');
             let time = JSON.stringify(items.time).replace(/"/g, '');

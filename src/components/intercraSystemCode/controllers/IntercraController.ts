@@ -4,8 +4,8 @@ import SearchResultPage from "../../SearchResultPage.vue";
 
 export class IntercraController{
     pc: PluginController;
-    constructor() {
-        this.pc = new PluginController();
+    constructor(pc: PluginController) {
+        this.pc = pc
     }
 
     startSearch(searchText: string, plugin: string[], token: string, sorting: string, ytToken: string){
@@ -13,7 +13,8 @@ export class IntercraController{
         this.pc.findContent(searchText, plugin, token, ytToken);
     }
     startMoreSearch(searchText: string, plugin: string[], token: string, ytToken: string){
-        this.pc.findMoreContent(searchText, plugin, token, ytToken);
+        //this.pc.findMoreContent(searchText, plugin, token, ytToken);
+        this.pc.getNextData()
     }
     startFeedSearch(plugin: string[]){
         this.pc.findFeedContent(plugin);

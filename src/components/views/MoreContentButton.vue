@@ -11,14 +11,13 @@
 
 
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
-import {IntercraController} from "../intercraSystemCode/controllers/IntercraController";
 
 export default {
   name: "MoreContentButton",
   data() {
     return {
       show: false,
-      ic: new IntercraController(),
+      ic: null
     }
   },
   props: {
@@ -30,8 +29,7 @@ export default {
   methods: {
     onClickButton: function (){
       EventBus.emit("show-loading")
-      this.ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"), this.$cookies.get("token-youtube"));
-      this.ic.changeShow();
+      EventBus.emit("start-more-search")
     },
     getCookies(key){
       return this.$cookies.get(key);

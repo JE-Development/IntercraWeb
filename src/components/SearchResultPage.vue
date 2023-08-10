@@ -176,7 +176,8 @@ export default {
       searchVisibility: true,
       showLoading: true,
       errors: [],
-      ic: new IntercraController(),
+      pc: new PluginController(),
+      ic: new IntercraController(this.pc),
       sorting: "repeat",
       savedPressed: false,
       isSaveContent: false,
@@ -196,6 +197,7 @@ export default {
   },
 
   created() {
+    this.ic = new IntercraController(this.pc)
 
       this.adsterra = {
           slots: [
@@ -223,6 +225,7 @@ export default {
 
 
     EventBus.addEventListener('data-sender', (event) => {
+
       if(this.content.length <= 0){
         this.content = event.data;
       }else{
@@ -250,6 +253,11 @@ export default {
     EventBus.addEventListener('show-loading', (event) => {
       this.showLoading = true;
       this.show = false;
+    })
+
+    EventBus.addEventListener('start-more-search', (event) => {
+      this.ic.startMoreSearch(this.search, this.plugin, this.$cookies.get("token"), this.$cookies.get("token-youtube"));
+      this.ic.changeShow();
     })
 
     EventBus.addEventListener('change-sorting', (event) => {
@@ -351,8 +359,7 @@ export default {
     this.getAllActivePlugins()
 
       if(this.search === "---test-result"){
-          let pc = new PluginController()
-          this.plugins = pc.getPluginsByPresetValue("Shopping")
+          this.plugins = this.pc.getPluginsByPresetValue("Shopping")
           this.search = "test";
 
           for(let i = 0; i < 50; i++){
@@ -373,7 +380,7 @@ export default {
           }else{
               this.showLoading = true;
               this.noPlugin = false;
-              this.ic.startSearch(this.search, this.plugins, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"));
+              this.ic.startSearch(this.search, this.plugins, this.$cookies.get("token"), sorting, this.$cookies.get("token-youtube"), this.pc);
           }
           this.ic.changeShow();
       }

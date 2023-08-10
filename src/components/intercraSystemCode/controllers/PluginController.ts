@@ -101,6 +101,11 @@ export class PluginController {
     hrc = new HttpRequestController()
     searchText = ""
     page = 1
+    nextIndex =  0
+    lists: string[][] = []
+    token = ""
+    ytToken = ""
+    errorPlugins = []
 
 
     constructor() {
@@ -224,6 +229,10 @@ export class PluginController {
         this.activePlugins = plugin
         this.finishedPlugins = [];
         this.searchText = searchText
+        this.token = token
+        this.ytToken = ytToken
+        this.all = []
+        this.errorPlugins = []
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -257,7 +266,7 @@ export class PluginController {
         this.searchText = searchText
 
         for (let i = 0; i < this.plugins.length; i++) {
-            if (this.activePlugins.includes(this.plugins[i].getId())) {
+            if (this.activePlugins.includes(this.plugins[i].getId()) && !this.errorPlugins.includes(this.plugins[i].getId())) {
                 if(this.special.includes(this.plugins[i].getId())) {
                     if(this.plugins[i].getId() === "spotify_tracks") {
                         let st = searchText + ";;;" + token;
@@ -306,9 +315,14 @@ export class PluginController {
         if(noMore){
             this.isFinished([], self.getId())
         }
-        console.log(this.collected)
-        console.log(this.activePlugins)
         if(this.collected.length === this.activePlugins.length){
+
+            /*setTimeout(() => {
+                let notFinished = this.getNotFinished()
+                for(let i = 0; i < notFinished.length; i++){
+                    this.gotErrorMessage(this.getIdFromName(notFinished[i]), "Timeout")
+                }
+            }, 10000);*/
 
             let plugs = ""
             for(let i = 0; i < this.forRequest.length; i++){
@@ -349,12 +363,16 @@ export class PluginController {
     }
 
     makeFinish(){
+
         let check = this.checkAllFinished();
 
         EventBus.emit("not-finished", this.getNotFinished())
 
 
         if (check) {
+
+            this.collected = []
+            this.forRequest = []
 
 
             let box: string[][] = [];
@@ -404,12 +422,25 @@ export class PluginController {
                     }
                 }
             }
-
-
-            EventBus.emit('data-sender', this.all)
-
-
+            this.getNextData()
         }
+    }
+
+    getData(){
+        return this.all
+    }
+
+    getNextData(){
+        const endIndex = this.nextIndex + 30;
+        const items = this.all.slice(this.nextIndex, endIndex);
+
+        this.nextIndex = endIndex;
+
+        if (this.nextIndex >= this.all.length) {
+            this.findMoreContent(this.searchText, this.activePlugins, this.token, this.ytToken)
+        }
+
+        EventBus.emit('data-sender', items)
     }
 
     isFeedFinished(contentLis: Map<string, string>[], id: string) {
@@ -503,6 +534,7 @@ export class PluginController {
 
     gotError(id: string) {
         this.finishedPlugins.push(id);
+        this.errorPlugins.push(id);
 
         EventBus.emit("not-finished", this.getNotFinished())
 
@@ -518,7 +550,9 @@ export class PluginController {
     }
 
     gotErrorMessage(id: string, message: string) {
+        console.log("in got error message: " + id)
         this.finishedPlugins.push(id);
+        this.errorPlugins.push(id);
 
         EventBus.emit("not-finished", this.getNotFinished())
 
@@ -529,6 +563,7 @@ export class PluginController {
             }
         }
         EventBus.emit('error-sender', this.errorNames)
+        this.makeFinish()
 
     }
 
@@ -665,8 +700,11 @@ export class PluginController {
             }
         }
 
-        EventBus.emit('data-sender', this.all)
+        //EventBus.emit('data-sender', true)
+        this.nextIndex = 0
+        this.getNextData()
     }
+
 
     shuffleArray(array: string[]) {
         for (let i = array.length - 1; i > 0; i--) {

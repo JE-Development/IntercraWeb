@@ -42,7 +42,8 @@ export class HttpRequestController {
 
     async endpointRequest(url: string, pc: PluginController): Promise<any>{
 
-        // SSE-Verbindung herstellen
+        console.log("new event source")
+
         const eventSource = new EventSource(url);
 
         // SSE-Ereignisse abonnieren
@@ -50,6 +51,10 @@ export class HttpRequestController {
             const eventData = JSON.parse(event.data);
             pc.endpointCallback(eventData)
         };
+
+        setTimeout(() => {
+            eventSource.close();
+        }, 10000);
 
     }
 

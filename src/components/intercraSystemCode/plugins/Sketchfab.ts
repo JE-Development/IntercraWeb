@@ -23,6 +23,7 @@ export class Sketchfab implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         try {
+            await pc.collectRequests(this, true, false)
             await this.startSearch(searchText, pc);
             this.finish = true;
 
@@ -34,6 +35,7 @@ export class Sketchfab implements PluginInterface, FeedInterface{
 
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
+        await pc.collectRequests(this, true, true)
         this.contentList = [];
 
         pc.isFinished(this.contentList, this.id);

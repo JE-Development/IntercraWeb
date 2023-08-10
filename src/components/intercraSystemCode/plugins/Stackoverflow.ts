@@ -26,6 +26,7 @@ export class Stackoverflow implements PluginInterface, FeedInterface{
 
     async findContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
 
+        await pc.collectRequests(this, true, false)
         await this.startSearch(searchText, pc);
         this.finish = true;
 
@@ -35,6 +36,7 @@ export class Stackoverflow implements PluginInterface, FeedInterface{
     async findMoreContent(searchText: string, countryUrl: string, pc: PluginController): Promise<void> {
         this.contentList = [];
         this.page = this.page + 1;
+        await pc.collectRequests(this, true, false)
         await this.startSearch(searchText, pc);
         this.finish = true;
 
