@@ -17,6 +17,7 @@ export class LiveScience implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.NEWS)
+        pc.addPreset(PresetEnum.FEED_SUPPORTED)
         return pc;
     }
 

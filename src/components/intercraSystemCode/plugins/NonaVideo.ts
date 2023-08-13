@@ -16,7 +16,7 @@ export class NonaVideo implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.VIDEOS);
+        //pc.addPreset(PresetEnum.VIDEOS);
         pc.addPreset(PresetEnum.PODCAST);
         return pc;
     }

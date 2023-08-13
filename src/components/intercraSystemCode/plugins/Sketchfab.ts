@@ -18,6 +18,7 @@ export class Sketchfab implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.MODELS3D);
+        pc.addPreset(PresetEnum.FEED_SUPPORTED);
         return pc;
     }
 

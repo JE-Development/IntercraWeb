@@ -185,7 +185,10 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-      adsIdBanner: "cf408d86b5915d37b8e8c46e45304282"
+      adsIdBanner: "cf408d86b5915d37b8e8c46e45304282",
+        nextIndex: 0,
+        allContent: [],
+        contentLength: 0
      };
   },
 
@@ -198,18 +201,29 @@ export default {
 
 
     EventBus.addEventListener('data-sender', (event) => {
-      if(this.content.length <= 0){
-        this.content = event.data;
+      if(this.contentLength <= 0){
+        this.allContent = event.data;
       }else{
-        this.content = this.content.concat(event.data);
+        this.allContent = this.allContent.concat(event.data);
       }
       if(this.getCookies("noads") !== "true"){
-          for (let i = 0; i < this.content.length; i += 6) {
-              this.content.splice(i, 0, {
+          for (let i = 0; i < this.allContent.length; i += 6) {
+              this.allContent.splice(i, 0, {
                   choosenView: "adsView",
               });
           }
       }
+      if(this.allContent.length !== this.contentLength){
+          if(event.data.length > 30){
+              this.displayNext()
+          }else{
+              this.content = this.allContent
+          }
+      }
+
+
+
+        this.contentLength = this.allContent.length
 
       this.waitingPlugins = false;
       this.show = true;
@@ -237,6 +251,13 @@ export default {
       this.showLoading = true;
       this.show = false;
     })
+
+      EventBus.addEventListener('load-more', (event) => {
+          this.displayNext()
+          this.waitingPlugins = false;
+          this.show = true;
+          this.showLoading = false;
+      })
 
     EventBus.addEventListener('change-sorting', (event) => {
       this.ic.setSorting(event.data);
@@ -472,7 +493,7 @@ export default {
           this.plugins.push(all[i])
         }
       }
-      console.log(this.plugins)
+      //console.log(this.plugins)
     },
       handleAds(){
         for(let i = 0; i < this.content.length; i += 6){
@@ -520,6 +541,29 @@ export default {
                 });
             }
         }
+      },
+
+      displayNext() {
+          const endIndex = this.nextIndex + 30;
+          if(this.content.length > 0){
+              this.content = this.content.concat(this.allContent.slice(this.nextIndex, endIndex))
+          }else{
+              this.content = this.allContent.slice(this.nextIndex, endIndex)
+          }
+
+          this.nextIndex = endIndex;
+
+          this.handleAds()
+
+          if (this.nextIndex >= this.allContent.length) {
+              console.log("in more")
+            this.starMoreSearch()
+          }
+      },
+
+      starMoreSearch(){
+          this.ic.startMoreSearch(this.search, this.plugins, this.$cookies.get("token"), this.$cookies.get("token-youtube"));
+          this.ic.changeShow();
       }
 
   }

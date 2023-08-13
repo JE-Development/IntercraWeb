@@ -20,7 +20,7 @@ export class AppStore implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.GAMES);
-        pc.addPreset(PresetEnum.SOFTWARE);
+        //pc.addPreset(PresetEnum.SOFTWARE);
         return pc;
     }
 

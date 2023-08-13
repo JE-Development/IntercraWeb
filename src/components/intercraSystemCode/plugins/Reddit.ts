@@ -19,7 +19,7 @@ export class Reddit implements PluginInterface, FeedInterface{
         pc.addPreset(PresetEnum.NEWS);
         pc.addPreset(PresetEnum.GAMES);
         pc.addPreset(PresetEnum.INFORMATION);
-        pc.addPreset(PresetEnum.PROGRAMMING);
+        //pc.addPreset(PresetEnum.PROGRAMMING);
         return pc;
     }
 

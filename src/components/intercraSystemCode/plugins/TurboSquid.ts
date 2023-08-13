@@ -80,7 +80,7 @@ export class TurboSquid implements PluginInterface, FeedInterface{
 
                 this.contentList.push(map);
             }catch (e){
-                console.log(e)
+                //console.log(e)
             }
         }
     }

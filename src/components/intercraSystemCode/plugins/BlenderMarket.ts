@@ -16,7 +16,7 @@ export class BlenderMarket implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.SHOPPING);
+        //pc.addPreset(PresetEnum.SHOPPING);
         pc.addPreset(PresetEnum.MODELS3D);
         return pc;
     }

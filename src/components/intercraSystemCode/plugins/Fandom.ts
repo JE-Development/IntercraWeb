@@ -20,6 +20,7 @@ export class Fandom implements PluginInterface, FeedInterface{
         pc.addPreset(PresetEnum.NEWS);
         pc.addPreset(PresetEnum.GAMES);
         pc.addPreset(PresetEnum.INFORMATION);
+        pc.addPreset(PresetEnum.FEED_SUPPORTED);
         return pc;
     }
 

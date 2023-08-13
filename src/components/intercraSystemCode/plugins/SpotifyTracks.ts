@@ -20,6 +20,7 @@ export class SpotifyTracks implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.AUDIO);
+        pc.addPreset(PresetEnum.FEED_SUPPORTED)
         return pc;
     }
 

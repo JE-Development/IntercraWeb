@@ -18,6 +18,7 @@ export class PNGWing implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.IMAGES);
+        pc.addPreset(PresetEnum.FEED_SUPPORTED)
         return pc;
     }
 

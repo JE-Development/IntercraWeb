@@ -18,6 +18,7 @@ export class NewgroundsGames implements PluginInterface, FeedInterface{
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.GAMES)
+        pc.addPreset(PresetEnum.FEED_SUPPORTED)
         return pc;
     }
 

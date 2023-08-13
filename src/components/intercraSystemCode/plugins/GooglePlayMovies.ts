@@ -15,8 +15,8 @@ export class GooglePlayMovies implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.VIDEOS);
-        pc.addPreset(PresetEnum.MOVIES);
+        //pc.addPreset(PresetEnum.VIDEOS);
+        //pc.addPreset(PresetEnum.MOVIES);
         return pc;
     }
 

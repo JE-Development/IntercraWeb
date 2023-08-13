@@ -5,14 +5,14 @@ import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class VentureBeat implements PluginInterface, FeedInterface{
+export class PopSci implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
-    displayName = "VentureBeat";
-    id = "venturebeat"
+    displayName = "Popular Science";
+    id = "popsci";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
@@ -54,47 +54,29 @@ export class VentureBeat implements PluginInterface, FeedInterface{
             //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
+            console.log(error)
             pc.gotError(this.id);
         }
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByTagName("article");
+        const article = document.getElementById("incSearch").children;
         for(let i = 0; i < article.length; i++){
             const e = article[i];
             let map = new Map<string, string>;
 
-            let link = e.getElementsByTagName("h2")[0].children[0];
+            let link = e.getElementsByClassName("article-item__title")[0]
             map.set("url", link.getAttribute("href"));
-            map.set("headline", link.textContent);
+            map.set("headline", e.getElementsByTagName("h5")[0].textContent);
 
-            try{
-                let image = e.getElementsByTagName("img")[0];
-                map.set("imageUrl", image.getAttribute("src"));
-            }catch (e){
-                //no image
-            }
+            let image = e.getElementsByTagName("img")[0];
+            map.set("imageUrl", image.getAttribute("src"));
 
-            try{
-                let type = e.getElementsByClassName("article-type")[0]
-                map.set("type", type.textContent)
-            }catch (e){
-                //no type
-            }
+            let topic = e.getElementsByClassName("article-item-sub-header")[0]
+            map.set("topic", topic.textContent)
 
-            try{
-                let author = e.getElementsByClassName("ArticleListing__author")[0]
-                map.set("author", author.textContent)
-            }catch (e){
-                //no author
-            }
-
-            try{
-                let time = e.getElementsByTagName("time")[0]
-                map.set("time", time.textContent)
-            }catch (e){
-                //no time
-            }
+            let time = e.getElementsByClassName("article-item__date")[0]
+            map.set("time", time.textContent)
 
             this.contentList.push(map)
         }
@@ -149,7 +131,7 @@ export class VentureBeat implements PluginInterface, FeedInterface{
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                platform: contentMap.get("type"),
+                platform: contentMap.get("topic"),
                 image: contentMap.get("imageUrl"),
                 author: contentMap.get("author"),
                 date: contentMap.get("time"),
@@ -166,10 +148,7 @@ export class VentureBeat implements PluginInterface, FeedInterface{
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");
             this.startFeedSearch(document);
-            this.finish = true;
-
-            //let pc = new PluginController();
-            pc.isFeedFinished(this.contentList, this.id);
+            pc.isFeedFinished(this.contentListFeed, this.id);
         }catch (error){
             console.log(error)
             pc.gotFeedError(this.id);
@@ -177,74 +156,51 @@ export class VentureBeat implements PluginInterface, FeedInterface{
     }
 
     async findMoreFeedContent(pc: PluginController): Promise<void> {
-        let list: Map<string, string>[] = []
-        pc.isFeedFinished(list, this.id)
+        this.contentListFeed = [];
+        pc.isFeedFinished(this.contentListFeed, this.id);
     }
 
 
     startFeedSearch(document: any): void{
-        const article = document.getElementsByTagName("article");
+        const article = document.getElementsByClassName("Post")
         for(let i = 0; i < article.length; i++){
-            try{
-                const e = article[i];
-                let map = new Map<string, string>;
+            const e = article[i];
+            let map = new Map<string, string>;
 
-                let link = e.getElementsByClassName("ArticleListing__title-link")[0];
-                map.set("url", link.getAttribute("href"));
-                map.set("headline", link.textContent);
+            let link = e.getElementsByClassName("Post-title")[0];
+            map.set("url", link.getAttribute("href"));
+            map.set("headline", link.textContent);
 
-                try{
-                    let image = e.getElementsByTagName("img")[0];
-                    map.set("imageUrl", image.getAttribute("src"));
-                }catch (e){
-                    //no image
-                }
+            let image = e.getElementsByTagName("img")[0];
+            map.set("imageUrl", image.getAttribute("src"));
 
-                try{
-                    let type = e.getElementsByClassName("article-type")[0]
-                    map.set("type", type.textContent)
-                }catch (e){
-                    //no type
-                }
+            /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
+            map.set("teaser", teaser.textContent)*/
 
-                try{
-                    let author = e.getElementsByClassName("ArticleListing__author")[0]
-                    map.set("author", author.textContent)
-                }catch (e){
-                    //no author
-                }
+            let date = e.getElementsByClassName("Post-date")[0]
+            map.set("date", date.textContent)
 
-                try{
-                    let time = e.getElementsByTagName("time")[0]
-                    map.set("time", time.textContent)
-                }catch (e){
-                    //no time
-                }
-
-                this.contentListFeed.push(map)
-            }catch (e){
-
-            }
+            this.contentListFeed.push(map)
         }
     }
 
-    getFeedView(): any[] {
-
+    getFeedView(): string[] {
         let content: any[] = [];
 
         for(let i = 0; i < this.contentListFeed.length; i++){
 
             let contentMap = this.contentListFeed[i];
 
+
+
             content.push({
                 choosenView: "articleView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                platform: contentMap.get("type"),
+                teaser: contentMap.get("teaser"),
                 image: contentMap.get("imageUrl"),
-                author: contentMap.get("author"),
-                date: contentMap.get("time"),
+                date: contentMap.get("date"),
             })
         }
 

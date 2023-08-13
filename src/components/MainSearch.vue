@@ -48,7 +48,11 @@
                 <div class="center-horizontal">
                   <div>
                     <div style="height: 20px"/>
-                    <FeedButton/>
+                      <UsageButton :onClick="enterClicked">
+                          <p class="white more-content-button-text">Start Search</p>
+                      </UsageButton>
+
+                      <FeedButton/>
                   </div>
                 </div>
               </div>
@@ -103,11 +107,13 @@ import {GoogleController} from "./intercraSystemCode/controllers/GoogleControlle
 import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
 import FeedButton from "./views/FeedButton.vue";
+import UsageButton from "./views/UsageButton.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
   components: {
+      UsageButton,
     FeedButton,
     SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
 
@@ -291,11 +297,14 @@ export default {
 
     startSearch(){
       let searchText = this.$refs.input.value;
+      if(searchText === ""){
+          this.$notify("There is nothing in the search field");
+      }else{
+          this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
-        this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
-
-        let route = this.$router.resolve({path: '/search/' + searchText});
-        setTimeout(() => window.open(route.href, '_self'), 500);
+          let route = this.$router.resolve({path: '/search/' + searchText});
+          setTimeout(() => window.open(route.href, '_self'), 500);
+      }
 
     },
 
