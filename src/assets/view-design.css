@@ -241,6 +241,13 @@
     width: 100px;
 }
 
+.check-box-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
 .result-root{
     display: flex;
     overflow: hidden
@@ -256,6 +263,32 @@
         width: 100vw;
     }
 
+}
+
+@media (max-width: 1260px){
+    .check-box-grid{
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+@media (max-width: 940px){
+    .check-box-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 630px) {
+    .check-box-grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+    }
 }
 
 @media (max-width: 740px){
@@ -292,7 +325,6 @@
         max-height: 20vw;
     }
 }
-
 @media (max-width: 420px) {
 
     .preset-border{

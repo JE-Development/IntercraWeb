@@ -644,4 +644,13 @@ export class PluginController {
         }
         return "null";
     }
+
+    getPresetValuesFromPlugin(id: string): string[]{
+        for(let i = 0; i < this.plugins.length; i++){
+            if(this.plugins[i].getId() === id){
+                return this.plugins[i].addToPreset().getPresetList()
+            }
+        }
+        return []
+    }
 }

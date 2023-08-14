@@ -12,7 +12,6 @@
       <paths name="VServer">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/../IntercraBackEnd" web="/" />
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>

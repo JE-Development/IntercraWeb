@@ -65,27 +65,24 @@
         <PresetView/>
       </div>
       <div class="center-horizontal">
-        <div id="plugin-list" class="block-display">
+        <div id="plugin-list" class="block-display check-box-grid ">
           <p v-if="isCookiesAllowed()"></p>
           <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
           <PluginCheckBox
               v-for="(pl, index) in pluginList"
               :title="pl.title"
               :check="pl.enable"
+              :preset="pl.preset"
               @click="onCheckBoxClicked(index)">
 
           </PluginCheckBox>
 
         </div>
       </div>
-        <Adsense
-                data-ad-test="on"
-                data-ad-client="ca-pub-3904729559747077"
-                data-ad-slot="4137347402">
-        </Adsense>
 
-
-      <MainNav/>
+      <div style="margin-top: 70px">
+        <MainNav/>
+      </div>
     </div>
   </div>
 </template>
@@ -149,6 +146,7 @@ export default {
 
     let pc = new PluginController();
     let allPlugins = pc.getPluginList();
+    pc.getPresetValuesFromPlugin("jssnrfkjen")
 
     this.pluginList = [];
 
@@ -163,11 +161,15 @@ export default {
       }else{
         active = this.getEnabledFromCookie(allPlugins[i].getId());
       }
+
+
+
       this.pluginList.push({
         id: i,
         title: allPlugins[i].getPluginDisplayName(),
         pluginId: allPlugins[i].getId(),
         enable: active,
+        preset: pc.getPresetValuesFromPlugin(allPlugins[i].getId())
       });
     }
 

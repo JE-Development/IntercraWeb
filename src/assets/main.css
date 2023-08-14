@@ -171,13 +171,10 @@ b{
 
 .block-display{
   display: block;
-
-  margin-bottom: 50px;
 }
 
 #plugin-list{
-  width: 500px;
-  margin-left: 15vw;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -271,6 +268,14 @@ b{
   top: -15vw;
 }
 
+.decent-text{
+  font-size: 10px;
+}
+
+.preset-text{
+  margin-left: 10px;
+  margin-top: -5px;
+}
 
 @media (hover: hover) {
   a:hover {
