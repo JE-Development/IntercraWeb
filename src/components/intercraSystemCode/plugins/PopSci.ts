@@ -164,23 +164,27 @@ export class PopSci implements PluginInterface, FeedInterface{
     startFeedSearch(document: any): void{
         const article = document.getElementsByClassName("Post")
         for(let i = 0; i < article.length; i++){
-            const e = article[i];
-            let map = new Map<string, string>;
+            try{
+                const e = article[i];
+                let map = new Map<string, string>;
 
-            let link = e.getElementsByClassName("Post-title")[0];
-            map.set("url", link.getAttribute("href"));
-            map.set("headline", link.textContent);
+                let link = e.getElementsByClassName("Post-title")[0];
+                map.set("url", link.getAttribute("href"));
+                map.set("headline", link.textContent);
 
-            let image = e.getElementsByTagName("img")[0];
-            map.set("imageUrl", image.getAttribute("src"));
+                let image = e.getElementsByTagName("img")[0];
+                map.set("imageUrl", image.getAttribute("src"));
 
-            /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
-            map.set("teaser", teaser.textContent)*/
+                /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
+                map.set("teaser", teaser.textContent)*/
 
-            let date = e.getElementsByClassName("Post-date")[0]
-            map.set("date", date.textContent)
+                let date = e.getElementsByClassName("Post-date")[0]
+                map.set("date", date.textContent)
 
-            this.contentListFeed.push(map)
+                this.contentListFeed.push(map)
+            }catch (e){
+
+            }
         }
     }
 

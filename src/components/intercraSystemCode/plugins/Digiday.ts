@@ -5,20 +5,18 @@ import type {PluginController} from "../controllers/PluginController";
 import {PresetEnum} from "../enums/PresetEnum";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
-export class PlayStationBlog implements PluginInterface, FeedInterface{
+export class Digiday implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
     contentListFeed: Map<string, string>[] = [];
     page: number = 1;
 
-
-    displayName = "PlayStation Blog";
-    id = "ps_blog";
+    displayName = "Digiday";
+    id = "digiday";
 
     addToPreset(): PresetController {
         let pc = new PresetController();
         pc.addPreset(PresetEnum.NEWS)
-        pc.addPreset(PresetEnum.GAMES)
         pc.addPreset(PresetEnum.FEED_SUPPORTED)
         return pc;
     }
@@ -62,21 +60,24 @@ export class PlayStationBlog implements PluginInterface, FeedInterface{
     }
 
     startSearch(document: any): void{
-        const article = document.getElementsByClassName("search-results-grid")[0].children;
-        for(let i = 0; i < article.length; i++){
+        const article = document.getElementsByClassName("latest_articles")[0].firstElementChild.children
+        for(let i = 1; i < article.length; i++){
             const e = article[i];
             let map = new Map<string, string>;
 
-            let link = e.getElementsByTagName("h3")[0].children[0]
+            let link = e.getElementsByTagName("h3")[0].firstElementChild
             map.set("url", link.getAttribute("href"));
             map.set("headline", link.textContent);
 
-            let time = e.getElementsByClassName("post-card__meta-date")[0]
-            map.set("time", time.textContent.replace("Date published:", ""))
+            let image = e.getElementsByTagName("img")[0];
+            map.set("imageUrl", image.getAttribute("src"));
+            map.set("scaleIndex", "300")
 
-            let sub = e.getElementsByClassName("post-card__author-name")[0]
-            map.set("author", sub.firstElementChild.textContent)
-            map.set("role", sub.getElementsByTagName("span")[0].textContent)
+            let topic = e.getElementsByClassName("upper-title")[0]
+            map.set("topic", topic.textContent)
+
+            let time = e.getElementsByClassName("article-info")[0]
+            map.set("time", time.textContent)
 
             this.contentList.push(map)
         }
@@ -131,10 +132,11 @@ export class PlayStationBlog implements PluginInterface, FeedInterface{
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
                 pluginName: this.displayName,
-                platform: contentMap.get("role"),
+                platform: contentMap.get("topic"),
                 image: contentMap.get("imageUrl"),
                 author: contentMap.get("author"),
                 date: contentMap.get("time"),
+                scaleIndex: contentMap.get("scaleIndex")
             })
         }
 
@@ -148,6 +150,18 @@ export class PlayStationBlog implements PluginInterface, FeedInterface{
             const parser = new DOMParser();
             const document: any = parser.parseFromString(text, "text/html");
             this.startFeedSearch(document);
+            //pc.isFeedFinished(this.contentListFeed, this.id);
+        }catch (error){
+            console.log(error)
+            //pc.gotFeedError(this.id);
+        }
+
+        try {
+            let html = await fetch("https://intercra-backend.jason-apps.workers.dev/html/feed/" + this.id + "_podcast");
+            let text = await html.text();
+            const parser = new DOMParser();
+            const document: any = parser.parseFromString(text, "text/html");
+            this.startFeedSearchPodcast(document);
             pc.isFeedFinished(this.contentListFeed, this.id);
         }catch (error){
             console.log(error)
@@ -162,27 +176,64 @@ export class PlayStationBlog implements PluginInterface, FeedInterface{
 
 
     startFeedSearch(document: any): void{
-        const article = document.getElementsByTagName("article")
+        const article = document.getElementsByTagName("li")
         for(let i = 0; i < article.length; i++){
             try{
                 const e = article[i];
                 let map = new Map<string, string>;
 
-                let link = e.getElementsByClassName("post-card__title")[0].firstElementChild
+                let link = e.getElementsByClassName("title")[0];
+                console.log(link)
+                if(link === undefined){
+                    link = e.getElementsByClassName("link")[0]
+                }
                 map.set("url", link.getAttribute("href"));
                 map.set("headline", link.textContent);
 
-                let image = e.getElementsByTagName("img")[0];
-                map.set("imageUrl", image.getAttribute("src"));
+                try{
+                    let image = e.getElementsByTagName("img")[0];
+                    map.set("imageUrl", image.getAttribute("src"));
+                    map.set("scaleIndex", "300")
+                }catch (e){}
 
                 /*let teaser = e.querySelector('[${data-component}="${PostInfo}"]')[0].children[1]
                 map.set("teaser", teaser.textContent)*/
 
-                let date = e.getElementsByClassName("post-card__meta-date")[0]
-                map.set("date", date.textContent)
+                let topic = e.getElementsByClassName("upper-title")[0]
+                map.set("topic", topic.textContent)
+
+                map.set("displayName", "Digiday")
 
                 this.contentListFeed.push(map)
-            }catch (e){}
+            }catch (e){
+
+            }
+        }
+    }
+
+    startFeedSearchPodcast(document: any): void{
+        const article = document.getElementsByClassName("latest_articles")[0].firstElementChild.children
+        for(let i = 0; i < article.length; i++){
+            const e = article[i];
+            let map = new Map<string, string>;
+
+            let link = e.getElementsByTagName("h3")[0].firstElementChild
+            map.set("url", link.getAttribute("href"));
+            map.set("headline", link.textContent);
+
+            let image = e.getElementsByTagName("img")[0];
+            map.set("imageUrl", image.getAttribute("src"));
+            map.set("scaleIndex", "300")
+
+            let topic = e.getElementsByClassName("upper-title")[0]
+            map.set("topic", topic.textContent)
+
+            let time = e.getElementsByClassName("article-info")[0]
+            map.set("time", time.textContent)
+
+            map.set("displayName", "Digiday (Podcast)")
+
+            this.contentListFeed.push(map)
         }
     }
 
@@ -199,9 +250,10 @@ export class PlayStationBlog implements PluginInterface, FeedInterface{
                 choosenView: "articleView",
                 url: contentMap.get("url"),
                 headline: contentMap.get("headline"),
-                pluginName: this.displayName,
-                teaser: contentMap.get("teaser"),
-                date: contentMap.get("date"),
+                pluginName: contentMap.get("displayName"),
+                image: contentMap.get("imageUrl"),
+                platform: contentMap.get("topic"),
+                scaleIndex: contentMap.get("scaleIndex")
             })
         }
 

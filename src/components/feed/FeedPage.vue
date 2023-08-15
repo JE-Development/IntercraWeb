@@ -9,7 +9,7 @@
                 The plugin "Spotify Tracks" was disabled. To use it disable all other plugins.
               </h4>
             </div>
-              <h4 class="complementary-color">Remember, not all websites are supported.</h4>
+              <h4 class="complementary-color">Keep in mind that only websites containing the "Supports Feed" preset are supported.</h4>
             <div v-if="waitingPlugins != null && waitingPlugins.length > 0">
               <div id="searchRoot">
                 <div id="loading-result" class="center-horizontal">

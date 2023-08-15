@@ -85,6 +85,7 @@ import {TheHill} from "../plugins/TheHill";
 import {Kochplanet} from "../plugins/Kochplanet";
 import {PopSci} from "../plugins/PopSci";
 import {PlayStationBlog} from "../plugins/PlayStationBlog";
+import {Digiday} from "../plugins/Digiday";
 
 export class PluginController {
 
@@ -184,6 +185,7 @@ export class PluginController {
         //this.anyPlugins.push(new Kochplanet());
         this.anyPlugins.push(new PopSci());
         this.anyPlugins.push(new PlayStationBlog());
+        this.anyPlugins.push(new Digiday());
 
         this.special.push(new SpotifyTracks().id);
         this.special.push(new YoutubeVideo().id);
