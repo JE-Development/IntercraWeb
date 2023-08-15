@@ -33,6 +33,10 @@
             </div>
             <div class="center">
               <div class="search-box">
+                  <div class="center-horizontal">
+                      <FeedbackButton/>
+                      <FeedButton/>
+                  </div>
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
@@ -51,8 +55,6 @@
                       <UsageButton :onClick="enterClicked">
                           <p class="white more-content-button-text">Start Search</p>
                       </UsageButton>
-
-                      <FeedButton/>
                   </div>
                 </div>
               </div>
@@ -105,11 +107,13 @@ import MainNav from "./views/MainNav.vue";
 import SocialMediaPopup from "./views/SocialMediaPopup.vue";
 import FeedButton from "./views/FeedButton.vue";
 import UsageButton from "./views/UsageButton.vue";
+import FeedbackButton from "./views/FeedbackButton.vue";
 
 export default {
   //npm run dev | npm run build
   name: "MainSearch",
   components: {
+      FeedbackButton,
       UsageButton,
     FeedButton,
     SocialMediaPopup, MainNav, PresetView, PluginCheckBox, PluginPopup, ViewTemplatesPage, SpotifyLoginPopup},
