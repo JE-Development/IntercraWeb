@@ -11,21 +11,10 @@
               <video ref="video" class="absolute video-effect" src="../assets/intercra-video.mp4" type="video/mp4"/>
               <video ref="videoreverse" class="absolute video-effect" v-if="reverse" src="../assets/intercra-video-reverse.mp4" type="video/mp4"/>
             </div>
+              <MainNav v-if="checkScreenSizeForVideo()"/>
           </div>
           <div class="absolute">
             <div class="scroll-down">
-                <div>
-
-                    <!--<div id="atContainer-a07474aa74bd2f07f728638a5395d920"></div>/!-->
-
-
-
-                </div>
-
-                <div>
-
-                </div>
-
               <p class="center-horizontal white">Scroll down for the plugin list</p>
               <div class="center-horizontal">
                 <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
@@ -33,14 +22,14 @@
             </div>
             <div class="center">
               <div class="search-box">
-                  <div class="center-horizontal">
+                  <div class="center-horizontal" style="margin-bottom: 30px">
                       <FeedbackButton/>
                       <FeedButton/>
                   </div>
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
-                <div>
+                <div class="center-horizontal">
                   <input
                       ref="input"
                       v-on:focus="inputFocus()"
@@ -82,9 +71,11 @@
         </div>
       </div>
 
-      <div style="margin-top: 70px">
-        <MainNav/>
-      </div>
+        <div style="margin-top: 70px">
+            <MainNav v-if="!checkScreenSizeForVideo()"/>
+        </div>
+
+
     </div>
   </div>
 </template>
@@ -202,6 +193,10 @@ export default {
     EventBus.addEventListener('open-feed', (event) => {
       this.openFeed()
     })
+
+      EventBus.addEventListener('open-feedback', (event) => {
+          this.openFeedback()
+      })
 
     EventBus.addEventListener('open-settings', (event) => {
       this.openSettings()
@@ -383,6 +378,13 @@ export default {
       let route = this.$router.resolve({path: '/feed'});
       setTimeout(() => window.open(route.href, '_self'), 500);
     },
+
+      openFeedback(){
+          this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
+
+          let route = this.$router.resolve({path: '/feedback'});
+          setTimeout(() => window.open(route.href, '_self'), 500);
+      },
 
     openSettings(){
       this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")

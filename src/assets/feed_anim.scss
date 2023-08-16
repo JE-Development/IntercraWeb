@@ -34,3 +34,9 @@
         background-position: 200% 200%;
     }
 }
+
+@media (max-width: 420px) {
+    .feed-button{
+        width: 45vw;
+    }
+}

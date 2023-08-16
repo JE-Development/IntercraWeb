@@ -1,0 +1,95 @@
+.feedback-page{
+    margin: 20px;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.feedback-item{
+    max-width: 31vw;
+}
+
+.feedback-view-border{
+    width: 31vw;
+    border: solid;
+    border-radius: 12px;
+    border-color: transparent;
+    margin-top: 20px;
+}
+
+.feedback-code-color-0{
+    color: #ff460b;
+}
+.feedback-code-color-1{
+    color: #ffc400;
+}
+.feedback-code-color-2{
+    color: #009dff;
+}
+.feedback-code-color-3{
+    color: #00ff06;
+}
+
+
+
+
+@media (max-width: 1500px) {
+
+    .feedback-view-border{
+        width: 45vw;
+        border: solid;
+        border-radius: 12px;
+        border-color: transparent;
+        margin-top: 20px;
+    }
+
+
+
+    .feedback-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .feedback-item{
+        max-width: 48vw;
+    }
+}
+
+@media (max-width: 950px) {
+
+    .feedback-view-border{
+        width: 90vw;
+        border: solid;
+        border-radius: 12px;
+        border-color: transparent;
+        margin-top: 20px;
+    }
+
+
+
+    .feedback-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        align-items: center;
+        justify-items: center;
+    }
+
+    .feedback-item{
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 700px) {
+    .view-border{
+        width: 90vw;
+    }
+}

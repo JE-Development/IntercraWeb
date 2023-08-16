@@ -2,7 +2,7 @@
 <template>
   <div class="button-layout">
       <button class="feed-button center-horizontal" @click="handleClick()">
-        <p class="text-black more-content-button-text">Give Feedback</p>
+        <p class="text-black main-button-text">Suggestions</p>
       </button>
   </div>
 </template>
