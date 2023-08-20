@@ -22,7 +22,7 @@
             </div>
             <div class="center">
               <div class="search-box">
-                  <div class="center-horizontal" style="margin-bottom: 30px">
+                  <div class="center-horizontal">
                       <FeedbackButton/>
                       <FeedButton/>
                   </div>
