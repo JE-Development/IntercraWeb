@@ -99,6 +99,8 @@ export class PluginController {
     sorting = "repeat";
     all: string[] = []
 
+    errPlugins: string[] = []
+
 
     constructor() {
 
@@ -223,6 +225,9 @@ export class PluginController {
     async findContent(searchText: string, plugin: string[], token: string, ytToken: string) {
         this.activePlugins = plugin
         this.finishedPlugins = [];
+        this.errPlugins = []
+
+        this.configTimeout();
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -250,8 +255,10 @@ export class PluginController {
 
     async findMoreContent(searchText: string, plugin: string[], token: string, ytToken: string) {
         this.activePlugins = plugin
-        this.finishedPlugins = [];
+        this.finishedPlugins = this.errPlugins
         this.all = []
+
+        this.configTimeout()
 
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.activePlugins.includes(this.plugins[i].getId())) {
@@ -292,6 +299,15 @@ export class PluginController {
                 EventBus.emit("feed-not-finished", this.getNotFinished())
             }
         }
+    }
+
+    configTimeout(){
+        setTimeout(() => {
+            let nf = this.getNotFinished()
+            for(let i = 0; i < nf.length; i++){
+                this.gotErrorMessage(this.getIdFromName(nf[i]), "Timeout")
+            }
+        }, 15000);
     }
 
     isFinished(contentList: Map<string, string>[], id: string) {
@@ -455,6 +471,7 @@ export class PluginController {
 
     gotError(id: string) {
         this.finishedPlugins.push(id);
+        this.errPlugins.push(id);
 
         EventBus.emit("not-finished", this.getNotFinished())
 
@@ -473,6 +490,7 @@ export class PluginController {
 
     gotErrorMessage(id: string, message: string) {
         this.finishedPlugins.push(id);
+        this.errPlugins.push(id);
 
         EventBus.emit("not-finished", this.getNotFinished())
 
@@ -480,11 +498,12 @@ export class PluginController {
         for (let i = 0; i < this.plugins.length; i++) {
             if (this.plugins[i].getId() == id) {
                 if(!this.errorNames.includes(this.plugins[i].getPluginDisplayName())){
-                    this.errorNames.push(this.plugins[i].getPluginDisplayName());
+                    this.errorNames.push(this.plugins[i].getPluginDisplayName() + ": " + message);
                 }
             }
         }
         EventBus.emit('error-sender', this.errorNames)
+        this.makeFinish()
 
     }
 
@@ -503,9 +522,8 @@ export class PluginController {
                 fehlen.push(active)
             }
         }
-        //console.log(fehlen)
 
-        if (this.activePlugins.length != this.finishedPlugins.length) {
+        if (this.activePlugins.length > this.finishedPlugins.length) {
             return false;
         } else {
             for (let i = 0; i < this.activePlugins.length; i++) {
@@ -517,7 +535,7 @@ export class PluginController {
         return true;
     }
 
-    getNotFinished(): String[]{
+    getNotFinished(): string[]{
         let list = []
         for(let i = 0; i < this.activePlugins.length; i++){
             if(!this.finishedPlugins.includes(this.activePlugins[i])){

@@ -134,7 +134,7 @@ export default {
               this.showLoading = false;
 
               if(this.getCookies("noads") !== "true"){
-                  this.handleAds()
+                  //this.handleAds()
               }
           }
       })

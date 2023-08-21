@@ -30,8 +30,6 @@ export class Ebay implements PluginInterface, FeedInterface{
             const document: any = parser.parseFromString(text, "text/html");
             this.startSearch(document);
             this.finish = true;
-
-            //let pc = new PluginController();
             pc.isFinished(this.contentList, this.id);
         }catch (error){
             pc.gotError(this.id);

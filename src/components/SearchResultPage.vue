@@ -129,6 +129,12 @@
       <h2>Waiting for:</h2>
     </div>
 
+      <div class="center-horizontal" v-if="this.loading">
+          <div class="progress-bar waiting-width">
+              <div class="progress" :style="{ width: loadProgress + '%' }"></div>
+          </div>
+      </div>
+
     <WaitingPlugins v-for="(dat) in waitingPlugins" :data="dat"/>
 
     <div id="more-content-button-root" class="center-horizontal">
@@ -188,8 +194,10 @@ export default {
       adsIdBanner: "cf408d86b5915d37b8e8c46e45304282",
         nextIndex: 0,
         allContent: [],
-        contentLength: 0
-     };
+        contentLength: 0,
+        loadProgress: 0,
+        loading: false
+    };
   },
 
   created() {
@@ -230,7 +238,7 @@ export default {
       this.showLoading = false;
 
       if(this.getCookies("noads") !== "true"){
-          this.handleAds()
+          //this.handleAds()
       }
     })
 
@@ -348,6 +356,7 @@ export default {
   },
 
   mounted() {
+      this.startLoading()
 
 
       this.$refs.audioPlayer.addEventListener('timeupdate', this.updateProgress);
@@ -564,8 +573,38 @@ export default {
       starMoreSearch(){
           this.ic.startMoreSearch(this.search, this.plugins, this.$cookies.get("token"), this.$cookies.get("token-youtube"));
           this.ic.changeShow();
-      }
+      },
 
+      startLoading() {
+          this.loadPogress = 0;
+          this.loading = true;
+          this.updateProgressBar();
+      },
+      updateProgressBar() {
+          if (this.loading && this.loadProgress < 100) {
+              setTimeout(() => {
+                  this.loadProgress += 1;
+                  this.updateProgressBar();
+              }, 140);
+          } else {
+              this.loading = false;
+          }
+      }
   }
 }
 </script>
+
+<style>
+.progress-bar {
+    background-color: lightgray;
+    height: 5px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+}
+
+.progress {
+    height: 100%;
+    background-color: green;
+    transition: width 0.5s;
+}
+</style>

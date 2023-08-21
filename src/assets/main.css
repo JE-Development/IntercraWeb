@@ -176,11 +176,13 @@ b{
   display: block;
 }
 
-#plugin-list{
+.plugin-list{
   width: 100%;
   justify-content: center;
   align-items: center;
 }
+
+
 
 .plugin-menu {
   display: flex;
@@ -226,7 +228,7 @@ b{
 .plugin-view{
   margin-top: 10px;
   display: flex;
-  background: rgba(0, 0, 0, 0.54);
+
 }
 
 .check-box{
@@ -319,9 +321,7 @@ b{
   #app{
     width: 100vw;
   }
-  .search-box{
-    margin-top: 30%;
-  }
+
 
   .scroll-down{
     top: 85vh;
