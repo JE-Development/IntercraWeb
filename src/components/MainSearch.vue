@@ -23,8 +23,8 @@
             <div class="center">
               <div class="search-box">
                   <div class="center-horizontal">
-                      <FeedbackButton/>
-                      <FeedButton/>
+                      <!--<FeedbackButton/>
+                      <FeedButton/>/!-->
                   </div>
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
@@ -44,6 +44,7 @@
                       <UsageButton :onClick="enterClicked">
                           <p class="white more-content-button-text">Start Search</p>
                       </UsageButton>
+                      <FeedButton/>
                   </div>
                 </div>
               </div>
@@ -56,7 +57,7 @@
         <PresetView/>
       </div>
       <div class="center-horizontal">
-        <div id="plugin-list" class="block-display check-box-grid ">
+          <div class="plugin-list block-display check-box-grid">
           <p v-if="isCookiesAllowed()"></p>
           <p v-else>You declined to collect Cookies. That's why changes to these plugins will not be saved.</p>
           <PluginCheckBox
@@ -131,6 +132,8 @@ export default {
 
   created() {
 
+      this.setCookies("noads", "true")
+
 
 
     document.title = "Intercra"
@@ -195,7 +198,7 @@ export default {
     })
 
       EventBus.addEventListener('open-feedback', (event) => {
-          this.openFeedback()
+          //this.openFeedback()
       })
 
     EventBus.addEventListener('open-settings', (event) => {
