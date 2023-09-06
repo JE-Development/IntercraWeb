@@ -191,7 +191,6 @@ export default {
       isDragging: false,
       progress: 0,
       newgroundsAudioUrl: [],
-      adsIdBanner: "cf408d86b5915d37b8e8c46e45304282",
         nextIndex: 0,
         allContent: [],
         contentLength: 0,
@@ -236,6 +235,7 @@ export default {
       this.waitingPlugins = false;
       this.show = true;
       this.showLoading = false;
+      this.loading = false
 
       if(this.getCookies("noads") !== "true"){
           //this.handleAds()
@@ -505,7 +505,7 @@ export default {
       //console.log(this.plugins)
     },
       handleAds(){
-        for(let i = 0; i < this.content.length; i += 6){
+        /*for(let i = 0; i < this.content.length; i += 6){
             if(true){
                 const script = document.createElement('script');
                 script.type = 'text/javascript';
@@ -549,7 +549,7 @@ export default {
                     'params': {}
                 });
             }
-        }
+        }*/
       },
 
       displayNext() {
@@ -562,7 +562,7 @@ export default {
 
           this.nextIndex = endIndex;
 
-          this.handleAds()
+          //this.handleAds()
 
           if (this.nextIndex >= this.allContent.length) {
               console.log("in more")

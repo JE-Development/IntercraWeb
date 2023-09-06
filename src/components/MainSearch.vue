@@ -9,17 +9,18 @@
           <div class="absolute">
             <div class="relative center-horizontal">
               <video ref="video" class="absolute video-effect" src="../assets/intercra-video-loop.mp4" type="video/mp4" loop autoplay muted/>
-                <MainNav/>
             </div>
           </div>
           <div class="absolute">
+              <MainNav/>
             <div class="scroll-down">
               <p class="center-horizontal white">Scroll down for the plugin list</p>
               <div class="center-horizontal">
                 <img class="center-horizontal" src="../assets/arrow_down.png" width="30"/>
               </div>
             </div>
-            <div class="center">
+
+            <div class="center-horizontal">
               <div class="search-box">
                   <div class="center-horizontal">
                       <!--<FeedbackButton/>
@@ -327,15 +328,10 @@ export default {
     },
 
     inputFocus(){
-      this.alreadyPlayed = false;
-
-      setTimeout(() => this.$refs.videoreverse.currentTime = 0, 500);
-      this.reverse = false;
       this.$refs.input.className = this.$refs.input.className.replace("glow-after", "glow");
     },
 
     inputLostFocus(){
-      this.reverse = true;
       this.$refs.input.className = this.$refs.input.className.replace("glow", "glow-after");
     },
 

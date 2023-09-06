@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/intercra-video-loop.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/feed_anim.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/feed_anim.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/nav.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/MainNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MainNav.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,6 +319,7 @@
       <workItem from="1692556397261" duration="1668000" />
       <workItem from="1693849929945" duration="599000" />
       <workItem from="1693999879487" duration="5247000" />
+      <workItem from="1694015936017" duration="1831000" />
     </task>
     <servers />
   </component>

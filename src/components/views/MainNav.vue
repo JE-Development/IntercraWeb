@@ -1,9 +1,9 @@
 <template>
 <div class="nav">
   <div class="nav-div center-horizontal">
-    <h3 class="nav-module center-horizontal black" @click="click1">About Intercra</h3>
-    <h3 class="nav-module center-horizontal black" @click="click2">Privacy Policy / Terms of Use</h3>
-    <h3 class="nav-module center-horizontal black" @click="click3">Social Media</h3>
+    <h3 class="nav-module center-horizontal white" @click="click1">About Intercra</h3>
+    <h3 class="nav-module center-horizontal white" @click="click2">Privacy Policy / Terms of Use</h3>
+    <h3 class="nav-module center-horizontal white" @click="click3">Social Media</h3>
   </div>
 </div>
 </template>
