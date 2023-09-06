@@ -7,11 +7,10 @@
       <div class="fullscreen">
         <div class="relative center-horizontal">
           <div class="absolute">
-            <div class="relative center-horizontal video-div" v-if="checkScreenSizeForVideo()">
-              <video ref="video" class="absolute video-effect" src="../assets/intercra-video.mp4" type="video/mp4"/>
-              <video ref="videoreverse" class="absolute video-effect" v-if="reverse" src="../assets/intercra-video-reverse.mp4" type="video/mp4"/>
+            <div class="relative center-horizontal">
+              <video ref="video" class="absolute video-effect" src="../assets/intercra-video-loop.mp4" type="video/mp4" loop autoplay muted/>
+                <MainNav/>
             </div>
-              <MainNav v-if="checkScreenSizeForVideo()"/>
           </div>
           <div class="absolute">
             <div class="scroll-down">
@@ -71,10 +70,6 @@
 
         </div>
       </div>
-
-        <div style="margin-top: 70px">
-            <MainNav v-if="!checkScreenSizeForVideo()"/>
-        </div>
 
 
     </div>
@@ -208,6 +203,7 @@ export default {
 
   mounted() {
 
+
     if(this.getCookies("cookiesAllowed") == null){
       this.show = true;
     }
@@ -223,15 +219,6 @@ export default {
 
   },
 
-
-  updated() {
-    if(this.reverse && !this.alreadyPlayed){
-      this.alreadyPlayed = true;
-      this.$refs.videoreverse.play();
-      setTimeout(() => this.$refs.video.currentTime = 0, 500);
-
-    }
-  },
 
   methods: {
 
@@ -341,7 +328,7 @@ export default {
 
     inputFocus(){
       this.alreadyPlayed = false;
-      this.$refs.video.play();
+
       setTimeout(() => this.$refs.videoreverse.currentTime = 0, 500);
       this.reverse = false;
       this.$refs.input.className = this.$refs.input.className.replace("glow-after", "glow");

@@ -289,6 +289,14 @@ b{
   }
 }
 
+@media (max-width: 1260px){
+  .video-div{
+    width: 99vw;
+    /*height: 100vh;
+    overflow: hidden*/
+  }
+}
+
 @media (max-width: 610px) {
 
 
@@ -342,13 +350,6 @@ b{
 
 
 }
-
-@media (max-width: 330px) {
-  .main-button-text{
-    font-size: 7vw;
-  }
-}
-
 @media (max-height: 550px) {
 
   .scroll-down{
