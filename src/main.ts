@@ -48,7 +48,7 @@ app.mount("#app")
 
 
 
-
+/*
 import {initializeApp} from "firebase/app";
 import {getDatabase, ref, set, onValue} from "firebase/database"
 
@@ -63,10 +63,6 @@ const firebaseConfig = {
 };
 const fireApp = initializeApp(firebaseConfig);
 
-
-function onCheckBoxClicked(id: any){
-    console.log("in main");
-}
 const db = getDatabase()
 
 function writeData(username: string, email: string, blocked: string){
@@ -83,4 +79,4 @@ const allUsers = ref(db, "users")
 onValue(allUsers, (snapshot) => {
     const data = snapshot.val()
     console.log(data)
-})
+})*/

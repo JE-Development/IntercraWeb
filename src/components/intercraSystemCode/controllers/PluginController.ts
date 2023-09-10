@@ -105,7 +105,7 @@ export class PluginController {
     constructor() {
 
         this.anyPlugins.push(new SpotifyTracks())
-        this.anyPlugins.push(new YoutubeVideo())
+        //this.anyPlugins.push(new YoutubeVideo()) ich habe es bei Google API OAuth zerschossen
         this.anyPlugins.push(new GoogleWeb())
         this.anyPlugins.push(new GoogleImage());
         this.anyPlugins.push(new ITunesTracks());
@@ -190,7 +190,7 @@ export class PluginController {
         this.anyPlugins.push(new Digiday());
 
         this.special.push(new SpotifyTracks().id);
-        //this.special.push(new YoutubeVideo().id); ich habe bei Google API OAuth zerschossen
+        //this.special.push(new YoutubeVideo().id);
 
         for(let i = 0; i < this.anyPlugins.length; i++){
             this.plugins.push(this.anyPlugins[i])
@@ -539,6 +539,7 @@ export class PluginController {
         let list = []
         for(let i = 0; i < this.activePlugins.length; i++){
             if(!this.finishedPlugins.includes(this.activePlugins[i])){
+                // @ts-ignore
                 list.push(this.getNameFromId(this.activePlugins[i]));
             }
         }

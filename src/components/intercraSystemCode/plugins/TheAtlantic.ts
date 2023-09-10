@@ -64,7 +64,6 @@ export class TheAtlantic implements PluginInterface, FeedInterface{
                         let headline = e.getElementsByTagName("div");
                         for(let j = 0; j < headline.length; j++){
                             if(headline[j].hasAttribute("class") && headline[j].getAttribute("class").includes("SharedResults_title")){
-                                console.log("in head")
                                 head = headline[j].textContent;
                             }
                         }

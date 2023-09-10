@@ -32,7 +32,7 @@ export class GoogleController{
     async httpSearchRequest(q: string, offset: number, pc: PluginController, id:string): Promise<any>{
         const data = {
             q: q,
-            key: import.meta.env.VITE_GOGOLE_KEY,
+            key: import.meta.env.VITE_GOOGLE_KEY,
             cx: "c2a9783feea9c40f5",
             start: String(offset)
         };
@@ -60,9 +60,11 @@ export class GoogleController{
     }
 
     async httpImageRequest(q: string, offset: number, pc: PluginController, id: string): Promise<any>{
+
+
         const data = {
             q: q,
-            key: import.meta.env.VITE_GOGOLE_KEY,
+            key: import.meta.env.VITE_GOOGLE_KEY,
             cx: "c2a9783feea9c40f5",
             start: String(offset),
             searchType: "image"

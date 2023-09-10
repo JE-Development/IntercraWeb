@@ -75,8 +75,10 @@ export class TED implements PluginInterface, FeedInterface{
                 //no image
             }
 
-            let teaser = e.getElementsByClassName("search__result__description")[0];
-            map.set("teaser", teaser.textContent)
+            try{
+                let teaser = e.getElementsByClassName("search__result__description")[0];
+                map.set("teaser", teaser.textContent)
+            }catch (e){}
 
             this.contentList.push(map)
         }
