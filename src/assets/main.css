@@ -150,8 +150,12 @@ b{
   height: 100vh;
 }
 
+.fullwidth{
+  width: 100vw;
+}
+
 .scroll-down{
-  top: 90vh;
+  top: 85vh;
   position: relative;
 }
 
@@ -350,10 +354,10 @@ b{
 
 
 }
-@media (max-height: 550px) {
+@media (max-height: 720px) {
 
   .scroll-down{
-    top: 85vh;
+    top: 80vh;
   }
 
 }

@@ -65,7 +65,7 @@ export class Flaticon implements PluginInterface, FeedInterface{
 
     async requestToken(hrc: HttpRequestController, pc: PluginController, searchText: String){
         await hrc.httpPost(
-            "https://api.flaticon.com/v3/app/authentication", {"apikey":"A0dwnZMqdIdxbGadrnayNcJBRqrPQm8WmZlNLmmPQdKICMx7"},
+            "https://api.flaticon.com/v3/app/authentication", {"apikey":import.meta.env.VITE_FLATICON_KEY},
             pc, this.id).then(r =>
             this.analyseToken(r, hrc, pc, searchText)
         );

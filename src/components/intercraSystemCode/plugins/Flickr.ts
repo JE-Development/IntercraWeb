@@ -44,7 +44,7 @@ export class Flickr implements PluginInterface, FeedInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=4d7ad36ec7d127e1e48b5a3800277c70&text=" + searchText + "&format=json&nojsoncallback=1&page=" + this.page,
+            "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + import.meta.env.VITE_FLICKR_KEY + "&text=" + searchText + "&format=json&nojsoncallback=1&page=" + this.page,
             pc, this.id).then(r =>
             this.analyse(r)
         );

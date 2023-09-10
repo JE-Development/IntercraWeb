@@ -22,7 +22,6 @@
 .nav-module{
   font-weight: bold;
   cursor: pointer;
-  margin-right: 40px;
 
   transition: transform 250ms;
 }
@@ -30,6 +29,16 @@
 .nav-module:hover{
   transform: scale(1.2,1.2);
 
+}
+
+.nav-sub{
+  width: 400px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.nav-space{
+  width: 40px;
 }
 
 
@@ -53,13 +62,18 @@
   .nav-module{
     font-weight: normal;
     font-size: 3.2vw;
-  }
-  .nav-module{
     margin-right: 5vw;
+  }
+  .nav-sub{
+    width: 70vw;
   }
 
   .nav{
     height: 6vw;
+  }
+
+  .nav-space{
+    width: 4px;
   }
 
 

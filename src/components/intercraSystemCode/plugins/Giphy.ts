@@ -46,7 +46,7 @@ export class Giphy implements PluginInterface, FeedInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://api.giphy.com/v1/gifs/search?q=" + searchText + "&limit=30&offset=" + this.offset + "&rating=g&lang=en&api_key=AgkLkrlId0VCrz3bcaA8sXmApqm2Y0AS",
+            "https://api.giphy.com/v1/gifs/search?q=" + searchText + "&limit=30&offset=" + this.offset + "&rating=g&lang=en&api_key=" + import.meta.env.VITE_GIPHY_KEY,
             pc, this.id).then(r =>
             this.analyse(r)
         );

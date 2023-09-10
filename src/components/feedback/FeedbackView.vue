@@ -22,7 +22,7 @@ export default {
     0: denied
     1: pending approval
     2: approved, coming soon
-    3: is now implemented
+    3: implemented
      */
 
   props: {

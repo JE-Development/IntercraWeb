@@ -41,7 +41,7 @@ export class GNews implements PluginInterface, FeedInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://gnews.io/api/v4/search?q=" + searchText + "&lang=en&country=us&max=10&apikey=7962880956cf1f995281c33647499641",
+            "https://gnews.io/api/v4/search?q=" + searchText + "&lang=en&country=us&max=10&apikey=" + import.meta.env.VITE_GNEWS_KEY,
             pc, this.id).then(r =>
             this.analyse(r)
         );

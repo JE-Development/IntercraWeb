@@ -46,7 +46,7 @@ export class Unsplash implements PluginInterface, FeedInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequestHeader(
-            "https://api.unsplash.com/search/photos?query=" + searchText + "&page=" + this.page, "Authorization: Client-ID nIQrhS3P4MoK7K1frkaWqAroCLdqkHLn-Zm-Rv_r0xs",
+            "https://api.unsplash.com/search/photos?query=" + searchText + "&page=" + this.page, "Authorization: Client-ID " + import.meta.env.VITE_UNSPASH_KEY,
             pc, this.id).then(r =>
             this.analyse(r)
         );

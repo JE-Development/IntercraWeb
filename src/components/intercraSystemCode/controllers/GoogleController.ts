@@ -6,7 +6,7 @@ import type {PluginController} from "./PluginController";
 export class GoogleController{
 
     login(){
-        let CLIENT_ID = '722509822656-8s9eqm24tnqjp0q9fb2981imtellvism.apps.googleusercontent.com';
+        let CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
         let REDIRECT_URI = 'https://intercra.com/';
 
         let url = this.getLoginURL(CLIENT_ID, REDIRECT_URI);
@@ -32,7 +32,7 @@ export class GoogleController{
     async httpSearchRequest(q: string, offset: number, pc: PluginController, id:string): Promise<any>{
         const data = {
             q: q,
-            key: "AIzaSyBsIIXPf7H7s9ctuwQAimiAbvueJnRS-IA",
+            key: import.meta.env.VITE_GOGOLE_KEY,
             cx: "c2a9783feea9c40f5",
             start: String(offset)
         };
@@ -62,7 +62,7 @@ export class GoogleController{
     async httpImageRequest(q: string, offset: number, pc: PluginController, id: string): Promise<any>{
         const data = {
             q: q,
-            key: "AIzaSyBsIIXPf7H7s9ctuwQAimiAbvueJnRS-IA",
+            key: import.meta.env.VITE_GOGOLE_KEY,
             cx: "c2a9783feea9c40f5",
             start: String(offset),
             searchType: "image"
@@ -93,7 +93,7 @@ export class GoogleController{
     async httpVideoRequest(q: string, token: string): Promise<any>{
         const data = {
             q: q,
-            key: "AIzaSyAKnebvCHsKi6XM5AWUCzzgqXhKsx_SG64",
+            key: import.meta.env.VITE_YOUTUBE_KEY,
             part: "snippet",
             maxResults: 30,
         };

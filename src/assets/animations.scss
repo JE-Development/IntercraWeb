@@ -156,7 +156,6 @@
 .usage-button:hover{
   display: flex;
   height: 45px;
-  width: 200px;
 
   background: linear-gradient(#000000, #000000) padding-box,
   linear-gradient(to right, #ff5900, #ffff22) border-box;
@@ -164,7 +163,7 @@
   border-radius: 50px;
   border: 3px solid transparent;
 
-  padding: 5px 0px;
+  padding: 2px 10px;
   cursor: pointer;
   border-radius: 50px;
 
@@ -183,7 +182,6 @@
 
   display: flex;
   height: 45px;
-  width: 200px;
 
   background: linear-gradient(#000000, #000000) padding-box,
   linear-gradient(to right, #ff5900, #ffff22) border-box;
@@ -191,7 +189,7 @@
   border-radius: 50px;
   border: 3px solid transparent;
 
-  padding: 5px 0px;
+  padding: 2px 10px;
   cursor: pointer;
   border-radius: 50px;
 

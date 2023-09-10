@@ -12,6 +12,8 @@
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 
 export default {
+    //no usage (replaced by nav)
+
   name: "FeedbackButton",
 
   methods: {

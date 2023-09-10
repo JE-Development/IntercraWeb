@@ -22,10 +22,6 @@
 
             <div class="center-horizontal">
               <div class="search-box">
-                  <div class="center-horizontal">
-                      <!--<FeedbackButton/>
-                      <FeedButton/>/!-->
-                  </div>
                 <div class="center-horizontal" style="margin-bottom: 10px">
                   <img src="../assets/intercra_anim_text.gif" class="logo-text center-horizontal" ref="logo">
                 </div>
@@ -194,7 +190,7 @@ export default {
     })
 
       EventBus.addEventListener('open-feedback', (event) => {
-          //this.openFeedback()
+          this.openFeedback()
       })
 
     EventBus.addEventListener('open-settings', (event) => {

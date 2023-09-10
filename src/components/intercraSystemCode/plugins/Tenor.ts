@@ -53,7 +53,7 @@ export class Tenor implements PluginInterface, FeedInterface{
         if(isMore){
             if(this.nextid === "null"){
                 await hrc.httpRequest(
-                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=AIzaSyAKnebvCHsKi6XM5AWUCzzgqXhKsx_SG64&limit=30&pos=" + this.nextid,
+                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=" + import.meta.env.VITE_TENOR_KEY + "&limit=30&pos=" + this.nextid,
                     pc, this.id).then(r =>
                     this.analyse(r)
                 );
@@ -61,21 +61,21 @@ export class Tenor implements PluginInterface, FeedInterface{
                 this.contentList = [];
 
                 await hrc.httpRequest(
-                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=AIzaSyAKnebvCHsKi6XM5AWUCzzgqXhKsx_SG64&limit=30&pos=" + this.nextid,
+                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=" + import.meta.env.VITE_TENOR_KEY + "&limit=30&pos=" + this.nextid,
                     pc, this.id).then(r =>
                     this.analyse(r)
                 );
 
             }else {
                 await hrc.httpRequest(
-                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=AIzaSyAKnebvCHsKi6XM5AWUCzzgqXhKsx_SG64&limit=30&pos=" + this.nextid,
+                    "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=" + import.meta.env.VITE_TENOR_KEY + "&limit=30&pos=" + this.nextid,
                     pc, this.id).then(r =>
                     this.analyse(r)
                 );
             }
         }else{
             await hrc.httpRequest(
-                "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=AIzaSyAKnebvCHsKi6XM5AWUCzzgqXhKsx_SG64&limit=30&pos=" + this.nextid,
+                "https://tenor.googleapis.com/v2/search?q=" + searchText + "&key=" + import.meta.env.VITE_TENOR_KEY + "&limit=30&pos=" + this.nextid,
                 pc, this.id).then(r =>
                 this.analyse(r)
             );

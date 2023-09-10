@@ -43,7 +43,7 @@ export class NewYorkTimes implements PluginInterface, FeedInterface{
         let hrc = new HttpRequestController()
 
         await hrc.httpRequest(
-            "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchText + "&api-key=2AXSfKzse0JvqZEdarXKWedWuPcU2vmS",
+            "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + searchText + "&api-key=" + import.meta.env.VITE_NYT_KEY,
             pc, this.id).then(r =>
             this.analyse(r)
         );

@@ -9,6 +9,7 @@ import {GoogleController} from "../controllers/GoogleController";
 import {HttpRequestController} from "../controllers/HttpRequestController";
 import type {FeedInterface} from "../interfaces/FeedInterface";
 
+
 export class CFMinecraft implements PluginInterface, FeedInterface{
     finish = false;
     contentList: Map<string, string>[] = [];
@@ -47,7 +48,7 @@ export class CFMinecraft implements PluginInterface, FeedInterface{
 
         await hrc.httpRequestHeader(
             "https://api.curseforge.com/v1/mods/search?gameId=" + this.gameId + "&pageSize=30&searchFilter=" + searchText + "&index=" + this.offset,
-            "x-api-key: $2a$10$3yOCnyF9OckgqqzAJEiK6eaLmBbvb8iDUx5WIHDdyOJgw83QYLXgC",
+            "x-api-key: $2a$10$" + import.meta.env.VITE_CURSE_FORGE_KEY,
             pc, this.id).then(r =>
             this.analyse(r)
         );

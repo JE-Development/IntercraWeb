@@ -7,7 +7,7 @@ export class SpotifyController{
 
 
     login(){
-        let CLIENT_ID = '15d6a40e579740e8b8eab83339e01744';
+        let CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID
         let REDIRECT_URI = 'https://intercra.com/';
 
         let scope = ['user-read-private'];

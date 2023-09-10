@@ -190,7 +190,7 @@ export class PluginController {
         this.anyPlugins.push(new Digiday());
 
         this.special.push(new SpotifyTracks().id);
-        this.special.push(new YoutubeVideo().id);
+        //this.special.push(new YoutubeVideo().id); ich habe bei Google API OAuth zerschossen
 
         for(let i = 0; i < this.anyPlugins.length; i++){
             this.plugins.push(this.anyPlugins[i])
