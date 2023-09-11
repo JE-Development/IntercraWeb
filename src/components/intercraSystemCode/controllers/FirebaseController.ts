@@ -31,11 +31,35 @@ export class FirebaseController{
         })
     }
 
-    getUser(email: string){
+    getUsers(){
         const allUsers = ref(this.db, "users")
         onValue(allUsers, (snapshot) => {
             let data = snapshot.val()
             EventBus.emit("firebase-users", data)
+        })
+    }
+
+    getUsersForUsername(){
+        const allUsers = ref(this.db, "users")
+        onValue(allUsers, (snapshot) => {
+            let data = snapshot.val()
+            EventBus.emit("firebase-users-username", data)
+        })
+    }
+
+    getUser(email: string){
+        const allUsers = ref(this.db, "users/" + email)
+        onValue(allUsers, (snapshot) => {
+            let data = snapshot.val()
+            EventBus.emit("firebase-single-user", data)
+        })
+    }
+
+    createUser(email: string, username: string, blocked: string){
+        const reference = ref(this.db, "users/" + email)
+        set(reference, {
+            username: username,
+            blocked: blocked,
         })
     }
 

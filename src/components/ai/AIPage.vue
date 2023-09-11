@@ -5,7 +5,7 @@
       <div>
 
         <div class="center-horizontal">
-
+          <div class="error-color" v-if="serverError"><h4>The Intercra backend server is down</h4></div>
         </div>
 
         <div class="feedback-page">
@@ -45,7 +45,8 @@ export default {
   data(){
     return{
       data: [],
-      db: null
+      db: null,
+      serverError: false,
     }
   },
 
@@ -87,8 +88,18 @@ export default {
   },
 
   mounted() {
-    let fc = new FirebaseController()
-    fc.getImages()
+
+    fetch('http://212.227.183.160:3002/')
+        .then(response => {
+          if (response.ok) {
+            this.startRequest()
+          } else {
+            this.notResponding()
+          }
+        })
+        .catch(error => {
+          this.notResponding()
+        });
   },
 
   methods: {
@@ -100,6 +111,15 @@ export default {
         return this.$cookies.set(key, value, 2147483647);
       }
     },
+
+    startRequest(){
+      this.serverError = false
+      let fc = new FirebaseController()
+      fc.getImages()
+    },
+    notResponding(){
+      this.serverError = true
+    }
 
   },
 

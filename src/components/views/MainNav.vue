@@ -2,6 +2,7 @@
 <div class="nav">
   <SocialMediaPopup :show="smShow" @close="closeSmPopup"/>
   <LoginPopup :show="loginShow" @close="closeLoginPopup" @login="useLogin"/>
+  <CreateUsername :show="usernameShow" @close="closeUsernamePopup" @created="createdUsername"/>
   <div class="nav-div center-horizontal">
     <h3 class="nav-module center-horizontal white" @click="click1">Intercra</h3>
       <div class="nav-space"></div>
@@ -29,22 +30,40 @@ import LoginPopup from "../views/LoginPopup.vue";
 import router from "../../router";
 import {decodeCredential, googleAuthCodeLogin, googleLogout, googleOneTap, googleTokenLogin} from "vue3-google-login";
 import {FirebaseController} from "../intercraSystemCode/controllers/FirebaseController";
+import CreateUsername from "../views/CreateUsernamePopup.vue";
 
 export default {
   name: "MainNav",
-  components: {SocialMediaPopup, LoginPopup},
+  components: {CreateUsername, SocialMediaPopup, LoginPopup},
 
   data(){
     return{
       smShow: false,
       loginShow: false,
+      usernameShow: false,
       isLogin: false,
+      email: ""
     }
   },
 
   created() {
     EventBus.addEventListener('firebase-users', (event) => {
-      console.log(event.data)
+      if(event.data === null){
+        this.usernameShow = true
+      }else{
+        if(this.formatEmail(this.email) in event.data){
+          this.saveLogin()
+        }else{
+          this.usernameShow = true
+        }
+      }
+    })
+
+    EventBus.addEventListener('firebase-single-user', (event) => {
+      if(event.data.blocked === undefined){
+        this.$notify("This account is blocked")
+        this.click5()
+      }
     })
 
 
@@ -52,11 +71,12 @@ export default {
       this.isLogin = false
     }else{
       this.isLogin = true
+      this.checkBlocked()
     }
   },
 
   mounted() {
-    if(this.getCookies("google_email") === null) {
+    /*if(this.getCookies("google_email") === null) {
       console.log("in google one tap")
       googleOneTap({autoLogin: true})
           .then((response) => {
@@ -65,7 +85,7 @@ export default {
           .catch((error) => {
             console.log("Handle the error", error)
           })
-    }
+    }*/
   },
 
 
@@ -117,17 +137,44 @@ export default {
       this.handleResponse(response)
     },
     handleResponse(response){
-      /*
-      email: userData.email
-      name: userData.name
-      profile picture: userData.picture
-       */
       const userData = decodeCredential(response.credential)
-      //console.log("callback: ", userData)
-      this.setCookies("google_email", userData.email)
-      this.isLogin = true
+      this.email = userData.email
       let fc = new FirebaseController()
-      fc.getUser("some")
+      fc.getUsers()
+    },
+    closeUsernamePopup(){
+      this.usernameShow = false
+    },
+    createdUsername(username){
+      //console.log("callback: ", userData)
+      this.saveLogin()
+
+      this.usernameShow = false
+      let fc = new FirebaseController()
+
+      fc.createUser(this.formatEmail(this.email), username, "false")
+
+    },
+    formatEmail(email){
+      email = email.replace(/\./g, "(dot)");
+      email = email.replace("@", "(at)");
+      return email
+    },
+    formatBackEmail(email){
+      email = email.replace(/\(dot\)/g, ".").replace(/\(at\)/g, "@");
+      return email
+    },
+
+    saveLogin(){
+      this.setCookies("google_email", this.email)
+      this.isLogin = true
+      this.checkBlocked()
+    },
+    checkBlocked(){
+      this.email = this.getCookies("google_email")
+      this.email = this.formatEmail(this.email)
+      let fc = new FirebaseController()
+      fc.getUser(this.email)
     }
   }
 

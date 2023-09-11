@@ -85,6 +85,11 @@
         color: #ffffff;
     }
 
+.username-input-color{
+    background-color: #000000;
+    color: #ffffff;
+}
+
     .search-input-border-color:focus{
         background: linear-gradient(#000000, #000000) padding-box,
         linear-gradient(to right, #c3ff15, #00e598) border-box;
