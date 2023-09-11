@@ -10,5 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="IntercraBackEnd" />
     <orderEntry type="module" module-name="upload" />
+    <orderEntry type="module" module-name="AI" />
   </component>
 </module>

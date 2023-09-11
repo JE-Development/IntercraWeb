@@ -7,7 +7,8 @@
       </div>
       <h2 class="border-width"><a :href="url" class="headline-color">{{headline}}</a></h2>
       <h3 class="text-black">{{artist}}</h3>
-      <h4 class="teaser-color">{{price}}</h4>
+      <h4 class="text-black" v-if="isHtml"><div v-html="displayPrice"></div></h4>
+      <h4 class="text-black" v-else>{{price}}</h4>
       <p class="plugin-name-color  view-plugin-name">Plugin: {{pluginName}}</p>
         <SavedIconView
                 :isResult="isResult"
@@ -35,6 +36,22 @@ export default {
     artist: String,
       isResult: Boolean,
   },
+
+  data(){
+    return {
+      displayPrice: "",
+      isHtml: false,
+    };
+  },
+
+  created() {
+    if(this.price !== undefined && this.price.includes("---html")){
+      let split = this.price.split("---")
+      this.displayPrice = split[0]
+      this.isHtml = true;
+    }
+  },
+
   methods: {
     savedClick(){
       if(!this.savedContent) {

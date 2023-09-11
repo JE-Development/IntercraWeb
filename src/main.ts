@@ -65,15 +65,26 @@ const fireApp = initializeApp(firebaseConfig);
 
 const db = getDatabase()
 
-function writeData(username: string, email: string, blocked: string){
-    const reference = ref(db, "users/" + username)
+function writeData(id: number, seed: number, prompt: string, checkpoint: string){
+    const reference = ref(db, "ai-images/" + id)
     set(reference, {
-        email: email,
-        blocked: blocked
+        seed: seed,
+        prompt: prompt,
+        checkpoint: checkpoint
     })
 }
 
-writeData("theCoolGuy", "something@something.com", "false")
+let row = data.split("---")
+for(let i = 0; i < row.length; i++){
+    let split = row[i].split(";;;")
+    let id = split[0]
+    let seed = split[0].split("-")[1]
+    let prompt = split[2]
+    let checkpoint = split[1]
+    writeData(id, seed, prompt, checkpoint)
+}
+
+//writeData("theCoolGuy", "something@something.com", "false")
 
 const allUsers = ref(db, "users")
 onValue(allUsers, (snapshot) => {

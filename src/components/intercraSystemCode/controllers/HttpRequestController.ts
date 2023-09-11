@@ -39,6 +39,29 @@ export class HttpRequestController {
 
     }
 
+    async httpRequestNoError(url: string, pc: PluginController, id: string): Promise<any>{
+
+        let ok = true;
+
+        let json;
+
+        await axios.get(url)
+            .then(response => {
+                json = response.data;
+            })
+            .catch(error => {
+                console.log(error)
+                return "error"
+            });
+        if(ok) {
+            return json;
+        }else{
+            pc.gotError(id);
+            return "error";
+        }
+
+    }
+
     async httpRequestHeader(url: string, header: any, pc: PluginController, id: string): Promise<any>{
 
         let ok = true;

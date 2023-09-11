@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://H:/AI/.idea/AI.iml" filepath="H:/AI/.idea/AI.iml" />
       <module fileurl="file://$PROJECT_DIR$/../IntercraBackEnd/.idea/IntercraBackEnd.iml" filepath="$PROJECT_DIR$/../IntercraBackEnd/.idea/IntercraBackEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/IntercraWeb.iml" filepath="$PROJECT_DIR$/.idea/IntercraWeb.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../../upload/.idea/upload.iml" filepath="$PROJECT_DIR$/../../../upload/.idea/upload.iml" />

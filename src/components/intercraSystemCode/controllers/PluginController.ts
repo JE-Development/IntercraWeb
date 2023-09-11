@@ -86,6 +86,7 @@ import {Kochplanet} from "../plugins/Kochplanet";
 import {PopSci} from "../plugins/PopSci";
 import {PlayStationBlog} from "../plugins/PlayStationBlog";
 import {Digiday} from "../plugins/Digiday";
+import {Export3D} from "../plugins/Export3D";
 
 export class PluginController {
 
@@ -188,9 +189,10 @@ export class PluginController {
         this.anyPlugins.push(new PopSci());
         this.anyPlugins.push(new PlayStationBlog());
         this.anyPlugins.push(new Digiday());
+        this.anyPlugins.push(new Export3D());
 
-        this.special.push(new SpotifyTracks().id);
-        //this.special.push(new YoutubeVideo().id);
+        //this.special.push(new SpotifyTracks().id);
+        this.special.push(new YoutubeVideo().id);
 
         for(let i = 0; i < this.anyPlugins.length; i++){
             this.plugins.push(this.anyPlugins[i])

@@ -19,7 +19,7 @@ export class ITunesPodcast implements PluginInterface, FeedInterface{
 
     addToPreset(): PresetController {
         let pc = new PresetController();
-        pc.addPreset(PresetEnum.AUDIO)
+        pc.addPreset(PresetEnum.PODCAST)
         return pc;
     }
 
