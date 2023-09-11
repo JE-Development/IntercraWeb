@@ -22,7 +22,7 @@
 
 
                         <!--<GoogleLogin :callback="callback" auto-login/>/!-->
-                        <GoogleLogin :callback="callback"/>
+                        <GoogleLogin :callback="callback" auto-login/>
 
 
                     </div>
@@ -68,33 +68,28 @@ export default {
 
     data(){
       return{
-          clientId: '722509822656-m5pu2b1umlov5200q48cehmfefj8j8h0.apps.googleusercontent.com',
+          clientId: '722509822656-m5pu2b1umlov5200q48cehmfefj8j8h0.apps.googleusercontent.com ',
           dataFromPHP: [],
       }
     },
 
   created() {
-      axios.get('/server.php') // Die URL Ihrer PHP-Datei auf dem Server
-          .then(response => {
-              this.dataFromPHP = response.data;
-          })
-          .catch(error => {
-              console.error('Fehler beim Abrufen der Daten:', error);
-          });
+
   },
 
   beforeDestroy() {
   },
 
   mounted() {
-      /*googleOneTap({ autoLogin: true })
+      googleOneTap({ autoLogin: true })
           .then((response) => {
               // This promise is resolved when user selects an account from the the One Tap prompt
-              console.log("Handle the response", response)
+            const userData = decodeCredential(response.credential)
+            console.log("callback: ", userData)
           })
           .catch((error) => {
               console.log("Handle the error", error)
-          })*/
+          })
   },
 
   methods: {
@@ -121,16 +116,4 @@ export default {
 
 }
 </script>
-
-<style>
-.google-signin-button {
-    color: white;
-    background-color: red;
-    height: 50px;
-    font-size: 16px;
-    border-radius: 10px;
-    padding: 10px 20px 25px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-</style>
 

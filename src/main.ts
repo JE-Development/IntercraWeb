@@ -37,9 +37,9 @@ app.use(VueCookies)
 app.use(Notifications)
 app.use(PerfectScrollbar)
 app.use(vue3GoogleLogin, {
-    clientId: '722509822656-m5pu2b1umlov5200q48cehmfefj8j8h0.apps.googleusercontent.com'
+    clientId: import.meta.env.VITE_GOOGLE_LOGIN_ID
 })
-//app.use(Ads.AutoAdsense, { adClient: 'ca-pub-3904729559747077', isNewAdsCode: true })
+//app.use(Ads.AutoAdsense, { adClient: import.meta.env.VITE_ADSENSE_ID, isNewAdsCode: true })
 app.use(ScriptX)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('VueSlider', VueSlider)
@@ -53,7 +53,7 @@ import {initializeApp} from "firebase/app";
 import {getDatabase, ref, set, onValue} from "firebase/database"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB7MTv0cTCC1U5PBw0w-BpLOZO68IXyveM",
+    apiKey: import.meta.env.VITE_FIREBASE_KEY,
     authDomain: "intercra-firebase.firebaseapp.com",
     databaseURL: "https://intercra-firebase-default-rtdb.firebaseio.com",
     projectId: "intercra-firebase",
@@ -74,20 +74,9 @@ function writeData(id: number, seed: number, prompt: string, checkpoint: string)
     })
 }
 
-let row = data.split("---")
-for(let i = 0; i < row.length; i++){
-    let split = row[i].split(";;;")
-    let id = split[0]
-    let seed = split[0].split("-")[1]
-    let prompt = split[2]
-    let checkpoint = split[1]
-    writeData(id, seed, prompt, checkpoint)
-}
-
-//writeData("theCoolGuy", "something@something.com", "false")
-
-const allUsers = ref(db, "users")
+const allUsers = ref(db, "ai-images")
 onValue(allUsers, (snapshot) => {
     const data = snapshot.val()
     console.log(data)
-})*/
+})
+*/

@@ -2,7 +2,6 @@
   <div>
     <div class="background-black opacity-fade-in" ref="background">
       <PluginPopup :show="show" @show-popup="showFromPopup"/>
-      <SocialMediaPopup :show="smShow" @show-popup="showFromPopup"/>
       <SpotifyLoginPopup :show="slShow" @sl-message="slMessage"/>
       <div class="fullscreen">
         <div class="relative center-horizontal">
@@ -110,7 +109,6 @@ export default {
             pluginList: [],
             callback: "",
             slShow: false,
-            smShow: false,
             gifPlay: true,
             gifStatus: {
                 isPlaying: false,
@@ -177,21 +175,10 @@ export default {
       }
     })
 
-    EventBus.addEventListener('hide-social-media', (event) => {
-      this.smShow = false;
-    })
-
-    EventBus.addEventListener('show-social-media', (event) => {
-      this.smShow = true;
-    })
 
     EventBus.addEventListener('open-feed', (event) => {
       this.openFeed()
     })
-
-      EventBus.addEventListener('open-feedback', (event) => {
-          this.openFeedback()
-      })
 
     EventBus.addEventListener('open-settings', (event) => {
       this.openSettings()
@@ -218,10 +205,6 @@ export default {
 
 
   methods: {
-
-    showFromPopup: function (message){
-      this.show = message;
-    },
 
     slMessage: function (message){
       this.slShow = false;
@@ -361,12 +344,7 @@ export default {
       setTimeout(() => window.open(route.href, '_self'), 500);
     },
 
-      openFeedback(){
-          this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")
 
-          let route = this.$router.resolve({path: '/feedback'});
-          setTimeout(() => window.open(route.href, '_self'), 500);
-      },
 
     openSettings(){
       this.$refs.background.className = this.$refs.background.className.replace("opacity-fade-in", "opacity-fade-out")

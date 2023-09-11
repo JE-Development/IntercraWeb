@@ -16,9 +16,9 @@
 
                 <div class="center-horizontal popup-width">
                   <div>
-                    <a href="https://twitter.com/je_development" class="pointer social-media-item popup-width center">Twitter</a>
-                    <a href="https://www.instagram.com/je.creator/" class="pointer social-media-item popup-width center">Instagram</a>
-                    <a href="https://www.youtube.com/channel/UCiCMvTtMFD4A9UJ5CwJAhOw" class="pointer social-media-item popup-width center">YouTube</a>
+                    <div style="height: 30px"></div>
+                    <GoogleLogin :callback="callback" auto-login/>
+                    <div style="height: 30px"></div>
                   </div>
                 </div>
 
@@ -39,7 +39,7 @@ import {IntercraController} from "../intercraSystemCode/controllers/IntercraCont
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 import ViewTemplatesPage from "../ViewTemplatesPage.vue";
 export default {
-  name: "SocialMediaPopup",
+  name: "LoginPopup",
   components: {ViewTemplatesPage, PluginCheckBox},
 
   props: {
@@ -59,6 +59,9 @@ export default {
   methods: {
     onClose(){
       this.$emit('close');
+    },
+    callback(response){
+      this.$emit('login', response);
     }
   },
 

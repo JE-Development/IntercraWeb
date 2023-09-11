@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/Export3D.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IntercraWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ai/AIPage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ai/AIView.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/FirebaseController.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/views/LoginPopup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/HttpRequestController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/HttpRequestController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/PluginController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesPodcast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/plugins/ITunesPodcast.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layouts/ModelsView.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/nav.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MainSearch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MainSearch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/feedback/FeedbackPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback/FeedbackPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/MainNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MainNav.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/views/SocialMediaPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/SocialMediaPopup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +29,12 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTML File" />
-        <option value="HTTP Request" />
         <option value="SCSS File" />
-        <option value="TypeScript File" />
         <option value="Vue Single File Component" />
         <option value="CSS File" />
         <option value="Vue Composition API Component" />
+        <option value="HTTP Request" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -72,7 +75,7 @@
     "git-widget-placeholder": "new-main",
     "javascript.nodejs.core.library.configured.version": "16.15.1",
     "javascript.nodejs.core.library.typings.version": "16.18.50",
-    "last_opened_file_path": "H:/AI",
+    "last_opened_file_path": "C:/Users/Jason/Desktop/Development/GitHub/IntercraWeb/src/components/views",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,7 +83,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.fileTypes",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraBackEnd\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Jason\\Desktop\\Development\\GitHub\\IntercraWeb\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -91,11 +94,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
+      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\ai" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\feedback" />
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\assets" />
-      <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\intercraSystemCode\plugins" />
-      <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jason\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
@@ -334,6 +337,9 @@
       <workItem from="1694344255571" duration="4328000" />
       <workItem from="1694348901729" duration="928000" />
       <workItem from="1694425389784" duration="7025000" />
+      <workItem from="1694444307053" duration="338000" />
+      <workItem from="1694444695623" duration="878000" />
+      <workItem from="1694445600037" duration="10724000" />
     </task>
     <servers />
   </component>

@@ -10,6 +10,7 @@ import SettingsPage from '../components/SettingsPage.vue'
 import NotFoundPage from '../components/NotFoundPage.vue'
 import NoAdsPage from "../components/NoAdsPage.vue";
 import FeedbackPage from "../components/feedback/FeedbackPage.vue";
+import AIPage from "../components/ai/AIPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -61,6 +62,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/feedback',
         name: 'FeedbackPage',
         component: FeedbackPage
+    },
+    {
+        path: '/ai',
+        name: 'AIPage',
+        component: AIPage
     },
     {
         path: '/:catchAll(.*)',
