@@ -1,9 +1,10 @@
 <template>
   <div class="feedback-view-border content-layout-color">
     <div style="overflow: hidden">
+      <a class="error-color pointer" v-if="isUserView" style="overflow: hidden" @click="deleteClicked">delete</a>
       <p class="visible-link-color" style="overflow: hidden">{{username}}</p>
       <h2 :class="'feedback-code-color-' + status">{{headline}}</h2>
-      <p class="teaser-color">{{teaser}}</p>
+      <p class="white">{{teaser}}</p>
     </div>
   </div>
 </template>
@@ -12,6 +13,7 @@
 
 import EventBus from "../intercraSystemCode/classes/EventBusEvent";
 import SavedIconView from "../views/SavedIconView.vue";
+import {FirebaseController} from "../intercraSystemCode/controllers/FirebaseController";
 
 export default {
   name: "FeedbackView",
@@ -29,11 +31,22 @@ export default {
     username: String,
     headline: String,
     teaser: String,
-      status: Number
+      status: String,
+    isUserView: Boolean,
+    id: String,
+    onDeleteCallback: {
+      type: Function,
+    },
   },
 
 
     methods: {
+
+    deleteClicked(){
+      let fc = new FirebaseController()
+      fc.deletePost(this.id)
+      this.onDeleteCallback()
+    }
 
   }
 }

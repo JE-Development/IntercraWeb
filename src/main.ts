@@ -45,38 +45,3 @@ app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('VueSlider', VueSlider)
 app.config.globalProperties.emitter = emitter
 app.mount("#app")
-
-
-
-/*
-import {initializeApp} from "firebase/app";
-import {getDatabase, ref, set, onValue} from "firebase/database"
-
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_KEY,
-    authDomain: "intercra-firebase.firebaseapp.com",
-    databaseURL: "https://intercra-firebase-default-rtdb.firebaseio.com",
-    projectId: "intercra-firebase",
-    storageBucket: "intercra-firebase.appspot.com",
-    messagingSenderId: "1036289266838",
-    appId: "1:1036289266838:web:6f21f4e592591d81df1eb7"
-};
-const fireApp = initializeApp(firebaseConfig);
-
-const db = getDatabase()
-
-function writeData(id: number, seed: number, prompt: string, checkpoint: string){
-    const reference = ref(db, "ai-images/" + id)
-    set(reference, {
-        seed: seed,
-        prompt: prompt,
-        checkpoint: checkpoint
-    })
-}
-
-const allUsers = ref(db, "ai-images")
-onValue(allUsers, (snapshot) => {
-    const data = snapshot.val()
-    console.log(data)
-})
-*/

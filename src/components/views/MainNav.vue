@@ -16,8 +16,8 @@
 </div>
     <div class="fullwidth center-horizontal">
         <div class="center-horizontal nav nav-sub">
-            <h3 class="nav-module center-horizontal complementary-color" @click="suggestions">Suggestions</h3>
-            <div style="width: 60px"></div>
+            <h3 class="nav-module center-horizontal complementary-color" @click="suggestions">Suggestions/Reports</h3>
+            <div style="width: 40px"></div>
             <h3 class="nav-module center-horizontal complementary-color" @click="ai">AI Images</h3>
         </div>
     </div>
@@ -42,29 +42,11 @@ export default {
       loginShow: false,
       usernameShow: false,
       isLogin: false,
-      email: ""
+      email: "",
     }
   },
 
   created() {
-    EventBus.addEventListener('firebase-users', (event) => {
-      if(event.data === null){
-        this.usernameShow = true
-      }else{
-        if(this.formatEmail(this.email) in event.data){
-          this.saveLogin()
-        }else{
-          this.usernameShow = true
-        }
-      }
-    })
-
-    EventBus.addEventListener('firebase-single-user', (event) => {
-      if(event.data.blocked === undefined){
-        this.$notify("This account is blocked")
-        this.click5()
-      }
-    })
 
 
     if(this.getCookies("google_email") === null){
@@ -117,6 +99,7 @@ export default {
     click5(){
       googleLogout()
       this.$cookies.remove("google_email")
+      this.$cookies.remove("google_username")
       this.isLogin = false
     },
       suggestions(){
@@ -140,7 +123,18 @@ export default {
       const userData = decodeCredential(response.credential)
       this.email = userData.email
       let fc = new FirebaseController()
-      fc.getUsers()
+      fc.getUsers().then((data) =>{
+        if(data === null){
+          this.usernameShow = true
+        }else{
+          if(this.formatEmail(this.email) in data){
+            this.getUsername()
+            this.saveLogin()
+          }else{
+            this.usernameShow = true
+          }
+        }
+      })
     },
     closeUsernamePopup(){
       this.usernameShow = false
@@ -174,7 +168,18 @@ export default {
       this.email = this.getCookies("google_email")
       this.email = this.formatEmail(this.email)
       let fc = new FirebaseController()
-      fc.getUser(this.email)
+      fc.getUser(this.email).then((data) => {
+        if(data.blocked === undefined){
+          this.$notify("This account is blocked")
+          this.click5()
+        }
+      })
+    },
+    getUsername(){
+      let fc = new FirebaseController()
+      fc.getUser(this.formatEmail(this.email)).then((data) => {
+        this.setCookies("google_username", data.username)
+      })
     }
   }
 

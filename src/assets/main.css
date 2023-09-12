@@ -138,6 +138,16 @@ b{
   padding-left: 10px;
 }
 
+.textarea{
+  width: 400px;
+  height: 200px;
+  font-size: 17px;
+  border: solid;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-left: 10px;
+}
+
 .center{
   height: 90vh;
   display: flex;
@@ -337,6 +347,17 @@ b{
     width: 100vw;
   }
 }
+
+@media (max-width: 460px) {
+  .textarea{
+    width: 90vw
+  }
+
+  .username-input{
+    width: 90vw
+  }
+}
+
 
 @media (max-width: 420px) {
 

@@ -19,15 +19,19 @@
                     <div style="height: 10px"></div>
                     <div class="center-horizontal">
                       <input
-                          ref="usernameinput"
+                          ref="headlineinput"
                           @keyup.enter="enterClicked()"
-                          placeholder="Create username here"
+                          placeholder="Create a headline"
                           class="username-input center-horizontal username-input-color search-input-border-color"/>
                     </div>
                     <div style="height: 10px"></div>
                     <div class="center-horizontal">
+                      <textarea ref="textarea" class="textarea textarea-color search-input-border-color" placeholder="Suggest / report something" style="white-space: pre-wrap;"></textarea>
+                    </div>
+                    <div style="height: 10px"></div>
+                    <div class="center-horizontal">
                       <UsageButton :onClick="enterClicked" width="200" height="30" padding="0px 0px">
-                        <p class="white" style="font-size: 20px">Create Username</p>
+                        <p class="white" style="font-size: 20px">post this</p>
                       </UsageButton>
                     </div>
                     <div class="center-horizontal">
@@ -55,7 +59,7 @@ import ViewTemplatesPage from "../ViewTemplatesPage.vue";
 import UsageButton from "../views/UsageButton.vue";
 import {FirebaseController} from "../intercraSystemCode/controllers/FirebaseController";
 export default {
-  name: "CreateUsername",
+  name: "PostFeedbackPopup",
   components: {UsageButton, ViewTemplatesPage, PluginCheckBox},
 
   props: {
@@ -65,7 +69,9 @@ export default {
     return{
       savedContent: [],
       errorText: "",
-      username: ""
+      username: "",
+      headline: "",
+      content: ""
     }
   },
 
@@ -78,45 +84,57 @@ export default {
     onClose(){
       this.$emit('close');
     },
-    callback(){
-      this.checkUsername(this.$refs.usernameinput.value)
+
+    getCookies(key){
+      return this.$cookies.get(key);
+    },
+    setCookies(key, value){
+      if(this.isCookiesAllowed()){
+        return this.$cookies.set(key, value, 2147483647);
+      }
     },
     enterClicked(){
-      this.callback()
+      if(this.$refs.headlineinput.value === ""){
+        this.errorText = "You need a headline"
+      }else{
+        if(this.$refs.textarea.value === ""){
+          this.errorText = "There is no content in the text field"
+        }else{
+          if(this.getCookies("google_email") === null){
+            this.errorText = "You have to be logged in"
+          }else{
+            this.headline = this.$refs.headlineinput.value
+            this.content = this.$refs.textarea.value
+            this.errorText = ""
+            let fc = new FirebaseController()
+            fc.getUser(this.formatEmail(this.getCookies("google_email"))).then((data) => {
+              let time = this.getCurrentDateTime()
+              let fc = new FirebaseController()
+              fc.postFeedback(time, data.username, this.headline, this.content, "1")
+              this.onClose()
+            })
+          }
+        }
+      }
     },
 
-    checkUsername(username){
-      const regex = /^[a-zA-Z0-9-_\.][a-zA-Z0-9-_\.]*$/;
-      let valide = regex.test(username);
-      if(valide){
-        this.username = username
-        let fc = new FirebaseController()
-        fc.getUsers().then((data) => {
-          const keys = [];
-          for (const key in data) {
-            if (data.hasOwnProperty(key)) {
-              keys.push(key);
-            }
-          }
+    formatEmail(email){
+      email = email.replace(/\./g, "(dot)");
+      email = email.replace("@", "(at)");
+      return email
+    },
 
-          let valide = true
+    getCurrentDateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Monat von 0 bis 11, daher +1 und mit Nullen auffüllen
+      const day = String(now.getDate()).padStart(2, '0');
+      const hour = String(now.getHours()).padStart(2, '0');
+      const minute = String(now.getMinutes()).padStart(2, '0');
+      const second = String(now.getSeconds()).padStart(2, '0');
+      const millisecond = String(now.getMilliseconds()).padStart(3, '0');
 
-          for(let i = 0; i < keys.length; i++){
-            let existing = data[keys[i]].username
-            if(this.username === existing){
-              valide = false
-            }
-          }
-          if(valide){
-            this.$emit('created', this.$refs.usernameinput.value);
-            this.errorText = ""
-          }else{
-            this.errorText = "This username is taken"
-          }
-        })
-      }else{
-        this.errorText = "Only these characters are allowed: a-z A-Z 0-9 . _ - (space is not allowed)"
-      }
+      return `${year}${month}${day}${hour}${minute}${second}${millisecond}`
     }
   },
 

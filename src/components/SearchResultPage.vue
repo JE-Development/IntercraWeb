@@ -2,14 +2,12 @@
 
 <template>
   <div>
+    <MainNav/>
     <SavedPopup :show="showPopup" @show-popup="showFromPopup" :saved-content="savedContent"/>
     <div class="center-horizontal opacity-fade-in">
       <div>
-        <div class="center-horizontal">
-          <a href="https://intercra.com">
-            <img src="../assets/intercra-connected-text.png" class="result-image center-horizontal"/>
-          </a>
-        </div>
+
+        <div style="height: 30px"></div>
 
         <input
             @keyup.enter="enterClicked()"
@@ -156,10 +154,13 @@ import SavedContentButton from "../components/views/SavedContentButton.vue";
 import SavedPopup from "../components/views/SavedPopup.vue";
 import {GoogleController} from "./intercraSystemCode/controllers/GoogleController";
 import {PluginController} from "./intercraSystemCode/controllers/PluginController";
+import MainNav from "../components/views/MainNav.vue";
 
 export default {
   name: "SearchResultPage",
-  components: {SavedContentButton, SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins, SavedPopup},
+  components: {
+    MainNav,
+    SavedContentButton, SortingView, ViewTemplatesPage, MoreContentButton, WaitingPlugins, SavedPopup},
 
 
 

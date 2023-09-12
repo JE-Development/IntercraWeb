@@ -1,5 +1,5 @@
 import {initializeApp} from "firebase/app";
-import {getDatabase, onValue, ref, set} from "firebase/database";
+import {getDatabase, onValue, ref, set, remove, get} from "firebase/database";
 import EventBus from "../classes/EventBusEvent";
 
 export class FirebaseController{
@@ -21,38 +21,43 @@ export class FirebaseController{
         this.db = getDatabase()
     }
 
-    writeImage(id: string, seed: string, prompt: string, checkpoint: string, artist: string){
+    writeImage(id: string, seed: string, prompt: string, checkpoint: string, artist: string, requestid: string){
         const reference = ref(this.db, "ai-images/" + id)
         set(reference, {
             seed: seed,
             prompt: prompt,
             checkpoint: checkpoint,
-            artist: artist
+            artist: artist,
+            requestid: requestid
         })
     }
 
-    getUsers(){
+    async getUsers(){
         const allUsers = ref(this.db, "users")
-        onValue(allUsers, (snapshot) => {
-            let data = snapshot.val()
-            EventBus.emit("firebase-users", data)
-        })
+        let data = null
+
+        try {
+            const snapshot = await get(allUsers);
+            data = snapshot.val();
+        } catch (error) {
+            console.error("Fehler beim Abrufen von Daten:", error);
+        }
+
+        return data
     }
 
-    getUsersForUsername(){
-        const allUsers = ref(this.db, "users")
-        onValue(allUsers, (snapshot) => {
-            let data = snapshot.val()
-            EventBus.emit("firebase-users-username", data)
-        })
-    }
-
-    getUser(email: string){
+    async getUser(email: string){
         const allUsers = ref(this.db, "users/" + email)
-        onValue(allUsers, (snapshot) => {
-            let data = snapshot.val()
-            EventBus.emit("firebase-single-user", data)
-        })
+        let data = null
+
+        try {
+            const snapshot = await get(allUsers);
+            data = snapshot.val();
+        } catch (error) {
+            console.error("Fehler beim Abrufen von Daten:", error);
+        }
+
+        return data
     }
 
     createUser(email: string, username: string, blocked: string){
@@ -63,11 +68,71 @@ export class FirebaseController{
         })
     }
 
-    getImages(){
-        const allUsers = ref(this.db, "ai-images")
-        onValue(allUsers, (snapshot) => {
-            const data = snapshot.val()
-            EventBus.emit("firebase-image", data)
+    postFeedback(time: string, username: string, headline: string, content: string, status: string){
+        const reference = ref(this.db, "feedback/" + time)
+        set(reference, {
+            username: username,
+            headline: headline,
+            content: content,
+            status: status
         })
+    }
+
+    postImageRequest(time: string, username: string, prompt: string, seed: string, model: string, status: string){
+        const reference = ref(this.db, "ai-requests/" + time)
+        set(reference, {
+            username: username,
+            prompt: prompt,
+            seed: seed,
+            model: model,
+            status: status
+        })
+    }
+
+    async getImages(){
+        const allUsers = ref(this.db, "ai-images")
+        let data = null
+        try {
+            const snapshot = await get(allUsers);
+            data = snapshot.val();
+        } catch (error) {
+            console.error("Fehler beim Abrufen von Daten:", error);
+        }
+
+        return data;
+    }
+
+    async getImageRequests(){
+        const allUsers = ref(this.db, "ai-requests")
+        let data = null
+        try {
+            const snapshot = await get(allUsers);
+            data = snapshot.val();
+        } catch (error) {
+            console.error("Fehler beim Abrufen von Daten:", error);
+        }
+
+        return data;
+    }
+
+    async getFeedback(){
+        const allUsers = ref(this.db, "feedback");
+        let data = null
+        try {
+            const snapshot = await get(allUsers);
+            data = snapshot.val();
+        } catch (error) {
+            console.error("Fehler beim Abrufen von Daten:", error);
+        }
+
+        return data;
+    }
+
+    deletePost(id: string){
+        remove(ref(this.db, "feedback/" + id))
+    }
+
+    deleteImageRequest(id: string){
+        remove(ref(this.db, "ai-requests/" + id))
     }
 }
