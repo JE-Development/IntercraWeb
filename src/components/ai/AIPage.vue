@@ -138,7 +138,12 @@ export default {
     },
 
     seePostsClicked(){
-      router.push('/ai/requests');
+      if(this.getCookies("google_email") === null){
+        this.$notify("You are not logged in")
+      }else{
+        router.push('/ai/requests');
+      }
+
     },
 
     startImageRequest(){

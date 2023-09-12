@@ -5,35 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/ai/AIRequests.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ai/ImageRequestView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/feedback/FeedbackUserPage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/AIModelsCheckBox.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/GeneratedImagesPopup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/ImageRequestPopup.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/views/PostFeedbackPopup.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IntercraWeb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/animations.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animations.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/colors.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/colors.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/feedback.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/feedback.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/view-design.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/view-design.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ImpressumPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ImpressumPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ai/AIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ai/AIPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/feedback/FeedbackPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback/FeedbackPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/feedback/FeedbackView.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/feedback/FeedbackView.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/FirebaseController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/intercraSystemCode/controllers/FirebaseController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/CreateUsernamePopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/CreateUsernamePopup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/MainNav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/MainNav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,40 +47,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
-    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
-    "WebServerToolWindowPanel.toolwindow.show.date": "false",
-    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
-    "WebServerToolWindowPanel.toolwindow.show.size": "false",
-    "git-widget-placeholder": "new-main",
-    "javascript.nodejs.core.library.configured.version": "16.15.1",
-    "javascript.nodejs.core.library.typings.version": "16.18.50",
-    "last_opened_file_path": "C:/Users/Jason Enns/Desktop/Development/GitHub/ImageStorage/ai",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.fileTypes",
-    "ts.external.directory.path": "C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraBackEnd\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new-main&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;16.15.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;16.18.50&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jason Enns/Desktop/Development/GitHub/ImageStorage/ai&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.fileTypes&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Jason Enns\\Desktop\\Development\\GitHub\\IntercraBackEnd\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "vue.recent.templates": [
-      "Vue Composition API Component"
+  &quot;keyToStringList&quot;: {
+    &quot;vue.recent.templates&quot;: [
+      &quot;Vue Composition API Component&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jason Enns\Desktop\Development\GitHub\IntercraWeb\src\components\views" />
@@ -358,6 +331,7 @@
       <workItem from="1694445600037" duration="11489000" />
       <workItem from="1694466075805" duration="8119000" />
       <workItem from="1694520878262" duration="26299000" />
+      <workItem from="1694550212931" duration="164000" />
     </task>
     <servers />
   </component>
