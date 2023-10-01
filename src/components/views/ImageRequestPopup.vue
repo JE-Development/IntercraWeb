@@ -126,26 +126,30 @@ export default {
         if(this.$refs.prompt.value === "") {
           this.errorText = "The prompt is empty"
         }else{
-          this.errorText = ""
+          if(this.getCookies("google_email") !== null){
+            this.errorText = ""
 
-          let prompt = this.$refs.prompt.value
-          let seed = this.$refs.seedinput.value === "" ? "random" : this.$refs.seedinput.value
-          let model = ""
-          let time = this.getCurrentDateTime()
+            let prompt = this.$refs.prompt.value
+            let seed = this.$refs.seedinput.value === "" ? "random" : this.$refs.seedinput.value
+            let model = ""
+            let time = this.getCurrentDateTime()
 
-          if(this.model1){
-            model = this.model1Text
-          }else if(this.model2){
-            model = this.model2Text
-          }else if(this.model3){
-            model = this.model3Text
-          }else if(this.model4){
-            model = this.model4Text
+            if(this.model1){
+              model = this.model1Text
+            }else if(this.model2){
+              model = this.model2Text
+            }else if(this.model3){
+              model = this.model3Text
+            }else if(this.model4){
+              model = this.model4Text
+            }
+
+            let fc = new FirebaseController()
+            fc.postImageRequest(time, this.getCookies("google_username"), prompt, seed, model, "1")
+            this.onClose()
+          }else{
+            this.errorText = "You are not logged in"
           }
-
-          let fc = new FirebaseController()
-          fc.postImageRequest(time, this.getCookies("google_username"), prompt, seed, model, "1")
-          this.onClose()
 
         }
       }
