@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44d55d64-9e05-4e05-be12-562bb37d5c45" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../IntercraBackEnd/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/IntercraWeb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IntercraWeb.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ai/AIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ai/AIPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/views/ImageRequestPopup.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/views/ImageRequestPopup.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,6 +345,10 @@
       <workItem from="1695729411333" duration="193000" />
       <workItem from="1696094410074" duration="692000" />
       <workItem from="1696151658792" duration="6000" />
+      <workItem from="1696859572097" duration="820000" />
+      <workItem from="1696862390314" duration="122000" />
+      <workItem from="1696868261870" duration="32000" />
+      <workItem from="1696931111884" duration="34000" />
     </task>
     <servers />
   </component>
