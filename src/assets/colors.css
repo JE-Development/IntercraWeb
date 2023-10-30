@@ -1,0 +1,124 @@
+.visible-link-color{
+    color: #00b576;
+}
+
+.headline-color{
+    color: #007A02;
+}
+
+.text-black{
+    color: #000000;
+}
+
+.background-black{
+    background: #000000;
+}
+
+.text-button{
+    color: #000000;
+}
+
+.white{
+    color: #ffffff;
+}
+
+.black{
+    color: #000000;
+}
+
+.dark-grey{
+    color: #313131;
+}
+
+.check-box-text{
+    color: #76ffba;
+}
+
+.popup-background{
+    background-color: #ffffff;
+}
+
+.teaser-color{
+    color: #A3A3A3;
+}
+
+.decent-color{
+    color: #5e5e5e;
+}
+
+.waiting-background-color{
+    background-color: #f1f1f1;
+}
+
+.content-layout-color{
+    background-color: #f1f1f1;
+}
+
+.search-input-color{
+    background-color: #f1f1f1;
+}
+
+.complementary-color{
+    color: #FF9900;
+}
+
+.nav-complementary{
+    color: #005aff;
+}
+
+.plugin-name-color{
+    color: #00b576;
+}
+
+.error-color{
+    color: #ff0000;
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+
+    body{
+        background-color: #111111;
+    }
+
+    .search-input-color{
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+.username-input-color{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.textarea-color{
+    background-color: #000000;
+    color: #ffffff;
+}
+
+    .search-input-border-color:focus{
+        background: linear-gradient(#000000, #000000) padding-box,
+        linear-gradient(to right, #c3ff15, #00e598) border-box;
+    }
+
+    .waiting-background-color{
+        background-color: #212121;
+        color: #ffffff;
+    }
+
+    .content-layout-color{
+        background-color: #212121;
+    }
+
+    .text-black{
+        color: #ffffff;
+    }
+
+    .popup-background{
+        background-color: #000000;
+        color: #00e598;
+    }
+
+    .headline-color{
+        color: #00ff06;
+    }
+/*}*/

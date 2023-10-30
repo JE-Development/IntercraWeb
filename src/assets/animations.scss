@@ -1,0 +1,365 @@
+:root {
+  --per: 0%;
+}
+
+.hovering-bottom {
+  animation-name: hovering-bottom;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.hovering-top {
+  animation-name: hovering-top;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.search-input-border-color:focus{
+  outline: none !important;
+
+  background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+  linear-gradient(to right, #c3ff15, #00e598) border-box;
+  background-size: 400% 400%;
+  animation: input-gradient 5s ease infinite;
+
+
+  border: 3px solid transparent;
+  padding-left: 10px;
+
+}
+
+.preset-border-color{
+  outline: none !important;
+
+  background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+  linear-gradient(to right, #00e598, #c3ff1500 50%) border-box;
+  background-size: 400% 400%;
+  animation: gradient 1s;
+
+  animation-name: button-gradient-flow-backwards;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+  padding: 2px;
+
+
+}
+.preset-border-color:hover{
+  outline: none !important;
+
+
+
+  background: linear-gradient(#f1f1f1, #f1f1f1) padding-box,
+  linear-gradient(to right, #00e598, #c3ff1500) border-box;
+  background-size: 400% 400%;
+  animation: gradient 1s;
+
+  animation-name: icon-background-flow;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.not-glow-check-box{
+
+}
+
+.glow-check-box {
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ffffff, #ffffff) border-box;
+  background-size: 400% 400%;
+
+  box-shadow: 0px 0px 40px #ffffff;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+  padding: 2px;
+}
+
+.glow-after-check-box{
+  outline: none !important;
+
+  box-shadow: 0 0 40px #ffffff;
+  animation: glowing-back-check-box 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.glow:focus {
+  outline: none !important;
+
+  box-shadow: 0 0 0px #63ff63;
+  animation: glowing 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.glow-after{
+  outline: none !important;
+
+  box-shadow: 0 0 40px #63ff63;
+  animation: glowing-back 1.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.opacity-fade-out{
+  opacity: 1.0;
+
+  animation: opacity-out 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.opacity-fade-in{
+  opacity: 0;
+
+  animation: opacity-in 0.3s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.view-border-increase{
+  width: 0px;
+
+  animation: increase-width 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.view-border-decrease{
+  width: 720px;
+
+  animation: decrease-width 0.5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+.usage-button:hover{
+  display: flex;
+  height: 45px;
+
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ff5900, #ffff22) border-box;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  background-size: 400% 400%;
+  animation: gradient 0.3s;
+
+  animation-name: usage-flow-forward;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+}
+
+.usage-button{
+  width: 200px;
+
+
+  display: flex;
+  height: 45px;
+
+  background: linear-gradient(#000000, #000000) padding-box,
+  linear-gradient(to right, #ff5900, #ffff22) border-box;
+
+  border-radius: 50px;
+  border: 3px solid transparent;
+
+  padding: 5px 8px;
+  cursor: pointer;
+  border-radius: 50px;
+
+  background-size: 400% 400%;
+
+  animation: gradient 0.3s;
+  animation-name: usage-flow-backward;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+
+}
+
+
+
+@keyframes usage-flow-backward {
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes usage-flow-forward {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes decrease-width {
+  0%{
+    width: 720px;
+  }
+  100%{
+    width: 0px;
+  }
+}
+
+@keyframes increase-width {
+  0%{
+    width: 0px;
+  }
+  100%{
+    width: 720px;
+  }
+}
+
+@keyframes opacity-out {
+  0%{
+    opacity: 1.0;
+  }
+  100%{
+    opacity: 0.0;
+  }
+}
+
+@keyframes opacity-in {
+  0%{
+    opacity: 0.0;
+  }
+  100%{
+    opacity: 1.0;
+  }
+}
+
+@keyframes glowing-check-box {
+  0% {
+    box-shadow: 0 0 0px #ffffff;
+  }
+
+  100% {
+    box-shadow: 0 0 40px #ffffff;
+  }
+}
+
+@keyframes glowing-back-check-box {
+  0% {
+    box-shadow: 0 0 40px #ffffff;
+  }
+
+  100% {
+    box-shadow: 0 0 0px #ffffff;
+  }
+}
+
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 0px #63ff63;
+  }
+
+  100% {
+    box-shadow: 0 0 40px #63ff63;
+  }
+}
+
+@keyframes glowing-back {
+  0% {
+    box-shadow: 0 0 40px #63ff63;
+  }
+
+  100% {
+    box-shadow: 0 0 0px #63ff63;
+  }
+}
+
+@keyframes hovering-bottom {
+  from {transform:translate(0, 0px);}
+  50% {transform:translate(0, -4px);}
+  to {transform: translate(0, -0px);}
+}
+
+@keyframes hovering-top {
+  from {transform:translate(0, 0px);}
+  50% {transform:translate(0, -8px);}
+  to {transform: translate(0, -0px);}
+}
+
+@keyframes button-gradient-flow{
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes button-gradient-flow-backwards{
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+
+
+@keyframes input-gradient{
+  0% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/*@media (prefers-color-scheme: dark) {*/
+  .search-input-border-color:focus{
+    background: linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(to right, #c3ff15, #00e598) border-box;
+    background-size: 400% 400%;
+  }
+
+  .preset-border-color{
+    background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(to right, #00e598, #c3ff1500 50%) border-box;
+    background-size: 400% 400%;
+  }
+
+  .preset-border-color:hover{
+    background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(to right, #00e598, #c3ff1500) border-box;
+    background-size: 400% 400%;
+  }
+
+/*}*/

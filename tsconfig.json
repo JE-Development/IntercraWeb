@@ -1,0 +1,22 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "allowJs": true,
+    "noImplicitAny": false,
+    "types": ["node"],
+    "checkJs": false,
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+.nav{
+  width: 99vw;
+
+  background: linear-gradient(-45deg, rgba(195, 255, 21, 0.3), rgba(0, 255, 0, 0.3), rgba(0, 255, 119, 0.3), rgba(0, 229, 152, 0.3));
+  background-size: 400% 400%;
+  animation: nav-gradient-flow 20s ease infinite;
+  height: 30px;
+}
+
+.social-media-item{
+  display: flex;
+  font-size: 20px;
+  height: 50px;
+}
+
+.download-list-item{
+  display: flex;
+  font-size: 20px;
+  height: 50px;
+}
+
+.nav-module{
+  font-weight: bold;
+  cursor: pointer;
+
+  transition: transform 250ms;
+}
+
+.nav-module:hover{
+  transform: scale(1.2,1.2);
+
+}
+
+.nav-sub{
+  width: 400px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.nav-space{
+  width: 40px;
+}
+
+
+
+
+
+@keyframes nav-gradient-flow{
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (max-width: 620px) {
+
+  .nav-module{
+    font-weight: normal;
+    font-size: 3.0vw;
+  }
+  .nav-sub{
+    width: 70vw;
+  }
+
+  .nav{
+    height: 6vw;
+  }
+
+  .nav-space{
+    width: 20px;
+  }
+
+
+
+}

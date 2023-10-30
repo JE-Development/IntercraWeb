@@ -1,0 +1,36 @@
+.feed-button{
+    display: flex;
+    height: 45px;
+    width: 200px;
+
+    background: linear-gradient(#000000, #000000) padding-box,
+    linear-gradient(to right, #c3ff15, #00e598, #c3ff15) border-box;
+
+    background-size: 200% 200%;
+
+    animation: gradient 5s;
+    animation-name: circle-border;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+
+    border-radius: 50px;
+    border: 3px solid transparent;
+
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+
+@keyframes circle-border {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 200% 200%;
+    }
+}
